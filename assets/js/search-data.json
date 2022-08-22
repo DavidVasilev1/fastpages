@@ -2,7 +2,7 @@
   
     
         "post0": {
-            "title": "Title",
+            "title": "First Jupyter Test, Showcasing Python",
             "content": "var = &quot;Hello World!&quot; print(var) . Hello World! .",
             "url": "https://davidvasilev1.github.io/fastpages/2022/08/21/jupyter-notebook.html",
             "relUrl": "/2022/08/21/jupyter-notebook.html",
