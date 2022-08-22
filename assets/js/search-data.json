@@ -3,7 +3,7 @@
     
         "post0": {
             "title": "Title",
-            "content": "var = &quot;Hello World!&quot; print(var) . Input In [1] print(var) ^ IndentationError: unexpected indent .",
+            "content": "var = &quot;Hello World!&quot; print(var) . Hello World! . . toc: true layout: post description: First Jupyter Notebook using Python categories: [markdown] title: First Jupyter Post author: David Vasilev show_tags: true . comments: true .",
             "url": "https://davidvasilev1.github.io/fastpages/2022/08/21/jupyter-notebook.html",
             "relUrl": "/2022/08/21/jupyter-notebook.html",
             "date": " • Aug 21, 2022"
