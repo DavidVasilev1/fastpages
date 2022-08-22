@@ -3,7 +3,7 @@
     
         "post0": {
             "title": "First Jupyter Test, Showcasing Python",
-            "content": "var = &quot;Hello World!&quot; print(var) . Hello World! .",
+            "content": "Sample Python Code to Print &quot;Hello World!&quot; . var = &quot;Hello World!&quot; print(var) . Hello World! .",
             "url": "https://davidvasilev1.github.io/fastpages/2022/08/21/jupyter-notebook.html",
             "relUrl": "/2022/08/21/jupyter-notebook.html",
             "date": " • Aug 21, 2022"
