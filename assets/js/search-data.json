@@ -51,26 +51,48 @@
   
 
   
-  
-
-  
-
-  
-  
-
-  
-
-  
-  
-
-  
+      ,"page3": {
+          "title": "Notes",
+          "content": "Notes for this: .",
+          "url": "https://davidvasilev1.github.io/fastpages/notes/",
+          "relUrl": "/notes/",
+          "date": ""
+      }
+      
   
 
   
   
 
   
-      ,"page10": {
+
+  
+  
+
+  
+
+  
+      ,"page8": {
+          "title": "Vocab",
+          "content": "Vocab to know: .",
+          "url": "https://davidvasilev1.github.io/fastpages/vocab/",
+          "relUrl": "/vocab/",
+          "date": ""
+      }
+      
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+      ,"page12": {
           "title": "",
           "content": "Sitemap: {{ “sitemap.xml” | absolute_url }} | .",
           "url": "https://davidvasilev1.github.io/fastpages/robots.txt",
