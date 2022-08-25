@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Notes for APCSP
+categories: [notes]
 permalink: /notes/
 ---
 
