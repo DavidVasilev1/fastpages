@@ -6,7 +6,7 @@ permalink: /notes/
 
 ## How to Enter and Code with wsl:
 
-```
+```bash
 PS C:\Users\Dide> wsl
 (base) davidv@LAPTOP-NV0422DN:/mnt/c/Users/Dide$ cd ~
 (base) davidv@LAPTOP-NV0422DN:~$ cd vscode
