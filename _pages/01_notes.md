@@ -21,7 +21,7 @@ Go to [Github](https://github.com/DavidVasilev1/fastpages/actions) to check stat
 1. Enter vscode with wsl.
 
 2. Use these commands with python:
-```python
+```bash
 echo "Using conditional statement to create a project directory and project"
 
 # Variable section
@@ -52,7 +52,7 @@ echo "Directory $project exists."
 *Change repo link to my own*
 
 3. You can look at files in folder with this:
-```python
+```bash
 # You must run cells above to define variable and project
 
 echo "Navigate to project, then navigate to area wwhere files were cloned"
@@ -72,7 +72,7 @@ echo "list all files in long format"
 ls -al   # all files and long listing
 ```
 
-```python
+```bash
 # You must run cells above to define variable and project
 
 echo "Look for posts"
@@ -82,7 +82,7 @@ pwd  # present working directory
 ls -l  # list posts
 ```
 
-```python
+```bash
 # You must run cells above to define variable and project
 
 echo "Look for notebooks"
@@ -92,7 +92,7 @@ pwd  # present working directory
 ls -l  # list notebooks
 ```
 
-```python
+```bash
 # You must run cells above to define notebooks location
 
 echo "Look for images in notebooks, print working directory, list files"
@@ -103,7 +103,7 @@ ls -l
 
 4. You can also look inside files (markdown file):
 
-```python
+```bash
 # You must run cells above to define project
 echo "Navigate to project, then navigate to area wwhere files were cloned"
 
