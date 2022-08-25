@@ -21,6 +21,7 @@ Go to [Github](https://github.com/DavidVasilev1/fastpages/actions) to check stat
 1. Enter vscode with wsl.
 
 2. Use these commands with python:
+
 ```bash
 echo "Using conditional statement to create a project directory and project"
 
@@ -52,6 +53,7 @@ echo "Directory $project exists."
 *Change repo link to my own*
 
 3. You can look at files in folder with this:
+
 ```bash
 # You must run cells above to define variable and project
 
