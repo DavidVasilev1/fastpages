@@ -87,6 +87,107 @@ window.onload = wrap_img;
 
 <p>Go to <a href="https://github.com/DavidVasilev1/fastpages/actions">Github</a> to check status of all changes.</p>
 
+<h2 id="how-to-create-a-notebook-using-bash">How to Create a Notebook Using Bash:</h2>
+
+<ol>
+  <li>
+    <p>Enter vscode with wsl.</p>
+  </li>
+  <li>
+    <p>Use these commands with python:
+```python
+echo “Using conditional statement to create a project directory and project”</p>
+  </li>
+</ol>
+
+<h1 id="variable-section">Variable section</h1>
+<p>export project_dir=$HOME/vscode  # change vscode to different name to test git clone
+export project=$project_dir/APCSP  # change APCSP to name of project from git clone
+export project_repo=”https://github.com/nighthawkcoders/APCSP.git”  # change to project of choice</p>
+
+<p>cd ~    # start in home directory</p>
+
+<h1 id="conditional-block-to-make-a-project-directory">Conditional block to make a project directory</h1>
+<p>if [ ! -d $project_dir ]
+then 
+    echo “Directory $project_dir does not exists… makinng directory $project_dir”
+    mkdir -p $project_dir
+fi
+echo “Directory $project_dir exists.”</p>
+
+<h1 id="conditional-block-to-git-clone-a-project-from-project_repo">Conditional block to git clone a project from project_repo</h1>
+<p>if [ ! -d $project ]
+then
+    echo “Directory $project does not exists… cloning $project_repo”
+    cd $project_dir
+    git clone $project_repo
+    cd ~
+fi
+echo “Directory $project exists.”</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*Change repo link to my own*
+
+3. You can look at files in folder with this:
+```python
+# You must run cells above to define variable and project
+
+echo "Navigate to project, then navigate to area wwhere files were cloned"
+cd $project
+pwd
+
+echo ""
+echo "list top level or root of files with project pulled from github"
+ls
+
+echo ""
+echo "list again with hidden files pulled from github"
+ls -a   # hidden files flag, many shell commands have flags
+
+echo ""
+echo "list all files in long format"
+ls -al   # all files and long listing
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># You must run cells above to define variable and project
+</span>
+<span class="n">echo</span> <span class="s">"Look for posts"</span>
+<span class="n">export</span> <span class="n">posts</span><span class="o">=</span><span class="err">$</span><span class="n">project</span><span class="o">/</span><span class="n">_posts</span>  <span class="c1"># _posts inside project
+</span><span class="n">cd</span> <span class="err">$</span><span class="n">posts</span>  <span class="c1"># this should exist per fastpages
+</span><span class="n">pwd</span>  <span class="c1"># present working directory
+</span><span class="n">ls</span> <span class="o">-</span><span class="n">l</span>  <span class="c1"># list posts
+</span></code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># You must run cells above to define variable and project
+</span>
+<span class="n">echo</span> <span class="s">"Look for notebooks"</span>
+<span class="n">export</span> <span class="n">notebooks</span><span class="o">=</span><span class="err">$</span><span class="n">project</span><span class="o">/</span><span class="n">_notebooks</span>  <span class="c1"># _notebooks is inside project
+</span><span class="n">cd</span> <span class="err">$</span><span class="n">notebooks</span>   <span class="c1"># this should exist per fastpages
+</span><span class="n">pwd</span>  <span class="c1"># present working directory
+</span><span class="n">ls</span> <span class="o">-</span><span class="n">l</span>  <span class="c1"># list notebooks
+</span></code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># You must run cells above to define notebooks location
+</span>
+<span class="n">echo</span> <span class="s">"Look for images in notebooks, print working directory, list files"</span>
+<span class="n">cd</span> <span class="err">$</span><span class="n">notebooks</span><span class="o">/</span><span class="n">images</span>  <span class="c1"># this should exist per fastpages
+</span><span class="n">pwd</span>
+<span class="n">ls</span> <span class="o">-</span><span class="n">l</span>
+</code></pre></div></div>
+
+<ol>
+  <li>You can also look inside files (markdown file):</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># You must run cells above to define project
+</span><span class="n">echo</span> <span class="s">"Navigate to project, then navigate to area wwhere files were cloned"</span>
+
+<span class="n">cd</span> <span class="err">$</span><span class="n">project</span>
+<span class="n">echo</span> <span class="s">"show the contents of README.md"</span>
+<span class="n">echo</span> <span class="s">""</span>
+
+<span class="n">cat</span> <span class="n">README</span><span class="p">.</span><span class="n">md</span>  <span class="c1"># show contents of file, in this case markdown
+</span><span class="n">echo</span> <span class="s">""</span>
+<span class="n">echo</span> <span class="s">"end of README.md"</span>
+</code></pre></div></div>
 
   </div>
 
