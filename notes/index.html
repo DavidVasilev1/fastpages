@@ -95,7 +95,7 @@ window.onload = wrap_img;
   </li>
   <li>
     <p>Use these commands with python:
-```python
+```bash
 echo “Using conditional statement to create a project directory and project”</p>
   </li>
 </ol>
@@ -127,7 +127,7 @@ echo “Directory $project exists.”</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*Change repo link to my own*
 
 3. You can look at files in folder with this:
-```python
+```bash
 # You must run cells above to define variable and project
 
 echo "Navigate to project, then navigate to area wwhere files were cloned"
@@ -147,46 +147,46 @@ echo "list all files in long format"
 ls -al   # all files and long listing
 </code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># You must run cells above to define variable and project
-</span>
-<span class="n">echo</span> <span class="s">"Look for posts"</span>
-<span class="n">export</span> <span class="n">posts</span><span class="o">=</span><span class="err">$</span><span class="n">project</span><span class="o">/</span><span class="n">_posts</span>  <span class="c1"># _posts inside project
-</span><span class="n">cd</span> <span class="err">$</span><span class="n">posts</span>  <span class="c1"># this should exist per fastpages
-</span><span class="n">pwd</span>  <span class="c1"># present working directory
-</span><span class="n">ls</span> <span class="o">-</span><span class="n">l</span>  <span class="c1"># list posts
-</span></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># You must run cells above to define variable and project</span>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># You must run cells above to define variable and project
-</span>
-<span class="n">echo</span> <span class="s">"Look for notebooks"</span>
-<span class="n">export</span> <span class="n">notebooks</span><span class="o">=</span><span class="err">$</span><span class="n">project</span><span class="o">/</span><span class="n">_notebooks</span>  <span class="c1"># _notebooks is inside project
-</span><span class="n">cd</span> <span class="err">$</span><span class="n">notebooks</span>   <span class="c1"># this should exist per fastpages
-</span><span class="n">pwd</span>  <span class="c1"># present working directory
-</span><span class="n">ls</span> <span class="o">-</span><span class="n">l</span>  <span class="c1"># list notebooks
-</span></code></pre></div></div>
+<span class="nb">echo</span> <span class="s2">"Look for posts"</span>
+<span class="nb">export </span><span class="nv">posts</span><span class="o">=</span><span class="nv">$project</span>/_posts  <span class="c"># _posts inside project</span>
+<span class="nb">cd</span> <span class="nv">$posts</span>  <span class="c"># this should exist per fastpages</span>
+<span class="nb">pwd</span>  <span class="c"># present working directory</span>
+<span class="nb">ls</span> <span class="nt">-l</span>  <span class="c"># list posts</span>
+</code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># You must run cells above to define notebooks location
-</span>
-<span class="n">echo</span> <span class="s">"Look for images in notebooks, print working directory, list files"</span>
-<span class="n">cd</span> <span class="err">$</span><span class="n">notebooks</span><span class="o">/</span><span class="n">images</span>  <span class="c1"># this should exist per fastpages
-</span><span class="n">pwd</span>
-<span class="n">ls</span> <span class="o">-</span><span class="n">l</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># You must run cells above to define variable and project</span>
+
+<span class="nb">echo</span> <span class="s2">"Look for notebooks"</span>
+<span class="nb">export </span><span class="nv">notebooks</span><span class="o">=</span><span class="nv">$project</span>/_notebooks  <span class="c"># _notebooks is inside project</span>
+<span class="nb">cd</span> <span class="nv">$notebooks</span>   <span class="c"># this should exist per fastpages</span>
+<span class="nb">pwd</span>  <span class="c"># present working directory</span>
+<span class="nb">ls</span> <span class="nt">-l</span>  <span class="c"># list notebooks</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># You must run cells above to define notebooks location</span>
+
+<span class="nb">echo</span> <span class="s2">"Look for images in notebooks, print working directory, list files"</span>
+<span class="nb">cd</span> <span class="nv">$notebooks</span>/images  <span class="c"># this should exist per fastpages</span>
+<span class="nb">pwd
+ls</span> <span class="nt">-l</span>
 </code></pre></div></div>
 
 <ol>
   <li>You can also look inside files (markdown file):</li>
 </ol>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># You must run cells above to define project
-</span><span class="n">echo</span> <span class="s">"Navigate to project, then navigate to area wwhere files were cloned"</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># You must run cells above to define project</span>
+<span class="nb">echo</span> <span class="s2">"Navigate to project, then navigate to area wwhere files were cloned"</span>
 
-<span class="n">cd</span> <span class="err">$</span><span class="n">project</span>
-<span class="n">echo</span> <span class="s">"show the contents of README.md"</span>
-<span class="n">echo</span> <span class="s">""</span>
+<span class="nb">cd</span> <span class="nv">$project</span>
+<span class="nb">echo</span> <span class="s2">"show the contents of README.md"</span>
+<span class="nb">echo</span> <span class="s2">""</span>
 
-<span class="n">cat</span> <span class="n">README</span><span class="p">.</span><span class="n">md</span>  <span class="c1"># show contents of file, in this case markdown
-</span><span class="n">echo</span> <span class="s">""</span>
-<span class="n">echo</span> <span class="s">"end of README.md"</span>
+<span class="nb">cat </span>README.md  <span class="c"># show contents of file, in this case markdown</span>
+<span class="nb">echo</span> <span class="s2">""</span>
+<span class="nb">echo</span> <span class="s2">"end of README.md"</span>
 </code></pre></div></div>
 
   </div>
