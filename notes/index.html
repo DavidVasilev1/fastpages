@@ -94,57 +94,60 @@ window.onload = wrap_img;
     <p>Enter vscode with wsl.</p>
   </li>
   <li>
-    <p>Use these commands with python:
-```bash
-echo “Using conditional statement to create a project directory and project”</p>
+    <p>Use these commands with python:</p>
   </li>
 </ol>
 
-<h1 id="variable-section">Variable section</h1>
-<p>export project_dir=$HOME/vscode  # change vscode to different name to test git clone
-export project=$project_dir/APCSP  # change APCSP to name of project from git clone
-export project_repo=”https://github.com/nighthawkcoders/APCSP.git”  # change to project of choice</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"Using conditional statement to create a project directory and project"</span>
 
-<p>cd ~    # start in home directory</p>
+<span class="c"># Variable section</span>
+<span class="nb">export </span><span class="nv">project_dir</span><span class="o">=</span><span class="nv">$HOME</span>/vscode  <span class="c"># change vscode to different name to test git clone</span>
+<span class="nb">export </span><span class="nv">project</span><span class="o">=</span><span class="nv">$project_dir</span>/APCSP  <span class="c"># change APCSP to name of project from git clone</span>
+<span class="nb">export </span><span class="nv">project_repo</span><span class="o">=</span><span class="s2">"https://github.com/nighthawkcoders/APCSP.git"</span>  <span class="c"># change to project of choice</span>
 
-<h1 id="conditional-block-to-make-a-project-directory">Conditional block to make a project directory</h1>
-<p>if [ ! -d $project_dir ]
-then 
-    echo “Directory $project_dir does not exists… makinng directory $project_dir”
-    mkdir -p $project_dir
-fi
-echo “Directory $project_dir exists.”</p>
+<span class="nb">cd</span> ~    <span class="c"># start in home directory</span>
 
-<h1 id="conditional-block-to-git-clone-a-project-from-project_repo">Conditional block to git clone a project from project_repo</h1>
-<p>if [ ! -d $project ]
-then
-    echo “Directory $project does not exists… cloning $project_repo”
-    cd $project_dir
-    git clone $project_repo
-    cd ~
-fi
-echo “Directory $project exists.”</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*Change repo link to my own*
+<span class="c"># Conditional block to make a project directory</span>
+<span class="k">if</span> <span class="o">[</span> <span class="o">!</span> <span class="nt">-d</span> <span class="nv">$project_dir</span> <span class="o">]</span>
+<span class="k">then 
+    </span><span class="nb">echo</span> <span class="s2">"Directory </span><span class="nv">$project_dir</span><span class="s2"> does not exists... makinng directory </span><span class="nv">$project_dir</span><span class="s2">"</span>
+    <span class="nb">mkdir</span> <span class="nt">-p</span> <span class="nv">$project_dir</span>
+<span class="k">fi
+</span><span class="nb">echo</span> <span class="s2">"Directory </span><span class="nv">$project_dir</span><span class="s2"> exists."</span> 
 
-3. You can look at files in folder with this:
-```bash
-# You must run cells above to define variable and project
+<span class="c"># Conditional block to git clone a project from project_repo</span>
+<span class="k">if</span> <span class="o">[</span> <span class="o">!</span> <span class="nt">-d</span> <span class="nv">$project</span> <span class="o">]</span>
+<span class="k">then
+    </span><span class="nb">echo</span> <span class="s2">"Directory </span><span class="nv">$project</span><span class="s2"> does not exists... cloning </span><span class="nv">$project_repo</span><span class="s2">"</span>
+    <span class="nb">cd</span> <span class="nv">$project_dir</span>
+    git clone <span class="nv">$project_repo</span>
+    <span class="nb">cd</span> ~
+<span class="k">fi
+</span><span class="nb">echo</span> <span class="s2">"Directory </span><span class="nv">$project</span><span class="s2"> exists."</span> 
+</code></pre></div></div>
+<p><em>Change repo link to my own</em></p>
 
-echo "Navigate to project, then navigate to area wwhere files were cloned"
-cd $project
-pwd
+<ol>
+  <li>You can look at files in folder with this:</li>
+</ol>
 
-echo ""
-echo "list top level or root of files with project pulled from github"
-ls
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># You must run cells above to define variable and project</span>
 
-echo ""
-echo "list again with hidden files pulled from github"
-ls -a   # hidden files flag, many shell commands have flags
+<span class="nb">echo</span> <span class="s2">"Navigate to project, then navigate to area wwhere files were cloned"</span>
+<span class="nb">cd</span> <span class="nv">$project</span>
+<span class="nb">pwd
 
-echo ""
-echo "list all files in long format"
-ls -al   # all files and long listing
+echo</span> <span class="s2">""</span>
+<span class="nb">echo</span> <span class="s2">"list top level or root of files with project pulled from github"</span>
+<span class="nb">ls
+
+echo</span> <span class="s2">""</span>
+<span class="nb">echo</span> <span class="s2">"list again with hidden files pulled from github"</span>
+<span class="nb">ls</span> <span class="nt">-a</span>   <span class="c"># hidden files flag, many shell commands have flags</span>
+
+<span class="nb">echo</span> <span class="s2">""</span>
+<span class="nb">echo</span> <span class="s2">"list all files in long format"</span>
+<span class="nb">ls</span> <span class="nt">-al</span>   <span class="c"># all files and long listing</span>
 </code></pre></div></div>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># You must run cells above to define variable and project</span>
