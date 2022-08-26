@@ -1,5 +1,6 @@
 ---
 layout: page
+badges: true
 title: About Me
 categories: about me
 permalink: /about/
