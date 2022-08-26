@@ -1,5 +1,5 @@
 ---
-toc: 
+toc: true
 layout: page
 title: Notes for APCSP
 categories: [notes]
