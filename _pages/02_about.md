@@ -4,6 +4,7 @@ layout: page
 title: About Me
 permalink: /about/
 categories: [Markdown, Trimester 1]
+comments: true
 ---
 
 
