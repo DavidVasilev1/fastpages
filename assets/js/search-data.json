@@ -15,8 +15,8 @@
         ,"post1": {
             "title": "First Jupyter Notebook Test, Showcasing Python",
             "content": "Sample Python Code to Print &quot;Hello World!&quot; . var = &quot;Hello World!&quot; print(var) . Hello World! . Above you can see the output of the code. .",
-            "url": "https://davidvasilev1.github.io/fastpages/2022/08/21/jupyter-notebook.html",
-            "relUrl": "/2022/08/21/jupyter-notebook.html",
+            "url": "https://davidvasilev1.github.io/fastpages/trimester%201/python/2022/08/21/jupyter-notebook.html",
+            "relUrl": "/trimester%201/python/2022/08/21/jupyter-notebook.html",
             "date": " • Aug 21, 2022"
         }
         
