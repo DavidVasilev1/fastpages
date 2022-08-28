@@ -1,6 +1,6 @@
 ---
 toc: true
-layout: page
+layout: post
 title: Trimester 1 Notes for APCSP
 description: This years notes will go on this page.
 permalink: /notes/
