@@ -1,9 +1,9 @@
 ---
 toc: true
 layout: page
-badges: true
 title: About Me
 permalink: /about/
+categories: [Markdown, Trimester 1]
 ---
 
 
