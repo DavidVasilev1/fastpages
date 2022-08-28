@@ -1,6 +1,6 @@
 ---
 toc: true
-layout: post
+layout: pages
 title: Notes for APCSP
 description: This years notes will go on this page.
 permalink: /notes/
