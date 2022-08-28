@@ -7,6 +7,8 @@ permalink: /notes/
 categories: [notes]
 ---
 
+# Basics
+
 ## How to Enter and Code with wsl:
 
 ```bash
@@ -19,7 +21,7 @@ PS C:\Users\Dide> wsl
 
 Go to [Github](https://github.com/DavidVasilev1/fastpages/actions) to check status of all changes.
 
-### How to Create a Notebook Using Bash:
+## How to Create a Notebook Using Bash:
 
 1. Enter vscode with wsl.
 
