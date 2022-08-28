@@ -11,5 +11,6 @@ comments: true
 # Basics
 
 Table Of Contents:
+- [My Classes](https://davidvasilev1.github.io/fastpages/markdown/trimester%201/classes/2022/08/28/classes.html)
 - [How to Enter and Code with "wsl"](https://davidvasilev1.github.io/fastpages/jupyter/tri%201%20notes/2022/08/28/entering-wsl-script.html)
 - [How to Use Bash](https://davidvasilev1.github.io/fastpages/jupyter/tri%201%20notes/2022/08/28/bash-kernel.html)
