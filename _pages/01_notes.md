@@ -1,9 +1,10 @@
 ---
 toc: true
-layout: page
+layout: post
 title: Notes for APCSP
-categories: [notes]
+description: This years notes will go on this page.
 permalink: /notes/
+categories: [notes]
 ---
 
 ## How to Enter and Code with wsl:
