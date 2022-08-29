@@ -11,6 +11,7 @@ comments: true
 The assignments are organized by newest to oldest, where the newest are at the top and the oldest are at the bottom.
 
 Table Of Contents:
+- [Python Quiz](https://davidvasilev1.github.io/fastpages/jupyter/trimester%201/tri%201%20assignments/2022/08/28/python-quiz.html)
 - [Tool Checks](https://davidvasilev1.github.io/fastpages/jupyter/trimester%201/2022/08/28/tool-check.html)
 - [My Classes](https://davidvasilev1.github.io/fastpages/markdown/trimester%201/classes/2022/08/28/classes.html)
 - [Docx Post: Lab #1 Measurements and Graphical Analysis](https://davidvasilev1.github.io/fastpages/2022/08/26/Lab-1-Measurements-and-Graphical-Analysis.html)
