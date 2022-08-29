@@ -1,9 +1,17 @@
-<h3>
-    <a class="post-link" href="{{ post.url | relative_url }}">
-    {{ post.title | escape }}
-    </a>
-</h3>
-{%- if site.show_description and post.description  -%}
-<p class="post-meta-description">{{ post.description }}</p>
-{%- endif -%}
-<p class="post-meta">{{ post.date | date: date_format }}</p>
+<style>
+    .container {padding: 2px 16px;}
+</style>
+
+<div class="card">
+    <div class="container">
+        <h3>
+            <a class="post-link" href="{{ post.url | relative_url }}">
+            {{ post.title | escape }}
+            </a>
+        </h3>
+        {%- if site.show_description and post.description  -%}
+        <p class="post-meta-description">{{ post.description }}</p>
+        {%- endif -%}
+        <p class="post-meta">{{ post.date | date: date_format }}</p>
+    </div>
+</div>
