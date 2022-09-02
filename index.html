@@ -7,20 +7,22 @@ image: images/logo.png
   <head>
     <style>
       h1{text-align: center;}
+      button{text-align: center;}
     </style>
   </head>
-  <body style = "background-color: #f2ecff;">
+  <body>
     <h1>Welcome to my Website</h1>
+
+    <button onclick="myFunction()">Dark Mode</button>
+    <p id="demo"></p>
+  <script>
+      function myFunction() {
+      var element = document.body;
+      element.classList.toggle("dark-mode");
+    }
+  </script>
   </body>
-  <button onclick="myFunction()">Click me</button>
 
-<p id="demo"></p>
-
-<script>
-function myFunction() {
-  document.getElementById("demo").innerHTML = "Hello World";
-}
-</script>
 </html>
 
 ![]({{ site.baseurl }}/images/sunset.png "david logo")
