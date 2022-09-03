@@ -109,15 +109,20 @@ window.onload = wrap_img;
   <body>
     <h1>Welcome to my Website</h1>
 
-    <button onclick="myFunction()">Dark Mode</button>
+    <!-- <button onclick="myFunction()">Dark Mode</button>
     <p id="demo"></p>
-  <link href="/_sass/minima/dark-mode.scss" />
+  <link href="/_sass/minima/dark-mode.scss"/>
   <script>
       function myFunction() {
       var element = document.body;
       element.classList.toggle("dark-mode");
     }
-  </script>
+  </script> -->
+  <label class="toggle">
+    <span class="onoff">OFF</span>
+    <input type="checkbox" />
+    <span class="slider round"></span>
+  </label>
   </body>
 
 </html>
