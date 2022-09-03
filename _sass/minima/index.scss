@@ -4,12 +4,68 @@ a:post-list > li > div {
   border: rgb(212, 159, 255) !important;
 }
 
-body {
-  background-color: #f2ecff;
-  color: black;
+// body {
+//   background-color: #f2ecff;
+//   color: black;
+// }
+
+// .dark-mode {
+//   background-color: #2a213f;
+//   color: white;
+// }
+
+.toggle {
+  position: relative;
 }
 
-.dark-mode {
+.toggle input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle .onoff {
+  color: #fff;
+  font-size: 6em;
+  text-align: center;
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.slider {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  background-color: #333;
+  transition: 0.4s;
+  width: 200px;
+  height: 120px;
+}
+
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  background-color: #fff;
+  transition: 0.4s;
+  top: 10px;
+  left: 10px;
+}
+
+input:checked + .slider {
   background-color: #2a213f;
-  color: white;
+  box-shadow: 0 0 12px #3d305c;
+}
+
+input:checked + .slider:before {
+  transform: translateX(80px);
+}
+
+.slider.round {
+  border-radius: 20px;
+}
+.slider.round::before {
+  border-radius: 20px;
 }
