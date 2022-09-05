@@ -186,15 +186,18 @@ window.onload = wrap_img;
     <span class="slider round"></span>
   </label>
   </body>
+<link id="theme" rel="stylesheet" type="text/css" href="light.scss" />
 <script>
   const toggle = document.querySelector('.toggle input')
 
 toggle.addEventListener('click', () => {
     const onOff = toggle.parentNode.querySelector('.onoff')
     onOff.textContent = toggle.checked ? 'ON' : 'OFF'
-    function myFunction()
-      var element = document.body;
-      element.classList.toggle(href = "/_sass/minima/dark-mode.scss");
+    if (theme.getAttribute('href') == 'light.scss') {
+                theme.setAttribute('href', 'dark.scss');
+            } else {
+                theme.setAttribute('href', 'light.scss');
+            }
 })
 </script>
 </html>
