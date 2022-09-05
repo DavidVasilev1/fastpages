@@ -1,1 +1,1 @@
-Sitemap: https://davidvasilevcspblog.com/fastpages/sitemap.xml
+Sitemap: https://davidvasilev1.github.io/fastpages/sitemap.xml
