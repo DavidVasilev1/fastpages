@@ -186,17 +186,17 @@ window.onload = wrap_img;
     <span class="slider round"></span>
   </label>
   </body>
-<link id="theme" rel="stylesheet" type="text/css" href="light.scss" />
+<link id="theme" href="/light.scss" />
 <script>
   const toggle = document.querySelector('.toggle input')
 
 toggle.addEventListener('click', () => {
     const onOff = toggle.parentNode.querySelector('.onoff')
     onOff.textContent = toggle.checked ? 'ON' : 'OFF'
-    if (theme.getAttribute('href') == 'light.scss') {
-                theme.setAttribute('href', 'dark.scss');
+    if (theme.getAttribute('href') == '/light.scss') {
+                theme.setAttribute('href', '/dark.scss');
             } else {
-                theme.setAttribute('href', 'light.scss');
+                theme.setAttribute('href', '/light.scss');
             }
 })
 </script>
