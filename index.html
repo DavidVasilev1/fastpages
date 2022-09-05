@@ -36,7 +36,8 @@ image: images/logo.png
   </script> -->
   <style>
     body {
-      align-items: center;
+      display: flex;
+      justify-content: center;
     }
 
     .toggle {
@@ -62,30 +63,30 @@ image: images/logo.png
       position: relative;
       display: block;
       cursor: pointer;
-      background-color: #333;
-      transition: 0.4s;
-      width: 50px;
-      height: 36px;
+      background-color: rgb(228, 208, 255);
+      transition: 0.1;
+      width: 30px;
+      height: 18px;
     }
 
     .slider:before {
       content: "";
       position: absolute;
-      height: 20px;
-      width: 20px;
+      height: 12px;
+      width: 12px;
       background-color: #fff;
       transition: 0.1s;
-      top: 8px;
-      left: 7px;
+      top: 3px;
+      left: 4px;
     }
 
     input:checked + .slider {
-      background-color: #3a2e45;
+      background-color: #1c092d;
       box-shadow: 0 0 12px #433e48;
     }
 
     input:checked + .slider:before {
-      transform: translateX(16px);
+      transform: translateX(10px);
     }
 
     .slider.round {
@@ -94,9 +95,9 @@ image: images/logo.png
     .slider.round::before {
       border-radius: 8px;
     }
+
   </style>
   <label class="toggle">
-    <span class="onoff">OFF</span>
     <input type="checkbox" />
     <span class="slider round"></span>
   </label>
@@ -107,6 +108,9 @@ image: images/logo.png
 toggle.addEventListener('click', () => {
     const onOff = toggle.parentNode.querySelector('.onoff')
     onOff.textContent = toggle.checked ? 'ON' : 'OFF'
+    function myFunction()
+      var element = document.body;
+      element.classList.toggle(href = "/_sass/minima/dark-mode.scss");
 })
 </script>
 </html>

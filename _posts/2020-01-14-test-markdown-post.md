@@ -73,7 +73,7 @@ Formatting text as shell commands:
 echo "hello world"
 ./some_script.sh --option "value"
 wget https://example.com/cat_photo1.png
-```
+```run
 
 Formatting text as YAML:
 
