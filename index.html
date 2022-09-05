@@ -9,121 +9,22 @@ image: images/logo.png
       h1{
         text-align: center;
       }
-      button{
-        text-align: center;
-      }
-      /* body {
-        background-color: rgb(243, 230, 255);
-        color: black;
-      }
-      .dark-mode {
-        background-color: rgb(64, 55, 73);
-        color: white;
-      } */
     </style>
   </head>
+
   <body>
     <h1>Welcome to my Website</h1>
 
-    <!-- <button onclick="myFunction()">Dark Mode</button>
+    <button onclick="myFunction()">Dark Mode</button>
     <p id="demo"></p>
-  <link href="/_sass/minima/dark-mode.scss"/>
+  <link href="/_sass/minima/dark.scss"/>
   <script>
       function myFunction() {
       var element = document.body;
       element.classList.toggle("dark-mode");
     }
-  </script> -->
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-    }
+  </script>
 
-    .toggle {
-      position: relative;
-    }
-
-    .toggle input {
-      position: absolute;
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-
-    .toggle .onoff {
-      color: #fff;
-      font-size: 6em;
-      text-align: center;
-      display: block;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .slider {
-      position: relative;
-      display: block;
-      cursor: pointer;
-      background-color: rgb(228, 208, 255);
-      transition: 0.1;
-      width: 30px;
-      height: 18px;
-    }
-
-    .slider:before {
-      content: "";
-      position: absolute;
-      height: 12px;
-      width: 12px;
-      background-color: #fff;
-      transition: 0.1s;
-      top: 3px;
-      left: 4px;
-    }
-
-    input:checked + .slider {
-      background-color: #1c092d;
-      box-shadow: 0 0 12px #433e48;
-    }
-
-    input:checked + .slider:before {
-      transform: translateX(10px);
-    }
-
-    .slider.round {
-      border-radius: 8px;
-    }
-    .slider.round::before {
-      border-radius: 8px;
-    }
-
-  </style>
-  <label class="toggle">
-    <input type="checkbox" />
-    <span class="slider round"></span>
-  </label>
-  </body>
-
-<link id="theme" href="/light.scss" />
-
-<!-- <script>
-  const toggle = document.querySelector('.toggle input')
-
-  function toggleTheme() {
-
-var theme = document.getElementsByTagName('link')[0];
-
-if (theme.getAttribute('href') == '/light.scss') {
-    theme.setAttribute('href', '/dark.scss');
-} else {
-    theme.setAttribute('href', '/light.scss');
-}
-} -->
-
-// toggle.addEventListener('click', () => {
-//     const onOff = toggle.parentNode.querySelector('.onoff')
-//     onOff.textContent = toggle.checked ? 'ON' : 'OFF'
-    
-// })
 </script>
 </html>
 
