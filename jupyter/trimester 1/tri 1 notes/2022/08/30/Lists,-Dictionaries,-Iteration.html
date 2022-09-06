@@ -95,7 +95,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      4 min read
+      5 min read
     
 </span></p>
 
@@ -285,17 +285,27 @@ person {'name': 'David Vasilev', 'age': 16, 'score': 100.0, 'langs': ['Python', 
 
 <span class="c1"># InfoDB is a data structure with expected Keys and Values</span>
 
-<span class="c1"># Append to List a Dictionary of key/values related to a person and cars</span>
+<span class="c1"># My Dictionary</span>
 <span class="n">InfoDb</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
     <span class="s2">"FirstName"</span><span class="p">:</span> <span class="s2">"David"</span><span class="p">,</span>
     <span class="s2">"LastName"</span><span class="p">:</span> <span class="s2">"Vasilev"</span><span class="p">,</span>
     <span class="s2">"DOB"</span><span class="p">:</span> <span class="s2">"May 27"</span><span class="p">,</span>
     <span class="s2">"Residence"</span><span class="p">:</span> <span class="s2">"San Diego"</span><span class="p">,</span>
-    <span class="s2">"Email"</span><span class="p">:</span> <span class="s2">"davidv42185@powayusd.com"</span><span class="p">,</span>
-    <span class="s2">"Owns_Cars"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"none"</span><span class="p">]</span>
+    <span class="s2">"Email"</span><span class="p">:</span> <span class="s2">"davidv42185@stu.powayusd.com"</span><span class="p">,</span>
+    <span class="s2">"Owns_Cars"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"McLaren 720s, Ferrari 488"</span><span class="p">]</span>
 <span class="p">})</span>
 
-<span class="c1"># Append to List a 2nd Dictionary of key/values</span>
+<span class="c1"># Partner Dictionary</span>
+<span class="n">InfoDb</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+    <span class="s2">"FirstName"</span><span class="p">:</span> <span class="s2">"Akshat"</span><span class="p">,</span>
+    <span class="s2">"LastName"</span><span class="p">:</span> <span class="s2">"Parikh"</span><span class="p">,</span>
+    <span class="s2">"DOB"</span><span class="p">:</span> <span class="s2">"December 28"</span><span class="p">,</span>
+    <span class="s2">"Residence"</span><span class="p">:</span> <span class="s2">"San Diego"</span><span class="p">,</span>
+    <span class="s2">"Email"</span><span class="p">:</span> <span class="s2">"akshat1228@gmail.com"</span><span class="p">,</span>
+    <span class="s2">"Owns_Cars"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Rolls Royce Culinan, Mercedes Maybach, Mercedes G-Wagon, Ashton Martin Vantage"</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># Random Person Dictionary</span>
 <span class="n">InfoDb</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
     <span class="s2">"FirstName"</span><span class="p">:</span> <span class="s2">"Bob"</span><span class="p">,</span>
     <span class="s2">"LastName"</span><span class="p">:</span> <span class="s2">"Smith"</span><span class="p">,</span>
@@ -319,7 +329,7 @@ person {'name': 'David Vasilev', 'age': 16, 'score': 100.0, 'langs': ['Python', 
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[{'FirstName': 'David', 'LastName': 'Vasilev', 'DOB': 'May 27', 'Residence': 'San Diego', 'Email': 'davidv42185@powayusd.com', 'Owns_Cars': ['none']}, {'FirstName': 'Bob', 'LastName': 'Smith', 'DOB': 'January 1', 'Residence': 'New York', 'Email': 'bobsmith@gmail.com', 'Owns_Cars': ['Toyota', 'Ford']}]
+<pre>[{'FirstName': 'David', 'LastName': 'Vasilev', 'DOB': 'May 27', 'Residence': 'San Diego', 'Email': 'davidv42185@stu.powayusd.com', 'Owns_Cars': ['McLaren 720s, Ferrari 488']}, {'FirstName': 'Akshat', 'LastName': 'Parikh', 'DOB': 'December 28', 'Residence': 'San Diego', 'Email': 'akshat1228@gmail.com', 'Owns_Cars': ['Rolls Royce Culinan, Mercedes Maybach, Mercedes G-Wagon, Ashton Martin Vantage']}, {'FirstName': 'Bob', 'LastName': 'Smith', 'DOB': 'January 1', 'Residence': 'New York', 'Email': 'bobsmith@gmail.com', 'Owns_Cars': ['Toyota', 'Ford']}]
 </pre>
 </div>
 </div>
@@ -361,6 +371,7 @@ person {'name': 'David Vasilev', 'age': 16, 'score': 100.0, 'langs': ['Python', 
     <span class="nb">print</span><span class="p">(</span><span class="n">d_rec</span><span class="p">[</span><span class="s2">"FirstName"</span><span class="p">],</span> <span class="n">d_rec</span><span class="p">[</span><span class="s2">"LastName"</span><span class="p">])</span>  <span class="c1"># using comma puts space between values</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\t</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"Residence:"</span><span class="p">,</span> <span class="n">d_rec</span><span class="p">[</span><span class="s2">"Residence"</span><span class="p">])</span> <span class="c1"># \t is a tab indent</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\t</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"Birth Day:"</span><span class="p">,</span> <span class="n">d_rec</span><span class="p">[</span><span class="s2">"DOB"</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\t</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"Email:"</span><span class="p">,</span> <span class="n">d_rec</span><span class="p">[</span><span class="s2">"Email"</span><span class="p">])</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\t</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"Cars: "</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>  <span class="c1"># end="" make sure no return occurs</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">d_rec</span><span class="p">[</span><span class="s2">"Owns_Cars"</span><span class="p">]))</span>  <span class="c1"># join allows printing a string list with separator</span>
     <span class="nb">print</span><span class="p">()</span>
@@ -390,11 +401,19 @@ person {'name': 'David Vasilev', 'age': 16, 'score': 100.0, 'langs': ['Python', 
 David Vasilev
 	 Residence: San Diego
 	 Birth Day: May 27
-	 Cars: none
+	 Email: davidv42185@stu.powayusd.com
+	 Cars: McLaren 720s, Ferrari 488
+
+Akshat Parikh
+	 Residence: San Diego
+	 Birth Day: December 28
+	 Email: akshat1228@gmail.com
+	 Cars: Rolls Royce Culinan, Mercedes Maybach, Mercedes G-Wagon, Ashton Martin Vantage
 
 Bob Smith
 	 Residence: New York
 	 Birth Day: January 1
+	 Email: bobsmith@gmail.com
 	 Cars: Toyota, Ford
 
 </pre>
@@ -457,11 +476,19 @@ Bob Smith
 David Vasilev
 	 Residence: San Diego
 	 Birth Day: May 27
-	 Cars: none
+	 Email: davidv42185@stu.powayusd.com
+	 Cars: McLaren 720s, Ferrari 488
+
+Akshat Parikh
+	 Residence: San Diego
+	 Birth Day: December 28
+	 Email: akshat1228@gmail.com
+	 Cars: Rolls Royce Culinan, Mercedes Maybach, Mercedes G-Wagon, Ashton Martin Vantage
 
 Bob Smith
 	 Residence: New York
 	 Birth Day: January 1
+	 Email: bobsmith@gmail.com
 	 Cars: Toyota, Ford
 
 </pre>
@@ -526,11 +553,19 @@ Bob Smith
 David Vasilev
 	 Residence: San Diego
 	 Birth Day: May 27
-	 Cars: none
+	 Email: davidv42185@stu.powayusd.com
+	 Cars: McLaren 720s, Ferrari 488
+
+Akshat Parikh
+	 Residence: San Diego
+	 Birth Day: December 28
+	 Email: akshat1228@gmail.com
+	 Cars: Rolls Royce Culinan, Mercedes Maybach, Mercedes G-Wagon, Ashton Martin Vantage
 
 Bob Smith
 	 Residence: New York
 	 Birth Day: January 1
+	 Email: bobsmith@gmail.com
 	 Cars: Toyota, Ford
 
 </pre>
