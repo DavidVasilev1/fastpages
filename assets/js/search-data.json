@@ -3,7 +3,7 @@
     
         "post0": {
             "title": "HTML Fragments",
-            "content": "Changing Jekyll Style . Changing the jekyll theme of the website entirely ruined the way the site looked. Everything was | .",
+            "content": "Changing Jekyll Style . Changing the Jekyll theme of the website didn’t even allow me to commit the project to Github. It gave me an error on the Jekyll build step of committing the project and it also entirely failed to complete the “copy CNAM file into _site is CNAME exists” and “Deploy” steps of building the website. | . . Tagging my Posts . I have tagged my posts in a way to make it easy for me to find different things that I need to find. For example, I have separated my posts by assignments, as well as to separate my posts by the type of language that is included within them. | . . Search Bar on my Website . I can use the search bar to find specific words that are not included in my tags. In this example I can search the word “code” and find pages that include the word code. | . .",
             "url": "https://davidvasilev1.github.io/fastpages/markdown/trimester%201/tri%201%20assignments/2022/09/05/html-blog.html",
             "relUrl": "/markdown/trimester%201/tri%201%20assignments/2022/09/05/html-blog.html",
             "date": " • Sep 5, 2022"
@@ -69,7 +69,7 @@
     
         ,"post6": {
             "title": "My Classes",
-            "content": "Class Schedule . . MyConnect Links to Classes . Period 1: US History | Period 2: AP Calc AB | Period 3: AP CSP | Period 4: AP Physics: Mech | Period 5: APEL | . Agendas . AP Calc | AP CSP | AP Physics: Mech | APEL | . Personal Calender .",
+            "content": "Class Schedule . Period Class Room Teacher Email . 1 | US History 1 | L117 | Elizabeth Ayres | Email | . 2 | AP Calculus AB | R402 | Briana West | Email | . 3 | AP CS Principles | A101 | John Mortensen | Email | . 4 | AP Physics C: Mech | K105 | Ifeng Liao | Email | . 5 | AP English Language | G115 | Melissa Darcey Hall | Email | . MyConnect Links to Classes . Period 1: US History | Period 2: AP Calc AB | Period 3: AP CSP | Period 4: AP Physics: Mech | Period 5: APEL | . Agendas . AP Calc | AP CSP | AP Physics: Mech | APEL | . Personal Calender .",
             "url": "https://davidvasilev1.github.io/fastpages/markdown/trimester%201/classes/tri%201%20assignments/2022/08/28/classes.html",
             "relUrl": "/markdown/trimester%201/classes/tri%201%20assignments/2022/08/28/classes.html",
             "date": " • Aug 28, 2022"
