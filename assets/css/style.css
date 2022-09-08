@@ -323,17 +323,17 @@ table td { border: 1px solid #e8e8e8; }
 /*--- IMPORT STYLES FOR FASTPAGES ---*/
 html, body, input, textarea, select, button { color: rgba(0, 0, 0, 0.87) !important; background-color: #f3daff !important; }
 
-a { color: #4bbaff !important; }
+a { color: #2c82b7 !important; }
 
 a:hover { color: rgba(0, 0, 0, 0.87) !important; }
 
 .site-title, .site-title:visited, .site-nav, .page-link { color: rgba(0, 0, 0, 0.87) !important; }
 
-.site-nav { background-color: #f3daff; border-color: #f5dfff; }
+.site-nav { background-color: #f3daff; border-color: #d1bbdb; }
 
-* { scrollbar-color: #f3daff #f5dfff; }
+* { scrollbar-color: #f3daff #d1bbdb; }
 
-pre, code { border-color: #f5dfff; background-color: #f4dcff; }
+pre, code { border-color: #d1bbdb; background-color: #e7cff2; }
 
 .page-description { color: rgba(0, 0, 0, 0.69); }
 
@@ -341,19 +341,19 @@ pre, code { border-color: #f5dfff; background-color: #f4dcff; }
 
 .post-content p, .post-content li { color: rgba(0, 0, 0, 0.69); }
 
-.btn { background-color: #f4dcff !important; color: rgba(0, 0, 0, 0.87) !important; border-color: #f5dfff !important; }
+.btn { background-color: #e7cff2 !important; color: rgba(0, 0, 0, 0.87) !important; border-color: #d1bbdb !important; }
 
 .btn:hover { background-color: #f3daff !important; }
 
-table th { background-color: #f4dcff; border-color: #f5dfff; color: rgba(0, 0, 0, 0.87); }
+table th { background-color: #e7cff2; border-color: #d1bbdb; color: rgba(0, 0, 0, 0.87); }
 
-table td { background-color: #f3daff; border-color: #f5dfff; color: rgba(0, 0, 0, 0.69); }
+table td { background-color: #f3daff; border-color: #d1bbdb; color: rgba(0, 0, 0, 0.69); }
 
 .flash { color: #f3daff !important; filter: brightness(80%); }
 
 canvas { filter: invert(100%); }
 
-.post-list > li > div { box-shadow: none !important; background-color: #f4dcff; border: none !important; }
+.post-list > li > div { box-shadow: none !important; background-color: #e7cff2; border: none !important; }
 
 li .post-meta-description { color: rgba(0, 0, 0, 0.69) !important; }
 
