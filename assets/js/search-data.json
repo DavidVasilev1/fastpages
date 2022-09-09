@@ -187,7 +187,6 @@
   
 
   
-  
 
   
   
@@ -202,7 +201,10 @@
   
 
   
-      ,"page12": {
+  
+
+  
+      ,"page13": {
           "title": "",
           "content": "Sitemap: {{ “sitemap.xml” | absolute_url }} | .",
           "url": "https://davidvasilev1.github.io/fastpages/robots.txt",
