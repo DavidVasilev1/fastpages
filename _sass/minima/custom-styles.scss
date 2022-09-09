@@ -1,6 +1,14 @@
+$path-light: "minima/lightmode";
+$path-dark: "minima/darkmode";
+
+:export {
+  styleLight: $path-light;
+  styleDark: $path-dark;
+}
+
 /*-----------------------------------*/
 /*--- IMPORT STYLES FOR FASTPAGES ---*/
-@import "minima/lightmode";   
+@import url(minima/#{$path-light});   
 
 
 
