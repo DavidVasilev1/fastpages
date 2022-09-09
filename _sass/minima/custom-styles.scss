@@ -8,7 +8,9 @@ $path-dark: "minima/darkmode";
 
 /*-----------------------------------*/
 /*--- IMPORT STYLES FOR FASTPAGES ---*/
-@import "minima/"#{$path-light};   
+@import "minima/darkmode"
+// #{$path-light}
+;   
 
 
 
