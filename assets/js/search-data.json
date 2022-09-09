@@ -3,7 +3,7 @@
     
         "post0": {
             "title": "Weather",
-            "content": "Weather . .",
+            "content": "Weather . &lt;object type=&quot;text/html&quot; data=&quot;https://www.wunderground.com/forecast/us/ca/san-diego/KCASANDI498&quot; width=&quot;800px&quot; height=&quot;600px&quot; style=&quot;overflow:auto&gt; &lt;/object&gt; .",
             "url": "https://davidvasilev1.github.io/fastpages/markdown/trimester%201/tri%201%20assignments/2022/09/08/weather.html",
             "relUrl": "/markdown/trimester%201/tri%201%20assignments/2022/09/08/weather.html",
             "date": " • Sep 8, 2022"
