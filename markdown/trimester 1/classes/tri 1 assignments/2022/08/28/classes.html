@@ -151,16 +151,22 @@ window.onload = wrap_img;
       import styles from '/_sass/minima/custom-styles.scss'    
       const colorStyleLight = parseInt(styles.styleLight)
       const colorStyleDark = parseInt(styles.styleDark)
-      const toggle = document.querySelector('.toggle input')
 
-      toggle.addEventListener('click', () => {
-        const onOff = toggle.parentNode.querySelector('.onoff')
-        if (onOff.textContent = toggle.checked ? 'ON' : 'OFF') {
-          print(dark)
-        } else {
-          print(light)
-        }
-      })
+      function switchFunction() {
+        var element = document.body;
+        element.classList.toggle("styleLight");
+      }
+
+      // const toggle = document.querySelector('.toggle input')
+
+      // toggle.addEventListener('click', () => {
+      //   const onOff = toggle.parentNode.querySelector('.onoff')
+      //   if (onOff.textContent = toggle.checked ? 'ON' : 'OFF') {
+      //     print(dark)
+      //   } else {
+      //     print(light)
+      //   }
+      // })
     </script>
 
     <label class="toggle">
