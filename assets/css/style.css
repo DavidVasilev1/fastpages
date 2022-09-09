@@ -1,4 +1,4 @@
-@import url(minima/minima/lightmode);
+@import "minima/" minima/lightmode;
 .highlight .c { color: #998; font-style: italic; }
 
 .highlight .err { color: #a61717; background-color: #e3d2d2; }
