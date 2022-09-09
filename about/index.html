@@ -147,13 +147,14 @@ window.onload = wrap_img;
     </style>
 
     <script>
+      
       import styles from '/_sass/minima/custom-styles.scss'    
       const colorStyleLight = parseInt(styles.styleLight)
       const colorStyleDark = parseInt(styles.styleDark)
 
       function switchFunction() {
         var element = document.body;
-        element.classList.toggle("styleLight");
+        element.classList.toggle(colorStyleLight);
       }
 
       // const toggle = document.querySelector('.toggle input')
