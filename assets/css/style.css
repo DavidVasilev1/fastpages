@@ -319,7 +319,7 @@ table td { border: 1px solid #e8e8e8; }
 /** Grid helpers */
 @media screen and (min-width: 1200px) { .one-half { width: calc(50% - (30px / 2)); } }
 
-:export { styleLight: "minima/lightmode"; styleDark: "minima/darkmode"; }
+:root { --light: "minima/lightmode"; --dark: "minima/darkmode"; }
 
 /*-----------------------------------*/
 /*--- IMPORT STYLES FOR FASTPAGES ---*/
