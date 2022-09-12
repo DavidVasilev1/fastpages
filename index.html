@@ -147,34 +147,28 @@ window.onload = wrap_img;
         border-radius: 10px;
       }
     </style>
-
+  <link id="theme" rel="stylesheet" type="text/css" href="lightmode.scss" />
     <script>
       
       import styles from './custom-styles.scss'
       const colorStyleLight = parseInt(styles.styleLight)
       const colorStyleDark = parseInt(styles.styleDark)
 
-      function switchFunction() {
-        var element = document.body;
-        element.classList.toggle("./lightmode.scss");
-      }
-
-      // const toggle = document.querySelector('.toggle input')
-
-      // toggle.addEventListener('click', () => {
-      //   const onOff = toggle.parentNode.querySelector('.onoff')
-      //   if (onOff.textContent = toggle.checked ? 'ON' : 'OFF') {
-      //     print(dark)
-      //   } else {
-      //     print(light)
-      //   }
-      // })
+      function toggleTheme() {
+            var theme = document.getElementsByTagName('link')[0];
+  
+            if (theme.getAttribute('href') == 'lightmode.scss') {
+              theme.setAttribute('href', 'darkmode.scss');
+            } else {
+              theme.setAttribute('href', 'lightmode.scss');
+            }
+        }
     </script>
 
     <label class="toggle">
       <span> 
         <input type="checkbox" />
-      <span class="slider round"></span>
+      <span class="slider round" onclick="toggleTheme()"></span>
     </label>
 
     <main class="page-content" aria-label="Content">
