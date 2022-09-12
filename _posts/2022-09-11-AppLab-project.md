@@ -29,12 +29,6 @@ These are just some ideas that I came up with for a topic of a quiz that I could
 
 ## Results of the [AppLab Quiz](https://studio.code.org/projects/applab/PX1GwJGOBAxcXc0FbeuT1yF2y91tuxZNt1lS65MGWYI/edit)
 
-<html>
-  <body>
-    <iframe src = "https://studio.code.org/projects/applab/PX1GwJGOBAxcXc0FbeuT1yF2y91tuxZNt1lS65MGWYI/edit" width = "100%" height = "500"></iframe>
-  </body>
-</html>
-
 ![]({{site.baseurl}}/images/code.png "This is my workspace, where I coded the app.")
 
 ![]({{site.baseurl}}/images/instructions.png "This shows some instructions on how to take the test.")
