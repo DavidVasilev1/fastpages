@@ -27,11 +27,11 @@ These are just some ideas that I came up with for a topic of a quiz that I could
 - Allow the user to navigate through the different questions without being specifically constrained to one question at a time.
 - Calculate the score at the end of the quiz.
 
-## Results of the (AppLab Quiz)[https://studio.code.org/projects/applab/PX1GwJGOBAxcXc0FbeuT1yF2y91tuxZNt1lS65MGWYI/edit]
+## Results of the [AppLab Quiz](https://studio.code.org/projects/applab/PX1GwJGOBAxcXc0FbeuT1yF2y91tuxZNt1lS65MGWYI/edit)
 
 <html>
   <body>
-    <iframe src = "https://davidvasilev1.github.io/fastpages/notes/" width = "100%" height = "500">
+    <iframe src = "https://studio.code.org/projects/applab/PX1GwJGOBAxcXc0FbeuT1yF2y91tuxZNt1lS65MGWYI/edit" width = "100%" height = "500"></iframe>
   </body>
 </html>
 
