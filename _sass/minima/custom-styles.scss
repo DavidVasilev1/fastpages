@@ -1,5 +1,8 @@
-$path-light: "minima/lightmode";
-$path-dark: "minima/darkmode";
+:root {
+  --light: "minima/lightmode";
+  --dark: "minima/darkmode"; 
+}
+
 
 :export {
   styleLight: $path-light;
@@ -8,10 +11,7 @@ $path-dark: "minima/darkmode";
 
 /*-----------------------------------*/
 /*--- IMPORT STYLES FOR FASTPAGES ---*/
-@import "minima/darkmode"
-// #{$path-light}
-;   
-
+@import "minima/darkmode";
 
 
 /*-----------------------------------*/
