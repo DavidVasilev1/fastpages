@@ -9,7 +9,17 @@ layout: default
     {%- include header.html -%}
     
     <style>
-      body {
+      .dark-mode {
+        background-color: black;
+        color: white;
+      }
+
+      .light-mode {
+        background-color: white;
+        color: black;
+      }
+
+      /* body {
         display: flex;
         align-items: right;
       }
@@ -68,29 +78,34 @@ layout: default
       }
       .slider.round::before {
         border-radius: 10px;
-      }
+      } */
     </style>
   <link href="_sass/minima/lightmode.scss" />
     <script>
 
-      function toggleTheme() {
-            var theme = document.getElementsByTagName('link')[0];
+      // function toggleTheme() {
+      //       var theme = document.getElementsByTagName('link')[0];
   
-            if (theme.getAttribute('href') == '_sass/minima/lightmode.scss') {
-              theme.setAttribute('href', '_sass/minima/darkmode.scss');
-            } else {
-              theme.setAttribute('href', '_sass/minima/lightmode.scss');
-            }
-        }
+      //       if (theme.getAttribute('href') == '_sass/minima/lightmode.scss') {
+      //         theme.setAttribute('href', '_sass/minima/darkmode.scss');
+      //       } else {
+      //         theme.setAttribute('href', '_sass/minima/lightmode.scss');
+      //       }
+      //   }
+
+      function myFunction() {
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+}
     </script>
 
   <button onclick="toggleTheme()">Switch</button>
 
-    <label class="toggle">
+    <!-- <label class="toggle">
       <span> 
         <input type="checkbox" />
       <span class="slider round" onclick="toggleTheme()"></span>
-    </label>
+    </label> -->
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
