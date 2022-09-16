@@ -86,6 +86,12 @@ window.onload = wrap_img;
       </nav></div>
 </header>
 <style>
+
+      .dark-mode {
+        background-color: black;
+        color: white;
+      }
+
       /* body {
         display: flex;
         align-items: right;
@@ -148,31 +154,35 @@ window.onload = wrap_img;
       } */
     </style>
 
-    <script>
+    <button onclick="myFunction()" id="myButton" value="Dark Mode">Dark Mode</button>
 
-      // function toggleTheme() {
-      //       var theme = document.getElementsByTagName('link')[0];
-  
-      //       if (theme.getAttribute('href') == '_sass/minima/lightmode.scss') {
-      //         theme.setAttribute('href', '_sass/minima/darkmode.scss');
-      //       } else {
-      //         theme.setAttribute('href', '_sass/minima/lightmode.scss');
-      //       }
-      //   }
-
-//       function myFunction() {
-//         var element = document.body;
-//         element.classList.toggle("dark-mode");
-// }
-    </script>
-
-  <button onclick="toggleTheme()">Switch</button>
+    <link href = "_sass/minima/darkmode.scss"></href>
 
     <!-- <label class="toggle">
       <span> 
         <input type="checkbox" />
       <span class="slider round" onclick="toggleTheme()"></span>
     </label> -->
+
+    <script>
+
+      function myFunction() {
+        var element = document.body;
+        var btn = document.getElementById("myButton");
+
+        if (btn.value == "Dark Mode") {
+            btn.value = "Light Mode";
+            btn.innerHTML = "Light Mode";
+            element.classList.toggle("dark-mode");
+        }
+        else {
+            btn.value = "Dark Mode";
+            btn.innerHTML = "Dark Mode";
+            element.classList.toggle("dark-mode");
+        }
+      }
+
+    </script>
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
