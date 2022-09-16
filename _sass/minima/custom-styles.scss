@@ -1,23 +1,6 @@
-// @mixin importRightScssFile($lightmode: true) {
-
-//   @if $lightmode {
-//     @import "minima/darkmode";
-//   } @else {
-//     @import "minima/lightmode";
-//   }
-// }
-
-// .lightmode {
-//   @include importRightScssFile($lightmode: true);
-//  }
- 
-//  .darkmode {
-//   @include importRightScssFile($lightmode: false);
-//  }
-
 /*-----------------------------------*/
 /*--- IMPORT STYLES FOR FASTPAGES ---*/
-@import "minima/darkmode";
+@import "minima/lightmode";
 
 
 /*-----------------------------------*/
