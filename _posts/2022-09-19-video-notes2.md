@@ -60,28 +60,29 @@ Here are some results from a survey we made as a group. This survey takes into a
 
 
 Here, the amount of stress experienced by students was measured on a level of 1-5, where 1 was the lowest amount of stress and 5 was the highest.
+
 ![]({{site.baseurl}}/images/stressamount.png)
 
-
 Here, we asked students about some of the sources of stress they experienced.
+
 ![]({{site.baseurl}}/images/stresssource.png)
 
-
 Here, we asked students whether they felt unhappy or sad.
+
 ![]({{site.baseurl}}/images/stressdepression.png)
 
-
 Here we asked, on average, how much sleep did the students get.
+
 ![]({{site.baseurl}}/images/sleep.png)
 
-
 Here we asked whether or not the students were in a positive social circle.
+
 ![]({{site.baseurl}}/images/socialcircle.png)
 
-
 Here we asked whether being in a bad social circle contributed to their stress.
+
 ![]({{site.baseurl}}/images/socialcirclestress.png)
 
-
+Here we asked whether being in a good social circle contributed to their stress.
 
 ![]({{site.baseurl}}/images/stresssource.png)
