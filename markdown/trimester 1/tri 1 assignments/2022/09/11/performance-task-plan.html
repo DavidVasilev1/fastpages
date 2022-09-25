@@ -86,12 +86,7 @@ window.onload = wrap_img;
 </header>
 <style>
 
-      .dark-mode {
-        background-color: black;
-        color: white;
-      }
-
-      /* body {
+      body {
         display: flex;
         align-items: right;
       }
@@ -150,41 +145,14 @@ window.onload = wrap_img;
       }
       .slider.round::before {
         border-radius: 10px;
-      } */
+      }
     </style>
 
-    <button onclick="myFunction()" id="myButton" value="Dark Mode">Dark Mode</button>
-
-    <link href = "_sass/minima/darkmode.scss"></href>
-
-    <!-- <label class="toggle">
+    <label class="form-check-input" id="darkSwitch">
       <span> 
-        <input type="checkbox" />
-      <span class="slider round" onclick="toggleTheme()"></span>
-    </label> -->
-
-    <script>
-
-      function myFunction() {
-        var element = document.body;
-        var btn = document.getElementById("myButton");
-        
-        localStorage.setItem('dark', '_sass/minima/darkmode.scss')
-
-        if (btn.value == "Dark Mode") {
-            btn.value = "Light Mode";
-            btn.innerHTML = "Light Mode";
-            localStorage.getItem('dark')
-            // element.classList.getItem("dark");
-        }
-        else {
-            btn.value = "Dark Mode";
-            btn.innerHTML = "Dark Mode";
-            element.classList.toggle("dark-mode");
-        }
-      }
-
-    </script>
+        <input type="checkbox" >
+      <span class="slider round" onclick="myFunction()" ></span>
+    </label>
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
