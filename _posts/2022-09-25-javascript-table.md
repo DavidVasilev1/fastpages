@@ -36,6 +36,7 @@ comments: true
     console.log(output);
   }
   groups = new Cameras(cam);
+  logItType(cam);
   logItType(groups.group);
   logItType(groups.group[0].camera);
   logItType(groups.json[0]);
