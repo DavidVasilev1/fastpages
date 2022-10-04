@@ -14,6 +14,10 @@ The assignments are organized by newest to oldest, where the newest are at the t
 
 | Date | Subject |
 |-|-|
+| 10/2/2022 | [Project Outline](https://davidvasilev1.github.io/fastpages/jupyter/trimester%201/tri%201%20assignments/2022/10/02/project-outline.html) |
+| 10/2/2022 | [Flask Deployment](https://davidvasilev1.github.io/fastpages/markdown/trimester%201/tri%201%20assignments/2022/10/02/output.html) |
+| 9/25/2022 | [Team Project](https://davidvasilev1.github.io/fastpages/markdown/trimester%201/tri%201%20assignments/2022/09/25/group-project.html) |
+| 9/25/2022 | [Javascript Usage](https://davidvasilev1.github.io/fastpages/jupyter/trimester%201/tri%201%20assignments/2022/09/25/javascript.html) |
 | 9/11/2022 | [AppLab Project](https://davidvasilev1.github.io/fastpages/markdown/trimester%201/tri%201%20assignments/2022/09/11/AppLab-project.html) |
 | 9/11/2022 | [Performance Task Plan](https://davidvasilev1.github.io/fastpages/markdown/trimester%201/tri%201%20assignments/2022/09/11/performance-task-plan.html) |
 | 9/5/2022 | [Lists, Dictionaries, Iteration Notes](https://davidvasilev1.github.io/fastpages/jupyter/trimester%201/tri%201%20notes/2022/08/30/Lists,-Dictionaries,-Iteration.html) |
