@@ -10,12 +10,12 @@ function myFunction() {
       darkSwitch.checked=darkSwitchSelected;
       // if dark-mode, toggle the switch to dark-mode position
       if (darkSwitchSelected)
-          document.body.classList.toggle("/_sass/minima/darkmode.scss");
+          document.body.toggle("dark-mode");
   }
   // executes on each "dark mode" UI toggle
   function darkFunction() {
       // toggles between off (standard CSS) and dark-mode (.dark-mode CSS)
-      document.body.classList.toggle("dark-mode");
+      document.body.toggle("dark-mode");
       // localStorage is used to manage darkSwitch status
       darkSwitch.checked
           ? localStorage.setItem("darkSwitch","dark")

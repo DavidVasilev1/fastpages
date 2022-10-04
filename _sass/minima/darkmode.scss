@@ -6,24 +6,24 @@ $dark-grey : #2b1137;
 $overlay: mix($dark-grey, white, 95%);
 $overlay-light: mix($dark-grey, white, 86%);
 
-html, body, input, textarea, select, button {   
+.dark-mode html, body, input, textarea, select, button {   
   color: $high-emph !important;
   background-color: $dark-grey !important;
 }
 
-a {
+.dark-mode a {
     color: rgb(75, 186, 255) !important;
 }
 
-a:hover {
+.dark-mode a:hover {
     color:$high-emph !important;
 }
 
-.site-title, .site-title:visited, .site-nav, .page-link {
+.dark-mode .site-title, .site-title:visited, .site-nav, .page-link {
     color: $high-emph !important;
 }
 
-.site-nav {
+.dark-mode .site-nav {
     background-color: $dark-grey;
     border-color: $overlay-light;
 }
@@ -32,61 +32,61 @@ a:hover {
     scrollbar-color: $dark-grey $overlay-light;
 }
 
-pre, code {
+.dark-mode pre, code {
     // BVas a lighter colour to better highlight short code words
     border-color: $overlay-light;
     background-color: $overlay;
 }
 
-.page-description {
+.dark-mode .page-description {
     color: $med-emph;
 }
 
-.post-meta {
+.dark-mode .post-meta {
     color: $low-emph;
 }
 
-.post-content p, .post-content li {
+.dark-mode .post-content p, .post-content li {
     color: $med-emph;
 }
 
-.btn {
+.dark-mode .btn {
     background-color: $overlay !important;
     color: $high-emph !important;
     border-color: $overlay-light !important;
 }
 
-.btn:hover {
+.dark-mode .btn:hover {
     background-color: $dark-grey !important;
 }
 
-table th{
+.dark-mode table th{
     background-color: $overlay;
     border-color: $overlay-light;
     color: $high-emph;
 }
 
-table td{
+.dark-mode table td{
     background-color: $dark-grey;
     border-color: $overlay-light;
     color: $med-emph;
 }
 
-.flash {
+.dark-mode .flash {
     color: $dark-grey !important;
     filter: brightness(80%);
 }
 
-canvas {
+.dark-mode canvas {
     filter: invert(100%);
 }
 
-.post-list > li > div {
+.dark-mode .post-list > li > div {
     box-shadow: none !important;
     background-color: $overlay;
     border: none !important;
 }
 
-li .post-meta-description {
+.dark-mode li .post-meta-description {
     color: $med-emph !important;
 }
