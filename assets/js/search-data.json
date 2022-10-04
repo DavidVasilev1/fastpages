@@ -4,8 +4,8 @@
         "post0": {
             "title": "Program Design and Development 1.3 Notes",
             "content": "Program Design and Development 1.3 Notes . Development of a Program . starts with an idea have a specific purpose of what the program should do | sometimes development is exploratory (what happens results in what happens next) | . | investigate problem and reflect on it results in requirements for the program | surveys, testing, and interviews are used to see what is needed | . | designing the program brainstorm what the program is going to do to solve a problem | create user interface and use | . | deciding on requirements list of interactions for user | how the program is going to react | specifications are going to be used to create prototypes | . | testing the program testing on micro and macro level | . | . Development is Never Solo . usually many people work on one program or project groups have roles and each are credited for contributions | . | comments are used in code to give credit comments and roles allow to see who needs to fix parts of code | . | certain sections of code are reused many times developers should credit the authors or the code segments | might have a works cited page | . | . Program Documentation . documentation is used to describe the code and overall program specs and sections of code are documented | also document how the program was developed and who helped | . | usually happens throughout the development starts with specs and then goes through process and finally through the overall process | gives ideas on how to improve program and also helps remember where you left off | . | commenting is used to document things in the code the comments don’t affect the code, they are for the programmers | . | some languages that use comments Python (#) | Java (// - single line; /* */ - multiple lines; /** **/ - multiple line documentation) | Javascript, C/C++, Swift - also use something similar to Java | XML/HTML (&lt;!-- --&gt;) | Applescript/Pascal (* *) | block-based languages use pop-outs for comments | . Quiz Results: . . | .",
-            "url": "https://davidvasilev1.github.io/fastpages/markdown/trimester%201/tri%201%20notes/2022/10/02/video-notes4.html",
-            "relUrl": "/markdown/trimester%201/tri%201%20notes/2022/10/02/video-notes4.html",
+            "url": "https://davidvasilev1.github.io/fastpages/markdown/trimester%201/tri%201%20notes/collegeboard/2022/10/02/video-notes4.html",
+            "relUrl": "/markdown/trimester%201/tri%201%20notes/collegeboard/2022/10/02/video-notes4.html",
             "date": " • Oct 2, 2022"
         }
         
@@ -37,8 +37,8 @@
         ,"post3": {
             "title": "Program Function and Purpose 1.2 Notes",
             "content": "Program Function and Purpose 1.2 Notes . Computing Innovations . Applications (topics of interest), Physical Devices, Systems (programs) | Thin: what issue would this solve? | . Inputs . tactile, audio, visual, text | events send input into the program mouse clicks, touch (levels of touch) | button clicks | keyboards | audio trigger (smart devices) | . | input affects output, if followed correctly outputs include: visual, audio, tactile, text | . | program jumps to the event that is triggered | . Programs . statement - single command | code segments - multiple statements | descriptions state what the code does helps with collaboration | . | .",
-            "url": "https://davidvasilev1.github.io/fastpages/markdown/trimester%201/tri%201%20notes/2022/09/25/video-notes3.html",
-            "relUrl": "/markdown/trimester%201/tri%201%20notes/2022/09/25/video-notes3.html",
+            "url": "https://davidvasilev1.github.io/fastpages/markdown/trimester%201/tri%201%20notes/collegeboard/2022/09/25/video-notes3.html",
+            "relUrl": "/markdown/trimester%201/tri%201%20notes/collegeboard/2022/09/25/video-notes3.html",
             "date": " • Sep 25, 2022"
         }
         
@@ -103,8 +103,8 @@
         ,"post9": {
             "title": "Collaboration 1.1 Notes",
             "content": "Collaboration 1.1 Notes . Collaboration Examples . Facebook: very open environment allows people to meet and share ideas and allows for diversity of ideas | . | Super Mario Brothers 2 vs. Super Mario Brother 3 collaboration with diverse perspectives allowed for a more complex and entertaining design | . | . Collaboration Pros . Collaboration leads to certain skills communication | consensus building | conflict resolution | negotiation | . | Working together allows things to go far, even if they are slow | . How to Collaborate . Pair Programming one driver (writes code) and one observer (reviews code) | no backseat programming | . | Think-Pair-Share students think through a problem, share with a partner, then share with class | . | Comments in Code communicate with partners and code | give credit to code | clarify functionality | . | In Class repl.it has multiplayer | GitHub with collaboration and repos | sharing docs and folders | ask people to test drive your code | . | asking people about your program helps with improvements in UI | .",
-            "url": "https://davidvasilev1.github.io/fastpages/markdown/trimester%201/tri%201%20notes/2022/09/18/video-notes.html",
-            "relUrl": "/markdown/trimester%201/tri%201%20notes/2022/09/18/video-notes.html",
+            "url": "https://davidvasilev1.github.io/fastpages/markdown/trimester%201/tri%201%20notes/collegeboard/2022/09/18/video-notes.html",
+            "relUrl": "/markdown/trimester%201/tri%201%20notes/collegeboard/2022/09/18/video-notes.html",
             "date": " • Sep 18, 2022"
         }
         
@@ -260,7 +260,7 @@
   
       ,"page1": {
           "title": "Trimester 1 Notes for APCSP",
-          "content": "Basics . Date Subject . 8/28/2022 | CSP Vocab | . 8/28/2022 | How to Enter and Code with “wsl” | . 8/28/2022 | How to Use Bash | . Python . Date Subject . 8/30/2022 | Python Lists | . 9/5/2022 | Lists, Dictionaries, Iteration Notes | .",
+          "content": "Basics . Date Subject . 8/28/2022 | CSP Vocab | . 8/28/2022 | How to Enter and Code with “wsl” | . 8/28/2022 | How to Use Bash | . Python . Date Subject . 8/30/2022 | Python Lists | . 9/5/2022 | Lists, Dictionaries, Iteration Notes | . Collegeboard . Date Subject . 9/18/2022 | Collaboration 1.1 Notes | . 9/19/2022 | Psychology and the Good Life Notes | . 9/25/2022 | Program Function and Purpose 1.2 Notes | . 10/2/2022 | Program Design and Development 1.3 Notes | .",
           "url": "https://davidvasilev1.github.io/fastpages/notes/",
           "relUrl": "/notes/",
           "date": ""
@@ -271,7 +271,7 @@
   
       ,"page2": {
           "title": "Trimester 1 Assignments",
-          "content": "The assignments are organized by newest to oldest, where the newest are at the top and the oldest are at the bottom. . Table Of Contents: . Date Subject . 9/11/2022 | AppLab Project | . 9/11/2022 | Performance Task Plan | . 9/5/2022 | Lists, Dictionaries, Iteration Notes | . 9/5/2022 | HTML Fragments | . 8/28/2022 | Python Quiz | . 8/28/2022 | Tool Checks | . 8/28/2022 | My Classes | . 8/26/2022 | Docx Post: Lab #1 Measurements and Graphical Analysis | . 8/21/2022 | First Jupyter Notebook Test, Showcasing Python | . 8/21/2022 | Fastpages Notebook Blog Post | . 8/21/2022 | An Example Markdown Post | .",
+          "content": "The assignments are organized by newest to oldest, where the newest are at the top and the oldest are at the bottom. . Table Of Contents: . Date Subject . 10/2/2022 | Project Outline | . 10/2/2022 | Flask Deployment | . 9/25/2022 | Team Project | . 9/25/2022 | Javascript Usage | . 9/11/2022 | AppLab Project | . 9/11/2022 | Performance Task Plan | . 9/5/2022 | Lists, Dictionaries, Iteration Notes | . 9/5/2022 | HTML Fragments | . 8/28/2022 | Python Quiz | . 8/28/2022 | Tool Checks | . 8/28/2022 | My Classes | . 8/26/2022 | Docx Post: Lab #1 Measurements and Graphical Analysis | . 8/21/2022 | First Jupyter Notebook Test, Showcasing Python | . 8/21/2022 | Fastpages Notebook Blog Post | . 8/21/2022 | An Example Markdown Post | .",
           "url": "https://davidvasilev1.github.io/fastpages/assignments/",
           "relUrl": "/assignments/",
           "date": ""
