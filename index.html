@@ -183,6 +183,11 @@ window.onload = wrap_img;
         background-repeat: no-repeat;
         background-size: 800px 369px;
       }
+
+      .dark-mode {
+      color: black;
+      background-color: black;
+    }
     </style>
   </head>
 
@@ -195,9 +200,111 @@ window.onload = wrap_img;
     </div>
   </body>
   
-</html>
 
-<h1 id="posts">Posts</h1>
+
+  <style>
+    
+
+
+    body {
+        display: flex;
+        align-items: right;
+      }
+
+      .toggle {
+        position: relative;
+      }
+
+      .toggle input {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .toggle .onoff {
+        color: #fff;
+        font-size: 6em;
+        text-align: center;
+        display: block;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .slider {
+        position: relative;
+        display: block;
+        cursor: pointer;
+        background-color: #f3daff;
+        transition: 0.4s;
+        width: 30px;
+        height: 18px;
+      }
+
+      .slider:before {
+        content: "";
+        position: absolute;
+        height: 10px;
+        width: 10px;
+        background-color: #fff;
+        transition: 0.1s;
+        top: 4px;
+        left: 6px;
+      }
+
+      input:checked + .slider {
+        background-color: #2b1137;
+        box-shadow: 0 0 12px #2b1137;
+      }
+
+      input:checked + .slider:before {
+        transform: translateX(9px);
+      }
+
+      .slider.round {
+        border-radius: 10px;
+      }
+      .slider.round::before {
+        border-radius: 10px;
+      }
+  </style>
+
+<label class="form-check-input" id="darkSwitch">
+  <span> 
+    <input type="checkbox" />
+  <span class="slider round" onclick="myFunction()"></span>
+&lt;/label&gt;
+
+  <script>
+    function myFunction() {
+      const darkSwitch=document.getElementById("darkSwitch");
+      // establishes the initial state of darkSwitch on page load
+      if(darkSwitch) {
+          // obtains the value of darkSwitch from localStorage
+          const darkSwitchSelected =
+              localStorage.getItem("darkSwitch") !== null &&
+              localStorage.getItem("darkSwitch") === "dark";
+          // sets the value of darkSwitch.checked to the global darkSwitch
+          darkSwitch.checked=darkSwitchSelected;
+          // if dark-mode, toggle the switch to dark-mode position
+          if (darkSwitchSelected)
+              document.body.toggle("dark-mode");
+      }
+      // executes on each "dark mode" UI toggle
+      function darkFunction() {
+          // toggles between off (standard CSS) and dark-mode (.dark-mode CSS)
+          document.body.toggle("dark-mode");
+          // localStorage is used to manage darkSwitch status
+          darkSwitch.checked
+              ? localStorage.setItem("darkSwitch","dark")
+              : localStorage.removeItem("darkSwitch");
+      }
+    }
+  </script>
+
+&lt;/html&gt;
+
+# Posts
+</span></label></html>
 
 
 
@@ -254,10 +361,10 @@ window.onload = wrap_img;
 <div class="card">
     <div class="container">
         <h3>
-            <a class="post-link" href="/fastpages/jupyter/trimester%201/tri%201%20assignments/2022/09/25/javascript.html">
-            Javascript Usage
+            <a class="post-link" href="/fastpages/markdown/trimester%201/tri%201%20assignments/2022/10/02/output.html">
+            Flask Deployment
             </a>
-        </h3><p class="post-meta-description">Showing the use of javascript with a submenu.</p><p class="post-meta">Sep 25, 2022</p>
+        </h3><p class="post-meta-description">Flask deployment evidence.</p><p class="post-meta">Oct 2, 2022</p>
     </div>
 </div></li><li><style>
     .card {box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 5px; transition: 0.3s;}
@@ -268,10 +375,10 @@ window.onload = wrap_img;
 <div class="card">
     <div class="container">
         <h3>
-            <a class="post-link" href="/fastpages/markdown/trimester%201/tri%201%20notes/2022/09/25/video-notes3.html">
-            Program Function and Purpose 1.2 Notes
+            <a class="post-link" href="/fastpages/markdown/trimester%201/tri%201%20assignments/2022/09/25/group-project.html">
+            Team Project
             </a>
-        </h3><p class="post-meta-description">Notes on CollegeBoard videos, Program Function and Purpose 1.2.</p><p class="post-meta">Sep 25, 2022</p>
+        </h3><p class="post-meta-description">This is our outline for our project.</p><p class="post-meta">Sep 25, 2022</p>
     </div>
 </div></li><li><style>
     .card {box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 5px; transition: 0.3s;}
@@ -310,10 +417,24 @@ window.onload = wrap_img;
 <div class="card">
     <div class="container">
         <h3>
-            <a class="post-link" href="/fastpages/markdown/trimester%201/tri%201%20assignments/2022/09/25/group-project.html">
-            Team Project
+            <a class="post-link" href="/fastpages/markdown/trimester%201/tri%201%20notes/2022/09/25/video-notes3.html">
+            Program Function and Purpose 1.2 Notes
             </a>
-        </h3><p class="post-meta-description">This is our outline for our project.</p><p class="post-meta">Sep 25, 2022</p>
+        </h3><p class="post-meta-description">Notes on CollegeBoard videos, Program Function and Purpose 1.2.</p><p class="post-meta">Sep 25, 2022</p>
+    </div>
+</div></li><li><style>
+    .card {box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 5px; transition: 0.3s;}
+    .card:hover {box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);}
+    .container {padding: 2px 16px;}
+</style>
+
+<div class="card">
+    <div class="container">
+        <h3>
+            <a class="post-link" href="/fastpages/jupyter/trimester%201/tri%201%20assignments/2022/09/25/javascript.html">
+            Javascript Usage
+            </a>
+        </h3><p class="post-meta-description">Showing the use of javascript with a submenu.</p><p class="post-meta">Sep 25, 2022</p>
     </div>
 </div></li><li><style>
     .card {box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 5px; transition: 0.3s;}
@@ -412,20 +533,6 @@ window.onload = wrap_img;
             Lists, Dictionaries, Iteration Notes
             </a>
         </h3><p class="post-meta-description">Some notes on how python works.</p><p class="post-meta">Aug 30, 2022</p>
-    </div>
-</div></li><li><style>
-    .card {box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 5px; transition: 0.3s;}
-    .card:hover {box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);}
-    .container {padding: 2px 16px;}
-</style>
-
-<div class="card">
-    <div class="container">
-        <h3>
-            <a class="post-link" href="/fastpages/jupyter/trimester%201/tri%201%20assignments/2022/08/28/tool-check.html">
-            Tool Checks
-            </a>
-        </h3><p class="post-meta-description">Showing that I have the proper tools installed on my machine.</p><p class="post-meta">Aug 28, 2022</p>
     </div>
 </div></li></ul>
 
