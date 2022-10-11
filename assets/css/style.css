@@ -321,41 +321,41 @@ table td { border: 1px solid #e8e8e8; }
 
 /*-----------------------------------*/
 /*--- IMPORT STYLES FOR FASTPAGES ---*/
-html, body, input, textarea, select, button { color: rgba(0, 0, 0, 0.87) !important; background-color: #f3daff !important; }
+.dark-mode html, body, input, textarea, select, button { color: rgba(255, 255, 255, 0.87) !important; background-color: #2b1137 !important; }
 
-a { color: #2c82b7 !important; }
+.dark-mode a { color: #4bbaff !important; }
 
-a:hover { color: rgba(0, 0, 0, 0.87) !important; }
+.dark-mode a:hover { color: rgba(255, 255, 255, 0.87) !important; }
 
-.site-title, .site-title:visited, .site-nav, .page-link { color: rgba(0, 0, 0, 0.87) !important; }
+.dark-mode .site-title, .site-title:visited, .site-nav, .page-link { color: rgba(255, 255, 255, 0.87) !important; }
 
-.site-nav { background-color: #f3daff; border-color: #d1bbdb; }
+.dark-mode .site-nav { background-color: #2b1137; border-color: #493253; }
 
-* { scrollbar-color: #f3daff #d1bbdb; }
+* { scrollbar-color: #2b1137 #493253; }
 
-pre, code { border-color: #d1bbdb; background-color: #e7cff2; }
+.dark-mode pre, code { border-color: #493253; background-color: #361d41; }
 
-.page-description { color: rgba(0, 0, 0, 0.69); }
+.dark-mode .page-description { color: rgba(255, 255, 255, 0.69); }
 
-.post-meta { color: rgba(0, 0, 0, 0.38); }
+.dark-mode .post-meta { color: rgba(255, 255, 255, 0.38); }
 
-.post-content p, .post-content li { color: rgba(0, 0, 0, 0.69); }
+.dark-mode .post-content p, .post-content li { color: rgba(255, 255, 255, 0.69); }
 
-.btn { background-color: #e7cff2 !important; color: rgba(0, 0, 0, 0.87) !important; border-color: #d1bbdb !important; }
+.dark-mode .btn { background-color: #361d41 !important; color: rgba(255, 255, 255, 0.87) !important; border-color: #493253 !important; }
 
-.btn:hover { background-color: #f3daff !important; }
+.dark-mode .btn:hover { background-color: #2b1137 !important; }
 
-table th { background-color: #e7cff2; border-color: #d1bbdb; color: rgba(0, 0, 0, 0.87); }
+.dark-mode table th { background-color: #361d41; border-color: #493253; color: rgba(255, 255, 255, 0.87); }
 
-table td { background-color: #f3daff; border-color: #d1bbdb; color: rgba(0, 0, 0, 0.69); }
+.dark-mode table td { background-color: #2b1137; border-color: #493253; color: rgba(255, 255, 255, 0.69); }
 
-.flash { color: #f3daff !important; filter: brightness(80%); }
+.dark-mode .flash { color: #2b1137 !important; filter: brightness(80%); }
 
-canvas { filter: invert(100%); }
+.dark-mode canvas { filter: invert(100%); }
 
-.post-list > li > div { box-shadow: none !important; background-color: #e7cff2; border: none !important; }
+.dark-mode .post-list > li > div { box-shadow: none !important; background-color: #361d41; border: none !important; }
 
-li .post-meta-description { color: rgba(0, 0, 0, 0.69) !important; }
+.dark-mode li .post-meta-description { color: rgba(255, 255, 255, 0.69) !important; }
 
 /*-----------------------------------*/
 /*----- ADD YOUR STYLES BELOW -------*/
