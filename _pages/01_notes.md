@@ -31,3 +31,5 @@ comments: true
 | 9/19/2022 | [Psychology and the Good Life Notes](https://davidvasilev1.github.io/fastpages/markdown/trimester%201/tri%201%20notes/2022/09/19/video-notes2.html) |
 | 9/25/2022 | [Program Function and Purpose 1.2 Notes](https://davidvasilev1.github.io/fastpages/markdown/trimester%201/tri%201%20notes/2022/09/25/video-notes3.html) |
 | 10/2/2022 | [Program Design and Development 1.3 Notes](https://davidvasilev1.github.io/fastpages/markdown/trimester%201/tri%201%20notes/2022/10/02/video-notes4.html) |
+| 10/9/2022 | [Identifying and Correcting Errors 1.4 Notes](https://davidvasilev1.github.io/fastpages/markdown/trimester%201/tri%201%20notes/collegeboard/2022/10/09/video-notes5.html) |
+| 10/9/2022 | [The Internet 4.1 Notes](https://davidvasilev1.github.io/fastpages/markdown/trimester%201/tri%201%20notes/collegeboard/2022/10/09/video-notes6.html) |
