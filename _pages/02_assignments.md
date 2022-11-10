@@ -14,7 +14,7 @@ The assignments are organized by newest to oldest, where the newest are at the t
 
 | Date | Subject |
 |-|-|
-| 11/4/2022 | [Night at the Museum](https://davidvasilev1.github.io/fastpages/finals%20test) |
+| 11/4/2022 | [Test Corrections](https://davidvasilev1.github.io/fastpages/finals%20test) |
 | 11/4/2022 | [Night at the Museum](https://davidvasilev1.github.io/fastpages/N@TM) |
 | 10/23/2022 | [Weather API](https://davidvasilev1.github.io/fastpages/data/weather) |
 | 10/23/2022 | [Covid API Example](https://davidvasilev1.github.io/fastpages/data/covid) |
