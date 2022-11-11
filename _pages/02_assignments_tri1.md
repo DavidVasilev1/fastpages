@@ -14,6 +14,13 @@ The assignments are organized by newest to oldest, where the newest are at the t
 
 | Date | Subject |
 |-|-|
+| 11/4/2022 | [Test Corrections](https://davidvasilev1.github.io/fastpages/finals%20test) |
+| 11/4/2022 | [Night at the Museum](https://davidvasilev1.github.io/fastpages/N@TM) |
+| 10/23/2022 | [Weather API](https://davidvasilev1.github.io/fastpages/data/weather) |
+| 10/23/2022 | [Covid API Example](https://davidvasilev1.github.io/fastpages/data/covid) |
+| 10/9/2022 | [RapidAPI](https://davidvasilev1.github.io/fastpages/jupyter/trimester%201/tri%201%20assignments/2022/10/09/PBL-python_rapidapi.html) |
+| 10/9/2022 | [API Submenu](https://davidvasilev1.github.io/fastpages/markdown/trimester%201/tri%201%20assignments/2022/10/09/api.html) |
+| 10/9/2022 | [Identifying and Correcting Errors](https://davidvasilev1.github.io/fastpages/jupyter/trimester%201/tri%201%20assignments/2022/10/09/AP-error_testing.html) |
 | 10/2/2022 | [Project Outline](https://davidvasilev1.github.io/fastpages/jupyter/trimester%201/tri%201%20assignments/2022/10/02/project-outline.html) |
 | 10/2/2022 | [Flask Deployment](https://davidvasilev1.github.io/fastpages/markdown/trimester%201/tri%201%20assignments/2022/10/02/output.html) |
 | 9/25/2022 | [Team Project](https://davidvasilev1.github.io/fastpages/markdown/trimester%201/tri%201%20assignments/2022/09/25/group-project.html) |
