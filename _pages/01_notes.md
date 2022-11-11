@@ -1,10 +1,10 @@
 ---
 toc: true
 layout: post
-title: Trimester 1 Notes for APCSP
-description: This trimester's notes will go on this page.
+title: Notes for APCSP
+description: Notes will go on this page.
 permalink: /notes/
-categories: [Trimester 1, Markdown]
+categories: [All Year, Markdown]
 comments: true
 ---
 
