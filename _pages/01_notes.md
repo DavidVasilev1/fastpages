@@ -1,10 +1,10 @@
 ---
 toc: true
 layout: post
-title: Notes for APCSP
+title: Notes
 description: Notes will go on this page.
 permalink: /notes/
-categories: [All Year, Markdown]
+categories: [Year, Markdown]
 comments: true
 ---
 

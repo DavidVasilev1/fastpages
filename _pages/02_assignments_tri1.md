@@ -1,16 +1,24 @@
 ---
 toc: true
 layout: post
-title: Trimester 1 Assignments
-description: This trimester's assignments will go on this page.
+title: Assignments
+description: Assignments will go on this page.
 permalink: /assignments/
-categories: [Trimester 1, Markdown]
+categories: [Year, Markdown]
 comments: true
 ---
 
 The assignments are organized by newest to oldest, where the newest are at the top and the oldest are at the bottom.
 
 ## Table Of Contents:
+
+## Trimester 2
+
+| Date | Subject |
+|-|-|
+| 11/15/2022 | [Tool Checks]() |
+
+## Trimester 1
 
 | Date | Subject |
 |-|-|
