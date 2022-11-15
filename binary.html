@@ -4,21 +4,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Printing Weather API | David Vasilev</title>
+<title>Binary Math | David Vasilev</title>
 <meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="Printing Weather API" />
+<meta property="og:title" content="Binary Math" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="An example of my own API organization." />
-<meta property="og:description" content="An example of my own API organization." />
-<link rel="canonical" href="https://davidvasilev1.github.io/fastpages/data/weather" />
-<meta property="og:url" content="https://davidvasilev1.github.io/fastpages/data/weather" />
+<meta name="description" content="A Binary Math illustrative application using HTML, Liquid, and JavaScript." />
+<meta property="og:description" content="A Binary Math illustrative application using HTML, Liquid, and JavaScript." />
+<link rel="canonical" href="https://davidvasilev1.github.io/fastpages/binary" />
+<meta property="og:url" content="https://davidvasilev1.github.io/fastpages/binary" />
 <meta property="og:site_name" content="David Vasilev" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2022-10-23T00:00:00-05:00" />
+<meta property="article:published_time" content="2022-11-15T00:00:00-06:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Printing Weather API" />
+<meta property="twitter:title" content="Binary Math" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-10-23T00:00:00-05:00","datePublished":"2022-10-23T00:00:00-05:00","description":"An example of my own API organization.","headline":"Printing Weather API","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidvasilev1.github.io/fastpages/data/weather"},"url":"https://davidvasilev1.github.io/fastpages/data/weather"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-11-15T00:00:00-06:00","datePublished":"2022-11-15T00:00:00-06:00","description":"A Binary Math illustrative application using HTML, Liquid, and JavaScript.","headline":"Binary Math","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidvasilev1.github.io/fastpages/binary"},"url":"https://davidvasilev1.github.io/fastpages/binary"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/fastpages/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://davidvasilev1.github.io/fastpages/feed.xml" title="David Vasilev" /><link rel="shortcut icon" type="image/x-icon" href="/fastpages/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -156,151 +156,161 @@ window.onload = wrap_img;
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <table>
-  <tr>
-      <td><img src="/fastpages/images/javascript.png" height="50" title="Javascript Submenu" alt="javascript" /></td>
-      <td><a href="/fastpages/markdown/javascript/trimester%201/tri%201%20assignments/2022/09/25/javascript-table.html">JavaScript Usage</a></td>
-      <td><a href="/fastpages/markdown/javascript/trimester%201/tri%201%20assignments/2022/09/25/javascript-code.html">Random Word Generator</a></td>
-  </tr>
-  <tr>
-    <td><img src="/fastpages/images/python.png" height="50" title="Python Submenu" alt="python" /></td>
-    <td><a href="/fastpages/jupyter/trimester%201/tri%201%20assignments/2022/10/09/PBL-python_rapidapi.html">RapidAPI Example</a></td>
-    <td><a href="/fastpages/data/covid">Covid API Example</a></td>
-    <td><a href="/fastpages/data/weather">Weather API</a></td>
-  </tr>
-</table>
+        <!-- Hack 1: add a character display to text when 8 bits, determine if printable or not printable -->
+<!-- Hack 2: change to 24 bits and add a color code and display color when 24 bits, think about display on this one -->
+<!-- Hack 3: do your own thing -->
 
-<form method="POST">
-  <p>Select Flight Number</p>
-      <input type="text" id="flight" value="" />
-  <p>Select Date (yyyy-mm-dd)</p>
-      <input type="text" id="date" value="" />
-          <button type="button" onclick="myFunction()">Select</button>
-  <p id="demo"></p>
+<div class="container bg-primary">
+    <header class="pb-3 mb-4 border-bottom border-primary text-dark">
+        <span class="fs-4">Binary Math with Conversions</span>
+    </header>
+    <div class="row justify-content-md-center">
+        <div class="col-8">
+            <table class="table">
+            <tr id="table">
+                <th>Plus</th>
+                <th>Binary</th>
+                <th>Octal</th>
+                <th>Hexadecimal</th>
+                <th>Decimal</th>
+                <th>Minus</th>
+            </tr>
+            <tr>
+                <td><button type="button" id="add1" onclick="add(1)">+1</button></td>
+                <td id="binary">00000000</td>
+                <td id="octal">0</td>
+                <td id="hexadecimal">0</td>
+                <td id="decimal">0</td>
+                <td><button type="button" id="sub1" onclick="add(-1)">-1</button></td>
+            </tr>
+            </table>
+        </div>
+        <div class="col-12">
+            
+             
+            <table class="table">
+            <tr>
+                
+                
+                <td><img class="img-responsive py-3" id="bulb0" src="/fastpages/images/bulb_off.png" alt="" width="40" height="Auto" />
+                    <button type="button" id="butt0" onclick="javascript:toggleBit(0)">Turn on</button>
+                </td>
+                
+                <td><img class="img-responsive py-3" id="bulb1" src="/fastpages/images/bulb_off.png" alt="" width="40" height="Auto" />
+                    <button type="button" id="butt1" onclick="javascript:toggleBit(1)">Turn on</button>
+                </td>
+                
+                <td><img class="img-responsive py-3" id="bulb2" src="/fastpages/images/bulb_off.png" alt="" width="40" height="Auto" />
+                    <button type="button" id="butt2" onclick="javascript:toggleBit(2)">Turn on</button>
+                </td>
+                
+            </tr>
+            <tr>
+                
+                
+                <td><input type="text" id="digit0" value="0" size="1" readonly="" /></td>
+                
+                <td><input type="text" id="digit1" value="0" size="1" readonly="" /></td>
+                
+                <td><input type="text" id="digit2" value="0" size="1" readonly="" /></td>
+                
+            </tr>
+            </table>
+        </div>
+    </div>
+</div>
 
-  <script>
-      function myFunction() {
-          var x = document.getElementById("flight").value;
-          var y = document.getElementById("date").value;
-          document.getElementById("demo").innerHTML = "Flight: " + x + " Date: " + y;
-      }
-  </script>
-</form>
-
-<!-- HTML table fragment for page -->
-<table>
-  <thead>
-  <tr>
-    <th>Time</th>
-    <th>All-time Cases</th>
-    <th>Recorded Deaths</th>
-    <th>Active Cases</th>
-  </tr>
-  </thead>
-  <tbody>
-    <td id="time"></td>
-    <td id="total_cases"></td>
-    <td id="total_deaths"></td>
-    <td id="active_cases"></td>
-  </tbody>
-</table>
-
-<table>
-  <thead>
-  <tr>
-    <th>Country</th>
-    <th>All-time Cases</th>
-    <th>Recorded Deaths</th>
-    <th>Active Cases</th>
-  </tr>
-  </thead>
-  <tbody id="result">
-    <!-- generated rows -->
-  </tbody>
-</table>
-
-<!-- Script is layed out in a sequence (no function) and will execute when page is loaded -->
 <script>
-  // prepare HTML result container for new output
-  const resultContainer = document.getElementById("result");
+    const BITS = 3;
+    const MAX = 2 ** BITS - 1;
+    const MSG_ON = "Turn on";
+    const IMAGE_ON = "/fastpages/images/bulb_on.gif";
+    const MSG_OFF = "Turn off";
+    const IMAGE_OFF = "/fastpages/images/bulb_off.png"
 
-  // prepare fetch options
-  const url = "https://flask.nighthawkcodingsociety.com/api/covid/";
-  const headers = {
-    method: 'GET', // *GET, POST, PUT, DELETE, etc.
-    mode: 'cors', // no-cors, *cors, same-origin
-    cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: 'omit', // include, *same-origin, omit
-    headers: {
-      'Content-Type': 'application/json'
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-  };
+    // return string with current value of each bit
+    function getBits() {
+        let bits = "";
+        for(let i = 0; i < BITS; i++) {
+        bits = bits + document.getElementById('digit' + i).value;
+        }
+        return bits;
+    }
+    // setter for DOM values
+    function setConversions(binary) {
+        document.getElementById('binary').innerHTML = binary;
+        // Octal conversion
+        document.getElementById('octal').innerHTML = parseInt(binary, 2).toString(8);
+        // Hexadecimal conversion
+        document.getElementById('hexadecimal').innerHTML = parseInt(binary, 2).toString(16);
+        // Decimal conversion
+        document.getElementById('decimal').innerHTML = parseInt(binary, 2).toString();
+    }
+    //
+    function decimal_2_base(decimal, base) {
+        let conversion = "";
+        // loop to convert to base
+        do {
+        let digit = decimal % base;
+        conversion = "" + digit + conversion; // what does this do?
+        decimal = ~~(decimal / base);         // what does this do?
+        } while (decimal > 0);                  // why while at the end? what is ~~?
+        // loop to pad with zeros
+        if (base === 2) {                        // only pad for binary conversions
+        for (let i = 0; conversion.length < BITS; i++) {
+            conversion = "0" + conversion;
+        }
+        }
+        return conversion;
+    }
 
-  // fetch the API
-  fetch(url, headers)
-    // response is a RESTful "promise" on any successful fetch
-    .then(response => {
-      // check for response errors
-      if (response.status !== 200) {
-          const errorMsg = 'Database response error: ' + response.status;
-          console.log(errorMsg);
-          const tr = document.createElement("tr");
-          const td = document.createElement("td");
-          td.innerHTML = errorMsg;
-          tr.appendChild(td);
-          resultContainer.appendChild(tr);
-          return;
-      }
-      // valid response will have json data
-      response.json().then(data => {
-          console.log(data);
-          console.log(data.world_total)
-
-          // World Data
-          document.getElementById("time").innerHTML = data.world_total.statistic_taken_at;
-          document.getElementById("total_cases").innerHTML = data.world_total.total_cases;
-          document.getElementById("total_deaths").innerHTML = data.world_total.total_deaths;
-          document.getElementById("active_cases").innerHTML = data.world_total.active_cases;
-
-          // Country data
-          for (const row of data.countries_stat) {
-            console.log(row);
-
-            // tr for each row
-            const tr = document.createElement("tr");
-            // td for each column
-            const name = document.createElement("td");
-            const cases = document.createElement("td");
-            const deaths = document.createElement("td");
-            const active = document.createElement("td");
-
-            // data is specific to the API
-            name.innerHTML = row.country_name;
-            cases.innerHTML = row.cases; 
-            deaths.innerHTML = row.deaths; 
-            active.innerHTML = row.active_cases; 
-
-            // this builds td's into tr
-            tr.appendChild(name);
-            tr.appendChild(cases);
-            tr.appendChild(deaths);
-            tr.appendChild(active);
-
-            // add HTML to container
-            resultContainer.appendChild(tr);
-          }
-      })
-  })
-  // catch fetch errors (ie ACCESS to server blocked)
-  .catch(err => {
-    console.error(err);
-    const tr = document.createElement("tr");
-    const td = document.createElement("td");
-    td.innerHTML = err;
-    tr.appendChild(td);
-    resultContainer.appendChild(tr);
-  });
+    // toggle selected bit and recalculate
+    function toggleBit(i) {
+        //alert("Digit action: " + i );
+        const dig = document.getElementById('digit' + i);
+        const image = document.getElementById('bulb' + i);
+        const butt = document.getElementById('butt' + i);
+        // Change digit and visual
+        if (image.src.match(IMAGE_ON)) {
+        dig.value = 0;
+        image.src = IMAGE_OFF;
+        butt.innerHTML = MSG_ON;
+        } else {
+        dig.value = 1;
+        image.src = IMAGE_ON;
+        butt.innerHTML = MSG_OFF;
+        }
+        // Binary numbers
+        const binary = getBits();
+        setConversions(binary);
+    }
+    // add is positive integer, subtract is negative integer
+    function add(n) {
+        let binary = getBits();
+        // convert to decimal and do math
+        let decimal = parseInt(binary, 2);
+        if (n > 0) {  // PLUS
+        decimal = MAX === decimal ? 0 : decimal += n; // OVERFLOW or PLUS
+        } else  {     // MINUS
+        decimal = 0 === decimal ? MAX : decimal += n; // OVERFLOW or MINUS
+        }
+        // convert the result back to binary
+        binary = decimal_2_base(decimal, 2);
+        // update conversions
+        setConversions(binary);
+        // update bits
+        for (let i = 0; i < binary.length; i++) {
+        let digit = binary.substr(i, 1);
+        document.getElementById('digit' + i).value = digit;
+        if (digit === "1") {
+            document.getElementById('bulb' + i).src = IMAGE_ON;
+            document.getElementById('butt' + i).innerHTML = MSG_OFF;
+        } else {
+            document.getElementById('bulb' + i).src = IMAGE_OFF;
+            document.getElementById('butt' + i).innerHTML = MSG_ON;
+        }
+        }
+    }
 </script>
 
 
