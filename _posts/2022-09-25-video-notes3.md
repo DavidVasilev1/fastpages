@@ -2,7 +2,7 @@
 toc: true
 layout: post
 description: Notes on CollegeBoard videos, Program Function and Purpose 1.2.
-categories: [Markdown, Trimester 1, Tri 1 Notes, Collegeboard]
+categories: [Markdown, Trimester 1, Notes, Collegeboard]
 title: Program Function and Purpose 1.2 Notes
 comments: true
 ---

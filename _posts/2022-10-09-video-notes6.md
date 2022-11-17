@@ -2,7 +2,7 @@
 toc: true
 layout: post
 description: Notes on CollegeBoard videos, The Internet 4.1.
-categories: [Markdown, Trimester 1, Tri 1 Notes, Collegeboard]
+categories: [Markdown, Trimester 1, Notes, Collegeboard]
 title: The Internet 4.1 Notes
 comments: true
 ---

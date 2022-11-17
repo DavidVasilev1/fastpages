@@ -2,7 +2,7 @@
 toc: true
 layout: post
 description: Some notes on psychology from the video "Laurie Santos - Psychology and the Good Life".
-categories: [Markdown, Trimester 1, Tri 1 Notes]
+categories: [Markdown, Trimester 1, Notes]
 title: Psychology and the Good Life Notes
 comments: true
 ---

@@ -2,7 +2,7 @@
 toc: true
 layout: post
 description: Notes on CollegeBoard videos, Collaboration 1.1.
-categories: [Markdown, Trimester 1, Tri 1 Notes, Collegeboard]
+categories: [Markdown, Trimester 1, Notes, Collegeboard]
 title: Collaboration 1.1 Notes
 comments: true
 ---
