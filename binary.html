@@ -162,7 +162,7 @@ window.onload = wrap_img;
 
 <div class="container bg-primary">
     <header class="pb-3 mb-4 border-bottom border-primary text-dark">
-        <span class="fs-4" style="text-align: center;">Binary Math with Conversions</span>
+        <h1 style="text-align: center;">Binary Math with Conversions</h1>
     </header>
     <style>
         .table {
@@ -174,6 +174,9 @@ window.onload = wrap_img;
             margin-left: auto;
             margin-right: auto;
         }
+        .box {
+            width: 800px;
+        }
     </style>
     <div class="row justify-content-md-center">
         <div class="col-8">
@@ -184,6 +187,7 @@ window.onload = wrap_img;
                 <th>Octal</th>
                 <th>Hexadecimal</th>
                 <th>Decimal</th>
+                <th>Character</th>
                 <th>Bits</th>
                 <th>Minus</th>
             </tr>
@@ -193,6 +197,7 @@ window.onload = wrap_img;
                 <td id="octal">0</td>
                 <td id="hexadecimal">0</td>
                 <td id="decimal">0</td>
+                <td id="character"></td>
                 <td id="bits">8</td>
                 <td><button type="button" id="sub1" onclick="add(-1)">-1</button></td>
             </tr>
@@ -260,180 +265,244 @@ window.onload = wrap_img;
             </tr>
             </table>
         </div>
+    </div>
+</div>
+
+<div class="container bg-primary">
+    <h1>RGB</h1>
+    <header class="pb-3 mb-4 border-bottom border-primary text-dark">
+    </header>
+    <style>
+        .table {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .row {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+    <div class="row justify-content-md-center">
         <div class="col-8">
             <table class="table">
-            <tr id="table2">
+            <tr id="table">
+                <th>RGB</th>
                 <th>Plus</th>
                 <th>Binary</th>
-                <th>Octal</th>
                 <th>Hexadecimal</th>
                 <th>Decimal</th>
-                <th>Bits</th>
                 <th>Minus</th>
+                <th>Color</th>
             </tr>
             <tr>
-                <td><button type="button" id="add1" onclick="add2(1)">+1</button></td>
-                <td id="binary2">00000000</td>
-                <td id="octal2">0</td>
-                <td id="hexadecimal2">0</td>
-                <td id="decimal2">0</td>
-                <td id="bits2">8</td>
-                <td><button type="button" id="sub1" onclick="add2(-1)">-1</button></td>
+                <td>R<input type="range" min="0" max="255" value="0" id="sliderR" style="width: 1px;" /></td>
+                <td><button type="button" id="addCR" onclick="addR(1)">+1</button></td>
+                <td id="binR">00000000</td>
+                <td id="hexR">0</td>
+                <td id="decR">0
+                </td>
+                <td><button type="button" id="subCR" onclick="addR(-1)">-1</button></td>
+                <td rowspan="3" class="box" id="color"></td>
+            </tr>
+            <tr>
+                <td>G<input type="range" min="0" max="255" value="0" id="sliderG" style="width: 1px;" /></td>
+                <td><button type="button" id="addCG" onclick="addG(1)">+1</button></td>
+                <td id="binG">00000000</td>
+                <td id="hexG">0</td>
+                <td id="decG">0</td>
+                <td><button type="button" id="subCG" onclick="addG(-1)">-1</button></td>
+            </tr>
+            <tr>
+                <td>B<input type="range" min="0" max="255" value="0" id="sliderB" style="width: 1px;" /></td>
+                <td><button type="button" id="addCB" onclick="addB(1)">+1</button></td>
+                <td id="binB">00000000</td>
+                <td id="hexB">0</td>
+                <td id="decB">0</td>
+                <td><button type="button" id="subCB" onclick="addB(-1)">-1</button></td>
             </tr>
             </table>
         </div>
+    </div>
         <div class="col-12">
-            
              
-            <table class="table">
+            <table class="tableR">
             <tr>
                 
                 
-                <td><img class="img-responsive py-3" id="bulb20" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
-                    <button type="button" id="butt20" onclick="javascript:toggleBit2(0)">Turn on</button>
+                <td><img class="img-responsive py-3" id="bulbR0" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
+                    <button type="button" id="buttR0" onclick="javascript:toggleBitR(0)">Turn on</button>
                 </td>
                 
-                <td><img class="img-responsive py-3" id="bulb21" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
-                    <button type="button" id="butt21" onclick="javascript:toggleBit2(1)">Turn on</button>
+                <td><img class="img-responsive py-3" id="bulbR1" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
+                    <button type="button" id="buttR1" onclick="javascript:toggleBitR(1)">Turn on</button>
                 </td>
                 
-                <td><img class="img-responsive py-3" id="bulb22" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
-                    <button type="button" id="butt22" onclick="javascript:toggleBit2(2)">Turn on</button>
+                <td><img class="img-responsive py-3" id="bulbR2" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
+                    <button type="button" id="buttR2" onclick="javascript:toggleBitR(2)">Turn on</button>
                 </td>
                 
-                <td><img class="img-responsive py-3" id="bulb23" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
-                    <button type="button" id="butt23" onclick="javascript:toggleBit2(3)">Turn on</button>
+                <td><img class="img-responsive py-3" id="bulbR3" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
+                    <button type="button" id="buttR3" onclick="javascript:toggleBitR(3)">Turn on</button>
                 </td>
                 
-                <td><img class="img-responsive py-3" id="bulb24" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
-                    <button type="button" id="butt24" onclick="javascript:toggleBit2(4)">Turn on</button>
+                <td><img class="img-responsive py-3" id="bulbR4" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
+                    <button type="button" id="buttR4" onclick="javascript:toggleBitR(4)">Turn on</button>
                 </td>
                 
-                <td><img class="img-responsive py-3" id="bulb25" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
-                    <button type="button" id="butt25" onclick="javascript:toggleBit2(5)">Turn on</button>
+                <td><img class="img-responsive py-3" id="bulbR5" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
+                    <button type="button" id="buttR5" onclick="javascript:toggleBitR(5)">Turn on</button>
                 </td>
                 
-                <td><img class="img-responsive py-3" id="bulb26" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
-                    <button type="button" id="butt26" onclick="javascript:toggleBit2(6)">Turn on</button>
+                <td><img class="img-responsive py-3" id="bulbR6" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
+                    <button type="button" id="buttR6" onclick="javascript:toggleBitR(6)">Turn on</button>
                 </td>
                 
-                <td><img class="img-responsive py-3" id="bulb27" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
-                    <button type="button" id="butt27" onclick="javascript:toggleBit2(7)">Turn on</button>
+                <td><img class="img-responsive py-3" id="bulbR7" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
+                    <button type="button" id="buttR7" onclick="javascript:toggleBitR(7)">Turn on</button>
                 </td>
                 
             </tr>
             <tr>
                 
                 
-                <td><input type="text" id="digit20" value="0" size="1" readonly="" /></td>
+                <td><input type="text" id="digitR0" value="0" size="1" readonly="" /></td>
                 
-                <td><input type="text" id="digit21" value="0" size="1" readonly="" /></td>
+                <td><input type="text" id="digitR1" value="0" size="1" readonly="" /></td>
                 
-                <td><input type="text" id="digit22" value="0" size="1" readonly="" /></td>
+                <td><input type="text" id="digitR2" value="0" size="1" readonly="" /></td>
                 
-                <td><input type="text" id="digit23" value="0" size="1" readonly="" /></td>
+                <td><input type="text" id="digitR3" value="0" size="1" readonly="" /></td>
                 
-                <td><input type="text" id="digit24" value="0" size="1" readonly="" /></td>
+                <td><input type="text" id="digitR4" value="0" size="1" readonly="" /></td>
                 
-                <td><input type="text" id="digit25" value="0" size="1" readonly="" /></td>
+                <td><input type="text" id="digitR5" value="0" size="1" readonly="" /></td>
                 
-                <td><input type="text" id="digit26" value="0" size="1" readonly="" /></td>
+                <td><input type="text" id="digitR6" value="0" size="1" readonly="" /></td>
                 
-                <td><input type="text" id="digit27" value="0" size="1" readonly="" /></td>
+                <td><input type="text" id="digitR7" value="0" size="1" readonly="" /></td>
                 
             </tr>
             </table>
-        </div>
-        <div class="col-8">
             <table class="table">
-            <tr id="table3">
-                <th>Plus</th>
-                <th>Binary</th>
-                <th>Octal</th>
-                <th>Hexadecimal</th>
-                <th>Decimal</th>
-                <th>Bits</th>
-                <th>Minus</th>
+            <tr>
+                
+                
+                <td><img class="img-responsive py-3" id="bulbG0" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
+                    <button type="button" id="buttG0" onclick="javascript:toggleBitG(0)">Turn on</button>
+                </td>
+                
+                <td><img class="img-responsive py-3" id="bulbG1" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
+                    <button type="button" id="buttG1" onclick="javascript:toggleBitG(1)">Turn on</button>
+                </td>
+                
+                <td><img class="img-responsive py-3" id="bulbG2" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
+                    <button type="button" id="buttG2" onclick="javascript:toggleBitG(2)">Turn on</button>
+                </td>
+                
+                <td><img class="img-responsive py-3" id="bulbG3" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
+                    <button type="button" id="buttG3" onclick="javascript:toggleBitG(3)">Turn on</button>
+                </td>
+                
+                <td><img class="img-responsive py-3" id="bulbG4" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
+                    <button type="button" id="buttG4" onclick="javascript:toggleBitG(4)">Turn on</button>
+                </td>
+                
+                <td><img class="img-responsive py-3" id="bulbG5" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
+                    <button type="button" id="buttG5" onclick="javascript:toggleBitG(5)">Turn on</button>
+                </td>
+                
+                <td><img class="img-responsive py-3" id="bulbG6" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
+                    <button type="button" id="buttG6" onclick="javascript:toggleBitG(6)">Turn on</button>
+                </td>
+                
+                <td><img class="img-responsive py-3" id="bulbG7" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
+                    <button type="button" id="buttG7" onclick="javascript:toggleBitG(7)">Turn on</button>
+                </td>
+                
             </tr>
             <tr>
-                <td><button type="button" id="add1" onclick="add3(1)">+1</button></td>
-                <td id="binary3">00000000</td>
-                <td id="octal3">0</td>
-                <td id="hexadecimal3">0</td>
-                <td id="decimal3">0</td>
-                <td id="bits3">8</td>
-                <td><button type="button" id="sub1" onclick="add3(-1)">-1</button></td>
+                
+                
+                <td><input type="text" id="digitG0" value="0" size="1" readonly="" /></td>
+                
+                <td><input type="text" id="digitG1" value="0" size="1" readonly="" /></td>
+                
+                <td><input type="text" id="digitG2" value="0" size="1" readonly="" /></td>
+                
+                <td><input type="text" id="digitG3" value="0" size="1" readonly="" /></td>
+                
+                <td><input type="text" id="digitG4" value="0" size="1" readonly="" /></td>
+                
+                <td><input type="text" id="digitG5" value="0" size="1" readonly="" /></td>
+                
+                <td><input type="text" id="digitG6" value="0" size="1" readonly="" /></td>
+                
+                <td><input type="text" id="digitG7" value="0" size="1" readonly="" /></td>
+                
             </tr>
             </table>
-        </div>
-        <div class="col-12">
-            
-             
             <table class="table">
             <tr>
                 
                 
-                <td><img class="img-responsive py-3" id="bulb30" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
-                    <button type="button" id="butt30" onclick="javascript:toggleBit3(0)">Turn on</button>
+                <td><img class="img-responsive py-3" id="bulbB0" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
+                    <button type="button" id="buttB0" onclick="javascript:toggleBitB(0)">Turn on</button>
                 </td>
                 
-                <td><img class="img-responsive py-3" id="bulb31" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
-                    <button type="button" id="butt31" onclick="javascript:toggleBit3(1)">Turn on</button>
+                <td><img class="img-responsive py-3" id="bulbB1" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
+                    <button type="button" id="buttB1" onclick="javascript:toggleBitB(1)">Turn on</button>
                 </td>
                 
-                <td><img class="img-responsive py-3" id="bulb32" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
-                    <button type="button" id="butt32" onclick="javascript:toggleBit3(2)">Turn on</button>
+                <td><img class="img-responsive py-3" id="bulbB2" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
+                    <button type="button" id="buttB2" onclick="javascript:toggleBitB(2)">Turn on</button>
                 </td>
                 
-                <td><img class="img-responsive py-3" id="bulb33" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
-                    <button type="button" id="butt33" onclick="javascript:toggleBit3(3)">Turn on</button>
+                <td><img class="img-responsive py-3" id="bulbB3" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
+                    <button type="button" id="buttB3" onclick="javascript:toggleBitB(3)">Turn on</button>
                 </td>
                 
-                <td><img class="img-responsive py-3" id="bulb34" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
-                    <button type="button" id="butt34" onclick="javascript:toggleBit3(4)">Turn on</button>
+                <td><img class="img-responsive py-3" id="bulbB4" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
+                    <button type="button" id="buttB4" onclick="javascript:toggleBitB(4)">Turn on</button>
                 </td>
                 
-                <td><img class="img-responsive py-3" id="bulb35" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
-                    <button type="button" id="butt35" onclick="javascript:toggleBit3(5)">Turn on</button>
+                <td><img class="img-responsive py-3" id="bulbB5" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
+                    <button type="button" id="buttB5" onclick="javascript:toggleBitB(5)">Turn on</button>
                 </td>
                 
-                <td><img class="img-responsive py-3" id="bulb36" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
-                    <button type="button" id="butt36" onclick="javascript:toggleBit3(6)">Turn on</button>
+                <td><img class="img-responsive py-3" id="bulbB6" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
+                    <button type="button" id="buttB6" onclick="javascript:toggleBitB(6)">Turn on</button>
                 </td>
                 
-                <td><img class="img-responsive py-3" id="bulb37" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
-                    <button type="button" id="butt37" onclick="javascript:toggleBit3(7)">Turn on</button>
+                <td><img class="img-responsive py-3" id="bulbB7" src="/fastpages/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;" />
+                    <button type="button" id="buttB7" onclick="javascript:toggleBitB(7)">Turn on</button>
                 </td>
                 
             </tr>
             <tr>
                 
                 
-                <td><input type="text" id="digit30" value="0" size="1" readonly="" /></td>
+                <td><input type="text" id="digitB0" value="0" size="1" readonly="" /></td>
                 
-                <td><input type="text" id="digit31" value="0" size="1" readonly="" /></td>
+                <td><input type="text" id="digitB1" value="0" size="1" readonly="" /></td>
                 
-                <td><input type="text" id="digit32" value="0" size="1" readonly="" /></td>
+                <td><input type="text" id="digitB2" value="0" size="1" readonly="" /></td>
                 
-                <td><input type="text" id="digit33" value="0" size="1" readonly="" /></td>
+                <td><input type="text" id="digitB3" value="0" size="1" readonly="" /></td>
                 
-                <td><input type="text" id="digit34" value="0" size="1" readonly="" /></td>
+                <td><input type="text" id="digitB4" value="0" size="1" readonly="" /></td>
                 
-                <td><input type="text" id="digit35" value="0" size="1" readonly="" /></td>
+                <td><input type="text" id="digitB5" value="0" size="1" readonly="" /></td>
                 
-                <td><input type="text" id="digit36" value="0" size="1" readonly="" /></td>
+                <td><input type="text" id="digitB6" value="0" size="1" readonly="" /></td>
                 
-                <td><input type="text" id="digit37" value="0" size="1" readonly="" /></td>
+                <td><input type="text" id="digitB7" value="0" size="1" readonly="" /></td>
                 
             </tr>
             </table>
         </div>
     </div>
-</div>
-
-<td>
-    
-</td>
+<p>&lt;/div&gt;</p>
 
 <script>
     const BITS = 8;
@@ -458,19 +527,33 @@ window.onload = wrap_img;
         }
         return bits;
     }
-    function getBits() {
+    function getBitsR() {
         let bits = "";
         for(let i = 0; i < BITS; i++) {
-        bits = bits + document.getElementById('digit2' + i).value;
+        bits = bits + document.getElementById('digitR' + i).value;
         }
         return bits;
     }
-    function getBits() {
+    function getBitsG() {
         let bits = "";
         for(let i = 0; i < BITS; i++) {
-        bits = bits + document.getElementById('digit3' + i).value;
+        bits = bits + document.getElementById('digitG' + i).value;
         }
         return bits;
+    }
+    function getBitsB() {
+        let bits = "";
+        for(let i = 0; i < BITS; i++) {
+        bits = bits + document.getElementById('digitB' + i).value;
+        }
+        return bits;
+    }
+
+    function binToChar(bin) {
+        let dec = parseInt(bin, 2).toString();
+        console.log(dec);
+        var chr = String.fromCharCode(dec);
+        return chr;
     }
     // setter for DOM values
     function setConversions(binary) {
@@ -481,24 +564,37 @@ window.onload = wrap_img;
         document.getElementById('hexadecimal').innerHTML = parseInt(binary, 2).toString(16);
         // Decimal conversion
         document.getElementById('decimal').innerHTML = parseInt(binary, 2).toString();
+        let dec = parseInt(document.getElementById('decimal').innerHTML);
+        if (dec >= 32 && dec <= 255) {
+        document.getElementById('character').innerHTML = binToChar(binary);
+        }
+        else {
+            document.getElementById('character').innerHTML = "Can't Print";
+        }
     }
-    function setConversions(binary) {
-        document.getElementById('binary2').innerHTML = binary;
-        // Octal conversion
-        document.getElementById('octal2').innerHTML = parseInt(binary, 2).toString(8);
+    function setConversionsR(binary) {
+        document.getElementById('binR').innerHTML = binary;
         // Hexadecimal conversion
-        document.getElementById('hexadecimal2').innerHTML = parseInt(binary, 2).toString(16);
+        document.getElementById('hexR').innerHTML = parseInt(binary, 2).toString(16).padStart(2, '0');
         // Decimal conversion
-        document.getElementById('decimal2').innerHTML = parseInt(binary, 2).toString();
+        document.getElementById('decR').innerHTML = parseInt(binary, 2).toString();
+        document.getElementById('color').style.backgroundColor = setRGB();
     }
-    function setConversions(binary) {
-        document.getElementById('binary3').innerHTML = binary;
-        // Octal conversion
-        document.getElementById('octal3').innerHTML = parseInt(binary, 2).toString(8);
+    function setConversionsG(binary) {
+        document.getElementById('binG').innerHTML = binary;
         // Hexadecimal conversion
-        document.getElementById('hexadecimal3').innerHTML = parseInt(binary, 2).toString(16);
+        document.getElementById('hexG').innerHTML = parseInt(binary, 2).toString(16).padStart(2, '0');
         // Decimal conversion
-        document.getElementById('decimal3').innerHTML = parseInt(binary, 2).toString();
+        document.getElementById('decG').innerHTML = parseInt(binary, 2).toString();
+        document.getElementById('color').style.backgroundColor = setRGB();
+    }
+    function setConversionsB(binary) {
+        document.getElementById('binB').innerHTML = binary;
+        // Hexadecimal conversion
+        document.getElementById('hexB').innerHTML = parseInt(binary, 2).toString(16).padStart(2, '0');
+        // Decimal conversion
+        document.getElementById('decB').innerHTML = parseInt(binary, 2).toString();
+        document.getElementById('color').style.backgroundColor = setRGB();
     }
     //
     function decimal_2_base(decimal, base) {
@@ -538,11 +634,11 @@ window.onload = wrap_img;
         const binary = getBits();
         setConversions(binary);
     }
-    function toggleBit2(i) {
+    function toggleBitR(i) {
         //alert("Digit action: " + i );
-        const dig = document.getElementById('digit2' + i);
-        const image = document.getElementById('bulb2' + i);
-        const butt = document.getElementById('butt2' + i);
+        const dig = document.getElementById('digitR' + i);
+        const image = document.getElementById('bulbR' + i);
+        const butt = document.getElementById('buttR' + i);
         // Change digit and visual
         if (image.src.match(IMAGE_ON)) {
         dig.value = 0;
@@ -554,14 +650,14 @@ window.onload = wrap_img;
         butt.innerHTML = MSG_OFF;
         }
         // Binary numbers
-        const binary = getBits();
-        setConversions(binary);
+        const binary = getBitsR();
+        setConversionsR(binary);
     }
-    function toggleBit3(i) {
+    function toggleBitG(i) {
         //alert("Digit action: " + i );
-        const dig = document.getElementById('digit3' + i);
-        const image = document.getElementById('bulb3' + i);
-        const butt = document.getElementById('butt3' + i);
+        const dig = document.getElementById('digitG' + i);
+        const image = document.getElementById('bulbG' + i);
+        const butt = document.getElementById('buttG' + i);
         // Change digit and visual
         if (image.src.match(IMAGE_ON)) {
         dig.value = 0;
@@ -573,8 +669,27 @@ window.onload = wrap_img;
         butt.innerHTML = MSG_OFF;
         }
         // Binary numbers
-        const binary = getBits();
-        setConversions(binary);
+        const binary = getBitsG();
+        setConversionsG(binary);
+    }
+    function toggleBitB(i) {
+        //alert("Digit action: " + i );
+        const dig = document.getElementById('digitB' + i);
+        const image = document.getElementById('bulbB' + i);
+        const butt = document.getElementById('buttB' + i);
+        // Change digit and visual
+        if (image.src.match(IMAGE_ON)) {
+        dig.value = 0;
+        image.src = IMAGE_OFF;
+        butt.innerHTML = MSG_ON;
+        } else {
+        dig.value = 1;
+        image.src = IMAGE_ON;
+        butt.innerHTML = MSG_OFF;
+        }
+        // Binary numbers
+        const binary = getBitsB();
+        setConversionsB(binary);
     }
     // add is positive integer, subtract is negative integer
     function add(n) {
@@ -603,8 +718,8 @@ window.onload = wrap_img;
         }
         }
     }
-    function add2(n) {
-        let binary = getBits();
+    function addR(n) {
+        let binary = getBitsR();
         // convert to decimal and do math
         let decimal = parseInt(binary, 2);
         if (n > 0) {  // PLUS
@@ -615,22 +730,22 @@ window.onload = wrap_img;
         // convert the result back to binary
         binary = decimal_2_base(decimal, 2);
         // update conversions
-        setConversions(binary);
+        setConversionsR(binary);
         // update bits
         for (let i = 0; i < binary.length; i++) {
         let digit = binary.substr(i, 1);
-        document.getElementById('digit2' + i).value = digit;
+        document.getElementById('digitR' + i).value = digit;
         if (digit === "1") {
-            document.getElementById('bulb2' + i).src = IMAGE_ON;
-            document.getElementById('butt2' + i).innerHTML = MSG_OFF;
+            document.getElementById('bulbR' + i).src = IMAGE_ON;
+            document.getElementById('buttR' + i).innerHTML = MSG_OFF;
         } else {
-            document.getElementById('bulb2' + i).src = IMAGE_OFF;
-            document.getElementById('butt2' + i).innerHTML = MSG_ON;
+            document.getElementById('bulbR' + i).src = IMAGE_OFF;
+            document.getElementById('buttR' + i).innerHTML = MSG_ON;
         }
         }
     }
-    function add3(n) {
-        let binary = getBits();
+    function addG(n) {
+        let binary = getBitsG();
         // convert to decimal and do math
         let decimal = parseInt(binary, 2);
         if (n > 0) {  // PLUS
@@ -641,20 +756,90 @@ window.onload = wrap_img;
         // convert the result back to binary
         binary = decimal_2_base(decimal, 2);
         // update conversions
-        setConversions(binary);
+        setConversionsG(binary);
         // update bits
         for (let i = 0; i < binary.length; i++) {
         let digit = binary.substr(i, 1);
-        document.getElementById('digit3' + i).value = digit;
+        document.getElementById('digitG' + i).value = digit;
         if (digit === "1") {
-            document.getElementById('bulb3' + i).src = IMAGE_ON;
-            document.getElementById('butt3' + i).innerHTML = MSG_OFF;
+            document.getElementById('bulbG' + i).src = IMAGE_ON;
+            document.getElementById('buttG' + i).innerHTML = MSG_OFF;
         } else {
-            document.getElementById('bulb3' + i).src = IMAGE_OFF;
-            document.getElementById('butt3' + i).innerHTML = MSG_ON;
+            document.getElementById('bulbG' + i).src = IMAGE_OFF;
+            document.getElementById('buttG' + i).innerHTML = MSG_ON;
         }
         }
     }
+    function addB(n) {
+        let binary = getBitsB();
+        // convert to decimal and do math
+        let decimal = parseInt(binary, 2);
+        if (n > 0) {  // PLUS
+        decimal = MAX === decimal ? 0 : decimal += n; // OVERFLOW or PLUS
+        } else  {     // MINUS
+        decimal = 0 === decimal ? MAX : decimal += n; // OVERFLOW or MINUS
+        }
+        // convert the result back to binary
+        binary = decimal_2_base(decimal, 2);
+        // update conversions
+        setConversionsB(binary);
+        // update bits
+        for (let i = 0; i < binary.length; i++) {
+        let digit = binary.substr(i, 1);
+        document.getElementById('digitB' + i).value = digit;
+        if (digit === "1") {
+            document.getElementById('bulbB' + i).src = IMAGE_ON;
+            document.getElementById('buttB' + i).innerHTML = MSG_OFF;
+        } else {
+            document.getElementById('bulbB' + i).src = IMAGE_OFF;
+            document.getElementById('buttB' + i).innerHTML = MSG_ON;
+        }
+        }
+    }
+    function setRGB() {
+        let R = document.getElementById('hexR').innerHTML;
+        let G = document.getElementById('hexG').innerHTML;
+        let B = document.getElementById('hexB').innerHTML;
+        let color_code = "#" + R + G + B;
+        console.log(color_code)
+        return color_code
+    }
+    var sliderR = document.getElementById("sliderR");
+        sliderR.addEventListener("wheel", function(e){
+        if (e.deltaY < 0){
+            sliderR.valueAsNumber += 1;
+            addR(1)
+        }else{
+            sliderR.value -= 1;
+            addR(-1)
+        }
+        e.preventDefault();
+        e.stopPropagation();
+    })
+    var sliderG = document.getElementById("sliderG");
+        sliderG.addEventListener("wheel", function(e){
+        if (e.deltaY < 0){
+            sliderG.valueAsNumber += 1;
+            addG(1)
+        }else{
+            sliderG.value -= 1;
+            addG(-1)
+        }
+        e.preventDefault();
+        e.stopPropagation();
+    })
+    var sliderB = document.getElementById("sliderB");
+        sliderB.addEventListener("wheel", function(e){
+        if (e.deltaY < 0){
+            sliderB.valueAsNumber += 1;
+            addB(1)
+        }else{
+            sliderB.value -= 1;
+            addB(-1)
+        }
+        e.preventDefault();
+        e.stopPropagation();
+    })
 </script>
 
 
