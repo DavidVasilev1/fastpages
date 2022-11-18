@@ -14,8 +14,19 @@ categories: [Html, Liquid, Javascript, Tri 2 Assignments, Trimester 2, Markdown]
 
 <div class="container bg-primary">
     <header class="pb-3 mb-4 border-bottom border-primary text-dark">
-        <span class="fs-4">Binary Math with Conversions</span>
+        <span class="fs-4" style="text-align: center;">Binary Math with Conversions</span>
     </header>
+    <style>
+        .table {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .row {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
     <div class="row justify-content-md-center">
         <div class="col-8">
             <table class="table">
@@ -44,36 +55,9 @@ categories: [Html, Liquid, Javascript, Tri 2 Assignments, Trimester 2, Markdown]
             {% assign bits = BITS | minus: 1 %} 
             <table class="table">
             <tr>
-                {% for i in (0..bits) %}
-                <td>
-                    <p id="bitNumber{{ i }}"></p>
-                </td>
-                {% endfor %}
-            </tr>
-            <tr>
                 {% comment %}Build many bits{% endcomment %}
                 {% for i in (0..bits) %}
-                <td>
-                <style>
-                    .on {
-                        height: 50px;
-                        width: 50px;
-                        background-color: #52ff5a;
-                        margin-bottom: 10px;
-                        margin-left: auto;
-                        margin-right: auto;
-                    }
-                    .off {
-                        height: 50px;
-                        width: 50px;
-                        background-color: #52ff5a;
-                        margin-bottom: 10px;
-                        margin-left: auto;
-                        margin-right: auto;
-                    }
-                </style>
-                    <div class="off" id="bulb{{ i }}"></div>
-                    <div class="on" id=""></div>
+                <td><img class="img-responsive py-3" id="bulb{{ i }}" src="{{site.baseurl}}/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;">
                     <button type="button" id="butt{{ i }}" onclick="javascript:toggleBit({{ i }})">Turn on</button>
                 </td>
                 {% endfor %}
@@ -82,6 +66,90 @@ categories: [Html, Liquid, Javascript, Tri 2 Assignments, Trimester 2, Markdown]
                 {% comment %}Value of bit{% endcomment %}
                 {% for i in (0..bits) %}
                 <td><input type='text' id="digit{{ i }}" Value="0" size="1" readonly></td>
+                {% endfor %}
+            </tr>
+            </table>
+        </div>
+        <div class="col-8">
+            <table class="table">
+            <tr id="table2">
+                <th>Plus</th>
+                <th>Binary</th>
+                <th>Octal</th>
+                <th>Hexadecimal</th>
+                <th>Decimal</th>
+                <th>Bits</th>
+                <th>Minus</th>
+            </tr>
+            <tr>
+                <td><button type="button" id="add1" onclick="add2(1)">+1</button></td>
+                <td id="binary2">00000000</td>
+                <td id="octal2">0</td>
+                <td id="hexadecimal2">0</td>
+                <td id="decimal2">0</td>
+                <td id="bits2">{{BITS}}</td>
+                <td><button type="button" id="sub1" onclick="add2(-1)">-1</button></td>
+            </tr>
+            </table>
+        </div>
+        <div class="col-12">
+            {% comment %}Liquid for loop includes last number, thus the Minus{% endcomment %}
+            {% assign bits = BITS | minus: 1 %} 
+            <table class="table">
+            <tr>
+                {% comment %}Build many bits{% endcomment %}
+                {% for i in (0..bits) %}
+                <td><img class="img-responsive py-3" id="bulb2{{ i }}" src="{{site.baseurl}}/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;">
+                    <button type="button" id="butt2{{ i }}" onclick="javascript:toggleBit2({{ i }})">Turn on</button>
+                </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% comment %}Value of bit{% endcomment %}
+                {% for i in (0..bits) %}
+                <td><input type='text' id="digit2{{ i }}" Value="0" size="1" readonly></td>
+                {% endfor %}
+            </tr>
+            </table>
+        </div>
+        <div class="col-8">
+            <table class="table">
+            <tr id="table3">
+                <th>Plus</th>
+                <th>Binary</th>
+                <th>Octal</th>
+                <th>Hexadecimal</th>
+                <th>Decimal</th>
+                <th>Bits</th>
+                <th>Minus</th>
+            </tr>
+            <tr>
+                <td><button type="button" id="add1" onclick="add3(1)">+1</button></td>
+                <td id="binary3">00000000</td>
+                <td id="octal3">0</td>
+                <td id="hexadecimal3">0</td>
+                <td id="decimal3">0</td>
+                <td id="bits3">{{BITS}}</td>
+                <td><button type="button" id="sub1" onclick="add3(-1)">-1</button></td>
+            </tr>
+            </table>
+        </div>
+        <div class="col-12">
+            {% comment %}Liquid for loop includes last number, thus the Minus{% endcomment %}
+            {% assign bits = BITS | minus: 1 %} 
+            <table class="table">
+            <tr>
+                {% comment %}Build many bits{% endcomment %}
+                {% for i in (0..bits) %}
+                <td><img class="img-responsive py-3" id="bulb3{{ i }}" src="{{site.baseurl}}/images/off.png" width="60" height="Auto" style="margin-left: auto; margin-right: auto;">
+                    <button type="button" id="butt3{{ i }}" onclick="javascript:toggleBit3({{ i }})">Turn on</button>
+                </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% comment %}Value of bit{% endcomment %}
+                {% for i in (0..bits) %}
+                <td><input type='text' id="digit3{{ i }}" Value="0" size="1" readonly></td>
                 {% endfor %}
             </tr>
             </table>
@@ -97,16 +165,15 @@ categories: [Html, Liquid, Javascript, Tri 2 Assignments, Trimester 2, Markdown]
     const BITS = {{ BITS }};
     const MAX = 2 ** BITS - 1;
     const MSG_ON = "Turn on";
-    const IMAGE_ON = document.getElementById('on');
+    const IMAGE_ON = "{{site.baseurl}}/images/on.png";
     const MSG_OFF = "Turn off";
-    const IMAGE_OFF = document.getElementById('off');
+    const IMAGE_OFF = "{{site.baseurl}}/images/off.png";
 
     function binaryNumbering() {
         let number = "";
         for(let i = 0; i < BITS; i++) {
-        number = document.getElementById('bitNumber' + i);
+        number = document.getElementById('bitNumber' + i).value;
         }
-        return document.getElementById("bitNumber").innerHTML = number;
     }
 
     // return string with current value of each bit
@@ -114,6 +181,20 @@ categories: [Html, Liquid, Javascript, Tri 2 Assignments, Trimester 2, Markdown]
         let bits = "";
         for(let i = 0; i < BITS; i++) {
         bits = bits + document.getElementById('digit' + i).value;
+        }
+        return bits;
+    }
+    function getBits() {
+        let bits = "";
+        for(let i = 0; i < BITS; i++) {
+        bits = bits + document.getElementById('digit2' + i).value;
+        }
+        return bits;
+    }
+    function getBits() {
+        let bits = "";
+        for(let i = 0; i < BITS; i++) {
+        bits = bits + document.getElementById('digit3' + i).value;
         }
         return bits;
     }
@@ -126,6 +207,24 @@ categories: [Html, Liquid, Javascript, Tri 2 Assignments, Trimester 2, Markdown]
         document.getElementById('hexadecimal').innerHTML = parseInt(binary, 2).toString(16);
         // Decimal conversion
         document.getElementById('decimal').innerHTML = parseInt(binary, 2).toString();
+    }
+    function setConversions(binary) {
+        document.getElementById('binary2').innerHTML = binary;
+        // Octal conversion
+        document.getElementById('octal2').innerHTML = parseInt(binary, 2).toString(8);
+        // Hexadecimal conversion
+        document.getElementById('hexadecimal2').innerHTML = parseInt(binary, 2).toString(16);
+        // Decimal conversion
+        document.getElementById('decimal2').innerHTML = parseInt(binary, 2).toString();
+    }
+    function setConversions(binary) {
+        document.getElementById('binary3').innerHTML = binary;
+        // Octal conversion
+        document.getElementById('octal3').innerHTML = parseInt(binary, 2).toString(8);
+        // Hexadecimal conversion
+        document.getElementById('hexadecimal3').innerHTML = parseInt(binary, 2).toString(16);
+        // Decimal conversion
+        document.getElementById('decimal3').innerHTML = parseInt(binary, 2).toString();
     }
     //
     function decimal_2_base(decimal, base) {
@@ -165,6 +264,44 @@ categories: [Html, Liquid, Javascript, Tri 2 Assignments, Trimester 2, Markdown]
         const binary = getBits();
         setConversions(binary);
     }
+    function toggleBit2(i) {
+        //alert("Digit action: " + i );
+        const dig = document.getElementById('digit2' + i);
+        const image = document.getElementById('bulb2' + i);
+        const butt = document.getElementById('butt2' + i);
+        // Change digit and visual
+        if (image.src.match(IMAGE_ON)) {
+        dig.value = 0;
+        image.src = IMAGE_OFF;
+        butt.innerHTML = MSG_ON;
+        } else {
+        dig.value = 1;
+        image.src = IMAGE_ON;
+        butt.innerHTML = MSG_OFF;
+        }
+        // Binary numbers
+        const binary = getBits();
+        setConversions(binary);
+    }
+    function toggleBit3(i) {
+        //alert("Digit action: " + i );
+        const dig = document.getElementById('digit3' + i);
+        const image = document.getElementById('bulb3' + i);
+        const butt = document.getElementById('butt3' + i);
+        // Change digit and visual
+        if (image.src.match(IMAGE_ON)) {
+        dig.value = 0;
+        image.src = IMAGE_OFF;
+        butt.innerHTML = MSG_ON;
+        } else {
+        dig.value = 1;
+        image.src = IMAGE_ON;
+        butt.innerHTML = MSG_OFF;
+        }
+        // Binary numbers
+        const binary = getBits();
+        setConversions(binary);
+    }
     // add is positive integer, subtract is negative integer
     function add(n) {
         let binary = getBits();
@@ -189,6 +326,58 @@ categories: [Html, Liquid, Javascript, Tri 2 Assignments, Trimester 2, Markdown]
         } else {
             document.getElementById('bulb' + i).src = IMAGE_OFF;
             document.getElementById('butt' + i).innerHTML = MSG_ON;
+        }
+        }
+    }
+    function add2(n) {
+        let binary = getBits();
+        // convert to decimal and do math
+        let decimal = parseInt(binary, 2);
+        if (n > 0) {  // PLUS
+        decimal = MAX === decimal ? 0 : decimal += n; // OVERFLOW or PLUS
+        } else  {     // MINUS
+        decimal = 0 === decimal ? MAX : decimal += n; // OVERFLOW or MINUS
+        }
+        // convert the result back to binary
+        binary = decimal_2_base(decimal, 2);
+        // update conversions
+        setConversions(binary);
+        // update bits
+        for (let i = 0; i < binary.length; i++) {
+        let digit = binary.substr(i, 1);
+        document.getElementById('digit2' + i).value = digit;
+        if (digit === "1") {
+            document.getElementById('bulb2' + i).src = IMAGE_ON;
+            document.getElementById('butt2' + i).innerHTML = MSG_OFF;
+        } else {
+            document.getElementById('bulb2' + i).src = IMAGE_OFF;
+            document.getElementById('butt2' + i).innerHTML = MSG_ON;
+        }
+        }
+    }
+    function add3(n) {
+        let binary = getBits();
+        // convert to decimal and do math
+        let decimal = parseInt(binary, 2);
+        if (n > 0) {  // PLUS
+        decimal = MAX === decimal ? 0 : decimal += n; // OVERFLOW or PLUS
+        } else  {     // MINUS
+        decimal = 0 === decimal ? MAX : decimal += n; // OVERFLOW or MINUS
+        }
+        // convert the result back to binary
+        binary = decimal_2_base(decimal, 2);
+        // update conversions
+        setConversions(binary);
+        // update bits
+        for (let i = 0; i < binary.length; i++) {
+        let digit = binary.substr(i, 1);
+        document.getElementById('digit3' + i).value = digit;
+        if (digit === "1") {
+            document.getElementById('bulb3' + i).src = IMAGE_ON;
+            document.getElementById('butt3' + i).innerHTML = MSG_OFF;
+        } else {
+            document.getElementById('bulb3' + i).src = IMAGE_OFF;
+            document.getElementById('butt3' + i).innerHTML = MSG_ON;
         }
         }
     }
