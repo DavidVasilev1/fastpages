@@ -105,7 +105,7 @@ categories: [Html, Liquid, Javascript, Tri 2 Assignments, Trimester 2, Markdown]
                 <th>Color</th>
             </tr>
             <tr>
-                <td>R<input type="range" min="0" max="255" value="0" id="sliderR" style="width: 1px;"></td>
+                <td>R<input type="range" min="0" max="255" value="0" id="sliderR" style="width: 50px;"></td>
                 <td><button type="button" id="addCR" onclick="addR(1)">+1</button></td>
                 <td id="binR">00000000</td>
                 <td id="hexR">0</td>
@@ -115,7 +115,7 @@ categories: [Html, Liquid, Javascript, Tri 2 Assignments, Trimester 2, Markdown]
                 <td rowspan="3" class="box" id="color"></td>
             </tr>
             <tr>
-                <td>G<input type="range" min="0" max="255" value="0" id="sliderG" style="width: 1px;"></td>
+                <td>G<input type="range" min="0" max="255" value="0" id="sliderG" style="width: 50px;"></td>
                 <td><button type="button" id="addCG" onclick="addG(1)">+1</button></td>
                 <td id="binG">00000000</td>
                 <td id="hexG">0</td>
@@ -123,7 +123,7 @@ categories: [Html, Liquid, Javascript, Tri 2 Assignments, Trimester 2, Markdown]
                 <td><button type="button" id="subCG" onclick="addG(-1)">-1</button></td>
             </tr>
             <tr>
-                <td>B<input type="range" min="0" max="255" value="0" id="sliderB" style="width: 1px;"></td>
+                <td>B<input type="range" min="0" max="255" value="0" id="sliderB" style="width: 50px;"></td>
                 <td><button type="button" id="addCB" onclick="addB(1)">+1</button></td>
                 <td id="binB">00000000</td>
                 <td id="hexB">0</td>
