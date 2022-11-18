@@ -10,7 +10,7 @@ categories: [Html, Liquid, Javascript, Tri 2 Assignments, Trimester 2, Markdown]
 <!-- Hack 2: change to 24 bits and add a color code and display color when 24 bits, think about display on this one -->
 <!-- Hack 3: do your own thing -->
 
-{% assign BITS = 3 %}
+{% assign BITS = 8 %}
 
 <div class="container bg-primary">
     <header class="pb-3 mb-4 border-bottom border-primary text-dark">
@@ -25,6 +25,7 @@ categories: [Html, Liquid, Javascript, Tri 2 Assignments, Trimester 2, Markdown]
                 <th>Octal</th>
                 <th>Hexadecimal</th>
                 <th>Decimal</th>
+                <th>Bits</th>
                 <th>Minus</th>
             </tr>
             <tr>
@@ -33,6 +34,7 @@ categories: [Html, Liquid, Javascript, Tri 2 Assignments, Trimester 2, Markdown]
                 <td id="octal">0</td>
                 <td id="hexadecimal">0</td>
                 <td id="decimal">0</td>
+                <td id="bits">{{BITS}}</td>
                 <td><button type="button" id="sub1" onclick="add(-1)">-1</button></td>
             </tr>
             </table>
@@ -42,9 +44,36 @@ categories: [Html, Liquid, Javascript, Tri 2 Assignments, Trimester 2, Markdown]
             {% assign bits = BITS | minus: 1 %} 
             <table class="table">
             <tr>
+                {% for i in (0..bits) %}
+                <td>
+                    <p id="bitNumber{{ i }}"></p>
+                </td>
+                {% endfor %}
+            </tr>
+            <tr>
                 {% comment %}Build many bits{% endcomment %}
                 {% for i in (0..bits) %}
-                <td><img class="img-responsive py-3" id="bulb{{ i }}" src="{{site.baseurl}}/images/bulb_off.png" alt="" width="40" height="Auto">
+                <td>
+                <style>
+                    .on {
+                        height: 50px;
+                        width: 50px;
+                        background-color: #52ff5a;
+                        margin-bottom: 10px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                    .off {
+                        height: 50px;
+                        width: 50px;
+                        background-color: #52ff5a;
+                        margin-bottom: 10px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                </style>
+                    <div class="off" id="bulb{{ i }}"></div>
+                    <div class="on" id=""></div>
                     <button type="button" id="butt{{ i }}" onclick="javascript:toggleBit({{ i }})">Turn on</button>
                 </td>
                 {% endfor %}
@@ -60,13 +89,25 @@ categories: [Html, Liquid, Javascript, Tri 2 Assignments, Trimester 2, Markdown]
     </div>
 </div>
 
+<td>
+    
+</td>
+
 <script>
     const BITS = {{ BITS }};
     const MAX = 2 ** BITS - 1;
     const MSG_ON = "Turn on";
-    const IMAGE_ON = "{{site.baseurl}}/images/bulb_on.gif";
+    const IMAGE_ON = document.getElementById('on');
     const MSG_OFF = "Turn off";
-    const IMAGE_OFF = "{{site.baseurl}}/images/bulb_off.png"
+    const IMAGE_OFF = document.getElementById('off');
+
+    function binaryNumbering() {
+        let number = "";
+        for(let i = 0; i < BITS; i++) {
+        number = document.getElementById('bitNumber' + i);
+        }
+        return document.getElementById("bitNumber").innerHTML = number;
+    }
 
     // return string with current value of each bit
     function getBits() {
