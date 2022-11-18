@@ -173,6 +173,7 @@ window.onload = wrap_img;
                 <th>Octal</th>
                 <th>Hexadecimal</th>
                 <th>Decimal</th>
+                <th>Bits</th>
                 <th>Minus</th>
             </tr>
             <tr>
@@ -181,6 +182,7 @@ window.onload = wrap_img;
                 <td id="octal">0</td>
                 <td id="hexadecimal">0</td>
                 <td id="decimal">0</td>
+                <td id="bits">8</td>
                 <td><button type="button" id="sub1" onclick="add(-1)">-1</button></td>
             </tr>
             </table>
@@ -191,17 +193,232 @@ window.onload = wrap_img;
             <table class="table">
             <tr>
                 
+                <td>
+                    <p id="bitNumber0"></p>
+                </td>
                 
-                <td><img class="img-responsive py-3" id="bulb0" src="/fastpages/images/bulb_off.png" alt="" width="40" height="Auto" />
+                <td>
+                    <p id="bitNumber1"></p>
+                </td>
+                
+                <td>
+                    <p id="bitNumber2"></p>
+                </td>
+                
+                <td>
+                    <p id="bitNumber3"></p>
+                </td>
+                
+                <td>
+                    <p id="bitNumber4"></p>
+                </td>
+                
+                <td>
+                    <p id="bitNumber5"></p>
+                </td>
+                
+                <td>
+                    <p id="bitNumber6"></p>
+                </td>
+                
+                <td>
+                    <p id="bitNumber7"></p>
+                </td>
+                
+            </tr>
+            <tr>
+                
+                
+                <td>
+                <style>
+                    .on {
+                        height: 50px;
+                        width: 50px;
+                        background-color: #52ff5a;
+                        margin-bottom: 10px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                    .off {
+                        height: 50px;
+                        width: 50px;
+                        background-color: #52ff5a;
+                        margin-bottom: 10px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                </style>
+                    <div class="off" id="bulb0"></div>
+                    <div class="on"></div>
                     <button type="button" id="butt0" onclick="javascript:toggleBit(0)">Turn on</button>
                 </td>
                 
-                <td><img class="img-responsive py-3" id="bulb1" src="/fastpages/images/bulb_off.png" alt="" width="40" height="Auto" />
+                <td>
+                <style>
+                    .on {
+                        height: 50px;
+                        width: 50px;
+                        background-color: #52ff5a;
+                        margin-bottom: 10px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                    .off {
+                        height: 50px;
+                        width: 50px;
+                        background-color: #52ff5a;
+                        margin-bottom: 10px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                </style>
+                    <div class="off" id="bulb1"></div>
+                    <div class="on"></div>
                     <button type="button" id="butt1" onclick="javascript:toggleBit(1)">Turn on</button>
                 </td>
                 
-                <td><img class="img-responsive py-3" id="bulb2" src="/fastpages/images/bulb_off.png" alt="" width="40" height="Auto" />
+                <td>
+                <style>
+                    .on {
+                        height: 50px;
+                        width: 50px;
+                        background-color: #52ff5a;
+                        margin-bottom: 10px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                    .off {
+                        height: 50px;
+                        width: 50px;
+                        background-color: #52ff5a;
+                        margin-bottom: 10px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                </style>
+                    <div class="off" id="bulb2"></div>
+                    <div class="on"></div>
                     <button type="button" id="butt2" onclick="javascript:toggleBit(2)">Turn on</button>
+                </td>
+                
+                <td>
+                <style>
+                    .on {
+                        height: 50px;
+                        width: 50px;
+                        background-color: #52ff5a;
+                        margin-bottom: 10px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                    .off {
+                        height: 50px;
+                        width: 50px;
+                        background-color: #52ff5a;
+                        margin-bottom: 10px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                </style>
+                    <div class="off" id="bulb3"></div>
+                    <div class="on"></div>
+                    <button type="button" id="butt3" onclick="javascript:toggleBit(3)">Turn on</button>
+                </td>
+                
+                <td>
+                <style>
+                    .on {
+                        height: 50px;
+                        width: 50px;
+                        background-color: #52ff5a;
+                        margin-bottom: 10px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                    .off {
+                        height: 50px;
+                        width: 50px;
+                        background-color: #52ff5a;
+                        margin-bottom: 10px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                </style>
+                    <div class="off" id="bulb4"></div>
+                    <div class="on"></div>
+                    <button type="button" id="butt4" onclick="javascript:toggleBit(4)">Turn on</button>
+                </td>
+                
+                <td>
+                <style>
+                    .on {
+                        height: 50px;
+                        width: 50px;
+                        background-color: #52ff5a;
+                        margin-bottom: 10px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                    .off {
+                        height: 50px;
+                        width: 50px;
+                        background-color: #52ff5a;
+                        margin-bottom: 10px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                </style>
+                    <div class="off" id="bulb5"></div>
+                    <div class="on"></div>
+                    <button type="button" id="butt5" onclick="javascript:toggleBit(5)">Turn on</button>
+                </td>
+                
+                <td>
+                <style>
+                    .on {
+                        height: 50px;
+                        width: 50px;
+                        background-color: #52ff5a;
+                        margin-bottom: 10px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                    .off {
+                        height: 50px;
+                        width: 50px;
+                        background-color: #52ff5a;
+                        margin-bottom: 10px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                </style>
+                    <div class="off" id="bulb6"></div>
+                    <div class="on"></div>
+                    <button type="button" id="butt6" onclick="javascript:toggleBit(6)">Turn on</button>
+                </td>
+                
+                <td>
+                <style>
+                    .on {
+                        height: 50px;
+                        width: 50px;
+                        background-color: #52ff5a;
+                        margin-bottom: 10px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                    .off {
+                        height: 50px;
+                        width: 50px;
+                        background-color: #52ff5a;
+                        margin-bottom: 10px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                </style>
+                    <div class="off" id="bulb7"></div>
+                    <div class="on"></div>
+                    <button type="button" id="butt7" onclick="javascript:toggleBit(7)">Turn on</button>
                 </td>
                 
             </tr>
@@ -214,19 +431,41 @@ window.onload = wrap_img;
                 
                 <td><input type="text" id="digit2" value="0" size="1" readonly="" /></td>
                 
+                <td><input type="text" id="digit3" value="0" size="1" readonly="" /></td>
+                
+                <td><input type="text" id="digit4" value="0" size="1" readonly="" /></td>
+                
+                <td><input type="text" id="digit5" value="0" size="1" readonly="" /></td>
+                
+                <td><input type="text" id="digit6" value="0" size="1" readonly="" /></td>
+                
+                <td><input type="text" id="digit7" value="0" size="1" readonly="" /></td>
+                
             </tr>
             </table>
         </div>
     </div>
 </div>
 
+<td>
+    
+</td>
+
 <script>
-    const BITS = 3;
+    const BITS = 8;
     const MAX = 2 ** BITS - 1;
     const MSG_ON = "Turn on";
-    const IMAGE_ON = "/fastpages/images/bulb_on.gif";
+    const IMAGE_ON = document.getElementById('on');
     const MSG_OFF = "Turn off";
-    const IMAGE_OFF = "/fastpages/images/bulb_off.png"
+    const IMAGE_OFF = document.getElementById('off');
+
+    function binaryNumbering() {
+        let number = "";
+        for(let i = 0; i < BITS; i++) {
+        number = document.getElementById('bitNumber' + i);
+        }
+        return document.getElementById("bitNumber").innerHTML = number;
+    }
 
     // return string with current value of each bit
     function getBits() {
