@@ -16,7 +16,8 @@ The assignments are organized by newest to oldest, where the newest are at the t
 
 | Date | Subject |
 |-|-|
-| 11/15/2022 | [Tool Checks]() |
+| 11/15/2022 | [Binary Hacks](https://davidvasilev1.github.io/fastpages/binary) |
+| 11/15/2022 | [Tool Checks](https://davidvasilev1.github.io/fastpages/tools-check) |
 
 ## Trimester 1
 
