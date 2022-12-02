@@ -3,9 +3,9 @@
     
         "post0": {
             "title": "Algorithms and Logic Javascript Hacks",
-            "content": "",
-            "url": "https://davidvasilev1.github.io/fastpages/markdown/trimester%202/tri%202%20assignments/javascript/html/2022/12/01/algorithms-and-logic.html",
-            "relUrl": "/markdown/trimester%202/tri%202%20assignments/javascript/html/2022/12/01/algorithms-and-logic.html",
+            "content": "Fibonacci - Python . def fib(n): nums = [] for i in range(n): if i == 0: print(&quot;0&quot;) nums.append(0) elif i == 1: print(&quot;1&quot;) nums.append(1) else: print(nums[i-2] + nums[i-1]) nums.append(nums[i-1] + nums[i-2]) size = int(input(&quot;Select how many characters you want your sequence to be:&quot;)) print(&quot;You have selected a list of &quot; + str(size) + &quot; numbers.&quot;) print(&quot;Here is your list: &quot;) fib(size) . You have selected a list of 10 numbers. Here is your list: 0 1 1 2 3 5 8 13 21 34 . Fibonacci - Javascript . Submit You have selected a list of this many numbers: . Here is your Fibonacci sequence: . . . Palindromes - Javascript . Submit . .",
+            "url": "https://davidvasilev1.github.io/fastpages/markdown/trimester%202/tri%202%20assignments/javascript/html/python/2022/12/01/algorithms-hacks.html",
+            "relUrl": "/markdown/trimester%202/tri%202%20assignments/javascript/html/python/2022/12/01/algorithms-hacks.html",
             "date": " • Dec 1, 2022"
         }
         
