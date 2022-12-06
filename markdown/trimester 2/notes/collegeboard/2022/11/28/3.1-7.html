@@ -165,7 +165,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      6 min read
+      8 min read
     
 </span></p>
 
@@ -574,6 +574,8 @@ y <span class="o">=</span> 3
 <h3 id="hacks-9">
 <a class="anchor" href="#hacks-9" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks</h3>
 
+<p><img src="/fastpages/images/3.7-1.png" alt="" title=" "></p>
+
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>score1 <span class="o">=</span> 90
 score2 <span class="o">=</span> 62
 
@@ -600,6 +602,123 @@ proc <span class="o">=</span> True
 </code></pre></div></div>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>You Passed!!!
+</code></pre></div></div>
+
+<p><img src="/fastpages/images/3.7-2.png" alt="" title=" "></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>num <span class="o">=</span> 568
+
+guess <span class="o">=</span> 243 <span class="c"># guess number</span>
+
+start <span class="o">=</span> input<span class="o">(</span><span class="s2">"Are you ready to start?"</span><span class="o">)</span>
+
+correct <span class="o">=</span> False
+
+<span class="k">if </span>start <span class="o">==</span> <span class="s2">"yes"</span>:
+  <span class="k">if </span>guess <span class="o">&gt;</span> num:
+    proc <span class="o">=</span> False
+    print<span class="o">(</span><span class="s2">"too high"</span><span class="o">)</span>
+  <span class="k">elif </span>guess &lt; num:
+    <span class="k">if </span>guess <span class="o">==</span> num:
+      proc <span class="o">=</span> True
+    <span class="k">else</span>:
+      proc <span class="o">=</span> False
+      print<span class="o">(</span><span class="s2">"too low"</span><span class="o">)</span>
+<span class="k">else</span>:
+  print<span class="o">(</span><span class="s2">"Restart"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>too low
+</code></pre></div></div>
+
+<p><img src="/fastpages/images/3.7-3.png" alt="" title=" "></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x <span class="o">=</span> 5
+
+y <span class="o">=</span> 34
+
+start <span class="o">=</span> input<span class="o">(</span><span class="s2">"Are you ready to start?"</span><span class="o">)</span>
+
+<span class="k">if </span>start <span class="o">==</span> <span class="s2">"yes"</span>:
+  <span class="k">if </span>x <span class="o">!=</span> 5:
+    print<span class="o">(</span><span class="s2">"incorrect"</span><span class="o">)</span>
+  <span class="k">else</span>:
+    <span class="k">if </span>y <span class="o">!=</span> 34:
+      print<span class="o">(</span><span class="s2">"incorrect"</span><span class="o">)</span>
+    <span class="k">else</span>:
+      print<span class="o">(</span><span class="s2">"correct"</span><span class="o">)</span>
+<span class="k">else</span>:
+  print<span class="o">(</span><span class="s2">"Restart"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>correct
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>u <span class="o">=</span> 19
+v <span class="o">=</span> 28
+w <span class="o">=</span> 85 <span class="c"># set as incorrect value</span>
+x <span class="o">=</span> 5
+y <span class="o">=</span> 34
+z <span class="o">=</span> 57
+
+start <span class="o">=</span> input<span class="o">(</span><span class="s2">"Are you ready to start?"</span><span class="o">)</span>
+
+<span class="k">if </span>start <span class="o">==</span> <span class="s2">"yes"</span>:
+  <span class="k">if </span>u <span class="o">!=</span> 19:
+    print<span class="o">(</span><span class="s2">"u is incorrect, can't proceed"</span><span class="o">)</span>
+  <span class="k">elif </span>v <span class="o">!=</span> 28:
+    print<span class="o">(</span><span class="s2">"v is incorrect, can't proceed"</span><span class="o">)</span>
+  <span class="k">elif </span>w <span class="o">!=</span> 95:
+    print<span class="o">(</span><span class="s2">"w is incorrect, can't proceed"</span><span class="o">)</span>
+  <span class="k">elif </span>x <span class="o">!=</span> 5:
+    print<span class="o">(</span><span class="s2">"x is incorrect, can't proceed"</span><span class="o">)</span>
+  <span class="k">elif </span>y <span class="o">!=</span> 34:
+    print<span class="o">(</span><span class="s2">"y is incorrect, can't proceed"</span><span class="o">)</span>
+  <span class="k">elif </span>z <span class="o">!=</span> 57:
+    print<span class="o">(</span><span class="s2">"z is incorrect, can't proceed"</span><span class="o">)</span>
+<span class="k">else</span>:
+  print<span class="o">(</span><span class="s2">"Restart"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>w is incorrect, can't proceed
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print<span class="o">(</span><span class="s2">"type in answers as 'y' or as 'n'"</span><span class="o">)</span>
+
+math <span class="o">=</span> input<span class="o">(</span><span class="s2">"Do you like math?"</span><span class="o">)</span>
+writing <span class="o">=</span> input<span class="o">(</span><span class="s2">"Do you like writing?"</span><span class="o">)</span>
+science <span class="o">=</span> input<span class="o">(</span><span class="s2">"Do you like science?"</span><span class="o">)</span>
+
+mathc <span class="o">=</span> <span class="o">[</span><span class="s2">"Integrated 1-3"</span>, <span class="s2">"Calculus AB"</span>, <span class="s2">"Calculus BC"</span>, <span class="s2">"Statistics"</span><span class="o">]</span>
+writingc <span class="o">=</span> <span class="o">[</span><span class="s2">"Honors English"</span>, <span class="s2">"Honors Humanities"</span>, <span class="s2">"English Language"</span>, <span class="s2">"English Literature"</span><span class="o">]</span>
+sciencec <span class="o">=</span> <span class="o">[</span><span class="s2">"Chemistry 1-2"</span>, <span class="s2">"Biology 1-2"</span>, <span class="s2">"Physics 1-2"</span>, <span class="s2">"AP Chemistry"</span>, <span class="s2">"AP Biology"</span>, <span class="s2">"AP Physics"</span><span class="o">]</span>
+
+print<span class="o">(</span><span class="s2">"Math: "</span>, math<span class="o">)</span>
+print<span class="o">(</span><span class="s2">"Writing: "</span>, writing<span class="o">)</span>
+print<span class="o">(</span><span class="s2">"Science: "</span>, science<span class="o">)</span>
+
+<span class="k">if </span>math <span class="o">==</span> <span class="s2">"y"</span>:
+  print<span class="o">(</span><span class="s2">"You should take: "</span>, mathc<span class="o">)</span>
+  <span class="k">if </span>writing <span class="o">==</span> <span class="s2">"y"</span>:
+    print<span class="o">(</span><span class="s2">"You should take: "</span>, writingc<span class="o">)</span>
+  <span class="k">if </span>science <span class="o">==</span> <span class="s2">"y"</span>:
+    print<span class="o">(</span><span class="s2">"You should take: "</span>, sciencec<span class="o">)</span>
+<span class="k">elif </span>writing <span class="o">==</span> <span class="s2">"y"</span>:
+  print<span class="o">(</span><span class="s2">"You should take: "</span>, writingc<span class="o">)</span>
+  <span class="k">if </span>science <span class="o">==</span> <span class="s2">"y"</span>:
+    print<span class="o">(</span><span class="s2">"You should take: "</span>, sciencec<span class="o">)</span>
+<span class="k">elif </span>science <span class="o">==</span> <span class="s2">"y"</span>:
+  print<span class="o">(</span><span class="s2">"You should take: "</span>, sciencec<span class="o">)</span>
+<span class="k">else</span>:
+  print<span class="o">(</span><span class="s2">"dropout"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>type in answers as 'y' or as 'n'
+Math:  y
+Writing:  y
+Science:  n
+You should take:  ['Integrated 1-3', 'Calculus AB', 'Calculus BC', 'Statistics']
+You should take:  ['Honors English', 'Honors Humanities', 'English Language', 'English Literature']
 </code></pre></div></div>
 
   </div><!-- from https://github.com/utterance/utterances -->
