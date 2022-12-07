@@ -165,7 +165,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      4 min read
+      7 min read
     
 </span></p>
 
@@ -202,8 +202,28 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h2"><a href="#383---loop-types">3.8.3 - Loop Types</a></li>
-<li class="toc-entry toc-h2"><a href="#3101---lists-functions">3.10.1 - Lists Functions</a></li>
-<li class="toc-entry toc-h2"><a href="#3102---traversal">3.10.2 - Traversal</a></li>
+<li class="toc-entry toc-h2"><a href="#3101---lists-functions">3.10.1 - Lists Functions</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#hacks-2">Hacks</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#3102---traversal">3.10.2 - Traversal</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#hacks-3">Hacks</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#391---algorithms">3.9.1 - Algorithms</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#hacks-4">Hacks</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#392---developing-algorithms">3.9.2 - Developing Algorithms</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#hacks-5">Hacks</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#393---using-preexisting-algorithms">3.9.3 - Using Preexisting Algorithms</a></li>
+<li class="toc-entry toc-h2"><a href="#311-binary-search">3.11 Binary Search</a></li>
 </ul><h2 id="381---iteration">
 <a class="anchor" href="#381---iteration" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.8.1 - Iteration</h2>
 
@@ -432,6 +452,9 @@ print<span class="o">(</span><span class="nb">sum</span><span class="o">(</span>
 <span class="c"># 270</span>
 </code></pre></div></div>
 
+<h3 id="hacks-2">
+<a class="anchor" href="#hacks-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks</h3>
+
 <h2 id="3102---traversal">
 <a class="anchor" href="#3102---traversal" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.10.2 - Traversal</h2>
 
@@ -493,6 +516,178 @@ del names[-1]
   <li>length() - returns the number of elements currently in a specific list</li>
 </ul>
 
+<h3 id="hacks-3">
+<a class="anchor" href="#hacks-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks</h3>
+
+<h2 id="391---algorithms">
+<a class="anchor" href="#391---algorithms" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.9.1 - Algorithms</h2>
+
+<p>Three main parts: sequence, selection, iteration</p>
+
+<p>Grade Analysis - if/then statements with comparisons:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print<span class="o">(</span><span class="s2">"What Grade Did You Get?"</span><span class="o">)</span>
+grade <span class="o">=</span> int<span class="o">(</span>input<span class="o">(</span><span class="s2">"Enter Grade:"</span><span class="o">))</span>
+<span class="k">if </span>grade <span class="o">&gt;=</span> 93:
+        print<span class="o">(</span><span class="s2">"Wow! Good job!"</span><span class="o">)</span>
+<span class="k">if </span>70 &lt;<span class="o">=</span> grade &lt; 93:
+        print<span class="o">(</span><span class="s2">"Nice!"</span><span class="o">)</span>
+<span class="k">elif </span>grade &lt; 70:
+        print<span class="o">(</span><span class="s2">"Do Better"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Small errors in logic can create a problem.</p>
+
+<p>This is the same code as above, but with variables.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print<span class="o">(</span><span class="s2">"What Grade Did You Get?"</span><span class="o">)</span>
+grade <span class="o">=</span> int<span class="o">(</span>input<span class="o">(</span><span class="s2">"Enter Grade:"</span><span class="o">))</span>
+A <span class="o">=</span> grade <span class="o">&gt;=</span> 90
+B <span class="o">=</span> 70 &lt;<span class="o">=</span> grade &lt; 90
+C <span class="o">=</span> grade &lt; 70
+<span class="k">if </span>A:
+        print<span class="o">(</span><span class="s2">"Wow! Good job!"</span><span class="o">)</span>
+<span class="k">elif </span>B:
+        print<span class="o">(</span><span class="s2">"Nice!"</span><span class="o">)</span>
+<span class="k">elif </span>C:
+        print<span class="o">(</span><span class="s2">"Do Better"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Using comments helps with debugging.</p>
+
+<p>Nested Conditionals without boolean vs with boolean</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># setting variables here</span>
+isHoliday <span class="o">=</span> False
+isWeekday <span class="o">=</span> True
+
+<span class="c">#if holiday, dont go to school</span>
+<span class="k">if </span>isHoliday <span class="o">==</span> True:
+    print<span class="o">(</span><span class="s2">"don't go to school!"</span><span class="o">)</span>
+
+<span class="c"># otherwise, if it is a weekday, go to school</span>
+<span class="k">else</span>:
+    <span class="k">if </span>isWeekday <span class="o">==</span> True:
+        print<span class="o">(</span><span class="s2">"go to school!"</span><span class="o">)</span>
+    <span class="c"># but if it is neither a weekday or holiday, don't go to school</span>
+    <span class="k">else</span>:
+        print<span class="o">(</span><span class="s2">"don't go to school"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>This one uses nested conditional statements.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>isHoliday <span class="o">=</span> False
+isWeekday <span class="o">=</span> True
+
+<span class="c"># setting variables here (same as above to make comparison easier)</span>
+driveSchool <span class="o">=</span> not<span class="o">(</span>isHoliday<span class="o">)</span> and isWeekday
+<span class="k">if </span>driveSchool <span class="o">==</span> False:
+    print<span class="o">(</span><span class="s2">"don't go to school!"</span><span class="o">)</span>
+<span class="k">if </span>driveSchool <span class="o">==</span> True:
+    print<span class="o">(</span><span class="s2">"go to school!"</span><span class="o">)</span>
+<span class="c"># now we can make a regular conditional/ if statement without having a nested conditional</span>
+</code></pre></div></div>
+
+<p>This one uses booleans to express the outputs.</p>
+
+<h3 id="hacks-4">
+<a class="anchor" href="#hacks-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks</h3>
+
+<h2 id="392---developing-algorithms">
+<a class="anchor" href="#392---developing-algorithms" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.9.2 - Developing Algorithms</h2>
+
+<p>Developing allows for sequencing the algorithms correctly.</p>
+<ul>
+  <li>flowcharts - help with organization</li>
+</ul>
+
+<p>Example with steps and then code (iteration):</p>
+
+<ol>
+  <li>Start</li>
+  <li>The number of pretzels in the pack is 6</li>
+  <li>Eat one pretzels, number of pretzels in pack goes down by 1</li>
+  <li>How many pretzels are left?</li>
+  <li>Repeat step 3 until number of pretzels is 0</li>
+  <li>Display that pack is empty</li>
+  <li>Finish</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pretzel <span class="o">=</span> 6
+<span class="k">while</span> <span class="o">(</span>pretzel <span class="o">&gt;</span> 0<span class="o">)</span>:
+    pretzel -<span class="o">=</span> 1
+    print<span class="o">(</span>pretzel<span class="o">)</span>
+    <span class="k">if </span>pretzel <span class="o">==</span> 0:
+        print<span class="o">(</span><span class="s2">"All done!"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Example with predefined values (selection):</p>
+
+<p>The parking rate for a garage is as follows: <br>
+Less than one hour: Free <br>
+1-2 hours: $5 <br>
+2-3 hours: $8 <br>
+3-4 hours: $10 <br>
+4+ hours: $12</p>
+
+<ol>
+  <li>Start</li>
+  <li>Input number of hours parked</li>
+  <li>If hours is less than 1, cost is free</li>
+  <li>If hours is between 1 and 2, cost is $5</li>
+  <li>If hours is between 2 and 3, cost is $8</li>
+  <li>If hours is between 3 and 4, cost is $10</li>
+  <li>If hours is more than 4, cost is $12</li>
+  <li>Display cost and goodbye</li>
+  <li>Finish</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print<span class="o">(</span><span class="s2">"The parking rate is as follows: </span><span class="se">\n</span><span class="s2"> Less than one hour: Free </span><span class="se">\n</span><span class="s2"> 1-2 hours: </span><span class="nv">$5</span><span class="s2"> </span><span class="se">\n</span><span class="s2"> 2-3 hours: </span><span class="nv">$8</span><span class="s2"> </span><span class="se">\n</span><span class="s2"> 3-4 hours: </span><span class="nv">$10</span><span class="s2"> </span><span class="se">\n</span><span class="s2"> 4+ hours: </span><span class="nv">$12</span><span class="s2">"</span><span class="o">)</span>
+
+<span class="nb">time</span> <span class="o">=</span> float<span class="o">(</span>input<span class="o">(</span><span class="s2">"How many hours have you parked at this garage?"</span><span class="o">))</span>
+print<span class="o">(</span><span class="s2">"How many hours have you parked at this garage?"</span><span class="o">)</span>
+print<span class="o">(</span><span class="nb">time</span>, <span class="s2">"hours costs:"</span><span class="o">)</span>
+
+<span class="k">if </span><span class="nb">time</span> &lt; 1 :
+    print<span class="o">(</span><span class="s2">"Free"</span><span class="o">)</span>
+<span class="k">elif </span><span class="nb">time</span> <span class="o">&gt;=</span> 1 and <span class="nb">time</span> &lt; 2 :
+    print<span class="o">(</span><span class="s2">"</span><span class="nv">$5</span><span class="s2">"</span><span class="o">)</span>
+<span class="k">elif </span><span class="nb">time</span> <span class="o">&gt;=</span> 2 and <span class="nb">time</span> &lt; 3 :
+    print<span class="o">(</span><span class="s2">"</span><span class="nv">$8</span><span class="s2">"</span><span class="o">)</span>
+<span class="k">elif </span><span class="nb">time</span> <span class="o">&gt;=</span> 3 and <span class="nb">time</span> &lt; 4 :
+    print<span class="o">(</span><span class="s2">"</span><span class="nv">$10</span><span class="s2">"</span><span class="o">)</span>
+<span class="k">else</span>:
+    print<span class="o">(</span><span class="s2">"</span><span class="nv">$12</span><span class="s2">"</span><span class="o">)</span>
+
+print<span class="o">(</span><span class="s2">"Have a good day!"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<h3 id="hacks-5">
+<a class="anchor" href="#hacks-5" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks</h3>
+
+<h2 id="393---using-preexisting-algorithms">
+<a class="anchor" href="#393---using-preexisting-algorithms" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.9.3 - Using Preexisting Algorithms</h2>
+
+<p>Can be used to do math in coding, allows shorter code and less work.</p>
+
+<p>Example with even/odd:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">(</span>n MOD 2 <span class="o">=</span> 0<span class="o">)</span>
+<span class="o">{</span>
+    display<span class="o">(</span><span class="s2">"n is even"</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="k">else</span>
+<span class="o">{</span>
+    display<span class="o">(</span><span class="s2">"n is odd"</span><span class="o">)</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<h2 id="311-binary-search">
+<a class="anchor" href="#311-binary-search" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.11 Binary Search</h2>
+
+<p>Repeatedly divides search interval in half.</p>
+<ul>
+  <li>
+</ul>
 
   </div><!-- from https://github.com/utterance/utterances -->
 <script src="https://utteranc.es/client.js"

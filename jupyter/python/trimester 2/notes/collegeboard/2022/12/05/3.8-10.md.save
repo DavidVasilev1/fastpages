@@ -10,15 +10,15 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Jupyter Notebook for the rest of the class to follow along with." />
 <meta property="og:description" content="Jupyter Notebook for the rest of the class to follow along with." />
-<link rel="canonical" href="https://davidvasilev1.github.io/fastpages/jupyter/python/trimester%202/notes/collegeboard/2022/12/05/3.8-10.html" />
-<meta property="og:url" content="https://davidvasilev1.github.io/fastpages/jupyter/python/trimester%202/notes/collegeboard/2022/12/05/3.8-10.html" />
+<link rel="canonical" href="https://davidvasilev1.github.io/fastpages/jupyter/python/trimester%202/notes/collegeboard/2022/12/05/3.8-10.md.save" />
+<meta property="og:url" content="https://davidvasilev1.github.io/fastpages/jupyter/python/trimester%202/notes/collegeboard/2022/12/05/3.8-10.md.save" />
 <meta property="og:site_name" content="David Vasilev" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2022-12-05T00:00:00-06:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Lesson 3.8-3.10" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-12-05T00:00:00-06:00","datePublished":"2022-12-05T00:00:00-06:00","description":"Jupyter Notebook for the rest of the class to follow along with.","headline":"Lesson 3.8-3.10","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidvasilev1.github.io/fastpages/jupyter/python/trimester%202/notes/collegeboard/2022/12/05/3.8-10.html"},"url":"https://davidvasilev1.github.io/fastpages/jupyter/python/trimester%202/notes/collegeboard/2022/12/05/3.8-10.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-12-05T00:00:00-06:00","datePublished":"2022-12-05T00:00:00-06:00","description":"Jupyter Notebook for the rest of the class to follow along with.","headline":"Lesson 3.8-3.10","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidvasilev1.github.io/fastpages/jupyter/python/trimester%202/notes/collegeboard/2022/12/05/3.8-10.md.save"},"url":"https://davidvasilev1.github.io/fastpages/jupyter/python/trimester%202/notes/collegeboard/2022/12/05/3.8-10.md.save"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/fastpages/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://davidvasilev1.github.io/fastpages/feed.xml" title="David Vasilev" /><link rel="shortcut icon" type="image/x-icon" href="/fastpages/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -1490,6 +1490,9 @@ dog
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -1596,7 +1599,8 @@ dog
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>College Board Example Question</strong></p>
 
@@ -1615,10 +1619,10 @@ dog
     
 </figure>
 
-&lt;/html&gt;
+
 </div>
-&lt;/div&gt;
-&lt;/div&gt;
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -1797,14 +1801,12 @@ dog
 </div>
 </div>
 </div>
-&lt;/div&gt;
+</div>
  
 
-</div>
+
 </div></div>
 </div>
-
-
   </div><!-- from https://github.com/utterance/utterances -->
 <script src="https://utteranc.es/client.js"
         repo="DavidVasilev1/fastpages"
@@ -1813,7 +1815,7 @@ dog
         theme="github-light"
         crossorigin="anonymous"
         async>
-</script><a class="u-url" href="/fastpages/jupyter/python/trimester%202/notes/collegeboard/2022/12/05/3.8-10.html" hidden></a>
+</script><a class="u-url" href="/fastpages/jupyter/python/trimester%202/notes/collegeboard/2022/12/05/3.8-10.md.save" hidden></a>
 </article>
 
       </div>

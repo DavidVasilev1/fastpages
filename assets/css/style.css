@@ -414,4 +414,8 @@ li .post-meta-description { color: rgba(0, 0, 0, 0.69) !important; }
 
 p code { font-size: 19px; }
 
+pre *, code *, .highlight * { font-size: 0.8rem !important; }
+
+html, body, input, textarea, select, button { font-size: 18px !important; }
+
 /*# sourceMappingURL=style.css.map */
