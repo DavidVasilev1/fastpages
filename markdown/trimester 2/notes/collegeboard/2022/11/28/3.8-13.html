@@ -165,7 +165,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      7 min read
+      11 min read
     
 </span></p>
 
@@ -249,6 +249,32 @@ Repeat Until - iteration that is repeated until a certain condition is met</p>
 
 <p>Iteration - a looping portion of code that repeats until a certain condition is met</p>
 
+<p>Example of Iteration:</p>
+<ol>
+  <li>I have 10 tasks to complete</li>
+  <li>start task “1” and finish it</li>
+  <li>move to task “2” and repeat for “i” tasks</li>
+  <li>if task “5” is reached, stop; that is enough for now</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>i <span class="o">=</span> 1
+<span class="k">while</span><span class="o">(</span>i &lt; 10<span class="o">)</span>:
+  print<span class="o">(</span>i<span class="o">)</span>
+  i <span class="o">=</span> i + 1
+  <span class="k">if</span> <span class="o">(</span>i <span class="o">==</span> 5<span class="o">)</span>:
+    print<span class="o">(</span><span class="s2">"5 = enough for now"</span><span class="o">)</span>
+    <span class="nb">break</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+2
+3
+4
+5 = enough for now
+</code></pre></div></div>
+
+<p>Iteration Code:</p>
+
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>colors <span class="o">=</span> <span class="o">[</span><span class="s2">"red"</span>, <span class="s2">"orange"</span>, <span class="s2">"yellow"</span>, <span class="s2">"green"</span>, <span class="s2">"blue"</span>, <span class="s2">"purple"</span><span class="o">]</span>
 
 <span class="k">for </span>i <span class="k">in </span>colors:
@@ -330,6 +356,49 @@ purple
 
 <h3 id="hacks-1">
 <a class="anchor" href="#hacks-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks</h3>
+
+<p>Iteration Statement - a statement in code that causes a section of code to repeat until a certain condition is met</p>
+
+<p>Countdown:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for </span>i <span class="k">in </span>range<span class="o">(</span>7, <span class="nt">-1</span>, <span class="nt">-1</span><span class="o">)</span>:
+  print<span class="o">(</span>i + 1<span class="o">)</span>
+  i <span class="o">=</span> i + 1
+  <span class="k">if</span> <span class="o">(</span>i <span class="o">==</span> 1<span class="o">)</span>:
+    print<span class="o">(</span><span class="s2">"Reached End"</span><span class="o">)</span>
+    <span class="nb">break</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8
+7
+6
+5
+4
+3
+2
+1
+Reached End
+</code></pre></div></div>
+
+<p>List of Numbers:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list <span class="o">=</span> <span class="o">[</span>3, 16, 29, 42, 55, 68, 81]
+x <span class="o">=</span> 0
+y <span class="o">=</span> 0
+<span class="k">while </span>x &lt; len<span class="o">(</span>list<span class="o">)</span>:
+  print<span class="o">(</span>list[y]<span class="o">)</span>
+  x+<span class="o">=</span>1
+  y+<span class="o">=</span>1
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+16
+29
+42
+55
+68
+81
+</code></pre></div></div>
 
 <h2 id="383---loop-types">
 <a class="anchor" href="#383---loop-types" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.8.3 - Loop Types</h2>
@@ -471,6 +540,48 @@ print<span class="o">(</span><span class="nb">sum</span><span class="o">(</span>
 <h3 id="hacks-2">
 <a class="anchor" href="#hacks-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks</h3>
 
+<p>Minimum Finder:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nums <span class="o">=</span> <span class="o">[</span><span class="s1">'38'</span>, <span class="s1">'45'</span>, <span class="s1">'67'</span>, <span class="s1">'83'</span>, <span class="s1">'78'</span><span class="o">]</span>
+
+min <span class="o">=</span> nums[0]
+
+<span class="k">for </span>i <span class="k">in </span>nums:
+  <span class="k">if </span>i &lt; min:
+    min <span class="o">=</span> i
+
+print<span class="o">(</span><span class="s2">"This is the lowest number: "</span> + str<span class="o">(</span>min<span class="o">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This is the lowest number: 38
+</code></pre></div></div>
+
+<p>Collegeboard Reference Sheet Notes:</p>
+
+<ul>
+  <li>a MOD b
+    <ul>
+      <li>Evaluates to the remainder when a is divided by b.</li>
+      <li>Ex. 17 MOD 5 evaluates to 2</li>
+    </ul>
+  </li>
+  <li>aList[i]
+    <ul>
+      <li>accesses an element in a list based on indexing</li>
+    </ul>
+  </li>
+  <li>PROCEDURE procName(parameter1…)
+    <ul>
+      <li>arg1 is assigned to parameter1</li>
+    </ul>
+  </li>
+  <li>aList ← bList
+    <ul>
+      <li>aList becomes bList, assigning values from one list to another</li>
+    </ul>
+  </li>
+</ul>
+
 <h2 id="3102---traversal">
 <a class="anchor" href="#3102---traversal" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.10.2 - Traversal</h2>
 
@@ -534,6 +645,76 @@ del names[-1]
 
 <h3 id="hacks-3">
 <a class="anchor" href="#hacks-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import getpass, sys
+import random
+
+def ask_question <span class="o">(</span>question, answer<span class="o">)</span>:
+
+    print<span class="o">(</span>question<span class="o">)</span>
+    ans <span class="o">=</span> input<span class="o">(</span>question<span class="o">)</span>
+    print<span class="o">(</span>ans<span class="o">)</span>
+   
+    <span class="k">if </span>ans <span class="o">==</span> answer:
+        print<span class="o">(</span><span class="s2">"Correct!"</span><span class="o">)</span>
+        <span class="k">return </span>1
+
+    <span class="k">else</span>:
+        print<span class="o">(</span><span class="s2">"Wrong"</span><span class="o">)</span>
+        <span class="k">return </span>0
+
+question_list <span class="o">=</span> <span class="o">[</span><span class="s2">"What allows a value to be inserted into a list at index i?"</span> , <span class="s2">"What allows an element at index i to be deleted from a list?"</span> , <span class="s2">"What returns the number of elements currently in a specific list?"</span> , <span class="s2">"What allows a value to be added at the end of a list?"</span><span class="o">]</span>
+answer_list <span class="o">=</span> <span class="o">[</span><span class="s2">"index()"</span>, <span class="s2">"remove()"</span>, <span class="s2">"length()"</span> , <span class="s2">"append()"</span><span class="o">]</span>
+
+<span class="c"># Set points to 0 at the start of the quiz</span>
+points <span class="o">=</span> 0
+
+<span class="c"># If the length of the quiz is greater than 0, then random questions will be chosen from the "question_list" set</span>
+<span class="k">while </span>len<span class="o">(</span>question_list<span class="o">)</span> <span class="o">&gt;</span> 0:
+    index <span class="o">=</span> random.randint<span class="o">(</span>0, len<span class="o">(</span>question_list<span class="o">)</span> - 1<span class="o">)</span>
+    
+<span class="c"># The points system where a point is rewarded for each correct answer    </span>
+    points <span class="o">=</span> points + ask_question<span class="o">(</span>question_list[index], answer_list[index]<span class="o">)</span>
+    
+<span class="c"># If a question or answer has already been used, then it shall be deleted    </span>
+    del question_list[index]
+    del answer_list[index]
+
+<span class="c"># Calculating score using the points system and dividing it by the total number of questions (6)</span>
+score <span class="o">=</span> <span class="o">(</span>points / 4<span class="o">)</span>
+
+<span class="c"># Calculating the percentage of correct answers by multiplying the score by 100</span>
+percent <span class="o">=</span> <span class="o">(</span>score <span class="k">*</span> 100<span class="o">)</span>
+
+<span class="c"># Printing the percentage, and formatting the percentage in a way where two decimals can be shown (through "{:.2f}")</span>
+print<span class="o">(</span><span class="s2">"{:.2f}"</span>.format<span class="o">(</span>percent<span class="o">)</span> + <span class="s2">"%"</span><span class="o">)</span>
+
+<span class="c"># Adding final remarks based upon the users given scores</span>
+<span class="k">if </span>points <span class="o">&gt;=</span> 5:
+         print<span class="o">(</span><span class="s2">"Your total score is: "</span>, points, <span class="s2">"out of 4. Amazing job!"</span><span class="o">)</span>
+
+<span class="k">elif </span>points <span class="o">==</span> 4:
+         print<span class="o">(</span><span class="s2">"Your total score is: "</span>, points, <span class="s2">"out of 4. Not too bad, keep on studying! "</span> <span class="o">)</span>
+
+<span class="k">else</span>:
+         print<span class="o">(</span><span class="s2">"Your total score is: "</span>, points, <span class="s2">"out of 4. Its alright, better luck next time!"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>What allows a value to be added at the end of a list?
+append()
+Correct!
+What allows an element at index i to be deleted from a list?
+remove()
+Correct!
+What returns the number of elements currently in a specific list?
+length()
+Correct!
+What allows a value to be inserted into a list at index i?
+index()
+Correct!
+100.00%
+Your total score is:  4 out of 4. Not too bad, keep on studying! 
+</code></pre></div></div>
 
 <h2 id="391---algorithms">
 <a class="anchor" href="#391---algorithms" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.9.1 - Algorithms</h2>
