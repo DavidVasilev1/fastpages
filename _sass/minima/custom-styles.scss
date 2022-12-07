@@ -8,3 +8,11 @@
 
 // If you want to turn off dark background for syntax highlighting, comment or delete the below line.
 @import "minima/fastpages-dracula-highlight"; 
+
+pre *, code *, .highlight * {
+  font-size: 0.8rem !important;
+}
+
+html, body, input, textarea, select, button {
+  font-size :18px !important;
+}
