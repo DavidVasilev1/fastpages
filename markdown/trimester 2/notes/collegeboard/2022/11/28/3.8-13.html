@@ -165,7 +165,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      11 min read
+      15 min read
     
 </span></p>
 
@@ -222,8 +222,16 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#hacks-5">Hacks</a></li>
 </ul>
 </li>
-<li class="toc-entry toc-h2"><a href="#393---using-preexisting-algorithms">3.9.3 - Using Preexisting Algorithms</a></li>
-<li class="toc-entry toc-h2"><a href="#311-binary-search">3.11 Binary Search</a></li>
+<li class="toc-entry toc-h2"><a href="#393---using-preexisting-algorithms">3.9.3 - Using Preexisting Algorithms</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#hacks-6">Hacks</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#311-binary-search">3.11 Binary Search</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#hacks-7">Hacks</a></li>
+</ul>
+</li>
 </ul><h2 id="381---iteration">
 <a class="anchor" href="#381---iteration" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.8.1 - Iteration</h2>
 
@@ -790,7 +798,40 @@ driveSchool <span class="o">=</span> not<span class="o">(</span>isHoliday<span c
 <h3 id="hacks-4">
 <a class="anchor" href="#hacks-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks</h3>
 
-<p>It is important to know that functions can look different and still do the same things because there are many different ways to code something but the final products is still the exact same. This shows that some programs can be complex while other are simpler, allowing coders to eventually achieve the most simple way of coding a function. Some functions can look the same while</p>
+<p>It is important to know that functions can look different and still do the same things because there are many different ways to code something but the final products is still the exact same. This shows that some programs can be complex while other are simpler, allowing coders to eventually achieve the most simple way of coding a function. Some functions can look the same while completing entirely different things. This shows that code has similar parts that can be put together to complete entirely different things. This is also important to know because one piece of code that is wrong can look different from another piece that is correct.</p>
+
+<p>Nested Conditionals:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x <span class="o">=</span> True
+y <span class="o">=</span> False
+
+<span class="k">if </span>x <span class="o">==</span> True:
+  print<span class="o">(</span><span class="s2">"x = true"</span><span class="o">)</span>
+<span class="k">elif </span>y <span class="o">==</span> True:
+  print<span class="o">(</span><span class="s2">"y is true"</span><span class="o">)</span>
+<span class="k">else</span>:
+  print<span class="o">(</span><span class="s2">"neither y or x are true"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x = true
+</code></pre></div></div>
+
+<p>Booleans:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x <span class="o">=</span> True
+y <span class="o">=</span> False
+
+xy <span class="o">=</span> not<span class="o">(</span>x<span class="o">)</span> and y
+<span class="k">if </span>xy <span class="o">==</span> True:
+  print<span class="o">(</span><span class="s2">"y = true"</span><span class="o">)</span>
+<span class="k">if </span>xy <span class="o">==</span> False:
+  print<span class="o">(</span><span class="s2">"x = true"</span><span class="o">)</span>
+<span class="k">else</span>:
+  print<span class="o">(</span><span class="s2">"neither y or x are true"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x = true
+</code></pre></div></div>
 
 <h2 id="392---developing-algorithms">
 <a class="anchor" href="#392---developing-algorithms" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.9.2 - Developing Algorithms</h2>
@@ -864,10 +905,70 @@ print<span class="o">(</span><span class="s2">"Have a good day!"</span><span cla
 <h3 id="hacks-5">
 <a class="anchor" href="#hacks-5" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks</h3>
 
+<p><img src="/fastpages/images/3.9.2.png" alt="" title=" "></p>
+
+<p>Explanation:</p>
+<ol>
+  <li>Start</li>
+  <li>Homework to do?</li>
+  <li>If homework to do is true, how many assignments are there?
+    <ul>
+      <li>Start first assignment and while assignments &gt; 0, repeat.</li>
+      <li>When assignments = 0, go study.</li>
+    </ul>
+  </li>
+  <li>If homework to do it false, go study.</li>
+  <li>How many classes to study for?
+    <ul>
+      <li>Start studying for first class while classes &gt; 0, repeat.</li>
+      <li>When classes = 0, study.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>Code:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hw <span class="o">=</span> 6
+classes <span class="o">=</span> 5
+hwdo <span class="o">=</span> True
+
+<span class="k">if </span>hwdo <span class="o">==</span> True:
+  <span class="k">if </span>hw <span class="o">&gt;</span> 0:  
+    <span class="k">while </span>hw <span class="o">&gt;</span> 0:
+      <span class="k">if </span>hw <span class="o">&gt;</span> 0:
+        hw -<span class="o">=</span> 1
+      print<span class="o">(</span><span class="s2">"Homework left: "</span>, hw<span class="o">)</span>
+      <span class="k">if </span>hw <span class="o">==</span> 0:
+        hwdo <span class="o">=</span> False
+  <span class="k">if </span>hwdo <span class="o">==</span> False:
+    print<span class="o">(</span><span class="s2">"No homework, go study!!!"</span><span class="o">)</span>
+    <span class="k">while </span>classes <span class="o">&gt;</span> 0:
+      <span class="k">if </span>classes <span class="o">&gt;</span> 0:
+        classes -<span class="o">=</span> 1
+      print<span class="o">(</span><span class="s2">"Classes left to study for: "</span>, classes<span class="o">)</span>
+      <span class="k">if </span>classes <span class="o">==</span> 0:
+        print<span class="o">(</span><span class="s2">"Relax!!!"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Homework left:  5
+Homework left:  4
+Homework left:  3
+Homework left:  2
+Homework left:  1
+Homework left:  0
+No homework, go study!!!
+Classes left to study for:  4
+Classes left to study for:  3
+Classes left to study for:  2
+Classes left to study for:  1
+Classes left to study for:  0
+Relax!!!
+</code></pre></div></div>
+
 <h2 id="393---using-preexisting-algorithms">
 <a class="anchor" href="#393---using-preexisting-algorithms" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.9.3 - Using Preexisting Algorithms</h2>
 
-<p>Can be used to do math in coding, allows shorter code and less work.</p>
+<p>Can be used to do math in coding, allows shorter code and less work. These already exist in programming language.</p>
 
 <p>Example with even/odd:</p>
 
@@ -880,13 +981,143 @@ print<span class="o">(</span><span class="s2">"Have a good day!"</span><span cla
     display<span class="o">(</span><span class="s2">"n is odd"</span><span class="o">)</span>
 <span class="o">}</span>
 </code></pre></div></div>
+
+<h3 id="hacks-6">
+<a class="anchor" href="#hacks-6" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks</h3>
+
+<p>Flowchart:</p>
+
+<p><img src="/fastpages/images/3.9.3.png" alt="" title=" "></p>
+
+<p>Code:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import random
+
+<span class="c">#sets variables for the game</span>
+num_guesses <span class="o">=</span> 0
+user_guess <span class="o">=</span> <span class="nt">-1</span>
+upper_bound <span class="o">=</span> 100
+lower_bound <span class="o">=</span> 0
+
+<span class="c">#generates a random number</span>
+number <span class="o">=</span> random.randint<span class="o">(</span>0,100<span class="o">)</span>
+
+<span class="c"># print(number)     #for testing purposes</span>
+
+print<span class="o">(</span>f<span class="s2">"I'm thinking of a number between 1 and 100."</span><span class="o">)</span>
+
+<span class="c">#Write a function that gets a guess from the user using input()</span>
+def guess<span class="o">()</span>:
+    num <span class="o">=</span> input<span class="o">(</span><span class="s2">"Choose a number."</span><span class="o">)</span>
+    <span class="k">return </span>num
+
+<span class="c">#Change the print statements to give feedback on whether the player guessed too high or too low</span>
+def search<span class="o">(</span>number, guess<span class="o">)</span>:
+    global lower_bound, upper_bound
+    <span class="k">if </span>int<span class="o">(</span>guess<span class="o">)</span> &lt; int<span class="o">(</span>number<span class="o">)</span>:
+        print<span class="o">(</span><span class="s2">"Your guess is too low."</span><span class="o">)</span>
+        lower_bound <span class="o">=</span> guess
+        <span class="k">return </span>lower_bound, upper_bound
+    <span class="k">elif </span>int<span class="o">(</span>guess<span class="o">)</span> <span class="o">&gt;</span> int<span class="o">(</span>number<span class="o">)</span>:
+        print<span class="o">(</span><span class="s2">"Your guess is too high."</span><span class="o">)</span>
+        upper_bound <span class="o">=</span> guess
+        <span class="k">return </span>lower_bound, upper_bound
+    <span class="k">else</span>:
+        upper_bound, lower_bound <span class="o">=</span> guess, guess
+        <span class="k">return </span>lower_bound, upper_bound
+
+<span class="k">while </span>user_guess <span class="o">!=</span> number:
+    user_guess <span class="o">=</span> guess<span class="o">()</span>
+    num_guesses +<span class="o">=</span> 1
+    print<span class="o">(</span>f<span class="s2">"You guessed {user_guess}."</span><span class="o">)</span>
+    lower_bound, upper_bound <span class="o">=</span> search<span class="o">(</span>number, user_guess<span class="o">)</span>
+    <span class="k">if </span>int<span class="o">(</span>upper_bound<span class="o">)</span> <span class="o">==</span> int<span class="o">(</span>number<span class="o">)</span>:
+        <span class="nb">break
+    </span><span class="k">else</span>:
+        print<span class="o">(</span>f<span class="s2">"Guess a number between {lower_bound} and {upper_bound}."</span><span class="o">)</span>
+
+print<span class="o">(</span>f<span class="s2">"You guessed the number in {num_guesses} guesses!"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I'm thinking of a number between 1 and 100.
+You guessed 50.
+Your guess is too high.
+Guess a number between 0 and 50.
+You guessed 25.
+Your guess is too high.
+Guess a number between 0 and 25.
+You guessed 12.
+Your guess is too high.
+Guess a number between 0 and 12.
+You guessed 6.
+Your guess is too high.
+Guess a number between 0 and 6.
+You guessed 2.
+Your guess is too high.
+Guess a number between 0 and 2.
+You guessed 1.
+You guessed the number in 6 guesses!
+</code></pre></div></div>
+
 <h2 id="311-binary-search">
 <a class="anchor" href="#311-binary-search" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.11 Binary Search</h2>
 
 <p>Repeatedly divides search interval in half.</p>
 <ul>
-  <li>
+  <li>allows to find certain parts of an array more efficiently than other methods is the list is sorted</li>
+  <li>works with branches, where there is a tree of the elements of an array, each section of the array being split in half each time</li>
 </ul>
+
+<p><img src="https://cdn.discordapp.com/attachments/806618712056528906/1049218809539592212/IMG_1541.jpg" alt="photo"></p>
+
+<ul>
+  <li>can be anything including strings and integers</li>
+</ul>
+
+<h3 id="hacks-7">
+<a class="anchor" href="#hacks-7" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>num1 <span class="o">=</span> <span class="o">[</span>12,14,44,57,79,80,99]
+num2 <span class="o">=</span> <span class="o">[</span>92,43,74,66,30,12,1]
+num3 <span class="o">=</span> <span class="o">[</span>7,13,96,111,33,84,60]
+
+numAll <span class="o">=</span> <span class="o">[</span>num1, num2, num3]
+
+<span class="k">for </span>x <span class="k">in </span>range<span class="o">(</span>len<span class="o">(</span>numAll<span class="o">))</span>:
+  numAll[x].sort<span class="o">()</span>
+  mid <span class="o">=</span> int<span class="o">(</span>len<span class="o">(</span>numAll[x]<span class="o">)</span>/2<span class="o">)</span>
+  print<span class="o">(</span><span class="s2">"Middle Index of Array "</span>, x+1, <span class="s2">"is"</span>, numAll[x][mid]<span class="o">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Middle Index of Array  1 is 57
+Middle Index of Array  2 is 43
+Middle Index of Array  3 is 60
+</code></pre></div></div>
+
+<p>Binary Trees:</p>
+
+<p><img src="/fastpages/images/3.11.png" alt="" title=" "></p>
+
+<p>Second Numbers Greater Than Middle Number:</p>
+
+<ol>
+  <li>Number = 80</li>
+  <li>Number = 74</li>
+  <li>Number = 96</li>
+</ol>
+
+<p>Which of the following lists can NOT a binary search be used in order to find a targeted value?</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a. ["amy", "beverly", "christian", "devin"]
+
+b. [-1, 2, 6, 9, 19]
+
+c. [3, 2, 8, 12, 99]
+
+d. ["xylophone", "snowman", "snake", "doorbell", "author"]
+</code></pre></div></div>
+
+<p>Answer: C would be the correct answer because it is unsorted, meaning that binary searching would not work. A and D are both sorted alphabetically either forwards or backwards and B is sorted numerically.</p>
 
   </div><!-- from https://github.com/utterance/utterances -->
 <script src="https://utteranc.es/client.js"
