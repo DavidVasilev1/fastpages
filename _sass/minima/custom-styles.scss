@@ -1,18 +1,34 @@
 /*-----------------------------------*/
 /*--- IMPORT STYLES FOR FASTPAGES ---*/
-@import "minima/lightmode";
+@import "minima/darkmode";
 
 
 /*-----------------------------------*/
 /*----- ADD YOUR STYLES BELOW -------*/
 
 // If you want to turn off dark background for syntax highlighting, comment or delete the below line.
-@import "minima/fastpages-dracula-highlight"; 
-
-pre *, code *, .highlight * {
-  font-size: 0.8rem !important;
-}
+@import "minima/fastpages-dracula-highlight";
+@import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
 
 html, body, input, textarea, select, button {
-  font-size :18px !important;
+  font-size: 110% !important;
+  font-family: 'Cairo' !important;
 }
+
+pre *, code *, .highlight *, pre, code {
+  font-size: 0.9rem !important;
+  background-color: #1E1E1E !important;
+}
+
+.input_area pre, .input_area div {
+  background: #1E1E1E !important;
+}
+
+.input_area pre {
+  border-left: 1px solid #fbfbfb !important;
+}
+
+tt, code {
+  font-size: 18px !important;
+}
+

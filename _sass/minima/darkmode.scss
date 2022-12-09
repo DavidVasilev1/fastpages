@@ -1,7 +1,7 @@
 $high-emph: rgba(white, 0.87);
 $med-emph: rgba(white, 0.69); //Noicee
 $low-emph: rgba(white, 0.38);
-$dark-grey : #2b1137; 
+$dark-grey : #171122; 
 // $dark-grey : #1F1B24;
 $overlay: mix($dark-grey, white, 95%);
 $overlay-light: mix($dark-grey, white, 86%);
@@ -11,12 +11,13 @@ $overlay-light: mix($dark-grey, white, 86%);
   background-color: $dark-grey !important;
 }
 
-.dark-mode a {
-    color: rgb(75, 186, 255) !important;
+a, a:visited {
+    color: rgb(128, 108, 161) !important;
 }
 
-.dark-mode a:hover {
-    color:$high-emph !important;
+a:hover {
+    color: rgb(134, 134, 198) !important;
+    font-weight: bold;
 }
 
 .dark-mode .site-title, .site-title:visited, .site-nav, .page-link {
