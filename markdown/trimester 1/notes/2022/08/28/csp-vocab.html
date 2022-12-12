@@ -165,7 +165,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      2 min read
+      5 min read
     
 </span></p>
 
@@ -195,6 +195,7 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#agile-methodology">Agile Methodology</a></li>
 <li class="toc-entry toc-h3"><a href="#the-internet">The Internet</a></li>
 <li class="toc-entry toc-h3"><a href="#unit-2">Unit 2</a></li>
+<li class="toc-entry toc-h3"><a href="#unit-3">Unit 3</a></li>
 </ul>
 </li>
 </ul><h2 id="csp-vocab">
@@ -262,7 +263,6 @@ window.onload = wrap_img;
 
 <h3 id="unit-2">
 <a class="anchor" href="#unit-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unit 2</h3>
-
 <ul>
   <li>Bits
     <ul>
@@ -322,19 +322,267 @@ window.onload = wrap_img;
       </li>
       <li>ASCII
         <ul>
-          <li>
+          <li>American Standard Code for Information Interchange
+<img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/USASCII_code_chart.png" alt="">
+</li>
+          <li>the most common character encoding format for text data in computers and on the internet</li>
         </ul>
       </li>
-      <li>Unicode</li>
-      <li>RGB</li>
+      <li>Unicode
+        <ul>
+          <li>information technology standard for the consistent encoding, representation, and handling of text expressed in most of the world’s writing systems</li>
+          <li>helps translate between different languages with character ids</li>
+        </ul>
+      </li>
+      <li>RGB
+        <ul>
+          <li>hexadecimal values assigned to red, green, and blue</li>
+          <li>creates color on computers</li>
+        </ul>
+      </li>
     </ul>
   </li>
   <li>Data Compression:
     <ul>
-      <li>Lossy</li>
-      <li>Lossless</li>
+      <li>Lossy
+        <ul>
+          <li>the amount of data that is stored in the image is reduced to reduce file size</li>
+          <li>this is created from a compressed file back to the original but without perfect resolution</li>
+        </ul>
+      </li>
+      <li>Lossless
+        <ul>
+          <li>the reconstructed data is perfectly reconstructed from compressed data</li>
+        </ul>
+      </li>
     </ul>
   </li>
+</ul>
+
+<h3 id="unit-3">
+<a class="anchor" href="#unit-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unit 3</h3>
+<ul>
+  <li>Variables
+    <ul>
+      <li>Variables - abstraction that holds value
+<img src="/fastpages/images/3.1.1.png" alt="" title=" ">
+</li>
+    </ul>
+  </li>
+  <li>Data Types
+    <ul>
+      <li>integer - numbers
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>var a <span class="o">=</span> 1
+</code></pre></div>        </div>
+      </li>
+      <li>string - text/letters
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>var a <span class="o">=</span> <span class="s2">"hello"</span>
+</code></pre></div>        </div>
+      </li>
+      <li>boolean - true/false statements
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>var a <span class="o">=</span> 1
+a <span class="o">=</span> True
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>Assignment Operators
+    <ul>
+      <li>used to do simple algebra
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>1 + 2 <span class="o">=</span> a
+1 <span class="k">*</span> 2 <span class="o">=</span> a
+1 / 2 <span class="o">=</span> a
+1 - 2 <span class="o">=</span> a
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>Managing Complexity with Variables:
+    <ul>
+      <li>Lists
+        <ul>
+          <li>store multiple elements in a list, allows for more strings to be stored</li>
+          <li>lists allow for a lot of data to be stored into one line of code, allowing for cleaner code and less work with creating variables
+            <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>list <span class="o">=</span> <span class="o">[</span><span class="s2">"a"</span>, <span class="s2">"b"</span>, <span class="s2">"c"</span><span class="o">]</span>
+</code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+      <li>2D Lists
+        <ul>
+          <li>lists with multiple parts, two dimensions
+            <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>list <span class="o">=</span> <span class="o">[</span>
+<span class="o">[</span><span class="s2">"a"</span>, <span class="s2">"b"</span>, <span class="s2">"c"</span><span class="o">]</span>,
+<span class="o">[</span><span class="s2">"a"</span>, <span class="s2">"b"</span>, <span class="s2">"c"</span><span class="o">]</span>,
+<span class="o">[</span><span class="s2">"a"</span>, <span class="s2">"b"</span>, <span class="s2">"c"</span><span class="o">]</span>
+<span class="o">]</span>
+</code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+      <li>Dictionaries
+        <ul>
+          <li>store data as values with keys <code class="language-plaintext highlighter-rouge">k, v</code>
+            <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>thisdict <span class="o">=</span> <span class="o">{</span>
+<span class="s2">"brand"</span>: <span class="s2">"Ford"</span>,
+<span class="s2">"model"</span>: <span class="s2">"Mustang"</span>,
+<span class="s2">"year"</span>: 1964
+<span class="o">}</span>
+</code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+      <li>Class
+        <ul>
+          <li>object constructor/blueprint for creating objects
+```bash
+class MyClass:
+x = 5</li>
+        </ul>
+
+        <p>p1 = MyClass()
+print(p1.x)
+```</p>
+      </li>
+    </ul>
+  </li>
+  <li>Algorithms
+    <ul>
+      <li>set of instructions that accomplish a task
+        <ul>
+          <li>iteration</li>
+          <li>selection</li>
+          <li>sequencing
+            <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>def add<span class="o">()</span>:
+x + y <span class="o">=</span> z
+print<span class="o">(</span>z<span class="o">)</span>
+</code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Sequence
+    <ul>
+      <li>a list of steps in order to complete a certain task</li>
+    </ul>
+  </li>
+  <li>Selection
+    <ul>
+      <li>allows an algorithm to make a decision based on if a condition is met, an example of this is when your car is out of fuel, you go to the gas station to fill your car, but if your car is full you wouldn’t go to the gas station</li>
+      <li>if/then statements
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="k">if </span>x <span class="o">&gt;</span> 0:
+print<span class="o">(</span><span class="s2">"yes"</span><span class="o">)</span>
+<span class="k">else</span>:
+print<span class="o">(</span><span class="s2">"no"</span><span class="o">)</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>Iteration
+    <ul>
+      <li>loops of code to complete a certain task
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="k">while </span>x <span class="o">==</span> 0
+print<span class="o">(</span><span class="s2">"0"</span><span class="o">)</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>Expressions
+    <ul>
+      <li>a way to do math in code
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>1 + 1 <span class="o">=</span> b
+print<span class="o">(</span>b<span class="o">)</span>
+<span class="c"># 2</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>Comparison Operators
+    <ul>
+      <li>compares two values and then outputs an answer
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>a <span class="o">=</span> 9
+b <span class="o">=</span> 5
+<span class="c"># Output</span>
+print<span class="o">(</span>a <span class="o">&gt;</span> b<span class="o">)</span>
+</code></pre></div>        </div>
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>a <span class="o">=</span> 9
+b <span class="o">=</span> 5
+<span class="c"># Output</span>
+print<span class="o">(</span>a <span class="o">!=</span> b<span class="o">)</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>Booleans Expressions and Selection
+    <ul>
+      <li>uses true/false statements, expressions to compare values and selection with if/then statements to generate an output
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>a <span class="o">=</span> True
+<span class="k">if </span>a <span class="o">==</span> True:
+a <span class="o">=</span> False
+print<span class="o">(</span><span class="s2">"a is false"</span><span class="o">)</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>Booleans Expressions and Iteration
+    <ul>
+      <li>uses true/false statements, expressions to compare values and loops the comparisons
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>a <span class="o">=</span> True
+<span class="k">if </span>a <span class="o">==</span> True:
+<span class="k">while </span>a <span class="o">==</span> True:
+  print<span class="o">(</span><span class="s2">"a is true"</span><span class="o">)</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>Truth Tables
+    <ul>
+      <li>OR: flips the output and makes it into an input
+        <ul>
+          <li>uses ```</li>
+        </ul>
+      </li>
+      <li>AND:</li>
+    </ul>
+  </li>
+  <li>Characters</li>
+  <li>Strings</li>
+  <li>Length</li>
+  <li>Concatenation</li>
+  <li>Upper</li>
+  <li>Lower</li>
+  <li>Traversing Strings</li>
+  <li>Python
+    <ul>
+      <li>If</li>
+      <li>Elif</li>
+      <li>Else conditionals</li>
+      <li>Nested Selection Statements</li>
+      <li>For</li>
+      <li>While loops with Range, with List</li>
+    </ul>
+  </li>
+  <li>Combining loops with conditionals to Break, Continue</li>
+  <li>Procedural Abstraction</li>
+  <li>Python Def procedures</li>
+  <li>Parameters</li>
+  <li>Return Values</li>
 </ul>
 
   </div><!-- from https://github.com/utterance/utterances -->
