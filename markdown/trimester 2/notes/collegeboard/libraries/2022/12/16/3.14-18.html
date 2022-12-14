@@ -165,7 +165,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      2 min read
+      3 min read
     
 </span></p>
 
@@ -209,6 +209,7 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#hacks-2">Hacks</a></li>
 </ul>
 </li>
+<li class="toc-entry toc-h2"><a href="#316---simulation">3.16 - Simulation</a></li>
 </ul><h2 id="3141---libraries">
 <a class="anchor" href="#3141---libraries" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.14.1 - Libraries</h2>
 
@@ -381,6 +382,66 @@ flip <span class="o">=</span> random.randint<span class="o">(</span>0,1<span cla
 
 <h3 id="hacks-2">
 <a class="anchor" href="#hacks-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks</h3>
+
+<h2 id="316---simulation">
+<a class="anchor" href="#316---simulation" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.16 - Simulation</h2>
+
+<p>simulation - imitation of a situation or process to get information on the product</p>
+<ul>
+  <li>Examples: safety, efficiency</li>
+  <li>more effective and and safer to perform as well as less costly</li>
+  <li>might not be as accurate as real life experiments</li>
+</ul>
+
+<p>Four Corners - code vs real life</p>
+
+<p>Real Life</p>
+<ul>
+  <li>less efficient</li>
+  <li>took a lot of time to execute and took a lot of people to perform</li>
+  <li>people have strategies</li>
+</ul>
+
+<p>Simulation</p>
+<ul>
+  <li>more efficient</li>
+  <li>balanced</li>
+  <li>doesn’t allow bias of number chooser</li>
+  <li>strategies can’t be used because it is entirely randomized</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import random
+
+status <span class="o">=</span> <span class="s2">"in"</span>
+<span class="k">while </span>status <span class="o">!=</span> <span class="s2">"out"</span>:
+    chooseCorner <span class="o">=</span> input<span class="o">(</span><span class="s2">"What corner do you choose?"</span><span class="o">)</span>
+
+    corner <span class="o">=</span> random.randint<span class="o">(</span>1,4<span class="o">)</span>
+
+    <span class="k">if </span>int<span class="o">(</span>chooseCorner<span class="o">)</span> <span class="o">==</span> corner:
+        status <span class="o">=</span> <span class="s2">"out"</span>
+        print<span class="o">(</span><span class="s2">"You chose corner number "</span> + chooseCorner + <span class="s2">" and you're OUT"</span><span class="o">)</span>
+    <span class="k">else</span>:
+        print<span class="o">(</span><span class="s2">"You chose corner number "</span> + chooseCorner + <span class="s2">" and are still in!"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>You chose corner number 2 and are still in!
+You chose corner number 3 and are still in!
+You chose corner number 4 and are still in!
+You chose corner number 1 and are still in!
+You chose corner number 2 and you're OUT
+</code></pre></div></div>
+
+<p>Code Explanation:</p>
+<ul>
+  <li>random number generator (middle person) = <code class="language-plaintext highlighter-rouge">random.randint</code>
+</li>
+  <li>if player is out = if statements</li>
+  <li>safe/continue playing = else</li>
+  <li>repeat process until there is a winner = while loop</li>
+</ul>
+
+<p>Rolling Dice - simulation</p>
 
 
   </div><!-- from https://github.com/utterance/utterances -->
