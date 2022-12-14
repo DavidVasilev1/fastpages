@@ -165,7 +165,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      3 min read
+      11 min read
     
 </span></p>
 
@@ -209,7 +209,11 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#hacks-2">Hacks</a></li>
 </ul>
 </li>
-<li class="toc-entry toc-h2"><a href="#316---simulation">3.16 - Simulation</a></li>
+<li class="toc-entry toc-h2"><a href="#316---simulation">3.16 - Simulation</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#hacks-3">Hacks</a></li>
+</ul>
+</li>
 </ul><h2 id="3141---libraries">
 <a class="anchor" href="#3141---libraries" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.14.1 - Libraries</h2>
 
@@ -230,6 +234,22 @@ math.sqrt<span class="o">(</span>64<span class="o">)</span>
 
 <h3 id="hacks">
 <a class="anchor" href="#hacks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import math
+
+def alg<span class="o">(</span>x,y<span class="o">)</span>:
+  z <span class="o">=</span> x + y
+  a <span class="o">=</span> math.sqrt<span class="o">(</span>z<span class="o">)</span>
+  result <span class="o">=</span> math.cos<span class="o">(</span>a<span class="o">)</span>
+  print<span class="o">(</span>str<span class="o">(</span>result<span class="o">))</span> 
+
+alg<span class="o">(</span>1,2<span class="o">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-0.16055653857469052
+</code></pre></div></div>
+
+<p>In this piece of code I import <code class="language-plaintext highlighter-rouge">math</code>, which is a library used in calculation of different things. I then define a function, <code class="language-plaintext highlighter-rouge">alg()</code> with the parameters <code class="language-plaintext highlighter-rouge">x,y</code>. I add <code class="language-plaintext highlighter-rouge">x</code> to <code class="language-plaintext highlighter-rouge">y</code> and then make that number equal to <code class="language-plaintext highlighter-rouge">z</code>. After that I square root <code class="language-plaintext highlighter-rouge">z</code> with the <code class="language-plaintext highlighter-rouge">math.sqrt()</code> function from the <code class="language-plaintext highlighter-rouge">math</code> library. I set this value to <code class="language-plaintext highlighter-rouge">a</code> and then I take the cosine of <code class="language-plaintext highlighter-rouge">a</code> with another function, <code class="language-plaintext highlighter-rouge">math.cos()</code> which gives me a <code class="language-plaintext highlighter-rouge">result</code>. The <code class="language-plaintext highlighter-rouge">result</code> is then printed as a string. I later define the parameters <code class="language-plaintext highlighter-rouge">x,y</code> as <code class="language-plaintext highlighter-rouge">1,2</code> in an argument.</p>
 
 <h2 id="3151---randomization">
 <a class="anchor" href="#3151---randomization" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.15.1 - Randomization</h2>
@@ -352,6 +372,33 @@ print<span class="o">(</span>answer3<span class="o">)</span>
 <h3 id="hacks-1">
 <a class="anchor" href="#hacks-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks</h3>
 
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import random
+
+list <span class="o">=</span> <span class="o">[</span><span class="s2">"apple"</span>, <span class="s2">"pear"</span>, <span class="s2">"strawberry"</span>, <span class="s2">"banana"</span><span class="o">]</span>
+
+result <span class="o">=</span> random.choice<span class="o">(</span>list<span class="o">)</span>
+
+print<span class="o">(</span>result<span class="o">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>strawberry
+</code></pre></div></div>
+<p>This output will change with the program being run.</p>
+
+<p><code class="language-plaintext highlighter-rouge">import random</code> imports the <code class="language-plaintext highlighter-rouge">random</code> library, which allows the use of different functions that are predefined in the library to randomly pick a string or integer from a list. This is useful in shortening code down to a couple of lines.</p>
+
+<p>Some other things that can be imported:</p>
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">import fibo</code> - allows fibonacci sequences to be created with less code</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">import pickle</code> - allows for conversion between bytes and strings/integers</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">import json</code> - allows for conversion between JSON</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">import calendar</code> - allows for calendar integration in python</li>
+</ul>
+
 <h2 id="3152---random-generators">
 <a class="anchor" href="#3152---random-generators" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.15.2 - Random Generators</h2>
 
@@ -382,6 +429,28 @@ flip <span class="o">=</span> random.randint<span class="o">(</span>0,1<span cla
 
 <h3 id="hacks-2">
 <a class="anchor" href="#hacks-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import random
+
+x <span class="o">=</span> random.randint<span class="o">(</span>0,7<span class="o">)</span>
+
+<span class="k">if </span>x <span class="o">&gt;=</span> 5:
+  print<span class="o">(</span><span class="s2">"green"</span><span class="o">)</span>
+<span class="k">elif </span>3 &lt;<span class="o">=</span> x &lt; 5:
+  print<span class="o">(</span><span class="s2">"blue"</span><span class="o">)</span>
+<span class="k">elif </span>x <span class="o">==</span> 2:
+  print<span class="o">(</span><span class="s2">"purple"</span><span class="o">)</span>
+<span class="k">elif </span>x <span class="o">==</span> 1:
+  print<span class="o">(</span><span class="s2">"red"</span><span class="o">)</span>
+<span class="k">elif </span>x <span class="o">==</span> 0:
+  print<span class="o">(</span><span class="s2">"orange"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>green
+</code></pre></div></div>
+<p>This output will change with each run of the program since it is random.</p>
+
+<p><code class="language-plaintext highlighter-rouge">random.randint(12,20)</code> - All numbers within the range of 12 &lt;= x &lt;= 20 are valid outputs of the function. This is because of the parameters defined in the function, which are <code class="language-plaintext highlighter-rouge">(12,20)</code>. Every other number is excluded from the selection of a random number in this function.</p>
 
 <h2 id="316---simulation">
 <a class="anchor" href="#316---simulation" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.16 - Simulation</h2>
@@ -442,7 +511,225 @@ You chose corner number 2 and you're OUT
 </ul>
 
 <p>Rolling Dice - simulation</p>
+<ul>
+  <li>allows for a set of numbers to be rolled within seconds</li>
+</ul>
 
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+def parse_input<span class="o">(</span>input_string<span class="o">)</span>:
+    <span class="k">if </span>input_string.strip<span class="o">()</span> <span class="k">in</span> <span class="o">{</span><span class="s2">"1"</span>, <span class="s2">"2"</span>, <span class="s2">"3"</span>,<span class="s2">"4"</span>, <span class="s2">"5"</span>, <span class="s2">"6"</span><span class="o">}</span>:
+        <span class="k">return </span>int<span class="o">(</span>input_string<span class="o">)</span>
+    <span class="k">else</span>:
+        print<span class="o">(</span><span class="s2">"Please enter a number from 1 to 6."</span><span class="o">)</span>
+        raise SystemExit<span class="o">(</span>1<span class="o">)</span>
+
+import random
+
+def roll_dice<span class="o">(</span>num_dice<span class="o">)</span>:
+    roll_results <span class="o">=</span> <span class="o">[]</span>
+    <span class="k">for </span>_ <span class="k">in </span>range<span class="o">(</span>num_dice<span class="o">)</span>:
+        roll <span class="o">=</span> random.randint<span class="o">(</span>1, 6<span class="o">)</span>
+        roll_results.append<span class="o">(</span>roll<span class="o">)</span>
+    <span class="k">return </span>roll_results
+
+
+num_dice_input <span class="o">=</span> input<span class="o">(</span><span class="s2">"How many dice do you want to roll? [1-6] "</span><span class="o">)</span>
+num_dice <span class="o">=</span> parse_input<span class="o">(</span>num_dice_input<span class="o">)</span>
+roll_results <span class="o">=</span> roll_dice<span class="o">(</span>num_dice<span class="o">)</span>
+
+print<span class="o">(</span><span class="s2">"you rolled:"</span>, roll_results<span class="o">)</span> 
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>you rolled: [5, 1, 2]
+</code></pre></div></div>
+
+<p>This output can change depending on the random results.</p>
+
+<p>Game of Life - interactive simulation</p>
+
+<p>Goals:</p>
+<ul>
+  <li>created unpredictable cellular automation</li>
+  <li>evolves without any patterns, entirely random</li>
+</ul>
+
+<p>How it Works:</p>
+<ul>
+  <li>cells are dead/alive (0 or 1)</li>
+  <li>user configures cells and then runs program that randomly generates cells
+    <ul>
+      <li>alive = dead cell is surrounded by at least 3 alive cells</li>
+      <li>dead = alive cell is surrounded by 1 or 0 other alive cells</li>
+      <li>survival = alive cell consistently surrounded by 2/3 alive cells stays alive</li>
+    </ul>
+  </li>
+</ul>
+
+<p>This program shows the use of iterations, conditionals, and functions being called to create a simulation of some sort.</p>
+
+<h3 id="hacks-3">
+<a class="anchor" href="#hacks-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks</h3>
+
+<ol>
+  <li>One simulation that could be done is finding which path is the longest out of a set of multiple paths. In this case the program would take the measurement of each of the paths and compare it among all the paths and from there decide which path is the shortest.</li>
+</ol>
+
+<p>Extra Credit Code:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x <span class="o">=</span> input<span class="o">(</span><span class="s2">"What is the length of path 1?"</span><span class="o">)</span>
+print<span class="o">(</span>str<span class="o">(</span>x<span class="o">)</span> + <span class="s2">" ft"</span><span class="o">)</span>
+y <span class="o">=</span> input<span class="o">(</span><span class="s2">"What is the length of path 2?"</span><span class="o">)</span>
+print<span class="o">(</span>str<span class="o">(</span>y<span class="o">)</span> + <span class="s2">" ft"</span><span class="o">)</span>
+z <span class="o">=</span> input<span class="o">(</span><span class="s2">"What is the length of path 3?"</span><span class="o">)</span>
+print<span class="o">(</span>str<span class="o">(</span>z<span class="o">)</span> + <span class="s2">" ft"</span><span class="o">)</span>
+
+path1 <span class="o">=</span> x
+path2 <span class="o">=</span> y
+path3 <span class="o">=</span> z
+
+
+pathList <span class="o">=</span> <span class="o">[</span>path1, path2, path3]
+
+fastest <span class="o">=</span> min<span class="o">(</span>pathList<span class="o">)</span>
+
+print<span class="o">(</span><span class="s2">"The shortest path is "</span> + str<span class="o">(</span>fastest<span class="o">)</span> + <span class="s2">" feet long."</span><span class="o">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4679460 ft
+245858 ft
+4670606 ft
+The shortest path is 245858 feet long.
+</code></pre></div></div>
+
+<ol>
+  <li>Quiz</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>questions_number <span class="o">=</span> 6
+answers_correct <span class="o">=</span> 0
+questions <span class="o">=</span> <span class="o">[</span>
+    <span class="s2">"True or False: Simulations will always have the same result. </span><span class="se">\n</span><span class="s2"> A: True, </span><span class="se">\n</span><span class="s2"> B: False"</span>,
+    <span class="s2">"True or False: A simulation has results that are more accurate than an experiment </span><span class="se">\n</span><span class="s2"> A: True, </span><span class="se">\n</span><span class="s2"> B: False"</span>,
+    <span class="s2">"True or False: A simulation can model real world events that are not practical for experiments </span><span class="se">\n</span><span class="s2"> A: True, </span><span class="se">\n</span><span class="s2"> B: False"</span>,
+    <span class="s2">"Which one of these is FALSE regarding simulations </span><span class="se">\n</span><span class="s2"> A: Reduces Costs, </span><span class="se">\n</span><span class="s2"> B: Is safer than real life experiments, </span><span class="se">\n</span><span class="s2"> C: More Efficient, </span><span class="se">\n</span><span class="s2"> D: More accurate than real life experiments"</span>,
+    <span class="s2">"Which of the following scenarios would be the LEAST beneficial to have as a simulation </span><span class="se">\n</span><span class="s2"> A: A retail company wants to identify the item which sold the most on their website, </span><span class="se">\n</span><span class="s2"> B: A restaurant wants to determine if the use of robots will increase efficiency, </span><span class="se">\n</span><span class="s2"> C: An insurance company wants to study the impact of rain on car accidents, </span><span class="se">\n</span><span class="s2"> D: A sports car company wants to study design changes to their new bike design "</span>,
+    <span class="s2">"Which of the following is better to do as a simulation than as a calculation </span><span class="se">\n</span><span class="s2"> A: Keeping score at a basketball game, </span><span class="se">\n</span><span class="s2"> B: Keeping track of how many games a person has won, </span><span class="se">\n</span><span class="s2"> C: Determining the average grade for a group of tests, </span><span class="se">\n</span><span class="s2"> D: Studying the impact of carbon emissions on the environment"</span>
+<span class="o">]</span>
+question_answers <span class="o">=</span> <span class="o">[</span>
+    <span class="s2">"B"</span>,
+    <span class="s2">"B"</span>,
+    <span class="s2">"A"</span>,
+    <span class="s2">"D"</span>,
+    <span class="s2">"A"</span>,
+    <span class="s2">"D"</span>
+<span class="o">]</span>
+
+print<span class="o">(</span><span class="s2">"Welcome to the Simulations Quiz!"</span><span class="o">)</span>
+
+def ask_question <span class="o">(</span>question, answer<span class="o">)</span>:
+    print<span class="o">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span>, question<span class="o">)</span>
+    user_answer <span class="o">=</span> input<span class="o">(</span>question<span class="o">)</span>
+    print<span class="o">(</span><span class="s2">"You said: "</span>, user_answer<span class="o">)</span>
+
+    <span class="k">if </span>user_answer <span class="o">==</span> answer:
+        print<span class="o">(</span><span class="s2">"Correct!"</span><span class="o">)</span>
+        global answers_correct
+        answers_correct <span class="o">=</span> answers_correct + 1
+    <span class="k">else</span>:
+        print<span class="o">(</span><span class="s2">"You are incorrect"</span><span class="o">)</span>
+    
+<span class="k">for </span>num <span class="k">in </span>range<span class="o">(</span>questions_number<span class="o">)</span>:
+    ask_question<span class="o">(</span>questions[num], question_answers[num]<span class="o">)</span>
+
+print<span class="o">(</span><span class="s2">"You scored: "</span>, answers_correct, <span class="s2">"/6"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Welcome to the Simulations Quiz!
+
+ True or False: Simulations will always have the same result. 
+ A: True, 
+ B: False
+You said:  B
+Correct!
+
+ True or False: A simulation has results that are more accurate than an experiment 
+ A: True, 
+ B: False
+You said:  B
+Correct!
+
+ True or False: A simulation can model real world events that are not practical for experiments 
+ A: True, 
+ B: False
+You said:  A
+Correct!
+
+ Which one of these is FALSE regarding simulations 
+ A: Reduces Costs, 
+ B: Is safer than real life experiments, 
+ C: More Efficient, 
+ D: More accurate than real life experiments
+You said:  D
+Correct!
+
+ Which of the following scenarios would be the LEAST beneficial to have as a simulation 
+ A: A retail company wants to identify the item which sold the most on their website, 
+ B: A restaurant wants to determine if the use of robots will increase efficiency, 
+ C: An insurance company wants to study the impact of rain on car accidents, 
+ D: A sports car company wants to study design changes to their new bike design 
+You said:  A
+Correct!
+
+ Which of the following is better to do as a simulation than as a calculation 
+ A: Keeping score at a basketball game, 
+ B: Keeping track of how many games a person has won, 
+ C: Determining the average grade for a group of tests, 
+ D: Studying the impact of carbon emissions on the environment
+You said:  D
+Correct!
+You scored:  6 /6
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p>Rolling Dice Simulation - In the rolling dice simulation, the user first picks a number of die that they want to roll, needing to be within a range of 1 to 6. From there the program checks what number is inputted and then rolls the number of die that the user has picked. This is done by choosing a random number between 1 and 6 and then repeating this for the number of die chosen in the beginning. The results of the random numbers generated are then outputted to the user in a list.</p>
+  </li>
+  <li>
+    <p>Changing Dice Simulation:</p>
+  </li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+def parse_input<span class="o">(</span>input_string<span class="o">)</span>:
+    <span class="k">if </span>input_string.strip<span class="o">()</span> <span class="k">in</span> <span class="o">{</span><span class="s2">"1"</span>, <span class="s2">"2"</span>, <span class="s2">"3"</span>,<span class="s2">"4"</span>, <span class="s2">"5"</span>, <span class="s2">"6"</span><span class="o">}</span>:
+        <span class="k">return </span>int<span class="o">(</span>input_string<span class="o">)</span>
+    <span class="k">else</span>:
+        print<span class="o">(</span><span class="s2">"Please enter a number from 1 to 6."</span><span class="o">)</span>
+        raise SystemExit<span class="o">(</span>1<span class="o">)</span>
+
+import random
+
+def roll_dice<span class="o">(</span>num_dice<span class="o">)</span>:
+    roll_results <span class="o">=</span> <span class="o">[]</span>
+    <span class="k">for </span>_ <span class="k">in </span>range<span class="o">(</span>num_dice<span class="o">)</span>:
+        roll <span class="o">=</span> random.randint<span class="o">(</span>1, x<span class="o">)</span> <span class="c"># increased range of random number chosen</span>
+        roll_results.append<span class="o">(</span>roll<span class="o">)</span>
+    <span class="k">return </span>roll_results
+
+
+num_dice_input <span class="o">=</span> input<span class="o">(</span><span class="s2">"How many dice do you want to roll? [1-6] "</span><span class="o">)</span>
+x <span class="o">=</span> int<span class="o">(</span>input<span class="o">(</span><span class="s2">"Please enter the number of sides you want the dice to have."</span><span class="o">))</span> <span class="c"># variable for sides the dice should have</span>
+num_dice <span class="o">=</span> parse_input<span class="o">(</span>num_dice_input<span class="o">)</span>
+roll_results <span class="o">=</span> roll_dice<span class="o">(</span>num_dice<span class="o">)</span>
+
+print<span class="o">(</span><span class="s2">"you rolled:"</span>, roll_results<span class="o">)</span> 
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>you rolled: [118, 180, 50, 291, 315, 105]
+</code></pre></div></div>
+<p>This output will change with each run of code since the conditions can be altered.</p>
 
   </div><!-- from https://github.com/utterance/utterances -->
 <script src="https://utteranc.es/client.js"
