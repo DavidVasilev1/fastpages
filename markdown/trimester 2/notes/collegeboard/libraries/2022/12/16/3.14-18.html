@@ -165,7 +165,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      11 min read
+      13 min read
     
 </span></p>
 
@@ -212,6 +212,16 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h2"><a href="#316---simulation">3.16 - Simulation</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#hacks-3">Hacks</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#317---undecidable-vs-unsolvable-problems">3.17 - Undecidable vs Unsolvable Problems</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#hacks-4">Hacks</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#318---algorithmic-efficiency">3.18 - Algorithmic Efficiency</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#hacks-5">Hacks</a></li>
 </ul>
 </li>
 </ul><h2 id="3141---libraries">
@@ -693,7 +703,7 @@ You scored:  6 /6
 
 <ol>
   <li>
-    <p>Rolling Dice Simulation - In the rolling dice simulation, the user first picks a number of die that they want to roll, needing to be within a range of 1 to 6. From there the program checks what number is inputted and then rolls the number of die that the user has picked. This is done by choosing a random number between 1 and 6 and then repeating this for the number of die chosen in the beginning. The results of the random numbers generated are then outputted to the user in a list.</p>
+    <p>Rolling Dice Simulation - In the rolling dice simulation, the user first picks a number of die that they want to roll, needing to be within a range of 1 to 6. From there the program checks what number is inputted and then rolls the number of die that the user has picked. This is done by choosing a random number between 1 and 6 and then repeating this for the number of die chosen in the beginning. The results of the random numbers generated are then outputted to the user in a list. This is a simulation because it isn’t in real life and it is simpler and faster than in real life. The advantages of this is that it is faster and simpler to do in code than in real life. The disadvantages is that it is less accurate than in real life examples. I think that in this situation a simulation is better in simulation because it is entirely random and gives outputs fast.</p>
   </li>
   <li>
     <p>Changing Dice Simulation:</p>
@@ -730,6 +740,98 @@ print<span class="o">(</span><span class="s2">"you rolled:"</span>, roll_results
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>you rolled: [118, 180, 50, 291, 315, 105]
 </code></pre></div></div>
 <p>This output will change with each run of code since the conditions can be altered.</p>
+
+<h2 id="317---undecidable-vs-unsolvable-problems">
+<a class="anchor" href="#317---undecidable-vs-unsolvable-problems" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.17 - Undecidable vs Unsolvable Problems</h2>
+
+<p>Collatz Conjecture - unsolved math problem that eventually makes a number into 1</p>
+<ul>
+  <li>can’t test every number since they are infinite, so this is unsolved</li>
+</ul>
+
+<p><img src="/fastpages/images/3.17.png" alt="" title=" "></p>
+
+<p>Example:</p>
+
+<p><img src="/fastpages/images/3.17-2.png" alt="" title=" "></p>
+
+<p>Code - Hailstone Numbers:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def collatz<span class="o">(</span>i<span class="o">)</span>:
+    <span class="k">while </span>i <span class="o">&gt;</span> 1:
+        print<span class="o">(</span>i, <span class="nv">end</span><span class="o">=</span><span class="s1">' '</span><span class="o">)</span>
+        <span class="k">if</span> <span class="o">(</span>i % 2<span class="o">)</span>:
+            <span class="c"># i is odd</span>
+            i <span class="o">=</span> 3<span class="k">*</span>i + 1
+        <span class="k">else</span>:
+            <span class="c"># i is even</span>
+            i <span class="o">=</span> i//2
+    print<span class="o">(</span>1, <span class="nv">end</span><span class="o">=</span><span class="s1">''</span><span class="o">)</span>
+ 
+ 
+i <span class="o">=</span> int<span class="o">(</span>input<span class="o">(</span><span class="s1">'Enter i: '</span><span class="o">))</span>
+print<span class="o">(</span><span class="s1">'Sequence: '</span>, <span class="nv">end</span><span class="o">=</span><span class="s1">''</span><span class="o">)</span>
+collatz<span class="o">(</span>i<span class="o">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Sequence: 6 3 10 5 16 8 4 2 1
+</code></pre></div></div>
+
+<p>This output shows the numbers being processed up until <code class="language-plaintext highlighter-rouge">i</code> is 1 an will change with the number inputted.</p>
+
+<h3 id="hacks-4">
+<a class="anchor" href="#hacks-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks</h3>
+
+<h2 id="318---algorithmic-efficiency">
+<a class="anchor" href="#318---algorithmic-efficiency" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.18 - Algorithmic Efficiency</h2>
+
+<p>Inefficient Algorithm - Sorting</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># This creates a function called inefficientWay with a parameter called number.</span>
+def inefficientWay<span class="o">(</span>numbers<span class="o">)</span>:
+ <span class="c"># Then it loops over the numbers</span>
+ <span class="k">for </span>i <span class="k">in </span>range<span class="o">(</span>len<span class="o">(</span>numbers<span class="o">))</span>:
+   <span class="c"># Now it finds the minimum number in the unsorted part of the list</span>
+   min_index <span class="o">=</span> i
+   <span class="k">for </span>j <span class="k">in </span>range<span class="o">(</span>i+1, len<span class="o">(</span>numbers<span class="o">))</span>:
+     <span class="k">if </span>numbers[j] &lt; numbers[min_index]:
+       min_index <span class="o">=</span> j
+   <span class="c"># Then it swaps the minimum number with the first unsorted number</span>
+   numbers[i], numbers[min_index] <span class="o">=</span> numbers[min_index], numbers[i]
+ <span class="c"># return the sorted list</span>
+ <span class="k">return </span>numbers
+ 
+<span class="c"># test the algorithm</span>
+print<span class="o">(</span>inefficientWay<span class="o">([</span>2, 4, 5, 1, 3]<span class="o">))</span>  <span class="c"># should print [1, 2, 3, 4, 5]</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3, 4, 5]
+</code></pre></div></div>
+
+<p>Efficient Algorithm - Sorting (with loop)</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def efficient_sort<span class="o">(</span>numbers<span class="o">)</span>:
+ <span class="c"># loop over the numbers</span>
+ <span class="k">for </span>i <span class="k">in </span>range<span class="o">(</span>len<span class="o">(</span>numbers<span class="o">))</span>:
+   <span class="c"># find the minimum number in the unsorted part of the list</span>
+   min_index <span class="o">=</span> i
+   <span class="k">for </span>j <span class="k">in </span>range<span class="o">(</span>i+1, len<span class="o">(</span>numbers<span class="o">))</span>:
+     <span class="k">if </span>numbers[j] &lt; numbers[min_index]:
+       min_index <span class="o">=</span> j
+   <span class="c"># swap the minimum number with the first unsorted number</span>
+   numbers[i], numbers[min_index] <span class="o">=</span> numbers[min_index], numbers[i]
+ <span class="c"># return the sorted list</span>
+ <span class="k">return </span>numbers
+ 
+<span class="c"># test the algorithm</span>
+print<span class="o">(</span>efficient_sort<span class="o">([</span>2, 4, 5, 1, 3]<span class="o">))</span>  <span class="c"># should print [1, 2, 3, 4, 5]</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3, 4, 5]
+</code></pre></div></div>
+
+<h3 id="hacks-5">
+<a class="anchor" href="#hacks-5" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks</h3>
 
   </div><!-- from https://github.com/utterance/utterances -->
 <script src="https://utteranc.es/client.js"

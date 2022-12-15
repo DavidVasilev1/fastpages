@@ -298,7 +298,7 @@ window.onload = wrap_img;
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Sequence: 4 2 1</pre>
+<pre>Sequence: 9 28 14 7 22 11 34 17 52 26 13 40 20 10 5 16 8 4 2 1</pre>
 </div>
 </div>
 
@@ -362,7 +362,7 @@ window.onload = wrap_img;
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Please enter a number: 
-Number of iterations: 8
+Number of iterations: 3
 </pre>
 </div>
 </div>
@@ -430,6 +430,30 @@ The action or a process of iterating or repeating:such as. : a procedure in whic
 </div>
 </div>
 </div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+  <span class="k">while</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">/</span><span class="mi">2</span>
+  
+
+<span class="n">i</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Enter a number:"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -460,20 +484,15 @@ The action or a process of iterating or repeating:such as. : a procedure in whic
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">inefficientWay</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
- <span class="c1"># Then it loops over the numbers</span>
  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)):</span>
-   <span class="c1"># Now it finds the minimum number in the unsorted part of the list</span>
    <span class="n">min_index</span> <span class="o">=</span> <span class="n">i</span>
    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)):</span>
      <span class="k">if</span> <span class="n">numbers</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">numbers</span><span class="p">[</span><span class="n">min_index</span><span class="p">]:</span>
        <span class="n">min_index</span> <span class="o">=</span> <span class="n">j</span>
-   <span class="c1"># Then it swaps the minimum number with the first unsorted number</span>
    <span class="n">numbers</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">numbers</span><span class="p">[</span><span class="n">min_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">numbers</span><span class="p">[</span><span class="n">min_index</span><span class="p">],</span> <span class="n">numbers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
- <span class="c1"># return the sorted list</span>
  <span class="k">return</span> <span class="n">numbers</span>
  
-<span class="c1"># test the algorithm</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">inefficientWay</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>  <span class="c1"># should print [1, 2, 3, 4, 5]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">inefficientWay</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
 </pre></div>
 
     </div>
@@ -521,20 +540,15 @@ The action or a process of iterating or repeating:such as. : a procedure in whic
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">efficient_sort</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
- <span class="c1"># loop over the numbers</span>
  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)):</span>
-   <span class="c1"># find the minimum number in the unsorted part of the list</span>
    <span class="n">min_index</span> <span class="o">=</span> <span class="n">i</span>
    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)):</span>
      <span class="k">if</span> <span class="n">numbers</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">numbers</span><span class="p">[</span><span class="n">min_index</span><span class="p">]:</span>
        <span class="n">min_index</span> <span class="o">=</span> <span class="n">j</span>
-   <span class="c1"># swap the minimum number with the first unsorted number</span>
    <span class="n">numbers</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">numbers</span><span class="p">[</span><span class="n">min_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">numbers</span><span class="p">[</span><span class="n">min_index</span><span class="p">],</span> <span class="n">numbers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
- <span class="c1"># return the sorted list</span>
  <span class="k">return</span> <span class="n">numbers</span>
  
-<span class="c1"># test the algorithm</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">efficient_sort</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>  <span class="c1"># should print [1, 2, 3, 4, 5]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">efficient_sort</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span> 
 </pre></div>
 
     </div>
