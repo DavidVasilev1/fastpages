@@ -12,7 +12,7 @@ comments: true
 
 | Date | Subject |
 |-|-|
-| 8/28/2022 | [CSP Vocab](https://davidvasilev1.github.io/fastpages/markdown/trimester%201/tri%201%20notes/2022/08/28/csp-vocab.html) |
+| 8/28/2022 | [CSP Vocab](https://davidvasilev1.github.io/fastpages/markdown/trimester%201/notes/2022/08/28/csp-vocab.html) |
 | 8/28/2022 | [How to Enter and Code with "wsl"](https://davidvasilev1.github.io/fastpages/jupyter/tri%201%20notes/2022/08/28/entering-wsl-script.html) |
 | 8/28/2022 | [How to Use Bash](https://davidvasilev1.github.io/fastpages/jupyter/tri%201%20notes/2022/08/28/bash-kernel.html) |
 
