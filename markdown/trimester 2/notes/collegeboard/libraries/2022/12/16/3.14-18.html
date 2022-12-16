@@ -165,7 +165,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      13 min read
+      15 min read
     
 </span></p>
 
@@ -773,6 +773,35 @@ collatz<span class="o">(</span>i<span class="o">)</span>
 <h3 id="hacks-4">
 <a class="anchor" href="#hacks-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks</h3>
 
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list <span class="o">=</span> <span class="o">[</span>i]
+iterations <span class="o">=</span> 0
+
+def collatz<span class="o">(</span>i<span class="o">)</span>:
+    global list
+    global iterations
+    <span class="k">while </span>i <span class="o">!=</span> 1:
+        <span class="k">if</span> <span class="o">(</span>i % 2<span class="o">)</span>:
+             i <span class="o">=</span>int<span class="o">(</span>3<span class="k">*</span>i + 1<span class="o">)</span>
+             list.append<span class="o">(</span>i<span class="o">)</span>
+             iterations +<span class="o">=</span> 1
+        <span class="k">else</span>:
+            i <span class="o">=</span> int<span class="o">(</span>i/2<span class="o">)</span>
+            list.append<span class="o">(</span>i<span class="o">)</span>
+            iterations +<span class="o">=</span> 1
+    <span class="k">else</span>:
+      print<span class="o">(</span><span class="s2">"Number of iterations: "</span> + str<span class="o">(</span>iterations<span class="o">))</span>
+      print<span class="o">(</span><span class="s2">"Sequence: "</span> + str<span class="o">(</span>list<span class="o">))</span>
+
+i <span class="o">=</span> int<span class="o">(</span>input<span class="o">(</span><span class="s2">"Enter a number:"</span><span class="o">))</span>
+print<span class="o">(</span><span class="s2">"Inputted number: "</span> + str<span class="o">(</span>i<span class="o">))</span>
+collatz<span class="o">(</span>i<span class="o">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Inputted number: 34
+Number of iterations: 13
+Sequence: [34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1]
+</code></pre></div></div>
+
 <h2 id="318---algorithmic-efficiency">
 <a class="anchor" href="#318---algorithmic-efficiency" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.18 - Algorithmic Efficiency</h2>
 
@@ -823,6 +852,67 @@ print<span class="o">(</span>efficient_sort<span class="o">([</span>2, 4, 5, 1, 
 
 <h3 id="hacks-5">
 <a class="anchor" href="#hacks-5" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks</h3>
+
+<p>Efficient:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list <span class="o">=</span> <span class="o">[]</span>
+count <span class="o">=</span> 0
+
+<span class="k">while </span>count &lt; 4:
+  i <span class="o">=</span> input<span class="o">(</span><span class="s2">"Type something!"</span><span class="o">)</span>
+  list.append<span class="o">(</span>i<span class="o">)</span>
+  count +<span class="o">=</span> 1
+
+<span class="k">if </span>count <span class="o">==</span> 4:
+  print<span class="o">(</span><span class="s2">"Here is what you typed: "</span><span class="o">)</span>
+  <span class="k">for </span>x <span class="k">in </span>list:
+      print<span class="o">(</span><span class="s2">"- "</span> + str<span class="o">(</span>x<span class="o">))</span>
+  print<span class="o">(</span><span class="s2">"Finished!"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apple
+pear
+banana
+strawberry
+orange
+</code></pre></div></div>
+<ul>
+  <li>This box of code uses a loop to cycle through the decision of asking the user to input their string. This string is then put into a list which is later cycled through with another loop after a certain number of inputs have been achieved. The loop goes through the created list and outputs the user’s inputs into a formatted list. This is much more efficient because there isn’t one line of code that is repeated in the program, meaning that the programs cycles on it’s own to repeat a certain action.</li>
+</ul>
+
+<p><br>
+Inefficient:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>count <span class="o">=</span> 0
+
+print<span class="o">(</span><span class="s2">"Here is what you typed: "</span><span class="o">)</span>
+
+a <span class="o">=</span> input<span class="o">(</span><span class="s2">"Type something!"</span><span class="o">)</span>
+print<span class="o">(</span><span class="s2">"- "</span> + str<span class="o">(</span>a<span class="o">))</span>
+count +<span class="o">=</span> 1
+b <span class="o">=</span> input<span class="o">(</span><span class="s2">"Type something!"</span><span class="o">)</span>
+print<span class="o">(</span><span class="s2">"- "</span> + str<span class="o">(</span>b<span class="o">))</span>
+count +<span class="o">=</span> 1
+c <span class="o">=</span> input<span class="o">(</span><span class="s2">"Type something!"</span><span class="o">)</span>
+print<span class="o">(</span><span class="s2">"- "</span> + str<span class="o">(</span>c<span class="o">))</span>
+count +<span class="o">=</span> 1
+d <span class="o">=</span> input<span class="o">(</span><span class="s2">"Type something!"</span><span class="o">)</span>
+print<span class="o">(</span><span class="s2">"- "</span> + str<span class="o">(</span>d<span class="o">))</span>
+count +<span class="o">=</span> 1
+
+<span class="k">if </span>count <span class="o">==</span> 4:
+  print<span class="o">(</span><span class="s2">"Finished!"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apple
+pear
+banana
+strawberry
+orange
+</code></pre></div></div>
+<ul>
+  <li>This box of code repeats the same line of code multiple times in order to ask for an input from the user, to print out the user input, and then to add a number to a counter. When this counter reaches a certain number it states that the program is finished. This is much less efficient because the same code is repeated multiple times, when a loop can be used to repeat it.</li>
+</ul>
 
   </div><!-- from https://github.com/utterance/utterances -->
 <script src="https://utteranc.es/client.js"
