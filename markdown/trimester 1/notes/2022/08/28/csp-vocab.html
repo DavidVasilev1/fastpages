@@ -165,7 +165,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      5 min read
+      7 min read
     
 </span></p>
 
@@ -553,36 +553,217 @@ print<span class="o">(</span><span class="s2">"a is false"</span><span class="o"
   </li>
   <li>Truth Tables
     <ul>
-      <li>OR: flips the output and makes it into an input
-        <ul>
-          <li>uses ```</li>
-        </ul>
-      </li>
-      <li>AND:</li>
+      <li>table for a logical operator containing each variable and all possible input and output results of that operator</li>
+      <li>OR: one input must return true</li>
+      <li>AND: all inputs must return true</li>
+      <li>XOR: only one input can be true</li>
     </ul>
   </li>
-  <li>Characters</li>
-  <li>Strings</li>
-  <li>Length</li>
-  <li>Concatenation</li>
-  <li>Upper</li>
-  <li>Lower</li>
-  <li>Traversing Strings</li>
+  <li>Characters
+    <ul>
+      <li>a single letter, number, symbol, or other element</li>
+    </ul>
+  </li>
+  <li>Strings
+    <ul>
+      <li>sequence of characters
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>a <span class="o">=</span> <span class="s2">"apple"</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>Length
+    <ul>
+      <li>number of characters it contains
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>a <span class="o">=</span> <span class="s2">"apple"</span>
+print<span class="o">(</span>len<span class="o">(</span>a<span class="o">))</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>Concatenation
+    <ul>
+      <li>combining two or more strings into a single string
+```bash
+a = “apple”
+b = “banana”</li>
+    </ul>
+
+    <p>conc = a + b
+```</p>
+  </li>
+  <li>Upper
+    <ul>
+      <li>convert a string to all uppercase
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>a <span class="o">=</span> <span class="s2">"apple"</span>
+print<span class="o">(</span>a.upper<span class="o">())</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>Lower
+    <ul>
+      <li>convert a string to all lowercase
+```bash
+a = “apple”
+print(a.lower())</li>
+    </ul>
+  </li>
+  <li>Traversing Strings
+    <ul>
+      <li>access each character in the string one by one, use a for loop to do this
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>a <span class="o">=</span> <span class="s2">"apple"</span>
+<span class="k">for </span>x <span class="k">in </span>a:
+print<span class="o">(</span>x<span class="o">)</span>
+</code></pre></div>        </div>
+      </li>
+      <li>index lists
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>list <span class="o">=</span> <span class="o">[</span><span class="s2">"a"</span>, <span class="s2">"b"</span><span class="o">]</span>
+print<span class="o">(</span>list<span class="o">(</span>1<span class="o">))</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
   <li>Python
     <ul>
-      <li>If</li>
-      <li>Elif</li>
-      <li>Else conditionals</li>
-      <li>Nested Selection Statements</li>
-      <li>For</li>
-      <li>While loops with Range, with List</li>
+      <li>If
+        <ul>
+          <li>execute a block of code if a specific condition is true
+            <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="k">if </span>x <span class="o">&gt;</span> 0:
+print<span class="o">(</span><span class="s2">"a"</span><span class="o">)</span>
+</code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+      <li>Elif
+        <ul>
+          <li>to specify additional conditions to check if the previous conditions are false
+            <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="k">if </span>x &lt; 0:
+print<span class="o">(</span><span class="s2">"a"</span><span class="o">)</span>
+<span class="k">elif </span>x <span class="o">&gt;</span> 1:
+print<span class="o">(</span><span class="s2">"b"</span><span class="o">)</span>
+</code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+      <li>Else conditionals
+        <ul>
+          <li>execute a block of code if all of the previous conditions are false
+            <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="k">if </span>x &lt; 0:
+print<span class="o">(</span><span class="s2">"a"</span><span class="o">)</span>
+<span class="k">elif </span>x <span class="o">&gt;</span> 1:
+print<span class="o">(</span><span class="s2">"b"</span><span class="o">)</span>
+<span class="k">else</span>:
+print<span class="o">(</span><span class="s2">"c"</span><span class="o">)</span>
+</code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+      <li>Nested Selection Statements
+        <ul>
+          <li>control structures that contain other control structures within them
+            <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="k">if </span>x <span class="o">&gt;</span> 0:
+<span class="k">if </span>b <span class="o">&gt;</span> 0:
+    print<span class="o">(</span><span class="s2">"c"</span><span class="o">)</span>
+</code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+      <li>For
+        <ul>
+          <li>used to execute a block of code multiple times
+            <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>or i <span class="k">in </span>range<span class="o">(</span>1, 10<span class="o">)</span>:
+print<span class="o">(</span>i<span class="o">)</span>
+</code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+      <li>While
+        <ul>
+          <li>execute a block of code repeatedly until a certain condition is met
+            <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>x <span class="o">=</span> 0
+<span class="k">while </span>x &lt;<span class="o">=</span> 10:
+print<span class="o">(</span>x<span class="o">)</span>
+x +<span class="o">=</span> 1
+</code></pre></div>            </div>
+          </li>
+          <li>lists
+            <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>x <span class="o">=</span> <span class="o">[</span>1,2,3]
+i <span class="o">=</span> 0
+<span class="k">while </span>i &lt;<span class="o">=</span> len<span class="o">(</span>x<span class="o">)</span>:
+print<span class="o">(</span>x[i]<span class="o">)</span>
+i +<span class="o">=</span> 1
+</code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
     </ul>
   </li>
-  <li>Combining loops with conditionals to Break, Continue</li>
-  <li>Procedural Abstraction</li>
-  <li>Python Def procedures</li>
-  <li>Parameters</li>
-  <li>Return Values</li>
+  <li>Combining loops with conditionals to Break, Continue
+    <ul>
+      <li>Break: break is used to exit a loop early</li>
+      <li>Continue: used to skip the rest of the current iteration and move on to the next one
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="k">while </span>y <span class="o">&gt;</span> 0:
+<span class="k">if </span>x <span class="o">==</span> 0:
+  <span class="nb">break
+</span><span class="k">if </span>x <span class="o">==</span> 1:
+  <span class="k">continue</span> 
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>Procedural Abstraction
+    <ul>
+      <li>abstract away the details of how the task is performed, making your code easier to read and maintain, more efficient code</li>
+    </ul>
+  </li>
+  <li>Python Def procedures
+    <ul>
+      <li>how procedures are made with the def word
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>def func<span class="o">(</span>x<span class="o">)</span>:
+print<span class="o">(</span><span class="s2">"a = "</span> + x<span class="o">)</span>
+func<span class="o">(</span><span class="s2">"b"</span><span class="o">)</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>Parameters
+    <ul>
+      <li>values that are passed to the procedure when it is called, defined within the parentheses of the procedure definition
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>def add<span class="o">(</span>x,y<span class="o">)</span>:
+print<span class="o">(</span>x+y<span class="o">)</span>
+add<span class="o">(</span>1,2<span class="o">)</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>Return Values
+    <ul>
+      <li>value that is returned can be used by the calling code to perform additional tasks or to assign to a variable
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>def sub<span class="o">(</span>x,y<span class="o">)</span>:
+z <span class="o">=</span> x - y
+<span class="k">return </span>z
+print<span class="o">(</span>sub<span class="o">(</span>2,1<span class="o">))</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
 </ul>
 
   </div><!-- from https://github.com/utterance/utterances -->
