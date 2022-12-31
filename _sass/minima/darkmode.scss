@@ -1,80 +1,79 @@
-$high-emph: rgba(white, 0.87);
-$med-emph: rgba(white, 0.69); //Noicee
-$low-emph: rgba(white, 0.38);
-$dark-grey : #171122; 
-// $dark-grey : #1F1B24;
-$overlay: mix($dark-grey, white, 95%);
-$overlay-light: mix($dark-grey, white, 86%);
+$high-emph-dark: rgba(white, 0.87);
+$med-emph-dark: rgba(white, 0.69);
+$low-emph-dark: rgba(white, 0.38);
+$dark-grey-dark : #10101a; 
+$overlay-d: mix($dark-grey-dark, white, 95%);
+$overlay-dark: mix($dark-grey-dark, white, 86%);
 
 .dark-mode html, body, input, textarea, select, button {   
-  color: $high-emph !important;
-  background-color: $dark-grey !important;
+  color: $high-emph-dark !important;
+  background-color: $dark-grey-dark !important;
 }
 
-a, a:visited {
-    color: rgb(128, 108, 161) !important;
+.dark-mode a, a:visited {
+    color: #908bde !important;
 }
 
-a:hover {
-    color: rgb(134, 134, 198) !important;
+.dark-mode a:hover {
+    color: #908bde !important;
     font-weight: bold;
 }
 
 .dark-mode .site-title, .site-title:visited, .site-nav, .page-link {
-    color: $high-emph !important;
+    color: $high-emph-dark !important;
 }
 
 .dark-mode .site-nav {
-    background-color: $dark-grey;
-    border-color: $overlay-light;
+    background-color: $dark-grey-dark;
+    border-color: $overlay-dark;
 }
 
 * {
-    scrollbar-color: $dark-grey $overlay-light;
+    scrollbar-color: $dark-grey-dark $overlay-dark;
 }
 
 .dark-mode pre, code {
     // BVas a lighter colour to better highlight short code words
-    border-color: $overlay-light;
-    background-color: $overlay;
+    border-color: $overlay-dark;
+    background-color: $overlay-d;
 }
 
 .dark-mode .page-description {
-    color: $med-emph;
+    color: $med-emph-dark;
 }
 
 .dark-mode .post-meta {
-    color: $low-emph;
+    color: $low-emph-dark;
 }
 
 .dark-mode .post-content p, .post-content li {
-    color: $med-emph;
+    color: $med-emph-dark;
 }
 
 .dark-mode .btn {
-    background-color: $overlay !important;
-    color: $high-emph !important;
-    border-color: $overlay-light !important;
+    background-color: $overlay-d !important;
+    color: $high-emph-dark !important;
+    border-color: $overlay-dark !important;
 }
 
 .dark-mode .btn:hover {
-    background-color: $dark-grey !important;
+    background-color: $dark-grey-dark !important;
 }
 
 .dark-mode table th{
-    background-color: $overlay;
-    border-color: $overlay-light;
-    color: $high-emph;
+    background-color: $overlay-d;
+    border-color: $overlay-dark;
+    color: $high-emph-dark;
 }
 
 .dark-mode table td{
-    background-color: $dark-grey;
-    border-color: $overlay-light;
-    color: $med-emph;
+    background-color: $dark-grey-dark;
+    border-color: $overlay-dark;
+    color: $med-emph-dark;
 }
 
 .dark-mode .flash {
-    color: $dark-grey !important;
+    color: $dark-grey-dark !important;
     filter: brightness(80%);
 }
 
@@ -84,10 +83,10 @@ a:hover {
 
 .dark-mode .post-list > li > div {
     box-shadow: none !important;
-    background-color: $overlay;
+    background-color: $overlay-d;
     border: none !important;
 }
 
 .dark-mode li .post-meta-description {
-    color: $med-emph !important;
+    color: $med-emph-dark !important;
 }

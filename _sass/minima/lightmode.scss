@@ -1,79 +1,78 @@
-$high-emph: rgba(rgb(0, 0, 0), 0.87);
-$med-emph: rgba(rgb(0, 0, 0), 0.69); //Noicee
-$low-emph: rgba(rgb(0, 0, 0), 0.38);
-$dark-grey : #f3daff; 
-// $dark-grey : #1F1B24;
-$overlay: mix($dark-grey, rgb(0, 0, 0), 95%);
-$overlay-light: mix($dark-grey, rgb(0, 0, 0), 86%);
+$high-emph-light: rgba(rgb(0, 0, 0), 0.87);
+$med-emph-light: rgba(rgb(0, 0, 0), 0.69);
+$low-emph-light: rgba(rgb(0, 0, 0), 0.38);
+$dark-grey-light : #cdcbfc; 
+$overlay-l: mix($dark-grey-light, rgb(0, 0, 0), 95%);
+$overlay-light: mix($dark-grey-light, rgb(0, 0, 0), 86%);
 
 html, body, input, textarea, select, button {   
-  color: $high-emph !important;
-  background-color: $dark-grey !important;
+  color: $high-emph-light !important;
+  background-color: $dark-grey-light !important;
 }
 
 a {
-    color: rgb(44, 130, 183) !important;
+    color: #5852ad !important;
 }
 
 a:hover {
-    color:$high-emph !important;
+    color:$high-emph-light !important;
 }
 
 .site-title, .site-title:visited, .site-nav, .page-link {
-    color: $high-emph !important;
+    color: $high-emph-light !important;
 }
 
 .site-nav {
-    background-color: $dark-grey;
+    background-color: $dark-grey-light;
     border-color: $overlay-light;
 }
 
 * {
-    scrollbar-color: $dark-grey $overlay-light;
+    scrollbar-color: $dark-grey-light $overlay-light;
 }
 
 pre, code {
     // BVas a lighter colour to better highlight short code words
     border-color: $overlay-light;
-    background-color: $overlay;
+    background-color: $overlay-l;
 }
 
 .page-description {
-    color: $med-emph;
+    color: $med-emph-light;
 }
 
 .post-meta {
-    color: $low-emph;
+    color: $low-emph-light;
 }
 
 .post-content p, .post-content li {
-    color: $med-emph;
+    color: $med-emph-light;
 }
 
 .btn {
-    background-color: $overlay !important;
-    color: $high-emph !important;
+    background-color: $overlay-l !important;
+    color: $high-emph-light !important;
     border-color: $overlay-light !important;
 }
 
 .btn:hover {
-    background-color: $dark-grey !important;
+    background-color: $dark-grey-light !important;
 }
 
 table th{
-    background-color: $overlay;
+    background-color: $overlay-l;
     border-color: $overlay-light;
-    color: $high-emph;
+    color: $high-emph-light;
 }
 
 table td{
-    background-color: $dark-grey;
+    background-color: $dark-grey-light;
     border-color: $overlay-light;
-    color: $med-emph;
+    color: $med-emph-light;
 }
 
 .flash {
-    color: $dark-grey !important;
+    color: $dark-grey-light !important;
     filter: brightness(80%);
 }
 
@@ -83,10 +82,10 @@ canvas {
 
 .post-list > li > div {
     box-shadow: none !important;
-    background-color: $overlay;
+    background-color: $overlay-l;
     border: none !important;
 }
 
 li .post-meta-description {
-    color: $med-emph !important;
+    color: $med-emph-light !important;
 }
