@@ -4,7 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Page 2 of 3 for David Vasilev | CSP Blog</title>
+<title>Page 2 of 4 for David Vasilev | CSP Blog</title>
 <meta name="generator" content="Jekyll v4.1.1" />
 <meta property="og:title" content="David Vasilev" />
 <meta property="og:locale" content="en_US" />
@@ -88,80 +88,80 @@ window.onload = wrap_img;
       </nav></div>
 </header>
 <style>
-
-      body {
-        display: flex;
-        align-items: right;
-      }
-
-      .toggle {
+      .switch {
         position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
       }
 
-      .toggle input {
-        position: absolute;
+      .switch input { 
         opacity: 0;
         width: 0;
         height: 0;
       }
 
-      .toggle .onoff {
-        color: #fff;
-        font-size: 6em;
-        text-align: center;
-        display: block;
-        font-family: Arial, Helvetica, sans-serif;
-      }
-
       .slider {
-        position: relative;
-        display: block;
+        position: absolute;
         cursor: pointer;
-        background-color: #f3daff;
-        transition: 0.4s;
-        width: 30px;
-        height: 18px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
       }
 
       .slider:before {
-        content: "";
         position: absolute;
-        height: 10px;
-        width: 10px;
-        background-color: #fff;
-        transition: 0.1s;
-        top: 4px;
-        left: 6px;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
       }
 
       input:checked + .slider {
-        background-color: #2b1137;
-        box-shadow: 0 0 12px #2b1137;
+        background-color: #2196F3;
+      }
+
+      input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
       }
 
       input:checked + .slider:before {
-        transform: translateX(9px);
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
       }
 
-      .slider.round {
-        border-radius: 10px;
+      .slider {
+        border-radius: 34px;
       }
-      .slider.round::before {
-        border-radius: 10px;
+
+      .slider:before {
+        border-radius: 50%;
       }
     </style>
 
-    <label class="form-check-input" id="darkSwitch">
-      <span> 
-        <input type="checkbox" >
-      <span class="slider round" onclick="myFunction()" ></span>
-      <script>
-        function myFunction() {
-        var element = document.body;
-        element.classList.toggle("dark");
-        }
-      </script>
+    <label class="switch">
+      <input type="checkbox">
+      <span class="slider" onclick="myFunction()"></span>
+      <p id="demo"></p>
     </label>
+
+    <script>
+      function myFunction() {
+        var hi = "hi";
+
+        document.getElementById("demo").innerHTML = hi;
+        console.log("hi");
+      }
+    </script>
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
@@ -323,6 +323,20 @@ window.onload = wrap_img;
 <div class="card">
     <div class="container">
         <h3>
+            <a class="post-link" href="/fastpages/N@TM">
+            Night at the Museum
+            </a>
+        </h3><p class="post-meta-description">A summary of my experience at N@TM.</p><p class="post-meta">Nov 4, 2022</p>
+    </div>
+</div></li><li><style>
+    .card {box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 5px; transition: 0.3s;}
+    .card:hover {box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);}
+    .container {padding: 2px 16px;}
+</style>
+
+<div class="card">
+    <div class="container">
+        <h3>
             <a class="post-link" href="/fastpages/data/weather">
             Printing Weather API
             </a>
@@ -351,24 +365,10 @@ window.onload = wrap_img;
 <div class="card">
     <div class="container">
         <h3>
-            <a class="post-link" href="/fastpages/markdown/trimester%201/notes/collegeboard/2022/10/09/video-notes5.html">
-            Identifying and Correcting Errors 1.4 Notes
+            <a class="post-link" href="/fastpages/jupyter/trimester%201/tri%201%20assignments/2022/10/09/AP-error_testing.html">
+            Identifying and Correcting Errors
             </a>
-        </h3><p class="post-meta-description">Notes on CollegeBoard videos, Identifying and Correcting Errors 1.4.</p><p class="post-meta">Oct 9, 2022</p>
-    </div>
-</div></li><li><style>
-    .card {box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 5px; transition: 0.3s;}
-    .card:hover {box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);}
-    .container {padding: 2px 16px;}
-</style>
-
-<div class="card">
-    <div class="container">
-        <h3>
-            <a class="post-link" href="/fastpages/markdown/trimester%201/notes/collegeboard/2022/10/09/video-notes6.html">
-            The Internet 4.1 Notes
-            </a>
-        </h3><p class="post-meta-description">Notes on CollegeBoard videos, The Internet 4.1.</p><p class="post-meta">Oct 9, 2022</p>
+        </h3><p class="post-meta-description">Practice with identifying and correcting code blocks</p><p class="post-meta">Oct 9, 2022</p>
     </div>
 </div></li><li><style>
     .card {box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 5px; transition: 0.3s;}
@@ -393,52 +393,38 @@ window.onload = wrap_img;
 <div class="card">
     <div class="container">
         <h3>
+            <a class="post-link" href="/fastpages/markdown/trimester%201/notes/collegeboard/2022/10/09/video-notes6.html">
+            The Internet 4.1 Notes
+            </a>
+        </h3><p class="post-meta-description">Notes on CollegeBoard videos, The Internet 4.1.</p><p class="post-meta">Oct 9, 2022</p>
+    </div>
+</div></li><li><style>
+    .card {box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 5px; transition: 0.3s;}
+    .card:hover {box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);}
+    .container {padding: 2px 16px;}
+</style>
+
+<div class="card">
+    <div class="container">
+        <h3>
+            <a class="post-link" href="/fastpages/markdown/trimester%201/notes/collegeboard/2022/10/09/video-notes5.html">
+            Identifying and Correcting Errors 1.4 Notes
+            </a>
+        </h3><p class="post-meta-description">Notes on CollegeBoard videos, Identifying and Correcting Errors 1.4.</p><p class="post-meta">Oct 9, 2022</p>
+    </div>
+</div></li><li><style>
+    .card {box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 5px; transition: 0.3s;}
+    .card:hover {box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);}
+    .container {padding: 2px 16px;}
+</style>
+
+<div class="card">
+    <div class="container">
+        <h3>
             <a class="post-link" href="/fastpages/jupyter/trimester%201/tri%201%20assignments/2022/10/09/PBL-python_rapidapi.html">
             RapidAPI
             </a>
         </h3><p class="post-meta-description">An example of a RapidAPI output.</p><p class="post-meta">Oct 9, 2022</p>
-    </div>
-</div></li><li><style>
-    .card {box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 5px; transition: 0.3s;}
-    .card:hover {box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);}
-    .container {padding: 2px 16px;}
-</style>
-
-<div class="card">
-    <div class="container">
-        <h3>
-            <a class="post-link" href="/fastpages/jupyter/trimester%201/tri%201%20assignments/2022/10/09/AP-error_testing.html">
-            Identifying and Correcting Errors
-            </a>
-        </h3><p class="post-meta-description">Practice with identifying and correcting code blocks</p><p class="post-meta">Oct 9, 2022</p>
-    </div>
-</div></li><li><style>
-    .card {box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 5px; transition: 0.3s;}
-    .card:hover {box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);}
-    .container {padding: 2px 16px;}
-</style>
-
-<div class="card">
-    <div class="container">
-        <h3>
-            <a class="post-link" href="/fastpages/markdown/trimester%201/notes/collegeboard/2022/10/02/video-notes4.html">
-            Program Design and Development 1.3 Notes
-            </a>
-        </h3><p class="post-meta-description">Notes on CollegeBoard videos, Program Design and Development 1.3.</p><p class="post-meta">Oct 2, 2022</p>
-    </div>
-</div></li><li><style>
-    .card {box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 5px; transition: 0.3s;}
-    .card:hover {box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);}
-    .container {padding: 2px 16px;}
-</style>
-
-<div class="card">
-    <div class="container">
-        <h3>
-            <a class="post-link" href="/fastpages/jupyter/trimester%201/tri%201%20assignments/2022/10/02/project-outline.html">
-            Project Outline
-            </a>
-        </h3><p class="post-meta-description">Our project outline.</p><p class="post-meta">Oct 2, 2022</p>
     </div>
 </div></li><li><style>
     .card {box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 5px; transition: 0.3s;}
@@ -463,10 +449,24 @@ window.onload = wrap_img;
 <div class="card">
     <div class="container">
         <h3>
-            <a class="post-link" href="/fastpages/jupyter/trimester%201/tri%201%20assignments/2022/09/25/javascript.html">
-            Javascript Usage
+            <a class="post-link" href="/fastpages/jupyter/trimester%201/tri%201%20assignments/2022/10/02/project-outline.html">
+            Project Outline
             </a>
-        </h3><p class="post-meta-description">Showing the use of javascript with a submenu.</p><p class="post-meta">Sep 25, 2022</p>
+        </h3><p class="post-meta-description">Our project outline.</p><p class="post-meta">Oct 2, 2022</p>
+    </div>
+</div></li><li><style>
+    .card {box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 5px; transition: 0.3s;}
+    .card:hover {box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);}
+    .container {padding: 2px 16px;}
+</style>
+
+<div class="card">
+    <div class="container">
+        <h3>
+            <a class="post-link" href="/fastpages/markdown/trimester%201/notes/collegeboard/2022/10/02/video-notes4.html">
+            Program Design and Development 1.3 Notes
+            </a>
+        </h3><p class="post-meta-description">Notes on CollegeBoard videos, Program Design and Development 1.3.</p><p class="post-meta">Oct 2, 2022</p>
     </div>
 </div></li><li><style>
     .card {box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 5px; transition: 0.3s;}
@@ -481,6 +481,20 @@ window.onload = wrap_img;
             Program Function and Purpose 1.2 Notes
             </a>
         </h3><p class="post-meta-description">Notes on CollegeBoard videos, Program Function and Purpose 1.2.</p><p class="post-meta">Sep 25, 2022</p>
+    </div>
+</div></li><li><style>
+    .card {box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 5px; transition: 0.3s;}
+    .card:hover {box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);}
+    .container {padding: 2px 16px;}
+</style>
+
+<div class="card">
+    <div class="container">
+        <h3>
+            <a class="post-link" href="/fastpages/jupyter/trimester%201/tri%201%20assignments/2022/09/25/javascript.html">
+            Javascript Usage
+            </a>
+        </h3><p class="post-meta-description">Showing the use of javascript with a submenu.</p><p class="post-meta">Sep 25, 2022</p>
     </div>
 </div></li><li><style>
     .card {box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 5px; transition: 0.3s;}
@@ -509,20 +523,6 @@ window.onload = wrap_img;
             Personal Javascript
             </a>
         </h3><p class="post-meta-description">I random word generator I made.</p><p class="post-meta">Sep 25, 2022</p>
-    </div>
-</div></li><li><style>
-    .card {box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 5px; transition: 0.3s;}
-    .card:hover {box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);}
-    .container {padding: 2px 16px;}
-</style>
-
-<div class="card">
-    <div class="container">
-        <h3>
-            <a class="post-link" href="/fastpages/markdown/trimester%201/tri%201%20assignments/2022/09/25/group-project.html">
-            Team Project
-            </a>
-        </h3><p class="post-meta-description">This is our outline for our project.</p><p class="post-meta">Sep 25, 2022</p>
     </div>
 </div></li></ul>
 
