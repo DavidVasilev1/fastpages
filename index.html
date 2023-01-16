@@ -147,9 +147,12 @@ window.onload = wrap_img;
       }
     </style>
 
+    <audio id="myAudio" src="/fastpages/siren_meme___sound_effect.mp3" preload="auto">
+    </audio>
+
     <label class="switch">
       <input type="checkbox">
-      <span class="slider" onclick="myFunction()"></span>
+      <span class="slider" onclick="togglePlay()"></span>
       <p id="demo"></p>
     </label>
 
@@ -160,6 +163,20 @@ window.onload = wrap_img;
         document.getElementById("demo").innerHTML = hi;
         console.log("hi");
       }
+
+      var myAudio = document.getElementById("myAudio");
+      var isPlaying = false;
+
+      function togglePlay() {
+        isPlaying ? myAudio.pause() : myAudio.play();
+      };
+
+      myAudio.onplaying = function() {
+        isPlaying = true;
+      };
+      myAudio.onpause = function() {
+        isPlaying = false;
+      };
     </script>
 
     <main class="page-content" aria-label="Content">
