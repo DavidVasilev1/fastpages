@@ -188,7 +188,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      4 min read
+      6 min read
     
 </span></p>
 
@@ -217,12 +217,7 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h2"><a href="#3a-provide-a-written-response-that-does-all-three-of-the-following">3a. Provide a written response that does all three of the following:</a></li>
 <li class="toc-entry toc-h2"><a href="#3b-capture-and-paste-two-program-code-segments-you-developed-during-the-administration-of-this-task-that-contain-a-list-or-other-collection-type-being-used-to-manage-complexity-in-your-program">3b. Capture and paste two program code segments you developed during the administration of this task that contain a list (or other collection type) being used to manage complexity in your program</a></li>
 <li class="toc-entry toc-h2"><a href="#3c-capture-and-paste-two-program-code-segments-you-developed-during-the-administration-of-this-task-that-contain-a-student-developed-procedure-that-implements-an-algorithm-used-in-your-program-and-a-call-to-that-procedure">3c. Capture and paste two program code segments you developed during the administration of this task that contain a student-developed procedure that implements an algorithm used in your program and a call to that procedure.</a></li>
-<li class="toc-entry toc-h2"><a href="#3d-provide-a-written-response-that-does-all-three-of-the-following">3d. Provide a written response that does all three of the following:</a>
-<ul>
-<li class="toc-entry toc-h3"><a href="#i-describes-two-calls-to-the-procedure-identified-in-written-response-3c-each-call-must-pass-a-different-arguments-that-causes-a-different-segment-of-code-in-the-algorithm-to-execute">i. Describes two calls to the procedure identified in written response 3c. Each call must pass a different argument(s) that causes a different segment of code in the algorithm to execute</a></li>
-<li class="toc-entry toc-h3"><a href="#ii-describes-what-conditions-is-being-tested-by-each-call-to-the-procedure">ii. Describes what condition(s) is being tested by each call to the procedure:</a></li>
-</ul>
-</li>
+<li class="toc-entry toc-h2"><a href="#3d-provide-a-written-response-that-does-all-three-of-the-following">3d. Provide a written response that does all three of the following:</a></li>
 </ul><h2 id="3a-provide-a-written-response-that-does-all-three-of-the-following">
 <a class="anchor" href="#3a-provide-a-written-response-that-does-all-three-of-the-following" aria-hidden="true"><span class="octicon octicon-link"></span></a>3a. Provide a written response that does all three of the following:</h2>
 
@@ -284,37 +279,70 @@ window.onload = wrap_img;
 
 <blockquote>
   <p>i. The first program code segment must be a student-developed procedure that:</p>
+  <ul>
+    <li>Defines the procedure’s name and return type (if necessary)</li>
+    <li>Contains and uses one or more parameters that have an effect on the functionality of the procedure</li>
+    <li>Implements an algorithm that includes sequencing, selection, and iteration</li>
+  </ul>
 </blockquote>
 
-<p>![](/fastpages/images/cpt4.png “”)</p>
-
-<p>![](/fastpages/images/cpt6.png “”)</p>
-
-<p>![](/fastpages/images/cpt7.png “”)</p>
+<p><img src="/fastpages/images/cpt5.png" alt="" title=" "></p>
 
 <blockquote>
   <p>ii. The second program code segment must show where your student-developed procedure is being called in your program.</p>
 </blockquote>
 
-<p>![](/fastpages/images/cpt5.png “”)</p>
+<p><img src="/fastpages/images/cpt6.png" alt="" title=" "></p>
+
+<p><img src="/fastpages/images/cpt7.png" alt="" title=" "></p>
 
 <blockquote>
   <p>iii. Describes in general what the identified procedure does and how it contributes to the overall functionality of the program</p>
 </blockquote>
 
+<p>The function <code class="language-plaintext highlighter-rouge">ScheduleListAPI()</code> contains many subsections. This procedure allows the callback of all data, as well as the deletion of all data through the functions <code class="language-plaintext highlighter-rouge">get()</code> and <code class="language-plaintext highlighter-rouge">delete()</code>. It allows all of the data to be recalled whenever the webpage is reloaded, allowing access to anyone from anywhere, and it also allows the data to be entirely redone if one isn’t happy with it’s contents.</p>
+
 <blockquote>
   <p>iv. Explains in detailed steps how the algorithm implemented in the identified procedure works. Your explanation must be detailed enough for someone else to recreate it.</p>
 </blockquote>
 
+<ul>
+  <li>When the user enters their data, the data is sent to the API through the <code class="language-plaintext highlighter-rouge">addLocal()</code> function. This pulls the parameters containing the information the user inputted from the input fields and sends it to the API in a JSON list known as <code class="language-plaintext highlighter-rouge">data</code>. This is done through a POST request from the frontend to the API.</li>
+  <li>Once the API receives the JSON data, it parses through the it, assigning it to each of the variables used to store the data in the database list. If the API detects a problem with the data being inputted, it sends an error message with the server error at hand.</li>
+  <li>Once the data storage has been successful, the data can be called back with a fetch from the frontend, through the <code class="language-plaintext highlighter-rouge">getList()</code> function. When this is called, the <code class="language-plaintext highlighter-rouge">get()</code> function is called, parsing through the entire database by id and sending all of the information to the frontend for organization and use.</li>
+  <li>If a user chooses to delete the data they have, the <code class="language-plaintext highlighter-rouge">remove()</code> function is called, sending a DELETE request to the API, causing all of the data in the list to be deleted, only if there are no errors in the data.</li>
+</ul>
+
 <h2 id="3d-provide-a-written-response-that-does-all-three-of-the-following">
 <a class="anchor" href="#3d-provide-a-written-response-that-does-all-three-of-the-following" aria-hidden="true"><span class="octicon octicon-link"></span></a>3d. Provide a written response that does all three of the following:</h2>
 
-<h3 id="i-describes-two-calls-to-the-procedure-identified-in-written-response-3c-each-call-must-pass-a-different-arguments-that-causes-a-different-segment-of-code-in-the-algorithm-to-execute">
-<a class="anchor" href="#i-describes-two-calls-to-the-procedure-identified-in-written-response-3c-each-call-must-pass-a-different-arguments-that-causes-a-different-segment-of-code-in-the-algorithm-to-execute" aria-hidden="true"><span class="octicon octicon-link"></span></a>i. Describes two calls to the procedure identified in written response 3c. Each call must pass a different argument(s) that causes a different segment of code in the algorithm to execute</h3>
+<blockquote>
+  <p>i. Describes two calls to the procedure identified in written response 3c. Each call must pass a different argument(s) that causes a different segment of code in the algorithm to execute</p>
+</blockquote>
 
-<h3 id="ii-describes-what-conditions-is-being-tested-by-each-call-to-the-procedure">
-<a class="anchor" href="#ii-describes-what-conditions-is-being-tested-by-each-call-to-the-procedure" aria-hidden="true"><span class="octicon octicon-link"></span></a>ii. Describes what condition(s) is being tested by each call to the procedure:</h3>
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">ScheduleListAPI()</code> function is called a first time when the user initially loads the page, requesting all of the stored data in the API be brought out in a readable format through the <code class="language-plaintext highlighter-rouge">get()</code> function into HTML formatting.</li>
+  <li>The function is called a second time when the user decides to delete the data, causing the displayed data to entirely disappear through the <code class="language-plaintext highlighter-rouge">delete()</code> function.</li>
+</ul>
 
+<blockquote>
+  <p>ii. Describes what condition(s) is being tested by each call to the procedure:</p>
+</blockquote>
+
+<p>Each time the procedure is called, the API tests for errors in the data that may prevent the frontend code from running properly.</p>
+<ul>
+  <li>The first call checks through all of the data in the API list, making sure that the data is correctly formatted. If it is, the data is sent to the frontend to be displayed.</li>
+  <li>The second call checks whether there are any server errors involving the formatting of the data and if there are none, all of the data is deleted.</li>
+</ul>
+
+<blockquote>
+  <p>iii. Identifies the result of each call</p>
+</blockquote>
+
+<ul>
+  <li>The first call results in the pulling of all the stored data out of the API and into the display of it onto the frontend.</li>
+  <li>The second call results in the deletion of all stored data in the API and the disappearance of it in the frontend.</li>
+</ul>
 
   </div><!-- from https://github.com/utterance/utterances -->
 <script src="https://utteranc.es/client.js"
