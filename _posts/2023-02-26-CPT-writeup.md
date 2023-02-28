@@ -48,32 +48,43 @@ Without a list, the program would not be able to run at all. The list is critica
 ## 3c. Capture and paste two program code segments you developed during the administration of this task that contain a student-developed procedure that implements an algorithm used in your program and a call to that procedure.
 
 > i. The first program code segment must be a student-developed procedure that:
+> - Defines the procedure’s name and return type (if necessary)
+> - Contains and uses one or more parameters that have an effect on the functionality of the procedure
+> - Implements an algorithm that includes sequencing, selection, and iteration 
 
-
-
-![]({{site.baseurl}}/images/cpt4.png "")
-
-![]({{site.baseurl}}/images/cpt6.png "")
-
-![]({{site.baseurl}}/images/cpt7.png "")
+![]({{site.baseurl}}/images/cpt5.png " ")
 
 > ii. The second program code segment must show where your student-developed procedure is being called in your program.
 
-![]({{site.baseurl}}/images/cpt5.png "")
+![]({{site.baseurl}}/images/cpt6.png " ")
+
+![]({{site.baseurl}}/images/cpt7.png " ")
 
 > iii. Describes in general what the identified procedure does and how it contributes to the overall functionality of the program
 
-
+The function ```ScheduleListAPI()``` contains many subsections. This procedure allows the callback of all data, as well as the deletion of all data through the functions ```get()``` and ```delete()```. It allows all of the data to be recalled whenever the webpage is reloaded, allowing access to anyone from anywhere, and it also allows the data to be entirely redone if one isn't happy with it's contents.
 
 > iv. Explains in detailed steps how the algorithm implemented in the identified procedure works. Your explanation must be detailed enough for someone else to recreate it.
 
-
+- When the user enters their data, the data is sent to the API through the ```addLocal()``` function. This pulls the parameters containing the information the user inputted from the input fields and sends it to the API in a JSON list known as ```data```. This is done through a POST request from the frontend to the API.
+- Once the API receives the JSON data, it parses through the it, assigning it to each of the variables used to store the data in the database list. If the API detects a problem with the data being inputted, it sends an error message with the server error at hand.
+- Once the data storage has been successful, the data can be called back with a fetch from the frontend, through the ```getList()``` function. When this is called, the ```get()``` function is called, parsing through the entire database by id and sending all of the information to the frontend for organization and use.
+- If a user chooses to delete the data they have, the ```remove()``` function is called, sending a DELETE request to the API, causing all of the data in the list to be deleted, only if there are no errors in the data.
 
 ## 3d. Provide a written response that does all three of the following:
 
-### i. Describes two calls to the procedure identified in written response 3c. Each call must pass a different argument(s) that causes a different segment of code in the algorithm to execute
+> i. Describes two calls to the procedure identified in written response 3c. Each call must pass a different argument(s) that causes a different segment of code in the algorithm to execute
 
+- The ```ScheduleListAPI()``` function is called a first time when the user initially loads the page, requesting all of the stored data in the API be brought out in a readable format through the ```get()``` function into HTML formatting.
+- The function is called a second time when the user decides to delete the data, causing the displayed data to entirely disappear through the ```delete()``` function.
 
+> ii. Describes what condition(s) is being tested by each call to the procedure:
 
-### ii. Describes what condition(s) is being tested by each call to the procedure:
+Each time the procedure is called, the API tests for errors in the data that may prevent the frontend code from running properly.
+- The first call checks through all of the data in the API list, making sure that the data is correctly formatted. If it is, the data is sent to the frontend to be displayed.
+- The second call checks whether there are any server errors involving the formatting of the data and if there are none, all of the data is deleted.
 
+> iii. Identifies the result of each call
+
+- The first call results in the pulling of all the stored data out of the API and into the display of it onto the frontend.
+- The second call results in the deletion of all stored data in the API and the disappearance of it in the frontend.
