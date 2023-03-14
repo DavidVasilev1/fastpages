@@ -190,7 +190,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      9 min read
+      8 min read
     
 </span></p>
 
@@ -334,67 +334,6 @@ window.onload = wrap_img;
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>Traceback (most recent call last):
-  File "_pydevd_bundle/pydevd_cython.pyx", line 1078, in _pydevd_bundle.pydevd_cython.PyDBFrame.trace_dispatch
-  File "_pydevd_bundle/pydevd_cython.pyx", line 297, in _pydevd_bundle.pydevd_cython.PyDBFrame.do_wait_suspend
-  File "/home/davidv/anaconda3/lib/python3.9/site-packages/debugpy/_vendored/pydevd/pydevd.py", line 1976, in do_wait_suspend
-    keep_suspended = self._do_wait_suspend(thread, frame, event, arg, suspend_type, from_this_thread, frames_tracker)
-  File "/home/davidv/anaconda3/lib/python3.9/site-packages/debugpy/_vendored/pydevd/pydevd.py", line 2011, in _do_wait_suspend
-    time.sleep(0.01)
-KeyboardInterrupt
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">KeyboardInterrupt</span>                         Traceback (most recent call last)
-<span class="ansi-green-intense-fg ansi-bold">/home/davidv/vscode/fastpages/_notebooks/2023-03-13-AP-unit2-4a.ipynb Cell 4</span> in <span class="ansi-cyan-fg">&lt;cell line: 23&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">     &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-03-13-AP-unit2-4a.ipynb#W3sdnNjb2RlLXJlbW90ZQ%3D%3D?line=18'&gt;19&lt;/a&gt;</span> db = SQLAlchemy()
-<span class="ansi-green-intense-fg ansi-bold">     &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-03-13-AP-unit2-4a.ipynb#W3sdnNjb2RlLXJlbW90ZQ%3D%3D?line=21'&gt;22&lt;/a&gt;</span> # This belongs in place where it runs once per project
-<span class="ansi-green-fg">---&gt; &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-03-13-AP-unit2-4a.ipynb#W3sdnNjb2RlLXJlbW90ZQ%3D%3D?line=22'&gt;23&lt;/a&gt;</span> db.init_app(app)
-
-File <span class="ansi-green-fg">_pydevd_bundle/pydevd_cython.pyx:1363</span>, in <span class="ansi-cyan-fg">_pydevd_bundle.pydevd_cython.SafeCallWrapper.__call__</span><span class="ansi-blue-fg">()</span>
-
-File <span class="ansi-green-fg">_pydevd_bundle/pydevd_cython.pyx:1740</span>, in <span class="ansi-cyan-fg">_pydevd_bundle.pydevd_cython.ThreadTracer.__call__</span><span class="ansi-blue-fg">()</span>
-
-File <span class="ansi-green-fg">_pydevd_bundle/pydevd_cython.pyx:1087</span>, in <span class="ansi-cyan-fg">_pydevd_bundle.pydevd_cython.PyDBFrame.trace_dispatch</span><span class="ansi-blue-fg">()</span>
-
-File <span class="ansi-green-fg">_pydevd_bundle/pydevd_cython.pyx:1078</span>, in <span class="ansi-cyan-fg">_pydevd_bundle.pydevd_cython.PyDBFrame.trace_dispatch</span><span class="ansi-blue-fg">()</span>
-
-File <span class="ansi-green-fg">_pydevd_bundle/pydevd_cython.pyx:297</span>, in <span class="ansi-cyan-fg">_pydevd_bundle.pydevd_cython.PyDBFrame.do_wait_suspend</span><span class="ansi-blue-fg">()</span>
-
-File <span class="ansi-green-fg">~/anaconda3/lib/python3.9/site-packages/debugpy/_vendored/pydevd/pydevd.py:1976</span>, in <span class="ansi-cyan-fg">PyDB.do_wait_suspend</span><span class="ansi-blue-fg">(self, thread, frame, event, arg, exception_type)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1973</span>             from_this_thread.append(frame_custom_thread_id)
-<span class="ansi-green-intense-fg ansi-bold">   1975</span>     with self._threads_suspended_single_notification.notify_thread_suspended(thread_id, stop_reason):
-<span class="ansi-green-fg">-&gt; 1976</span>         keep_suspended = self._do_wait_suspend(thread, frame, event, arg, suspend_type, from_this_thread, frames_tracker)
-<span class="ansi-green-intense-fg ansi-bold">   1978</span> frames_list = None
-<span class="ansi-green-intense-fg ansi-bold">   1980</span> if keep_suspended:
-<span class="ansi-green-intense-fg ansi-bold">   1981</span>     # This means that we should pause again after a set next statement.
-
-File <span class="ansi-green-fg">~/anaconda3/lib/python3.9/site-packages/debugpy/_vendored/pydevd/pydevd.py:2011</span>, in <span class="ansi-cyan-fg">PyDB._do_wait_suspend</span><span class="ansi-blue-fg">(self, thread, frame, event, arg, suspend_type, from_this_thread, frames_tracker)</span>
-<span class="ansi-green-intense-fg ansi-bold">   2008</span>         self._call_mpl_hook()
-<span class="ansi-green-intense-fg ansi-bold">   2010</span>     self.process_internal_commands()
-<span class="ansi-green-fg">-&gt; 2011</span>     time.sleep(0.01)
-<span class="ansi-green-intense-fg ansi-bold">   2013</span> self.cancel_async_evaluation(get_current_thread_id(thread), str(id(frame)))
-<span class="ansi-green-intense-fg ansi-bold">   2015</span> # process any stepping instructions
-
-<span class="ansi-red-fg">KeyboardInterrupt</span>: </pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -653,52 +592,14 @@ File <span class="ansi-green-fg">~/anaconda3/lib/python3.9/site-packages/debugpy
 
 <div class="output_area">
 
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">AssertionError</span>                            Traceback (most recent call last)
-<span class="ansi-green-intense-fg ansi-bold">/home/davidv/vscode/fastpages/_notebooks/2023-03-13-AP-unit2-4a.ipynb Cell 8</span> in <span class="ansi-cyan-fg">&lt;cell line: 30&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">     &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-03-13-AP-unit2-4a.ipynb#X10sdnNjb2RlLXJlbW90ZQ%3D%3D?line=26'&gt;27&lt;/a&gt;</span>                 '''fails with bad or duplicate data'''
-<span class="ansi-green-intense-fg ansi-bold">     &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-03-13-AP-unit2-4a.ipynb#X10sdnNjb2RlLXJlbW90ZQ%3D%3D?line=27'&gt;28&lt;/a&gt;</span>                 print(f"Records exist uid {user.uid}, or error.")
-<span class="ansi-green-fg">---&gt; &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-03-13-AP-unit2-4a.ipynb#X10sdnNjb2RlLXJlbW90ZQ%3D%3D?line=29'&gt;30&lt;/a&gt;</span> initUsers()
-
-<span class="ansi-green-intense-fg ansi-bold">/home/davidv/vscode/fastpages/_notebooks/2023-03-13-AP-unit2-4a.ipynb Cell 8</span> in <span class="ansi-cyan-fg">initUsers</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">      &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-03-13-AP-unit2-4a.ipynb#X10sdnNjb2RlLXJlbW90ZQ%3D%3D?line=5'&gt;6&lt;/a&gt;</span> with app.app_context():
-<span class="ansi-green-intense-fg ansi-bold">      &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-03-13-AP-unit2-4a.ipynb#X10sdnNjb2RlLXJlbW90ZQ%3D%3D?line=6'&gt;7&lt;/a&gt;</span>     """Create database and tables"""
-<span class="ansi-green-fg">----&gt; &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-03-13-AP-unit2-4a.ipynb#X10sdnNjb2RlLXJlbW90ZQ%3D%3D?line=7'&gt;8&lt;/a&gt;</span>     db.create_all()
-<span class="ansi-green-intense-fg ansi-bold">      &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-03-13-AP-unit2-4a.ipynb#X10sdnNjb2RlLXJlbW90ZQ%3D%3D?line=8'&gt;9&lt;/a&gt;</span>     """Tester data for table"""
-<span class="ansi-green-intense-fg ansi-bold">     &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-03-13-AP-unit2-4a.ipynb#X10sdnNjb2RlLXJlbW90ZQ%3D%3D?line=9'&gt;10&lt;/a&gt;</span>     u1 = User(name='Thomas Edison', uid='toby', password='123toby', dob=datetime(1847, 2, 11))
-
-File <span class="ansi-green-fg">~/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py:1094</span>, in <span class="ansi-cyan-fg">SQLAlchemy.create_all</span><span class="ansi-blue-fg">(self, bind, app)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1088</span> def create_all(self, bind='__all__', app=None):
-<span class="ansi-green-intense-fg ansi-bold">   1089</span>     """Creates all tables.
-<span class="ansi-green-intense-fg ansi-bold">   1090</span> 
-<span class="ansi-green-intense-fg ansi-bold">   1091</span>     .. versionchanged:: 0.12
-<span class="ansi-green-intense-fg ansi-bold">   1092</span>        Parameters were added
-<span class="ansi-green-intense-fg ansi-bold">   1093</span>     """
-<span class="ansi-green-fg">-&gt; 1094</span>     self._execute_for_all_tables(app, bind, 'create_all')
-
-File <span class="ansi-green-fg">~/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py:1086</span>, in <span class="ansi-cyan-fg">SQLAlchemy._execute_for_all_tables</span><span class="ansi-blue-fg">(self, app, bind, operation, skip_tables)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1084</span>     extra['tables'] = tables
-<span class="ansi-green-intense-fg ansi-bold">   1085</span> op = getattr(self.Model.metadata, operation)
-<span class="ansi-green-fg">-&gt; 1086</span> op(bind=self.get_engine(app, bind), **extra)
-
-File <span class="ansi-green-fg">~/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py:1008</span>, in <span class="ansi-cyan-fg">SQLAlchemy.get_engine</span><span class="ansi-blue-fg">(self, app, bind)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1005</span> """Returns a specific engine."""
-<span class="ansi-green-intense-fg ansi-bold">   1007</span> app = self.get_app(app)
-<span class="ansi-green-fg">-&gt; 1008</span> state = get_state(app)
-<span class="ansi-green-intense-fg ansi-bold">   1010</span> with self._engine_lock:
-<span class="ansi-green-intense-fg ansi-bold">   1011</span>     connector = state.connectors.get(bind)
-
-File <span class="ansi-green-fg">~/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py:625</span>, in <span class="ansi-cyan-fg">get_state</span><span class="ansi-blue-fg">(app)</span>
-<span class="ansi-green-intense-fg ansi-bold">    623</span> def get_state(app):
-<span class="ansi-green-intense-fg ansi-bold">    624</span>     """Gets the state for the application"""
-<span class="ansi-green-fg">--&gt; 625</span>     assert 'sqlalchemy' in app.extensions, \
-<span class="ansi-green-intense-fg ansi-bold">    626</span>         'The sqlalchemy extension was not registered to the current ' \
-<span class="ansi-green-intense-fg ansi-bold">    627</span>         'application.  Please make sure to call init_app() first.'
-<span class="ansi-green-intense-fg ansi-bold">    628</span>     return app.extensions['sqlalchemy']
-
-<span class="ansi-red-fg">AssertionError</span>: The sqlalchemy extension was not registered to the current application.  Please make sure to call init_app() first.</pre>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Records exist uid toby, or error.
+Records exist uid niko, or error.
+Records exist uid lex, or error.
+Records exist uid whit, or error.
+Records exist uid indi, or error.
+Records exist uid raven, or error.
+</pre>
 </div>
 </div>
 
@@ -873,6 +774,51 @@ File <span class="ansi-green-fg">~/anaconda3/lib/python3.9/site-packages/flask_s
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[{'id': 1,
+  'name': 'Thomas Edison',
+  'uid': 'toby',
+  'dob': '02-11-1847',
+  'age': 176},
+ {'id': 2,
+  'name': 'Nikola Tesla',
+  'uid': 'niko',
+  'dob': '03-14-2023',
+  'age': 0},
+ {'id': 3,
+  'name': 'Alexander Graham Bell',
+  'uid': 'lex',
+  'dob': '03-14-2023',
+  'age': 0},
+ {'id': 4,
+  'name': 'Eli Whitney',
+  'uid': 'whit',
+  'dob': '03-14-2023',
+  'age': 0},
+ {'id': 5,
+  'name': 'Indiana Jones',
+  'uid': 'indi',
+  'dob': '10-21-1920',
+  'age': 102},
+ {'id': 6,
+  'name': 'Marion Ravenwood',
+  'uid': 'raven',
+  'dob': '10-21-1921',
+  'age': 101}]</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
