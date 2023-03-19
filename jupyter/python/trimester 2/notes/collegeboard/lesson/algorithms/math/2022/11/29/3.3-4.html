@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Lesson 3.3-3.4 | David Vasilev</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Lesson 3.3-3.4" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Jupyter Notebook for the rest of the class to follow along with." />
+<meta property="og:description" content="Jupyter Notebook for the rest of the class to follow along with." />
+<link rel="canonical" href="https://davidvasilev1.github.io/fastpages/jupyter/python/trimester%202/notes/collegeboard/lesson/algorithms/math/2022/11/29/3.3-4.html" />
+<meta property="og:url" content="https://davidvasilev1.github.io/fastpages/jupyter/python/trimester%202/notes/collegeboard/lesson/algorithms/math/2022/11/29/3.3-4.html" />
+<meta property="og:site_name" content="David Vasilev" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-11-29T00:00:00-06:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Lesson 3.3-3.4" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-11-29T00:00:00-06:00","datePublished":"2022-11-29T00:00:00-06:00","description":"Jupyter Notebook for the rest of the class to follow along with.","headline":"Lesson 3.3-3.4","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidvasilev1.github.io/fastpages/jupyter/python/trimester%202/notes/collegeboard/lesson/algorithms/math/2022/11/29/3.3-4.html"},"url":"https://davidvasilev1.github.io/fastpages/jupyter/python/trimester%202/notes/collegeboard/lesson/algorithms/math/2022/11/29/3.3-4.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/fastpages/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://davidvasilev1.github.io/fastpages/feed.xml" title="David Vasilev" /><link rel="shortcut icon" type="image/x-icon" href="/fastpages/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/fastpages/">David Vasilev</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/fastpages/categories/">Tags</a><a class="page-link" href="/fastpages/notes/">Notes</a><a class="page-link" href="/fastpages/assignments/">Assignments</a><a class="page-link" href="/fastpages/about/">About Me</a><a class="page-link" href="/fastpages/search/">Search</a></div>
+      </nav></div>
+</header>
+<style>
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+      }
+
+      .switch input { 
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+      }
+
+      input:checked + .slider {
+        background-color: #2196F3;
+      }
+
+      input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+      }
+
+      input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+      }
+
+      .slider {
+        border-radius: 34px;
+      }
+
+      .slider:before {
+        border-radius: 50%;
+      }
+    </style>
+
+    <audio id="myAudio" src="/fastpages/siren_meme___sound_effect.mp3" preload="auto">
+    </audio>
+
+    <label class="switch">
+      <input type="checkbox">
+      <span class="slider" onclick="togglePlay()"></span>
+      <p id="demo"></p>
+    </label>
+
+    <script>
+      function myFunction() {
+        var hi = "hi";
+
+        document.getElementById("demo").innerHTML = hi;
+        console.log("hi");
+      }
+
+      var myAudio = document.getElementById("myAudio");
+      var isPlaying = false;
+
+      function togglePlay() {
+        isPlaying ? myAudio.pause() : myAudio.play();
+      };
+
+      myAudio.onplaying = function() {
+        isPlaying = true;
+      };
+      myAudio.onpause = function() {
+        isPlaying = false;
+      };
+    </script>
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Lesson 3.3-3.4</h1><p class="page-description">Jupyter Notebook for the rest of the class to follow along with.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-11-29T00:00:00-06:00" itemprop="datePublished">
+        Nov 29, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      5 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/fastpages/categories/#Jupyter">Jupyter</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/fastpages/categories/#Python">Python</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/fastpages/categories/#Trimester 2">Trimester 2</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/fastpages/categories/#Notes">Notes</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/fastpages/categories/#Collegeboard">Collegeboard</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/fastpages/categories/#Lesson">Lesson</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/fastpages/categories/#Algorithms">Algorithms</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/fastpages/categories/#Math">Math</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-justify-center">
+          <div class="px-2">
+
+    <a href="https://github.com/DavidVasilev1/fastpages/tree/master/_notebooks/2022-11-29-3.3-4.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/fastpages/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/DavidVasilev1/fastpages/master?filepath=_notebooks%2F2022-11-29-3.3-4.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/fastpages/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/DavidVasilev1/fastpages/blob/master/_notebooks/2022-11-29-3.3-4.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/fastpages/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+          <div class="px-2">
+  <a href="https://deepnote.com/launch?url=https%3A%2F%2Fgithub.com%2FDavidVasilev1%2Ffastpages%2Fblob%2Fmaster%2F_notebooks%2F2022-11-29-3.3-4.ipynb" target="_blank">
+      <img class="notebook-badge-image" src="/fastpages/assets/badges/deepnote.svg" alt="Launch in Deepnote"/>
+  </a>
+</div>
+
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#Lesson-3.3">Lesson 3.3 </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Luka">Luka </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Lesson-3.3.1">Lesson 3.3.1 </a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#What-is-the-goal?">What is the goal? </a></li>
+<li class="toc-entry toc-h4"><a href="#What-is-an-algorithms?">What is an algorithms? </a></li>
+<li class="toc-entry toc-h4"><a href="#What-are-the-three-parts-of-an-algorithm?">What are the three parts of an algorithm? </a></li>
+<li class="toc-entry toc-h4"><a href="#What-is-a-sequence?">What is a sequence? </a></li>
+<li class="toc-entry toc-h4"><a href="#What-is-a-selection?">What is a selection? </a></li>
+<li class="toc-entry toc-h4"><a href="#What-is-a-iteration?">What is a iteration? </a></li>
+<li class="toc-entry toc-h4"><a href="#Hacks">Hacks </a></li>
+<li class="toc-entry toc-h3"><a href="#Saavan">Saavan </a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#Mathematical-Expressions">Mathematical Expressions </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#Antony">Antony </a>
+<ul>
+<li class="toc-entry toc-h5"><a href="#Examples-of-arithmetic-operators:">Examples of arithmetic operators: </a></li>
+<li class="toc-entry toc-h5"><a href="#Examples-of-arithmetic-operator-in-code:">Examples of arithmetic operator in code: </a></li>
+<li class="toc-entry toc-h5"><a href="#Examples-with-use-of-MOD:">Examples with use of MOD: </a></li>
+<li class="toc-entry toc-h4"><a href="#Hack">Hack </a></li>
+<li class="toc-entry toc-h4"><a href="#HACK-for-3.3!-CROSS-WORD-PUZZLE!">HACK for 3.3! CROSS WORD PUZZLE! </a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Lesson-3.4">Lesson 3.4 </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Matty">Matty </a>
+<ul>
+<li class="toc-entry toc-h5"><a href="#Strings:">Strings: </a></li>
+<li class="toc-entry toc-h5"><a href="#Examples-of-strings-in-pseudocode:">Examples of strings in pseudocode: </a></li>
+<li class="toc-entry toc-h4"><a href="#HACK!">HACK! </a></li>
+<li class="toc-entry toc-h4"><a href="#HACK!-REVIEW">HACK! REVIEW </a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2022-11-29-3.3-4.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Lesson-3.3">
+<a class="anchor" href="#Lesson-3.3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lesson 3.3<a class="anchor-link" href="#Lesson-3.3"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Luka">
+<a class="anchor" href="#Luka" aria-hidden="true"><span class="octicon octicon-link"></span></a>Luka<a class="anchor-link" href="#Luka"> </a>
+</h3>
+<h1 id="Lesson-3.3.1">
+<a class="anchor" href="#Lesson-3.3.1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lesson 3.3.1<a class="anchor-link" href="#Lesson-3.3.1"> </a>
+</h1>
+<h4 id="What-is-the-goal?">
+<a class="anchor" href="#What-is-the-goal?" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is the goal?<a class="anchor-link" href="#What-is-the-goal?"> </a>
+</h4>
+<ul>
+<li>Express an algorithm that uses sequencing without using programming language.</li>
+</ul>
+<h4 id="What-is-an-algorithms?">
+<a class="anchor" href="#What-is-an-algorithms?" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is an algorithms?<a class="anchor-link" href="#What-is-an-algorithms?"> </a>
+</h4>
+<ul>
+<li>An algorithm is a finite set of instruction that accomplish a task, it can be expressed by natural language, diagrams, and various other ways.</li>
+</ul>
+<h4 id="What-are-the-three-parts-of-an-algorithm?">
+<a class="anchor" href="#What-are-the-three-parts-of-an-algorithm?" aria-hidden="true"><span class="octicon octicon-link"></span></a>What are the three parts of an algorithm?<a class="anchor-link" href="#What-are-the-three-parts-of-an-algorithm?"> </a>
+</h4>
+<ul>
+<li>
+<p>Sequencing, selection, and iteration.</p>
+</li>
+<li>
+<p>Every algorithm can be created by a mixture of sequencing, selection, and iteration</p>
+</li>
+</ul>
+<h4 id="What-is-a-sequence?">
+<a class="anchor" href="#What-is-a-sequence?" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is a sequence?<a class="anchor-link" href="#What-is-a-sequence?"> </a>
+</h4>
+<h4 id="What-is-a-selection?">
+<a class="anchor" href="#What-is-a-selection?" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is a selection?<a class="anchor-link" href="#What-is-a-selection?"> </a>
+</h4>
+<ul>
+<li>A selection allows an algorithm to make a decision based on if a condition is met, an example of this is when your car is out of fuel, you go to the gas station to fill your car, but if your car is full you wouldn't go to the gas station.</li>
+</ul>
+<h4 id="What-is-a-iteration?">
+<a class="anchor" href="#What-is-a-iteration?" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is a iteration?<a class="anchor-link" href="#What-is-a-iteration?"> </a>
+</h4>
+<ul>
+<li>An iteration is a loop and doing something again until a condition is met, like you put away your computer when you are finished with your work.</li>
+</ul>
+<h4 id="Hacks">
+<a class="anchor" href="#Hacks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks<a class="anchor-link" href="#Hacks"> </a>
+</h4>
+<ul>
+<li>You will describe the different parts of an algorithm, sequencing, selection, and iteration in the image below. </li>
+</ul>
+<ul>
+<li>sequencing: </li>
+<li>Selection: </li>
+<li>Iteration: </li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Saavan">
+<a class="anchor" href="#Saavan" aria-hidden="true"><span class="octicon octicon-link"></span></a>Saavan<a class="anchor-link" href="#Saavan"> </a>
+</h3>
+<h4 id="Mathematical-Expressions">
+<a class="anchor" href="#Mathematical-Expressions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Mathematical Expressions<a class="anchor-link" href="#Mathematical-Expressions"> </a>
+</h4>
+<p>How do we represent a step-by-step algorithmic process using sequential code statements?</p>
+<ul>
+<li>First off what is a sequential code statement?<ul>
+<li>Sequential statements are used in processes to specify how signals are assigned. The process is executed in order as a whole. After all the sequential statements in the process are executed the signals are assigned their new values. They execute in the order in which they appear in the process.</li>
+</ul>
+</li>
+<li>Sequencing - First step to do- Second step to do - third step to do<ul>
+<li>Followed in the order that the code comes in. </li>
+<li>You can put numerical values within variables. You can also put variable values inside other variables<ul>
+<li>Ex. grade - 82</li>
+<li>Ex. highScore - currentScore</li>
+</ul>
+</li>
+<li>Can also store results of operations inside of a variable<ul>
+<li>Ex. name - firstName + lastName</li>
+</ul>
+</li>
+<li>Can store results of a procedure call<ul>
+<li>Average - calcAverage (10,20,30) </li>
+</ul>
+</li>
+<li>Order of operations very important<ul>
+<li>Ex. grade1 - 10</li>
+<li>Grade 2 - grade 1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Example Problem - calculate and display average of 25, 32, 42<ul>
+<li>Num1 - 25</li>
+<li>Num2 -32</li>
+<li>Num3 - 42</li>
+<li>Average - (num1 + num2 + num3)/3</li>
+<li>DISPLAY (Average)</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Antony">
+<a class="anchor" href="#Antony" aria-hidden="true"><span class="octicon octicon-link"></span></a>Antony<a class="anchor-link" href="#Antony"> </a>
+</h3>
+<p>Goal: Evaluate expression using arithmetic operator.</p>
+<p>Arithmetic operator are language that use addition, subtraction, multiplication, division, and modulus operator.</p>
+<p>The order of arithmetic operation is the same with mathematic operation(Subtraction first).</p>
+<h5 id="Examples-of-arithmetic-operators:">
+<a class="anchor" href="#Examples-of-arithmetic-operators:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples of arithmetic operators:<a class="anchor-link" href="#Examples-of-arithmetic-operators:"> </a>
+</h5>
+<p>-Addition: a+b
+-Subtraction: a-b
+-Multiplication: a*b
+-Division: a/b
+-Modulus: a MOD b
+(a and b can be string or number)</p>
+<h5 id="Examples-of-arithmetic-operator-in-code:">
+<a class="anchor" href="#Examples-of-arithmetic-operator-in-code:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples of arithmetic operator in code:<a class="anchor-link" href="#Examples-of-arithmetic-operator-in-code:"> </a>
+</h5>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">10</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">/</span> <span class="mi">4</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>20.0</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="mi">10</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">/</span> <span class="mi">4</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>30.0</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num1</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">num2</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">num3</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span> <span class="o">+</span> <span class="n">num3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>22
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Modulus operator divides the given numerator by the denominator to find a result,which is finding the remainder for the division(remainder has to an integer).</p>
+<p>Operator with MOD have the same sequence with multiplication and division. In python and most programming languages, the syntax of MOD is %</p>
+<h5 id="Examples-with-use-of-MOD:">
+<a class="anchor" href="#Examples-with-use-of-MOD:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples with use of MOD:<a class="anchor-link" href="#Examples-with-use-of-MOD:"> </a>
+</h5>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num1</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">num2</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">num3</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">num3</span> <span class="o">+</span> <span class="mi">9</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">num3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>29.0
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num1</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">num2</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">num3</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">num2</span> <span class="o">%</span> <span class="n">num1</span> <span class="o">*</span> <span class="p">(</span><span class="n">num3</span><span class="o">+</span><span class="mi">6</span><span class="p">)</span> <span class="o">-</span> <span class="mi">10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>10
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Hack">
+<a class="anchor" href="#Hack" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hack<a class="anchor-link" href="#Hack"> </a>
+</h4>
+<p>-Evaluate the arithmetic expression or this code:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num1</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">num2</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">*</span> <span class="mi">3</span>
+<span class="n">num3</span> <span class="o">=</span> <span class="n">num2</span> <span class="o">/</span> <span class="n">num1</span> <span class="o">*</span> <span class="p">(</span><span class="mi">9</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span>
+<span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="n">num3</span> <span class="o">%</span> <span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span><span class="p">)</span> <span class="o">%</span> <span class="n">num3</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">/</span> <span class="mi">5</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>3.0
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="HACK-for-3.3!-CROSS-WORD-PUZZLE!">
+<a class="anchor" href="#HACK-for-3.3!-CROSS-WORD-PUZZLE!" aria-hidden="true"><span class="octicon octicon-link"></span></a>HACK for 3.3! CROSS WORD PUZZLE!<a class="anchor-link" href="#HACK-for-3.3!-CROSS-WORD-PUZZLE!"> </a>
+</h4>
+<p>example of how to do it in your blog:</p>
+<p>7 across - Baloney</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Lesson-3.4">
+<a class="anchor" href="#Lesson-3.4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lesson 3.4<a class="anchor-link" href="#Lesson-3.4"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Matty">
+<a class="anchor" href="#Matty" aria-hidden="true"><span class="octicon octicon-link"></span></a>Matty<a class="anchor-link" href="#Matty"> </a>
+</h3>
+<p>Goal: Evaluate expression that manipulate strings</p>
+<p>String concatenation joins two or more strings end-to-end to make a new string</p>
+<p>A substring is part of an existing string</p>
+<h5 id="Strings:">
+<a class="anchor" href="#Strings:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Strings:<a class="anchor-link" href="#Strings:"> </a>
+</h5>
+<ul>
+<li>Ordered sequences of characters</li>
+<li>some procedures may exist that can be used with strings</li>
+<li>each language has its own procedures, methods, and functions. </li>
+</ul>
+<p>Fun fact: Space bar is also a character.</p>
+<h5 id="Examples-of-strings-in-pseudocode:">
+<a class="anchor" href="#Examples-of-strings-in-pseudocode:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples of strings in pseudocode:<a class="anchor-link" href="#Examples-of-strings-in-pseudocode:"> </a>
+</h5>
+<ul>
+<li>
+<p>len (str)</p>
+<ul>
+<li>returns the number of character is str</li>
+<li>len("hello") returns 5</li>
+</ul>
+</li>
+<li>
+<p>concat (str1, str2)</p>
+<ul>
+<li>returns a single string consisting of str1 followed by str 2</li>
+<li>concat("hello","world") return 'hello world'</li>
+</ul>
+</li>
+<li>
+<p>substring (str1, str2, length)</p>
+<ul>
+<li>returns a substring of consecutive character from str1, starting the character at position 'start' and containing 'length' character</li>
+<li>substring ("hello","world", 4,5) returns 'lo wor'</li>
+</ul>
+</li>
+</ul>
+<hr>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is an example of a len substring in python:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="s2">"HelloWorld"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>10</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is an example of a concat string in python:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">string1</span> <span class="o">=</span> <span class="s2">"Hello"</span>
+<span class="n">string2</span> <span class="o">=</span> <span class="s2">"World"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">string1</span> <span class="o">+</span> <span class="n">string2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>HelloWorld
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>or:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">string1</span> <span class="o">=</span> <span class="s2">"Hello"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">string1</span><span class="p">,</span> <span class="s2">"World"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Hello World
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is an example of a substring string in python:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">string</span> <span class="o">=</span> <span class="s2">"HelloWorld"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">6</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>lloW
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>"Challenge" problem:</p>
+<p>(The first to answer the output.)</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">string1</span> <span class="o">=</span> <span class="s2">"degree"</span>
+<span class="n">string2</span> <span class="o">=</span> <span class="s2">" passenger"</span>
+<span class="n">FinalString</span> <span class="o">=</span> <span class="n">string1</span> <span class="o">+</span> <span class="n">string2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">FinalString</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">9</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">FinalString</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">FinalString</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">9</span><span class="p">]))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>gree pa
+16
+7
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>There are many more functions that deal with strings, but these three are the ones that college board want you to learn. if you want to learn more about them, a google search will do the trick.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="HACK!">
+<a class="anchor" href="#HACK!" aria-hidden="true"><span class="octicon octicon-link"></span></a>HACK!<a class="anchor-link" href="#HACK!"> </a>
+</h4>
+<p><a href="https://hsinaditam.github.io/Tea_Lounge/wk2/2022/11/25/3.4-quiz.html">Link to the funnest activity ever!!!!</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h4 id="HACK!-REVIEW">
+<a class="anchor" href="#HACK!-REVIEW" aria-hidden="true"><span class="octicon octicon-link"></span></a>HACK! REVIEW<a class="anchor-link" href="#HACK!-REVIEW"> </a>
+</h4>
+<p><a href="https://hsinaditam.github.io/Tea_Lounge/wk2/2022/11/20/Lesson-presentation.html#Hacks">Hack #1</a></p>
+<p><a href="https://hsinaditam.github.io/Tea_Lounge/wk2/2022/11/20/Lesson-presentation.html#HACK!-CROSS-WORD-PUZZLE!">Hack #2</a></p>
+<p><a href="https://hsinaditam.github.io/Tea_Lounge/wk2/2022/11/20/Lesson-presentation.html#HACK!">Hack #3</a></p>
+<p>Make a new blog post and finish all of the hacks on there and submit it to the review ticket.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="DavidVasilev1/fastpages"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/fastpages/jupyter/python/trimester%202/notes/collegeboard/lesson/algorithms/math/2022/11/29/3.3-4.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/fastpages/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="https://davidvasilev1.github.io/fastpages/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/fastpages/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>CSP Blog</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+</html>

@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Lesson 3.1-3.2 | David Vasilev</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Lesson 3.1-3.2" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Jupyter Notebook for the rest of the class to follow along with." />
+<meta property="og:description" content="Jupyter Notebook for the rest of the class to follow along with." />
+<link rel="canonical" href="https://davidvasilev1.github.io/fastpages/jupyter/python/trimester%202/notes/collegeboard/lesson/variables/abstraction/2022/11/28/3.1-2.html" />
+<meta property="og:url" content="https://davidvasilev1.github.io/fastpages/jupyter/python/trimester%202/notes/collegeboard/lesson/variables/abstraction/2022/11/28/3.1-2.html" />
+<meta property="og:site_name" content="David Vasilev" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-11-28T00:00:00-06:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Lesson 3.1-3.2" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-11-28T00:00:00-06:00","datePublished":"2022-11-28T00:00:00-06:00","description":"Jupyter Notebook for the rest of the class to follow along with.","headline":"Lesson 3.1-3.2","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidvasilev1.github.io/fastpages/jupyter/python/trimester%202/notes/collegeboard/lesson/variables/abstraction/2022/11/28/3.1-2.html"},"url":"https://davidvasilev1.github.io/fastpages/jupyter/python/trimester%202/notes/collegeboard/lesson/variables/abstraction/2022/11/28/3.1-2.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/fastpages/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://davidvasilev1.github.io/fastpages/feed.xml" title="David Vasilev" /><link rel="shortcut icon" type="image/x-icon" href="/fastpages/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/fastpages/">David Vasilev</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/fastpages/categories/">Tags</a><a class="page-link" href="/fastpages/notes/">Notes</a><a class="page-link" href="/fastpages/assignments/">Assignments</a><a class="page-link" href="/fastpages/about/">About Me</a><a class="page-link" href="/fastpages/search/">Search</a></div>
+      </nav></div>
+</header>
+<style>
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+      }
+
+      .switch input { 
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+      }
+
+      input:checked + .slider {
+        background-color: #2196F3;
+      }
+
+      input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+      }
+
+      input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+      }
+
+      .slider {
+        border-radius: 34px;
+      }
+
+      .slider:before {
+        border-radius: 50%;
+      }
+    </style>
+
+    <audio id="myAudio" src="/fastpages/siren_meme___sound_effect.mp3" preload="auto">
+    </audio>
+
+    <label class="switch">
+      <input type="checkbox">
+      <span class="slider" onclick="togglePlay()"></span>
+      <p id="demo"></p>
+    </label>
+
+    <script>
+      function myFunction() {
+        var hi = "hi";
+
+        document.getElementById("demo").innerHTML = hi;
+        console.log("hi");
+      }
+
+      var myAudio = document.getElementById("myAudio");
+      var isPlaying = false;
+
+      function togglePlay() {
+        isPlaying ? myAudio.pause() : myAudio.play();
+      };
+
+      myAudio.onplaying = function() {
+        isPlaying = true;
+      };
+      myAudio.onpause = function() {
+        isPlaying = false;
+      };
+    </script>
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Lesson 3.1-3.2</h1><p class="page-description">Jupyter Notebook for the rest of the class to follow along with.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-11-28T00:00:00-06:00" itemprop="datePublished">
+        Nov 28, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      12 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/fastpages/categories/#Jupyter">Jupyter</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/fastpages/categories/#Python">Python</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/fastpages/categories/#Trimester 2">Trimester 2</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/fastpages/categories/#Notes">Notes</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/fastpages/categories/#Collegeboard">Collegeboard</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/fastpages/categories/#Lesson">Lesson</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/fastpages/categories/#Variables">Variables</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/fastpages/categories/#Abstraction">Abstraction</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-justify-center">
+          <div class="px-2">
+
+    <a href="https://github.com/DavidVasilev1/fastpages/tree/master/_notebooks/2022-11-28-3.1-2.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/fastpages/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/DavidVasilev1/fastpages/master?filepath=_notebooks%2F2022-11-28-3.1-2.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/fastpages/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/DavidVasilev1/fastpages/blob/master/_notebooks/2022-11-28-3.1-2.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/fastpages/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+          <div class="px-2">
+  <a href="https://deepnote.com/launch?url=https%3A%2F%2Fgithub.com%2FDavidVasilev1%2Ffastpages%2Fblob%2Fmaster%2F_notebooks%2F2022-11-28-3.1-2.ipynb" target="_blank">
+      <img class="notebook-badge-image" src="/fastpages/assets/badges/deepnote.svg" alt="Launch in Deepnote"/>
+  </a>
+</div>
+
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#Unit-3,-Section-1.1:-Data-Types-and-Variables---Ederick">Unit 3, Section 1.1: Data Types and Variables - Ederick </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Essential-Knowledge-(College-Board's-Must-Knows):">Essential Knowledge (College Board&#39;s Must Knows): </a></li>
+<li class="toc-entry toc-h2"><a href="#What-is-a-Variable?">What is a Variable? </a></li>
+<li class="toc-entry toc-h2"><a href="#Choosing-Variables">Choosing Variables </a></li>
+<li class="toc-entry toc-h2"><a href="#Data-Types">Data Types </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Variables-(3.1.2)---Noor">Variables (3.1.2) - Noor </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Learning-objective-for-3.1.2:">Learning objective for 3.1.2: </a></li>
+<li class="toc-entry toc-h2"><a href="#Note:">Note: </a></li>
+<li class="toc-entry toc-h2"><a href="#How-do-you-even-store-a-value-inside-a-variable?">How do you even store a value inside a variable? </a></li>
+<li class="toc-entry toc-h2"><a href="#Lets-Look-at-an-Example:">Lets Look at an Example: </a></li>
+<li class="toc-entry toc-h2"><a href="#Let's-get-a-little-more-practical-here">Let&#39;s get a little more practical here </a></li>
+<li class="toc-entry toc-h2"><a href="#Recap:">Recap: </a></li>
+<li class="toc-entry toc-h2"><a href="#Hacks:">Hacks: </a></li>
+<li class="toc-entry toc-h2"><a href="#Hacks:">Hacks: </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Bonus-(optional):">Bonus (optional): </a></li>
+<li class="toc-entry toc-h3"><a href="#Rubric">Rubric </a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#For-.15:">For .15: </a></li>
+<li class="toc-entry toc-h4"><a href="#For-.18:">For .18: </a></li>
+<li class="toc-entry toc-h4"><a href="#For-.20:">For .20: </a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#List-and-Strings-Using-Variables--Nathan">List and Strings Using Variables- Nathan </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Strings">Strings </a></li>
+<li class="toc-entry toc-h2"><a href="#Lists">Lists </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Features-of-Lists">Features of Lists </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Example-of-a-list">Example of a list </a></li>
+<li class="toc-entry toc-h2"><a href="#List-Index">List Index </a></li>
+<li class="toc-entry toc-h2"><a href="#Hacks">Hacks </a></li>
+<li class="toc-entry toc-h2"><a href="#Questions">Questions </a></li>
+<li class="toc-entry toc-h2"><a href="#Hacks">Hacks </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Create-an-index-of-your-favorite-foods">Create an index of your favorite foods </a></li>
+<li class="toc-entry toc-h3"><a href="#Rubric">Rubric </a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#Creating-a-list">Creating a list </a></li>
+<li class="toc-entry toc-h4"><a href="#Indexing">Indexing </a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Data-Abstraction-with-Lists---Steven">Data Abstraction with Lists - Steven </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Data-abstraction-can-be-created-with-lists.">Data abstraction can be created with lists. </a></li>
+<li class="toc-entry toc-h2"><a href="#In-the-code-below,-the-logic-itself-works-with-a-list,-but-the-code-abstracts-it-into-a-sequence-of-bits-in-a-string-(as-seen-in-the-input-and-output).-To-make-this-work,-the-splitbits-lists-is-created-and-processed.-At-the-end-of-the-code,-the-result-is-outputted-as-a-string-rather-than-a-list-(abstraction).">In the code below, the logic itself works with a list, but the code abstracts it into a sequence of bits in a string (as seen in the input and output). To make this work, the splitbits lists is created and processed. At the end of the code, the result is outputted as a string rather than a list (abstraction). </a></li>
+<li class="toc-entry toc-h2"><a href="#Hacks">Hacks </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#The-following-provides-a-rubric-for-my-hacks-(scored-out-of-0.20)">The following provides a rubric for my hacks (scored out of 0.20) </a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Managing-Complexity-with-lists---Liav">Managing Complexity with lists - Liav </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Long-and-slow-way">Long and slow way </a></li>
+<li class="toc-entry toc-h2"><a href="#Assinging-values-to-one-variable">Assinging values to one variable </a></li>
+<li class="toc-entry toc-h2"><a href="#How-lists-manage-complexity-of-a-program">How lists manage complexity of a program </a></li>
+<li class="toc-entry toc-h2"><a href="#Python-Quiz">Python Quiz </a></li>
+<li class="toc-entry toc-h2"><a href="#Simplify-Foods-List">Simplify Foods List </a></li>
+<li class="toc-entry toc-h2"><a href="#Hacks">Hacks </a></li>
+<li class="toc-entry toc-h2"><a href="#Rubric">Rubric </a></li>
+</ul>
+</li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2022-11-28-3.1-2.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Unit-3,-Section-1.1:-Data-Types-and-Variables---Ederick">
+<a class="anchor" href="#Unit-3,-Section-1.1:-Data-Types-and-Variables---Ederick" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unit 3, Section 1.1: Data Types and Variables - Ederick<a class="anchor-link" href="#Unit-3,-Section-1.1:-Data-Types-and-Variables---Ederick"> </a>
+</h1>
+<h2 id="Essential-Knowledge-(College-Board's-Must-Knows):">
+<a class="anchor" href="#Essential-Knowledge-(College-Board's-Must-Knows):" aria-hidden="true"><span class="octicon octicon-link"></span></a>Essential Knowledge (College Board's Must Knows):<a class="anchor-link" href="#Essential-Knowledge-(College-Board's-Must-Knows):"> </a>
+</h2>
+<ul>
+<li>A variable is an abstraction inside a program that holds a value, where each variable has associated data storage that represents a single value at a time (However, if the value is a collection type such as a list, then the value can contain multiple values).</li>
+<li>Variables typically have meaningful names that helps with the overall organization of the code and understanding of what is being represented by the variables</li>
+<li>Some programming languages provide a variety of methods to represent data, which are referenced using variables 9Booleans, numbers, lists, and strings)</li>
+<li>One form of a value is better suited for representation than antoher.</li>
+</ul>
+<h2 id="What-is-a-Variable?">
+<a class="anchor" href="#What-is-a-Variable?" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is a Variable?<a class="anchor-link" href="#What-is-a-Variable?"> </a>
+</h2>
+<p>A variable is an abstraction made inside a program that holds a value. These variables are used in code to refer to more comples values that the variable contains and makes the program code more organized and smoother to run.</p>
+<p>Variables can be seen as "containers" and each container has a name that holds what it is supposed to hold.
+In the following code, we can see that a variable has the value of "Alex." How can we make the variable appear more organized in the code?</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s2">"alex"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>alex
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Choosing-Variables">
+<a class="anchor" href="#Choosing-Variables" aria-hidden="true"><span class="octicon octicon-link"></span></a>Choosing Variables<a class="anchor-link" href="#Choosing-Variables"> </a>
+</h2>
+<p>When choosing variables, it is important to assign the variables name to something that correlates with what the function of the variable is supposed to do. For example, we do not want a variable that is supposed to hold a name be named "age" becaue it can be confusing and mistakes may be more prevalent.</p>
+<p>Example:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">item</span> <span class="o">=</span> <span class="s2">"Apples"</span>
+<span class="n">price</span> <span class="o">=</span> <span class="s2">"1"</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">item</span> <span class="o">+</span> <span class="s2">" cost $"</span> <span class="o">+</span> <span class="n">price</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Apples cost $1
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Notice how age is going to be seen when printing the code. That can lead to confusion</li>
+</ul>
+<h2 id="Data-Types">
+<a class="anchor" href="#Data-Types" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data Types<a class="anchor-link" href="#Data-Types"> </a>
+</h2>
+<p>Variables have different data types that store specific kinds of data depending on what is being represented. Some examples are shown below:</p>
+<ul>
+<li>integer (numbers)</li>
+<li>string (or text/letters)</li>
+<li>Boolean (True/False statements)</li>
+</ul>
+<p>These types of data types can be useful when trying to represent a value. For example, you would not want a variable meant to represent someone's name with an integer.</p>
+<p>Questions (College Board's Essential Knowledge):</p>
+<ol>
+<li>What exactly IS a variable?</li>
+<li>What is the best data type to represent someone's dog's name?</li>
+<li>Why is it important to give variables specific names before containing values?</li>
+<li>What is the best way to represent someone's phone number?</li>
+</ol>
+<p>Bonus (Not required but important to know):</p>
+<ol>
+<li>How can we update a variable's value</li>
+<li>What function is used to recieve a user's input?</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Variables-(3.1.2)---Noor">
+<a class="anchor" href="#Variables-(3.1.2)---Noor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Variables (3.1.2) - Noor<a class="anchor-link" href="#Variables-(3.1.2)---Noor"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Learning-objective-for-3.1.2:">
+<a class="anchor" href="#Learning-objective-for-3.1.2:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Learning objective for 3.1.2:<a class="anchor-link" href="#Learning-objective-for-3.1.2:"> </a>
+</h2>
+<p>Determine the value of a variable as a result of an assignment</p>
+<ul>
+<li>done through looking at how we can use the assignment operator</li>
+</ul>
+<h2 id="Note:">
+<a class="anchor" href="#Note:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Note:<a class="anchor-link" href="#Note:"> </a>
+</h2>
+<p>Collegeboard uses &lt;-- as the assignment operator</p>
+<ul>
+<li>The assignment operator looks different for different types of coding languages
+A variable will take the most recent value assigned</li>
+</ul>
+<h2 id="How-do-you-even-store-a-value-inside-a-variable?">
+<a class="anchor" href="#How-do-you-even-store-a-value-inside-a-variable?" aria-hidden="true"><span class="octicon octicon-link"></span></a>How do you even store a value inside a variable?<a class="anchor-link" href="#How-do-you-even-store-a-value-inside-a-variable?"> </a>
+</h2>
+<p>Let's use python for our example:</p>
+<ul>
+<li>In python, the assignment operator is the equal sign (=)</li>
+<li>In order to store a value inside a variable, we must:<ul>
+<li>Give the variable a name</li>
+<li>place the assignment operator </li>
+<li>input the variable value</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">highscore</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c1"># How do you store a number like 3.72?</span>
+<span class="n">money</span> <span class="o">=</span> <span class="mf">3.72</span>
+
+<span class="c1"># What about storing your username (string)?</span>
+<span class="n">username</span> <span class="o">=</span> <span class="s2">"name"</span>
+
+<span class="c1"># What if it is raining outside and you want to store that fact (boolean)?</span>
+<span class="n">is_raining</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># What about a list of groceries? </span>
+<span class="n">groceries</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"eggs"</span><span class="p">,</span> <span class="s2">"flour"</span><span class="p">,</span> <span class="s2">"bread"</span><span class="p">,</span> <span class="s2">"milk"</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Lets-Look-at-an-Example:">
+<a class="anchor" href="#Lets-Look-at-an-Example:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lets Look at an Example:<a class="anchor-link" href="#Lets-Look-at-an-Example:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">z</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">x</span>
+
+<span class="c1"># what do you think z will be?</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>20
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Let's-get-a-little-more-practical-here">
+<a class="anchor" href="#Let's-get-a-little-more-practical-here" aria-hidden="true"><span class="octicon octicon-link"></span></a>Let's get a little more practical here<a class="anchor-link" href="#Let's-get-a-little-more-practical-here"> </a>
+</h2>
+<p>Imagine that you are making a calendar and have just finished the html code that is needed:</p>
+<ul>
+<li>You now want to be able to switch between the months of the year by using the "next" or "prev" buttons<ul>
+<li>you will need to take the html elements and use them to your advantage<ul>
+<li>but how?</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">"container"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">"calendar"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">"month"</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">button</span> <span class="n">class</span><span class="o">=</span><span class="s2">"prev"</span><span class="o">&gt;</span><span class="n">Prev</span><span class="o">&lt;/</span><span class="n">button</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">button</span> <span class="n">class</span><span class="o">=</span><span class="s2">"next"</span><span class="o">&gt;</span><span class="n">Next</span><span class="o">&lt;/</span><span class="n">button</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+
+
+<span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
+    <span class="o">//</span> <span class="n">to</span> <span class="n">make</span> <span class="n">our</span> <span class="n">lives</span> <span class="n">a</span> <span class="n">little</span> <span class="n">easier</span><span class="p">,</span> <span class="n">we</span> <span class="n">can</span> <span class="n">store</span> <span class="n">the</span> <span class="n">div</span> <span class="nb">next</span> <span class="ow">and</span> <span class="n">prev</span> <span class="n">into</span> <span class="n">variables</span>
+    <span class="o">//</span> <span class="n">this</span> <span class="n">way</span> <span class="n">we</span> <span class="n">don</span><span class="s1">'t need to type out as much </span>
+    <span class="o">//</span> <span class="n">Note</span><span class="p">:</span> <span class="n">You</span> <span class="n">CAN</span> <span class="n">just</span> <span class="n">add</span> <span class="n">the</span> <span class="n">event</span> <span class="n">listener</span> <span class="n">to</span> <span class="n">document</span><span class="o">.</span><span class="n">querySelector</span><span class="p">(</span><span class="o">.</span><span class="n">next</span><span class="p">)</span> <span class="ow">or</span> <span class="n">prev</span> <span class="ow">and</span> <span class="n">get</span> <span class="n">the</span> <span class="n">same</span> <span class="n">desired</span> <span class="n">outcome</span> 
+    
+    <span class="n">nextButton</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">querySelector</span><span class="p">(</span><span class="o">.</span><span class="n">next</span><span class="p">)</span>
+    <span class="n">prevButton</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">querySelector</span><span class="p">(</span><span class="o">.</span><span class="n">prev</span><span class="p">)</span>
+
+    <span class="o">//</span> <span class="n">we</span> <span class="n">can</span> <span class="n">go</span> <span class="n">make</span> <span class="n">the</span> <span class="n">buttons</span> <span class="n">functional</span> <span class="n">by</span> <span class="n">adding</span> <span class="n">an</span> <span class="n">addeventlistner</span> <span class="n">to</span> <span class="n">them</span>
+
+<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Recap:">
+<a class="anchor" href="#Recap:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Recap:<a class="anchor-link" href="#Recap:"> </a>
+</h2>
+<ul>
+<li>We learned what is a assignment operator</li>
+<li>We learned how to use the assignment operator</li>
+<li>We learned how to store a value inside a variable using the assignment operator</li>
+<li>We experimented with a few examples </li>
+</ul>
+<h2 id="Hacks:">
+<a class="anchor" href="#Hacks:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks:<a class="anchor-link" href="#Hacks:"> </a>
+</h2>
+<p>Answer these:</p>
+<ul>
+<li>In your <strong>own</strong> words, briefly explain by writing down what an assignment operator is</li>
+<li>In Collegeboard pseudocode, what symbol is used to assign values to variables?</li>
+<li>A variable, x, is initially given a value of 15. Later on, the value for x is changed to 22. If you print x, would the command display 15 or 22?</li>
+</ul>
+<h2 id="Hacks:">
+<a class="anchor" href="#Hacks:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks:<a class="anchor-link" href="#Hacks:"> </a>
+</h2>
+<p>Copy the all the html code into a markdown file and run your local server. You will then see a decimal to binary converter near the html code. The problem is that it is not converting the decimal to binary. This is because the variables are not defined properly and it is your job to use the information learned today to fix the converter. <strong>Don't change the css</strong></p>
+<h3 id="Bonus-(optional):">
+<a class="anchor" href="#Bonus-(optional):" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bonus (optional):<a class="anchor-link" href="#Bonus-(optional):"> </a>
+</h3>
+<p>There's more than one way to define the variable. List two ways to do it.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Rubric">
+<a class="anchor" href="#Rubric" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rubric<a class="anchor-link" href="#Rubric"> </a>
+</h3>
+<h4 id="For-.15:">
+<a class="anchor" href="#For-.15:" aria-hidden="true"><span class="octicon octicon-link"></span></a>For .15:<a class="anchor-link" href="#For-.15:"> </a>
+</h4>
+<ul>
+<li>Student has followed directions properly and has the converter working</li>
+</ul>
+<h4 id="For-.18:">
+<a class="anchor" href="#For-.18:" aria-hidden="true"><span class="octicon octicon-link"></span></a>For .18:<a class="anchor-link" href="#For-.18:"> </a>
+</h4>
+<ul>
+<li>Student has completed some of the bonus material alongside requirement for 2.7</li>
+</ul>
+<h4 id="For-.20:">
+<a class="anchor" href="#For-.20:" aria-hidden="true"><span class="octicon octicon-link"></span></a>For .20:<a class="anchor-link" href="#For-.20:"> </a>
+</h4>
+<ul>
+<li>Student has completed all of the material, answered thoughtfully, and met requirements for 2.7</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="List-and-Strings-Using-Variables--Nathan">
+<a class="anchor" href="#List-and-Strings-Using-Variables--Nathan" aria-hidden="true"><span class="octicon octicon-link"></span></a>List and Strings Using Variables- Nathan<a class="anchor-link" href="#List-and-Strings-Using-Variables--Nathan"> </a>
+</h1>
+<h2 id="Strings">
+<a class="anchor" href="#Strings" aria-hidden="true"><span class="octicon octicon-link"></span></a>Strings<a class="anchor-link" href="#Strings"> </a>
+</h2>
+<p>Strings is a series of characters (numbers, letters, etc), one example of a string is your name or your id because strings can contain both numbers and letters.</p>
+<p>The following are all examples of strings being used in code, in this case, within print functions.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"hello world"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'hello'</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>hello world
+hello
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Lists">
+<a class="anchor" href="#Lists" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lists<a class="anchor-link" href="#Lists"> </a>
+</h2>
+<p>Lists are sequences of elements with each element being a variable. An example of a list can be the names of the students in this classroom.</p>
+<h3 id="Features-of-Lists">
+<a class="anchor" href="#Features-of-Lists" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features of Lists<a class="anchor-link" href="#Features-of-Lists"> </a>
+</h3>
+<ul>
+<li>The elements within the list can be accessed by index.</li>
+<li>Can store various elements</li>
+<li>The list is in order</li>
+</ul>
+<h2 id="Example-of-a-list">
+<a class="anchor" href="#Example-of-a-list" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example of a list<a class="anchor-link" href="#Example-of-a-list"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">foods</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"apple"</span><span class="p">,</span> <span class="s2">"bread"</span><span class="p">,</span> <span class="s2">"chicken"</span><span class="p">,</span> <span class="s2">"pear"</span><span class="p">,</span> <span class="s2">"candy"</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">foods</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Forwards: "</span> <span class="o">+</span> <span class="n">foods</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Backwards: "</span> <span class="o">+</span> <span class="n">foods</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>['apple', 'bread', 'chicken', 'pear', 'candy']
+Forwards: bread
+Backwards: pear
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="List-Index">
+<a class="anchor" href="#List-Index" aria-hidden="true"><span class="octicon octicon-link"></span></a>List Index<a class="anchor-link" href="#List-Index"> </a>
+</h2>
+<p>An index is an element of a string. Indices typically start with 0, but Collegeboard has the index start at 1.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Hacks">
+<a class="anchor" href="#Hacks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks<a class="anchor-link" href="#Hacks"> </a>
+</h2>
+<h2 id="Questions">
+<a class="anchor" href="#Questions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Questions<a class="anchor-link" href="#Questions"> </a>
+</h2>
+<ul>
+<li>What is a list?</li>
+<li>What is an element</li>
+<li>What is an easy way to reference the elements in a list or string?</li>
+<li>What is an example of a string?</li>
+</ul>
+<h2 id="Hacks">
+<a class="anchor" href="#Hacks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks<a class="anchor-link" href="#Hacks"> </a>
+</h2>
+<ul>
+<li>Create a list with indices </li>
+<li>Index a part of the list that you created.</li>
+<li>Try to index from the end </li>
+</ul>
+<h3 id="Create-an-index-of-your-favorite-foods">
+<a class="anchor" href="#Create-an-index-of-your-favorite-foods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create an index of your favorite foods<a class="anchor-link" href="#Create-an-index-of-your-favorite-foods"> </a>
+</h3>
+<p>Tips: Index starts at 1, Strings are ordered sequences of characters</p>
+<p>Extra work: Try to create an index that lists your favorite food and print the element at index 3.
+More work: Create a list of your favorite foods and create an index to access them.</p>
+<p>marks = ["food1"]</p>
+<h3 id="Rubric">
+<a class="anchor" href="#Rubric" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rubric<a class="anchor-link" href="#Rubric"> </a>
+</h3>
+<h4 id="Creating-a-list">
+<a class="anchor" href="#Creating-a-list" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating a list<a class="anchor-link" href="#Creating-a-list"> </a>
+</h4>
+<ul>
+<li>Shows great knowledge in creating lists</li>
+</ul>
+<h4 id="Indexing">
+<a class="anchor" href="#Indexing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Indexing<a class="anchor-link" href="#Indexing"> </a>
+</h4>
+<ul>
+<li>Is able to index both from the start and from the end</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Data-Abstraction-with-Lists---Steven">
+<a class="anchor" href="#Data-Abstraction-with-Lists---Steven" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data Abstraction with Lists - Steven<a class="anchor-link" href="#Data-Abstraction-with-Lists---Steven"> </a>
+</h1>
+<h2 id="Data-abstraction-can-be-created-with-lists.">
+<a class="anchor" href="#Data-abstraction-can-be-created-with-lists." aria-hidden="true"><span class="octicon octicon-link"></span></a>Data abstraction can be created with lists.<a class="anchor-link" href="#Data-abstraction-can-be-created-with-lists."> </a>
+</h2>
+<ul>
+<li>Lists bundle together multiple elements and/or variables under one name are not defined with specified lengths. </li>
+<li>The variables that are stored in a list do not have to be limited to one kind of variable. </li>
+<li>The user does not need to know how the list stores data (this gives way for data abstraction).</li>
+</ul>
+<h2 id="In-the-code-below,-the-logic-itself-works-with-a-list,-but-the-code-abstracts-it-into-a-sequence-of-bits-in-a-string-(as-seen-in-the-input-and-output).-To-make-this-work,-the-splitbits-lists-is-created-and-processed.-At-the-end-of-the-code,-the-result-is-outputted-as-a-string-rather-than-a-list-(abstraction).">
+<a class="anchor" href="#In-the-code-below,-the-logic-itself-works-with-a-list,-but-the-code-abstracts-it-into-a-sequence-of-bits-in-a-string-(as-seen-in-the-input-and-output).-To-make-this-work,-the-splitbits-lists-is-created-and-processed.-At-the-end-of-the-code,-the-result-is-outputted-as-a-string-rather-than-a-list-(abstraction)." aria-hidden="true"><span class="octicon octicon-link"></span></a>In the code below, the logic itself works with a list, but the code abstracts it into a sequence of bits in a string (as seen in the input and output). To make this work, the splitbits lists is created and processed. At the end of the code, the result is outputted as a string rather than a list (abstraction).<a class="anchor-link" href="#In-the-code-below,-the-logic-itself-works-with-a-list,-but-the-code-abstracts-it-into-a-sequence-of-bits-in-a-string-(as-seen-in-the-input-and-output).-To-make-this-work,-the-splitbits-lists-is-created-and-processed.-At-the-end-of-the-code,-the-result-is-outputted-as-a-string-rather-than-a-list-(abstraction)."> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bits</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Input a sequence of bits to invert: "</span><span class="p">)</span>
+
+<span class="n">splitbits</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">splitbits</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">splitbits</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'0'</span><span class="p">:</span>
+        <span class="n">splitbits</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'1'</span>
+    <span class="k">elif</span> <span class="n">splitbits</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'1'</span><span class="p">:</span>
+        <span class="n">splitbits</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'0'</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">splitbits</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>6
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Hacks">
+<a class="anchor" href="#Hacks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks<a class="anchor-link" href="#Hacks"> </a>
+</h2>
+<ul>
+<li>The following code is incomplete. Its intended purpose is to increase three numbers, all of which ask for user input, by an amount specified the user. The input code is abstracted, but the actual logic isn't connected to the abstraction.</li>
+</ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num1</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s2">"Input a number. "</span><span class="p">)</span>
+<span class="n">num2</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s2">"Input a number. "</span><span class="p">)</span>
+<span class="n">num3</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s2">"Input a number. "</span><span class="p">)</span>
+<span class="n">add</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s2">"How much would you like to add? "</span><span class="p">)</span>
+
+<span class="c1"># Add code in the space below</span>
+
+<span class="n">numlist</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">num1</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">num2</span><span class="p">),</span>  <span class="nb">int</span><span class="p">(</span><span class="n">num3</span><span class="p">)]</span>
+
+<span class="c1"># The following is the code that adds the inputted addend to the other numbers. It is hidden from the user.</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">numlist</span><span class="p">)):</span>
+    <span class="n">numlist</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">add</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">numlist</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[6, 7, 8]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-following-provides-a-rubric-for-my-hacks-(scored-out-of-0.20)">
+<a class="anchor" href="#The-following-provides-a-rubric-for-my-hacks-(scored-out-of-0.20)" aria-hidden="true"><span class="octicon octicon-link"></span></a>The following provides a rubric for my hacks (scored out of 0.20)<a class="anchor-link" href="#The-following-provides-a-rubric-for-my-hacks-(scored-out-of-0.20)"> </a>
+</h3>
+<ul>
+<li>0.20 - Fully functioning data abstraction with a list</li>
+<li>0.10 - not functioning, but attempt at making a list</li>
+<li>0.00 - not functioning, no evidence of attempt based upon the guidelines</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Managing-Complexity-with-lists---Liav">
+<a class="anchor" href="#Managing-Complexity-with-lists---Liav" aria-hidden="true"><span class="octicon octicon-link"></span></a>Managing Complexity with lists - Liav<a class="anchor-link" href="#Managing-Complexity-with-lists---Liav"> </a>
+</h1>
+<h2 id="Long-and-slow-way">
+<a class="anchor" href="#Long-and-slow-way" aria-hidden="true"><span class="octicon octicon-link"></span></a>Long and slow way<a class="anchor-link" href="#Long-and-slow-way"> </a>
+</h2>
+<ul>
+<li>By now, everyone should know the "long and slow way" to print a list of something in python<ul>
+<li>It is easy to just assign a value to a single variable</li>
+<li>This method is displayed in this example with test scores:</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">score1</span> <span class="o">=</span> <span class="mi">95</span>
+<span class="n">score2</span> <span class="o">=</span> <span class="mi">24</span>
+<span class="n">score3</span> <span class="o">=</span> <span class="mi">87</span>
+<span class="n">score4</span> <span class="o">=</span> <span class="mi">92</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">score1</span><span class="p">,</span> <span class="n">score2</span><span class="p">,</span> <span class="n">score3</span><span class="p">,</span> <span class="n">score4</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>As you can see, each score is assigned to its relative variable such as "score1 = 95" and then you just print each variable.</li>
+<li>However you can make the code segment faster, easier to read, and more efficient...</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Assinging-values-to-one-variable">
+<a class="anchor" href="#Assinging-values-to-one-variable" aria-hidden="true"><span class="octicon octicon-link"></span></a>Assinging values to one variable<a class="anchor-link" href="#Assinging-values-to-one-variable"> </a>
+</h2>
+<ul>
+<li>Use square brackets "[]" to store the values of a certain variable, then you can simply print the variable to output your desired list:</li>
+</ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">95</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">87</span><span class="p">,</span> <span class="mi">92</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Now instead of having a difference variable and new line of code for each value, the list is simply displayed by assigning each value to a single value that you can now print.</li>
+</ul>
+<h2 id="How-lists-manage-complexity-of-a-program">
+<a class="anchor" href="#How-lists-manage-complexity-of-a-program" aria-hidden="true"><span class="octicon octicon-link"></span></a>How lists manage complexity of a program<a class="anchor-link" href="#How-lists-manage-complexity-of-a-program"> </a>
+</h2>
+<ul>
+<li>
+<p>Simplification</p>
+<ul>
+<li>It is much simpler, faster, and easier to code lists this way</li>
+<li>Makes the code segment much easier to read</li>
+</ul>
+</li>
+<li>
+<p>Variables</p>
+<ul>
+<li>You do not need as many variables, because you can just assign all corresponding values to a single variable</li>
+<li>To change a value you don't have to edit/add/remove an entire variable</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Python-Quiz">
+<a class="anchor" href="#Python-Quiz" aria-hidden="true"><span class="octicon octicon-link"></span></a>Python Quiz<a class="anchor-link" href="#Python-Quiz"> </a>
+</h2>
+<ul>
+<li>Now everyone should take this short python quiz and screenshot your score.</li>
+</ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">getpass</span><span class="o">,</span> <span class="nn">sys</span>
+
+<span class="k">def</span> <span class="nf">question_with_response</span><span class="p">(</span><span class="n">prompt</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Question: "</span> <span class="o">+</span> <span class="n">prompt</span><span class="p">)</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">msg</span>
+
+<span class="n">questions</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Hello, '</span> <span class="o">+</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getuser</span><span class="p">()</span> <span class="o">+</span> <span class="s2">" running "</span> <span class="o">+</span> <span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"You will be asked "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">questions</span><span class="p">)</span> <span class="o">+</span> <span class="s2">" questions."</span><span class="p">)</span>
+<span class="n">question_with_response</span><span class="p">(</span><span class="s2">"Are you ready to take a test?"</span><span class="p">)</span>
+
+<span class="n">rsp</span> <span class="o">=</span> <span class="n">question_with_response</span><span class="p">(</span><span class="s2">"The purpose of lists and dictionaries are to manage the ____ of a program"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">rsp</span> <span class="o">==</span> <span class="s2">"complexity"</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">rsp</span> <span class="o">+</span> <span class="s2">" is correct!"</span><span class="p">)</span>
+    <span class="n">correct</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">rsp</span> <span class="o">+</span> <span class="s2">" is incorrect!"</span><span class="p">)</span>
+
+<span class="n">rsp</span> <span class="o">=</span> <span class="n">question_with_response</span><span class="p">(</span><span class="s2">"Lists are a form of data ______"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">rsp</span> <span class="o">==</span> <span class="s2">"abstraction"</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">rsp</span> <span class="o">+</span> <span class="s2">" is correct!"</span><span class="p">)</span>
+    <span class="n">correct</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">rsp</span> <span class="o">+</span> <span class="s2">" is incorrect!"</span><span class="p">)</span>
+
+<span class="n">rsp</span> <span class="o">=</span> <span class="n">question_with_response</span><span class="p">(</span><span class="s2">"Which brackets are used to assign values to a variable to make a list?"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">rsp</span> <span class="o">==</span> <span class="s2">"[]"</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">rsp</span> <span class="o">+</span> <span class="s2">" is correct!"</span><span class="p">)</span>
+    <span class="n">correct</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">rsp</span> <span class="o">+</span> <span class="s2">" is incorrect!"</span><span class="p">)</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="n">getpass</span><span class="o">.</span><span class="n">getuser</span><span class="p">()</span> <span class="o">+</span> <span class="s2">" you scored "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">correct</span><span class="p">)</span> <span class="o">+</span><span class="s2">"/"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">questions</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Hello, davidv running /home/davidv/anaconda3/bin/python
+You will be asked 4 questions.
+Question: Are you ready to take a test?
+Question: The purpose of lists and dictionaries are to manage the ____ of a program
+complexity is correct!
+Question: Lists are a form of data ______
+abstraction is correct!
+Question: Which brackets are used to assign values to a variable to make a list?
+[] is correct!
+davidv you scored 3/4
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Simplify-Foods-List">
+<a class="anchor" href="#Simplify-Foods-List" aria-hidden="true"><span class="octicon octicon-link"></span></a>Simplify Foods List<a class="anchor-link" href="#Simplify-Foods-List"> </a>
+</h2>
+<ul>
+<li>Now simplify this foods list using what you have learned</li>
+</ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">food1</span> <span class="o">=</span> <span class="s2">"pizza"</span> 
+<span class="n">food2</span> <span class="o">=</span> <span class="s2">"hot dog"</span> 
+<span class="n">food3</span> <span class="o">=</span> <span class="s2">"sushi"</span>
+<span class="n">food4</span> <span class="o">=</span> <span class="s2">"strawberry"</span>
+<span class="n">food5</span> <span class="o">=</span> <span class="s2">"sandwich"</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Foods (slow): "</span> <span class="o">+</span> <span class="n">food1</span><span class="p">,</span> <span class="n">food2</span><span class="p">,</span> <span class="n">food3</span><span class="p">,</span> <span class="n">food4</span><span class="p">,</span> <span class="n">food5</span><span class="p">)</span>
+
+<span class="c1">#simple</span>
+
+<span class="n">foods</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"pizza"</span><span class="p">,</span> <span class="s2">"hotdog"</span><span class="p">,</span> <span class="s2">"sushi"</span><span class="p">,</span> <span class="s2">"strawberry"</span><span class="p">,</span> <span class="s2">"sandwich"</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Modified: "</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">foods</span><span class="p">)</span>
+
+<span class="c1">#personal</span>
+
+<span class="n">color1</span> <span class="o">=</span> <span class="s2">"red"</span>
+<span class="n">color2</span> <span class="o">=</span> <span class="s2">"yellow"</span>
+<span class="n">color3</span> <span class="o">=</span> <span class="s2">"green"</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Colors (slow): "</span> <span class="o">+</span> <span class="n">color1</span> <span class="o">+</span> <span class="n">color2</span> <span class="o">+</span> <span class="n">color3</span><span class="p">)</span>
+
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"red"</span><span class="p">,</span> <span class="s2">"yellow"</span><span class="p">,</span> <span class="s2">"green"</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Simplified: "</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Foods (slow): pizza hot dog sushi strawberry sandwich
+Modified: 
+['pizza', 'hotdog', 'sushi', 'strawberry', 'sandwich']
+Colors (slow): redyellowgreen
+Simplified: 
+['red', 'yellow', 'green']
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Hacks">
+<a class="anchor" href="#Hacks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks<a class="anchor-link" href="#Hacks"> </a>
+</h2>
+<ul>
+<li>On a single markdown file:<ul>
+<li>Insert a screenshot of your score on the python quiz</li>
+<li>Insert a screenshot of your simplifying of the food list</li>
+<li>Why are using lists better for a program, rather than writing out each line of code?</li>
+<li>Make your own list the "long and slow way" then manage the complexity of the list</li>
+</ul>
+</li>
+</ul>
+<h2 id="Rubric">
+<a class="anchor" href="#Rubric" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rubric<a class="anchor-link" href="#Rubric"> </a>
+</h2>
+<ul>
+<li>In ordere to earn a .20/.20 you must<ul>
+<li>On a markdown post:</li>
+<li>make an attempt at the python quiz</li>
+<li>Successfully simplify the food list</li>
+<li>Answer the question in detail</li>
+<li>Provide evidence of your own list that you coded</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="DavidVasilev1/fastpages"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/fastpages/jupyter/python/trimester%202/notes/collegeboard/lesson/variables/abstraction/2022/11/28/3.1-2.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/fastpages/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="https://davidvasilev1.github.io/fastpages/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/fastpages/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>CSP Blog</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+</html>
