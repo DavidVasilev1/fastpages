@@ -1,9 +1,6 @@
 import sqlite3
 
-db_n = input("What name do you want your database to be?")
-tab_n = input("What name do you want your table to be?")
-
-db = 'instance/'+db_n+'.db'
+db = 'instance/cars.db'
 
 def schema():
     
@@ -20,12 +17,26 @@ def schema():
     
 schema()
 
+def init_table():
+    conn = sqlite3.connect(db)
+
+    cursor = conn.cursor()
+
+    cursor.execute(f"""CREATE TABLE car ( _manufacturer TEXT NOT NULL, _model TEXT, _price INTEGER);""")
+
+    cursor.close()
+    conn.commit()
+    conn.close()
+
+#init_table()
+
+
 def read():
     conn = sqlite3.connect(db)
 
     cursor = conn.cursor()
     
-    results = cursor.execute('SELECT * FROM {tab_n}').fetchall()
+    results = cursor.execute('SELECT * FROM car').fetchall()
 
     if len(results) == 0:
         print("Table is empty")
@@ -46,7 +57,7 @@ def create():
     cursor = conn.cursor()
 
     try:
-        cursor.execute("INSERT INTO {tab_n} (_manufacturer, _model, _price) VALUES (?, ?, ?)", (manufacturer, model, price))
+        cursor.execute("INSERT INTO car (_manufacturer, _model, _price) VALUES (?, ?, ?);", (manufacturer, model, price))
         
         conn.commit()
         print(f"A new car record {model} has been created")
@@ -66,7 +77,7 @@ def update():
     cursor = conn.cursor()
 
     try:
-        cursor.execute("UPDATE {tab_n} SET _price = ? WHERE _model = ?", (price, model))
+        cursor.execute("UPDATE car SET _price = ? WHERE _model = ?", (price, model))
         if cursor.rowcount == 0:
             print(f"No model {model} was not found in the table")
         else:
@@ -86,7 +97,7 @@ def delete():
     cursor = conn.cursor()
 
     try:
-        cursor.execute("DELETE FROM {tab_n} WHERE _model = ?", (model,))
+        cursor.execute("DELETE FROM car WHERE _model = ?", (model,))
         if cursor.rowcount == 0:
             print(f"No model {model} was not found in the table")
         else:
@@ -118,7 +129,9 @@ def menu():
         else:
             print("Please enter c, r, u, or d") 
         
-try:
-    menu()
-except:
-    print("Perform Jupyter 'Run All' prior to starting menu")
+# try:
+#     menu()
+# except:
+#     print("Perform Jupyter 'Run All' prior to starting menu")
+
+menu()
