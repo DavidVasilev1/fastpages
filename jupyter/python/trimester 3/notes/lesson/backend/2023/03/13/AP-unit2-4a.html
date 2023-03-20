@@ -188,7 +188,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      8 min read
+      13 min read
     
 </span></p>
 
@@ -340,13 +340,16 @@ window.onload = wrap_img;
 <span class="sd">"""</span>
 
 <span class="c1"># Setup of key Flask object (app)</span>
+
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span> <span class="c1"># initializes the Flask object we are going to use</span>
+
 <span class="c1"># Setup SQLAlchemy object and properties for the database (db)</span>
 <span class="n">database</span> <span class="o">=</span> <span class="s1">'sqlite:///sqlite.db'</span>  <span class="c1"># path and filename of database</span>
 <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">'SQLALCHEMY_TRACK_MODIFICATIONS'</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">'SQLALCHEMY_DATABASE_URI'</span><span class="p">]</span> <span class="o">=</span> <span class="n">database</span>
 <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">'SECRET_KEY'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'SECRET_KEY'</span>
-<span class="n">db</span> <span class="o">=</span> <span class="n">SQLAlchemy</span><span class="p">()</span> 
+
+<span class="n">db</span> <span class="o">=</span> <span class="n">SQLAlchemy</span><span class="p">()</span>
 <span class="c1"># initializes the database with SQLAlchemy</span>
 
 <span class="c1"># This belongs in place where it runs once per project</span>
@@ -409,9 +412,10 @@ window.onload = wrap_img;
 <span class="c1"># -- a.) db.Model is like an inner layer of the onion in ORM</span>
 <span class="c1"># -- b.) User represents data we want to store, something that is built on db.Model</span>
 <span class="c1"># -- c.) SQLAlchemy ORM is layer on top of SQLAlchemy Core, then SQLAlchemy engine, SQL</span>
-<span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span> 
-    <span class="c1"># created a class for the specific user and makes the model database chart into which the data will be placed</span>
-    <span class="c1"># db.Model is inherited towards the specific user on which the instance that it is created</span>
+<span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+
+    <span class="c1"># 1) this is a User object that is a class which is used to define properties of the user with variables</span>
+    <span class="c1"># 2) db.Model is inherited towards the specific user on which the instance that it is created, storing the data needed</span>
 
     <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">'users'</span>  <span class="c1"># table name is plural, class name is singular</span>
 
@@ -424,7 +428,9 @@ window.onload = wrap_img;
 
     <span class="c1"># constructor of a User object, initializes the instance variables within object (self)</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">uid</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">"123qwerty"</span><span class="p">,</span> <span class="n">dob</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()):</span>
-    <span class="c1"># the variables for the model are initialized and this is then used to store the data from the inputs</span>
+
+    <span class="c1"># 3) this method is used to initialize the properties and state of the instance which is running, in this case setting the variables that will be used to store the data into the database</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>    <span class="c1"># variables with self prefix become part of the object, </span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_uid</span> <span class="o">=</span> <span class="n">uid</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_password</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
@@ -432,8 +438,9 @@ window.onload = wrap_img;
             <span class="n">dob</span> <span class="o">=</span> <span class="n">date</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dob</span> <span class="o">=</span> <span class="n">dob</span>
 
-    <span class="c1"># @property creates each data point in the table</span>
-    <span class="c1"># @&lt;column&gt;.setter assigns the variable of each data point created per user and then sets it to the specific row it belongs in</span>
+    <span class="c1"># 4) @property defines a property for the database model which is accessed like an attribute, but is actually a method</span>
+    <span class="c1"># 5) @&lt;column&gt;.setter is a method that defines the value of the database column</span>
+    <span class="c1"># 4-5) both of these are used to initialize the data that will be placed into the database</span>
 
     <span class="c1"># a name getter method, extracts name from object</span>
     <span class="nd">@property</span>
@@ -500,6 +507,11 @@ window.onload = wrap_img;
 
     <span class="c1"># CRUD create/add a new record to the table</span>
     <span class="c1"># returns self or None on error</span>
+
+    <span class="c1"># 6) these methods are used to add, update, delete, and remove data from the database of stored values</span>
+
+    <span class="c1"># 6) create: is used to make a new instance of the database and add information to it</span>
+
     <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="c1"># creates a person object from User(db.Model) class, passes initializers</span>
@@ -512,6 +524,9 @@ window.onload = wrap_img;
 
     <span class="c1"># CRUD read converts self to dictionary</span>
     <span class="c1"># returns dictionary</span>
+
+    <span class="c1"># 6) read: is used to retrieve specified instances from the database and send them to the frontend</span>
+
     <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">{</span>
             <span class="s2">"id"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
@@ -523,6 +538,9 @@ window.onload = wrap_img;
 
     <span class="c1"># CRUD update: updates user name, password, phone</span>
     <span class="c1"># returns self</span>
+
+    <span class="c1"># 6) update: is used to modify existing information in the database</span>
+
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">uid</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">""</span><span class="p">):</span>
         <span class="sd">"""only updates values with length"""</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -536,6 +554,9 @@ window.onload = wrap_img;
 
     <span class="c1"># CRUD delete: remove self</span>
     <span class="c1"># None</span>
+
+    <span class="c1"># 6) delete: is used to remove existing information from the database</span>
+
     <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
@@ -585,6 +606,9 @@ window.onload = wrap_img;
 <span class="k">def</span> <span class="nf">initUsers</span><span class="p">():</span>
     <span class="k">with</span> <span class="n">app</span><span class="o">.</span><span class="n">app_context</span><span class="p">():</span>
         <span class="sd">"""Create database and tables"""</span>
+
+        <span class="c1"># 1) this adds all of the info into the database through the create function, adding in info based on the setters and getters of the User object defined</span>
+
         <span class="n">db</span><span class="o">.</span><span class="n">create_all</span><span class="p">()</span>
         <span class="sd">"""Tester data for table"""</span>
         <span class="n">u1</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Thomas Edison'</span><span class="p">,</span> <span class="n">uid</span><span class="o">=</span><span class="s1">'toby'</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">'123toby'</span><span class="p">,</span> <span class="n">dob</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1847</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="p">))</span>
@@ -597,12 +621,20 @@ window.onload = wrap_img;
 
         <span class="n">users</span> <span class="o">=</span> <span class="p">[</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">,</span> <span class="n">u3</span><span class="p">,</span> <span class="n">u4</span><span class="p">,</span> <span class="n">u5</span><span class="p">,</span> <span class="n">u6</span><span class="p">]</span>
 
+        <span class="c1"># 2) this creates a new instance for each user, creating the user data into an object and adding it into the database</span>
+
         <span class="sd">"""Builds sample user/note(s) data"""</span>
         <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">users</span><span class="p">:</span>
+
+            <span class="c1"># 3) try means that this block of code will be run but may result in some exceptions</span>
+
             <span class="k">try</span><span class="p">:</span>
                 <span class="sd">'''add user to table'''</span>
                 <span class="nb">object</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
                 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Created new uid </span><span class="si">{</span><span class="nb">object</span><span class="o">.</span><span class="n">uid</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            
+            <span class="c1"># 4) except means that once everything is tried and if exceptions are met, this code will run, which in this case will result in an error message</span>
+
             <span class="k">except</span><span class="p">:</span>  <span class="c1"># error raised if object nit created</span>
                 <span class="sd">'''fails with bad or duplicate data'''</span>
                 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Records exist uid </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">uid</span><span class="si">}</span><span class="s2">, or error."</span><span class="p">)</span>
@@ -665,6 +697,10 @@ Created new uid raven
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">find_by_uid</span><span class="p">(</span><span class="n">uid</span><span class="p">):</span>
     <span class="k">with</span> <span class="n">app</span><span class="o">.</span><span class="n">app_context</span><span class="p">():</span>
+
+        <span class="c1"># 1) this searches through all of the data objects based on the specifies variable, which in this case is the user id</span>
+        <span class="c1"># in this case, this program code is used to search for the user id that is entered</span>
+
         <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">_uid</span><span class="o">=</span><span class="n">uid</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">user</span> <span class="c1"># returns user object</span>
 
@@ -674,6 +710,10 @@ Created new uid raven
     <span class="n">user</span> <span class="o">=</span> <span class="n">find_by_uid</span><span class="p">(</span><span class="n">uid</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">user</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">False</span>
+    
+    <span class="c1"># 2) this checks if the password that is entered by the user and that matches with the object that they selected</span>
+    <span class="c1"># is the password matches, then True is returned</span>
+
     <span class="k">if</span> <span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">is_password</span><span class="p">(</span><span class="n">password</span><span class="p">)):</span>
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">return</span> <span class="kc">False</span>
@@ -720,7 +760,13 @@ Created new uid raven
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">create</span><span class="p">():</span>
     <span class="c1"># optimize user time to see if uid exists</span>
     <span class="n">uid</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Enter your user id:"</span><span class="p">)</span>
+
+    <span class="c1"># 1) this searches through the objects created in the database based on the request that is given by searching for a certain user id</span>
+
     <span class="n">user</span> <span class="o">=</span> <span class="n">find_by_uid</span><span class="p">(</span><span class="n">uid</span><span class="p">)</span>
+
+    <span class="c1"># 1) this tries to see if the user id matches up with a uid in the database and if it does, then it returns True, if it doesn't then it keeps searching</span>
+
     <span class="k">try</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"Found</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">user</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
         <span class="k">return</span>
@@ -731,6 +777,8 @@ Created new uid raven
     <span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Enter your name:"</span><span class="p">)</span>
     <span class="n">password</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Enter your password"</span><span class="p">)</span>
     
+    <span class="c1"># 2) this sets the User object and the variables that store the data inside the object</span>
+
     <span class="c1"># Initialize User object before date</span>
     <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> 
                 <span class="n">uid</span><span class="o">=</span><span class="n">uid</span><span class="p">,</span> 
@@ -739,7 +787,14 @@ Created new uid raven
     
     <span class="c1"># create user.dob, fail with today as dob</span>
     <span class="n">dob</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Enter your date of birth 'YYYY-MM-DD'"</span><span class="p">)</span>
+
+    <span class="c1"># 3) tries to format the date that is inputted by the user and then puts it in the database</span>
+    <span class="c1"># if the date isn't formatted correctly, an error is returned to the user</span>
+
     <span class="k">try</span><span class="p">:</span>
+
+        <span class="c1"># 3) this defines the date that is entered to the user object and formats it into the correct sequence</span>
+
         <span class="n">user</span><span class="o">.</span><span class="n">dob</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">dob</span><span class="p">,</span> <span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1">'</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
     <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
         <span class="n">user</span><span class="o">.</span><span class="n">dob</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
@@ -747,7 +802,13 @@ Created new uid raven
            
     <span class="c1"># write object to database</span>
     <span class="k">with</span> <span class="n">app</span><span class="o">.</span><span class="n">app_context</span><span class="p">():</span>
+
+        <span class="c1"># 4) this attempts to create a user based on the data given and if the data doesn't match up the data is rejected and an error is given</span>
+
         <span class="k">try</span><span class="p">:</span>
+
+            <span class="c1"># 4) the user is created and assigned to the variable `object`</span>
+
             <span class="nb">object</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">"Created</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="nb">object</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
         <span class="k">except</span><span class="p">:</span>  <span class="c1"># error raised if object not created</span>
@@ -808,7 +869,14 @@ Created new uid raven
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># SQLAlchemy extracts all users from database, turns each user into JSON</span>
 <span class="k">def</span> <span class="nf">read</span><span class="p">():</span>
     <span class="k">with</span> <span class="n">app</span><span class="o">.</span><span class="n">app_context</span><span class="p">():</span>
+
+        <span class="c1"># 1) this goes through the entire user object created and reads all of the data that is in the database, outputting it</span>
+
         <span class="n">table</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    
+    <span class="c1"># 2) this assigns the data into a JSON format to be sent to the frontend without additional formatting by the program</span>
+    <span class="c1"># google list comprehension is the way that lists are created in Python and manipulated for future use within Google's codebase</span>
+
     <span class="n">json_ready</span> <span class="o">=</span> <span class="p">[</span><span class="n">user</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">table</span><span class="p">]</span> <span class="c1"># "List Comprehensions", for each user add user.read() to list</span>
     <span class="k">return</span> <span class="n">json_ready</span>
 
@@ -886,6 +954,181 @@ Created new uid raven
 </div>
 </div>
 </div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="kn">from</span> <span class="nn">flask_sqlalchemy</span> <span class="kn">import</span> <span class="n">SQLAlchemy</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">dbURI</span> <span class="o">=</span> <span class="s1">'sqlite:///instance/cars.db'</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SQLALCHEMY_TRACK_MODIFICATIONS"</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SQLALCHEMY_DATABASE_URI"</span><span class="p">]</span> <span class="o">=</span> <span class="n">dbURI</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SECRET_KEY"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"SECRET_KEY"</span>
+<span class="n">db</span> <span class="o">=</span> <span class="n">SQLAlchemy</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+
+<span class="n">db</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">Column</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">String</span>
+
+<span class="k">class</span> <span class="nc">Car</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="c1"># defining table</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s2">"car"</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">_manufacturer</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">_model</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">_price</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># initialization</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">manufacturer</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">price</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_manufacturer</span> <span class="o">=</span> <span class="n">manufacturer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_price</span> <span class="o">=</span> <span class="n">price</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">"&lt;Timer(id='</span><span class="si">%s</span><span class="s2">', manufacturer='</span><span class="si">%s</span><span class="s2">', model='</span><span class="si">%s</span><span class="s2">', price='</span><span class="si">%s</span><span class="s2">')&gt;"</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">manufacturer</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">price</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">manufacturer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_manufacturer</span>
+
+    <span class="nd">@manufacturer</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">manufacturer</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">=</span> <span class="n">manufacturer</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span>
+
+    <span class="nd">@model</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">=</span> <span class="n">model</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">price</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_price</span>
+
+    <span class="nd">@price</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">price</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_price</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">"id"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="s2">"manufacturer"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">manufacturer</span><span class="p">,</span> <span class="s2">"model"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="s2">"price"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">price</span><span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">init_cars</span><span class="p">():</span>
+    <span class="n">car1</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="n">manufacturer</span><span class="o">=</span><span class="s2">"lamborghini"</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">"Superveloce Jota"</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mi">517770</span><span class="p">)</span>
+    <span class="n">car2</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="n">manufacturer</span><span class="o">=</span><span class="s2">"ferrari"</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">" SF90 Stradale"</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mi">528765</span><span class="p">)</span>
+    <span class="n">car3</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="n">manufacturer</span><span class="o">=</span><span class="s2">"nissan"</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">"GT-R"</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mi">116040</span><span class="p">)</span>
+    <span class="n">car4</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="n">manufacturer</span><span class="o">=</span><span class="s2">"mazda"</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">"MX-5"</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mi">29115</span><span class="p">)</span>
+    <span class="n">car5</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="n">manufacturer</span><span class="o">=</span><span class="s2">"bmw"</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">"M5"</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mi">105695</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">car1</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">car2</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">car3</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">car4</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">car5</span><span class="p">)</span>
+
+    <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+<span class="n">db</span><span class="o">.</span><span class="n">create_all</span><span class="p">()</span>
+<span class="n">init_cars</span><span class="p">()</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span><span class="p">,</span> <span class="n">request</span>
+<span class="kn">from</span> <span class="nn">flask_restful</span> <span class="kn">import</span> <span class="n">Api</span><span class="p">,</span> <span class="n">Resource</span><span class="p">,</span> <span class="n">reqparse</span>
+
+<span class="n">car_bp</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s2">"car"</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
+<span class="n">car_api</span> <span class="o">=</span> <span class="n">Api</span><span class="p">(</span><span class="n">car_bp</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">CarAPI</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"id"</span><span class="p">)</span>
+        <span class="n">car</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Car</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">car</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">car</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">"message"</span><span class="p">:</span> <span class="s2">"car not found"</span><span class="p">},</span> <span class="mi">404</span>
+
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">reqparse</span><span class="o">.</span><span class="n">RequestParser</span><span class="p">()</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">"manufacturer"</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">"model"</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">"price"</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+        
+        <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+        <span class="n">car</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">"manufacturer"</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="s2">"model"</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="s2">"price"</span><span class="p">])</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">car</span><span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">car</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(),</span> <span class="mi">201</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">"message"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"server error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">},</span> <span class="mi">500</span>
+
+    <span class="k">def</span> <span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">reqparse</span><span class="o">.</span><span class="n">RequestParser</span><span class="p">()</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">"id"</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">car</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Car</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">"id"</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">car</span><span class="p">:</span>
+                <span class="n">car</span><span class="o">.</span><span class="n">started</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">{</span><span class="s2">"message"</span><span class="p">:</span> <span class="s2">"car not found"</span><span class="p">},</span> <span class="mi">404</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">"message"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"server error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">},</span> <span class="mi">500</span>
+
+    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">reqparse</span><span class="o">.</span><span class="n">RequestParser</span><span class="p">()</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">"id"</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">car</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Car</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">"id"</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">car</span><span class="p">:</span>
+                <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">car</span><span class="p">)</span>
+                <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+                <span class="k">return</span> <span class="n">car</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">{</span><span class="s2">"message"</span><span class="p">:</span> <span class="s2">"car not found"</span><span class="p">},</span> <span class="mi">404</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">"message"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"server error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">},</span> <span class="mi">500</span>
+
+
+<span class="k">class</span> <span class="nc">CarListAPI</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">cars</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Car</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">car</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span> <span class="k">for</span> <span class="n">car</span> <span class="ow">in</span> <span class="n">cars</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Car</span><span class="p">)</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <span class="k">return</span> <span class="p">[]</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">"message"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"server error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">},</span> <span class="mi">500</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
 </div>
 
 
