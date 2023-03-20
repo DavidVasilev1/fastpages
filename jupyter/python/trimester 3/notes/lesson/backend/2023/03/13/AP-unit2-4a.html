@@ -188,7 +188,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      13 min read
+      14 min read
     
 </span></p>
 
@@ -827,8 +827,9 @@ Created new uid raven
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Found
- {'id': 1, 'name': 'Thomas Edison', 'uid': 'toby', 'dob': '02-11-1847', 'age': 176}
+<pre>Invalid date  require YYYY-mm-dd, date defaulted to 03-20-2023
+Created
+ {'id': 7, 'name': '', 'uid': '', 'dob': '03-20-2023', 'age': 0}
 </pre>
 </div>
 </div>
@@ -1123,6 +1124,45 @@ Created new uid raven
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">RuntimeError</span>                              Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">/home/davidv/vscode/fastpages/_notebooks/2023-03-13-AP-unit2-4a.ipynb Cell 16</span> in <span class="ansi-cyan-fg">&lt;cell line: 11&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-03-13-AP-unit2-4a.ipynb#X21sdnNjb2RlLXJlbW90ZQ%3D%3D?line=7'&gt;8&lt;/a&gt;</span> app.config["SECRET_KEY"] = "SECRET_KEY"
+<span class="ansi-green-intense-fg ansi-bold">      &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-03-13-AP-unit2-4a.ipynb#X21sdnNjb2RlLXJlbW90ZQ%3D%3D?line=8'&gt;9&lt;/a&gt;</span> db = SQLAlchemy(app)
+<span class="ansi-green-fg">---&gt; &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-03-13-AP-unit2-4a.ipynb#X21sdnNjb2RlLXJlbW90ZQ%3D%3D?line=10'&gt;11&lt;/a&gt;</span> db.init_app(app)
+<span class="ansi-green-intense-fg ansi-bold">     &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-03-13-AP-unit2-4a.ipynb#X21sdnNjb2RlLXJlbW90ZQ%3D%3D?line=12'&gt;13&lt;/a&gt;</span> from sqlalchemy import Column, Integer, String
+<span class="ansi-green-intense-fg ansi-bold">     &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-03-13-AP-unit2-4a.ipynb#X21sdnNjb2RlLXJlbW90ZQ%3D%3D?line=14'&gt;15&lt;/a&gt;</span> class Car(db.Model):
+<span class="ansi-green-intense-fg ansi-bold">     &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-03-13-AP-unit2-4a.ipynb#X21sdnNjb2RlLXJlbW90ZQ%3D%3D?line=15'&gt;16&lt;/a&gt;</span>     # defining table
+
+File <span class="ansi-green-fg">~/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/extension.py:253</span>, in <span class="ansi-cyan-fg">SQLAlchemy.init_app</span><span class="ansi-blue-fg">(self, app)</span>
+<span class="ansi-green-intense-fg ansi-bold">    233</span> """Initialize a Flask application for use with this extension instance. This
+<span class="ansi-green-intense-fg ansi-bold">    234</span> must be called before accessing the database engine or session with the app.
+<span class="ansi-green-intense-fg ansi-bold">    235</span> 
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-intense-fg ansi-bold">    250</span> :param app: The Flask application to initialize.
+<span class="ansi-green-intense-fg ansi-bold">    251</span> """
+<span class="ansi-green-intense-fg ansi-bold">    252</span> if "sqlalchemy" in app.extensions:
+<span class="ansi-green-fg">--&gt; 253</span>     raise RuntimeError(
+<span class="ansi-green-intense-fg ansi-bold">    254</span>         "A 'SQLAlchemy' instance has already been registered on this Flask app."
+<span class="ansi-green-intense-fg ansi-bold">    255</span>         " Import and use that instance instead."
+<span class="ansi-green-intense-fg ansi-bold">    256</span>     )
+<span class="ansi-green-intense-fg ansi-bold">    258</span> app.extensions["sqlalchemy"] = self
+<span class="ansi-green-intense-fg ansi-bold">    260</span> if self._add_models_to_shell:
+
+<span class="ansi-red-fg">RuntimeError</span>: A 'SQLAlchemy' instance has already been registered on this Flask app. Import and use that instance instead.</pre>
+</div>
+</div>
+
 </div>
 </div>
 
