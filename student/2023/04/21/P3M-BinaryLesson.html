@@ -191,7 +191,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      5 min read
+      7 min read
     
 </span></p>
 
@@ -538,17 +538,135 @@ binary is cool
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">input</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Would you like to add, subtract, multiply, or divide? (Input: a, s, m, or d)"</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">init</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Would you like to add, subtract, multiply, or divide? (Input: a, s, m, or d)"</span><span class="p">)</span>
+
 
 <span class="n">first</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Input your first number:"</span><span class="p">)</span>
 <span class="n">second</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Input your first number:"</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="nb">input</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="s2">"a"</span><span class="p">):</span>
+<span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">decimal</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">bin_dec</span><span class="p">(</span><span class="n">binary</span><span class="p">):</span>
+    <span class="n">decimal</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">binary</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">binary</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">digit</span> <span class="ow">in</span> <span class="n">binary</span><span class="p">:</span>
+        <span class="n">decimal</span> <span class="o">=</span> <span class="n">decimal</span><span class="o">*</span><span class="mi">2</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">digit</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">decimal</span>
+
+<span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">init</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"a"</span><span class="p">:</span>
   
-  <span class="nb">input</span><span class="p">(</span><span class="n">second</span><span class="p">)</span>
+  <span class="n">num1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">bin_dec</span><span class="p">(</span><span class="n">first</span><span class="p">))</span>
+  <span class="n">num2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">bin_dec</span><span class="p">(</span><span class="n">second</span><span class="p">))</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span>
+  <span class="n">binnum1</span> <span class="o">=</span> <span class="n">first</span>
+  <span class="n">binnum2</span> <span class="o">=</span> <span class="n">second</span>
+  <span class="n">binary</span> <span class="o">=</span> <span class="nb">bin</span><span class="p">(</span><span class="n">result</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span>
+  <span class="n">decimal</span> <span class="o">=</span> <span class="n">bin_dec</span><span class="p">(</span><span class="n">binary</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">"Binary: "</span><span class="p">,</span> <span class="n">binnum1</span><span class="p">,</span> <span class="s2">" + "</span><span class="p">,</span> <span class="n">binnum2</span><span class="p">,</span> <span class="s2">" = "</span><span class="p">,</span> <span class="n">binary</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">"Decimal: "</span><span class="p">,</span> <span class="n">num1</span><span class="p">,</span> <span class="s2">" + "</span><span class="p">,</span> <span class="n">num2</span><span class="p">,</span> <span class="s2">" = "</span><span class="p">,</span> <span class="n">decimal</span><span class="p">)</span>
+
+<span class="k">elif</span> <span class="nb">str</span><span class="p">(</span><span class="n">init</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"s"</span><span class="p">:</span>
+  
+  <span class="n">num1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">bin_dec</span><span class="p">(</span><span class="n">first</span><span class="p">))</span>
+  <span class="n">num2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">bin_dec</span><span class="p">(</span><span class="n">second</span><span class="p">))</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">-</span> <span class="n">num2</span>
+  <span class="n">binnum1</span> <span class="o">=</span> <span class="n">first</span>
+  <span class="n">binnum2</span> <span class="o">=</span> <span class="n">second</span>
+  <span class="n">binary</span> <span class="o">=</span> <span class="nb">bin</span><span class="p">(</span><span class="n">result</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span>
+  <span class="n">decimal</span> <span class="o">=</span> <span class="n">bin_dec</span><span class="p">(</span><span class="n">binary</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">"Binary: "</span><span class="p">,</span> <span class="n">binnum1</span><span class="p">,</span> <span class="s2">" - "</span><span class="p">,</span> <span class="n">binnum2</span><span class="p">,</span> <span class="s2">" = "</span><span class="p">,</span> <span class="n">binary</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">"Decimal: "</span><span class="p">,</span> <span class="n">num1</span><span class="p">,</span> <span class="s2">" - "</span><span class="p">,</span> <span class="n">num2</span><span class="p">,</span> <span class="s2">" = "</span><span class="p">,</span> <span class="n">decimal</span><span class="p">)</span>
+
+<span class="k">elif</span> <span class="nb">str</span><span class="p">(</span><span class="n">init</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"m"</span><span class="p">:</span>
+  
+  <span class="n">num1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">bin_dec</span><span class="p">(</span><span class="n">first</span><span class="p">))</span>
+  <span class="n">num2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">bin_dec</span><span class="p">(</span><span class="n">second</span><span class="p">))</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">*</span> <span class="n">num2</span>
+  <span class="n">binnum1</span> <span class="o">=</span> <span class="n">first</span>
+  <span class="n">binnum2</span> <span class="o">=</span> <span class="n">second</span>
+  <span class="n">binary</span> <span class="o">=</span> <span class="nb">bin</span><span class="p">(</span><span class="n">result</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span>
+  <span class="n">decimal</span> <span class="o">=</span> <span class="n">bin_dec</span><span class="p">(</span><span class="n">binary</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">"Binary: "</span><span class="p">,</span> <span class="n">binnum1</span><span class="p">,</span> <span class="s2">" * "</span><span class="p">,</span> <span class="n">binnum2</span><span class="p">,</span> <span class="s2">" = "</span><span class="p">,</span> <span class="n">binary</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">"Decimal: "</span><span class="p">,</span> <span class="n">num1</span><span class="p">,</span> <span class="s2">" * "</span><span class="p">,</span> <span class="n">num2</span><span class="p">,</span> <span class="s2">" = "</span><span class="p">,</span> <span class="n">decimal</span><span class="p">)</span>
+
+<span class="k">elif</span> <span class="nb">str</span><span class="p">(</span><span class="n">init</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"d"</span><span class="p">:</span>
+  
+  <span class="n">num1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">bin_dec</span><span class="p">(</span><span class="n">first</span><span class="p">))</span>
+  <span class="n">num2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">bin_dec</span><span class="p">(</span><span class="n">second</span><span class="p">))</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">/</span> <span class="n">num2</span>
+  <span class="n">binnum1</span> <span class="o">=</span> <span class="n">first</span>
+  <span class="n">binnum2</span> <span class="o">=</span> <span class="n">second</span>
+  <span class="n">binary</span> <span class="o">=</span> <span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="n">result</span><span class="p">)[</span><span class="mi">2</span><span class="p">:])</span>
+  <span class="n">decimal</span> <span class="o">=</span> <span class="n">bin_dec</span><span class="p">(</span><span class="n">binary</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">"Binary: "</span><span class="p">,</span> <span class="n">binnum1</span><span class="p">,</span> <span class="s2">" / "</span><span class="p">,</span> <span class="n">binnum2</span><span class="p">,</span> <span class="s2">" = "</span><span class="p">,</span> <span class="n">binary</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">"Decimal: "</span><span class="p">,</span> <span class="n">num1</span><span class="p">,</span> <span class="s2">" / "</span><span class="p">,</span> <span class="n">num2</span><span class="p">,</span> <span class="s2">" = "</span><span class="p">,</span> <span class="n">decimal</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">/home/davidv/vscode/fastpages/_notebooks/2023-04-21-P3M-BinaryLesson.ipynb Cell 8</span> in <span class="ansi-cyan-fg">&lt;cell line: 17&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">     &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-04-21-P3M-BinaryLesson.ipynb#X10sdnNjb2RlLXJlbW90ZQ%3D%3D?line=57'&gt;58&lt;/a&gt;</span> binnum1 = first
+<span class="ansi-green-intense-fg ansi-bold">     &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-04-21-P3M-BinaryLesson.ipynb#X10sdnNjb2RlLXJlbW90ZQ%3D%3D?line=58'&gt;59&lt;/a&gt;</span> binnum2 = second
+<span class="ansi-green-fg">---&gt; &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-04-21-P3M-BinaryLesson.ipynb#X10sdnNjb2RlLXJlbW90ZQ%3D%3D?line=59'&gt;60&lt;/a&gt;</span> binary = float(bin(result)[2:])
+<span class="ansi-green-intense-fg ansi-bold">     &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-04-21-P3M-BinaryLesson.ipynb#X10sdnNjb2RlLXJlbW90ZQ%3D%3D?line=60'&gt;61&lt;/a&gt;</span> decimal = bin_dec(binary)
+<span class="ansi-green-intense-fg ansi-bold">     &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-04-21-P3M-BinaryLesson.ipynb#X10sdnNjb2RlLXJlbW90ZQ%3D%3D?line=61'&gt;62&lt;/a&gt;</span> print("Binary: ", binnum1, " / ", binnum2, " = ", binary)
+
+<span class="ansi-red-fg">TypeError</span>: 'float' object cannot be interpreted as an integer</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">binary_to_decimal</span><span class="p">(</span><span class="n">binary</span><span class="p">):</span>
+    <span class="n">decimal</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">binary</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">binary</span><span class="p">)</span>  <span class="c1"># Convert input to string to handle leading zeros</span>
+    <span class="k">for</span> <span class="n">digit</span> <span class="ow">in</span> <span class="n">binary</span><span class="p">:</span>
+        <span class="n">decimal</span> <span class="o">=</span> <span class="n">decimal</span><span class="o">*</span><span class="mi">2</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">digit</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">decimal</span>
+
+<span class="n">binary</span> <span class="o">=</span> <span class="s2">"1101"</span>
+<span class="n">decimal</span> <span class="o">=</span> <span class="n">binary_to_decimal</span><span class="p">(</span><span class="n">binary</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"The decimal equivalent of"</span><span class="p">,</span> <span class="n">binary</span><span class="p">,</span> <span class="s2">"is"</span><span class="p">,</span> <span class="n">decimal</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The decimal equivalent of 1101 is 13
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
