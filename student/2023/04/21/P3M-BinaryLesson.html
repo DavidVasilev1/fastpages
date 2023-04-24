@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>P3-M 4/21 Binary Overview | David Vasilev</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="P3-M 4/21 Binary Overview" />
+<meta name="author" content="Colin Mills, Aiden Huynh, Toby Leeder, Dash Penning, Ekam Kaire, Ishi Singh, Azeem Khan, Nathan Capule" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A series of binary lessons focusssed on math and conversions." />
+<meta property="og:description" content="A series of binary lessons focusssed on math and conversions." />
+<link rel="canonical" href="https://davidvasilev1.github.io/fastpages/student/2023/04/21/P3M-BinaryLesson.html" />
+<meta property="og:url" content="https://davidvasilev1.github.io/fastpages/student/2023/04/21/P3M-BinaryLesson.html" />
+<meta property="og:site_name" content="David Vasilev" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-04-21T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="P3-M 4/21 Binary Overview" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Colin Mills, Aiden Huynh, Toby Leeder, Dash Penning, Ekam Kaire, Ishi Singh, Azeem Khan, Nathan Capule"},"dateModified":"2023-04-21T00:00:00-05:00","datePublished":"2023-04-21T00:00:00-05:00","description":"A series of binary lessons focusssed on math and conversions.","headline":"P3-M 4/21 Binary Overview","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidvasilev1.github.io/fastpages/student/2023/04/21/P3M-BinaryLesson.html"},"url":"https://davidvasilev1.github.io/fastpages/student/2023/04/21/P3M-BinaryLesson.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/fastpages/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://davidvasilev1.github.io/fastpages/feed.xml" title="David Vasilev" /><link rel="shortcut icon" type="image/x-icon" href="/fastpages/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/fastpages/">David Vasilev</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/fastpages/categories/">Tags</a><a class="page-link" href="/fastpages/notes/">Notes</a><a class="page-link" href="/fastpages/assignments/">Assignments</a><a class="page-link" href="/fastpages/about/">About Me</a><a class="page-link" href="/fastpages/search/">Search</a></div>
+      </nav></div>
+</header>
+<style>
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+      }
+
+      .switch input { 
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+      }
+
+      input:checked + .slider {
+        background-color: #2196F3;
+      }
+
+      input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+      }
+
+      input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+      }
+
+      .slider {
+        border-radius: 34px;
+      }
+
+      .slider:before {
+        border-radius: 50%;
+      }
+    </style>
+
+    <audio id="myAudio" src="/fastpages/siren_meme___sound_effect.mp3" preload="auto">
+    </audio>
+
+    <label class="switch">
+      <input type="checkbox">
+      <span class="slider" onclick="togglePlay()"></span>
+      <p id="demo"></p>
+    </label>
+
+    <script>
+      function myFunction() {
+        var hi = "hi";
+
+        document.getElementById("demo").innerHTML = hi;
+        console.log("hi");
+      }
+
+      var myAudio = document.getElementById("myAudio");
+      var isPlaying = false;
+
+      function togglePlay() {
+        isPlaying ? myAudio.pause() : myAudio.play();
+      };
+
+      myAudio.onplaying = function() {
+        isPlaying = true;
+      };
+      myAudio.onpause = function() {
+        isPlaying = false;
+      };
+    </script>
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">P3-M 4/21 Binary Overview</h1><p class="page-description">A series of binary lessons focusssed on math and conversions.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2023-04-21T00:00:00-05:00" itemprop="datePublished">
+        Apr 21, 2023
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">Colin Mills, Aiden Huynh, Toby Leeder, Dash Penning, Ekam Kaire, Ishi Singh, Azeem Khan, Nathan Capule</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      5 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/fastpages/categories/#student">student</a>
+        
+      
+      </p>
+    
+
+    
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#How-to-contact-us">How to contact us </a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#How-to-join">How to join </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Learning-Objectives">Learning Objectives </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#DAT-1.A:-Representing-Data-with-Bits">DAT-1.A: Representing Data with Bits </a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#Basic-Information">Basic Information </a></li>
+<li class="toc-entry toc-h4"><a href="#Practice-Questions:">Practice Questions: </a></li>
+<li class="toc-entry toc-h4"><a href="#Examples">Examples </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#DAT-1.B:-The-Consequences-of-Using-Bits-to-Represent-Data">DAT-1.B: The Consequences of Using Bits to Represent Data </a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#Basic-Information">Basic Information </a></li>
+<li class="toc-entry toc-h4"><a href="#Practice-Questions:">Practice Questions: </a></li>
+<li class="toc-entry toc-h4"><a href="#Examples">Examples </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#DAT-1.C:-Binary-Math">DAT-1.C: Binary Math </a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#Basic-Information">Basic Information </a></li>
+<li class="toc-entry toc-h4"><a href="#Practice-Questions:">Practice Questions: </a></li>
+<li class="toc-entry toc-h4"><a href="#Examples">Examples </a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Hacks-&-Grading-(Due-SUNDAY-NIGHT-4/23)">Hacks &amp; Grading (Due SUNDAY NIGHT 4/23) </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2023-04-21-P3M-BinaryLesson.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="How-to-contact-us">
+<a class="anchor" href="#How-to-contact-us" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to contact us<a class="anchor-link" href="#How-to-contact-us"> </a>
+</h2>
+<p>Join the "coding" channel on slack! That is the only place where we will be answering questions or sending announcements about lessons. If you have a question please contact us there.</p>
+<h4 id="How-to-join">
+<a class="anchor" href="#How-to-join" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to join<a class="anchor-link" href="#How-to-join"> </a>
+</h4>
+<ul>
+<li>Click on "add channels" below the list of channels</li>
+<li>Click on "browse channels"</li>
+<li>Search for "coding"</li>
+<li>Click the green "Join" button on the right</li>
+</ul>
+<h2 id="Learning-Objectives">
+<a class="anchor" href="#Learning-Objectives" aria-hidden="true"><span class="octicon octicon-link"></span></a>Learning Objectives<a class="anchor-link" href="#Learning-Objectives"> </a>
+</h2>
+<p><img src="https://user-images.githubusercontent.com/111464932/229885445-65ef56d2-f3d4-43da-aa62-8683e8c0a08b.png" alt="CollegeBoard Requirements for Binary"></p>
+<h3 id="DAT-1.A:-Representing-Data-with-Bits">
+<a class="anchor" href="#DAT-1.A:-Representing-Data-with-Bits" aria-hidden="true"><span class="octicon octicon-link"></span></a>DAT-1.A: Representing Data with Bits<a class="anchor-link" href="#DAT-1.A:-Representing-Data-with-Bits"> </a>
+</h3>
+<h4 id="Basic-Information">
+<a class="anchor" href="#Basic-Information" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic Information<a class="anchor-link" href="#Basic-Information"> </a>
+</h4>
+<ul>
+<li>Bit is short for <strong>binary</strong> digit, and represents a value of either 0 or 1.<ul>
+<li>A byte is 8 bits.</li>
+</ul>
+</li>
+<li>Sequences of bits are used to represent different things.<ul>
+<li>Representing data with sequences of bits is called <strong>abstraction</strong>.</li>
+</ul>
+</li>
+</ul>
+<h4 id="Practice-Questions:">
+<a class="anchor" href="#Practice-Questions:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Practice Questions:<a class="anchor-link" href="#Practice-Questions:"> </a>
+</h4>
+<ol>
+<li>How many bits are in 3 bytes?</li>
+</ol>
+<p>There are 24 bits in 3 bytes.</p>
+<ol>
+<li>What digital information can be represented by bits? </li>
+</ol>
+<p>Data can be represented with bits, which can include strings, integers, booleans, and images.</p>
+<ol>
+<li>Are bits an analog or digital form of storing data? What is the difference between the two?</li>
+</ol>
+<p>Bits are digital because they are in the form og 0s and 1s. This can only be one of the other.</p>
+<h4 id="Examples">
+<a class="anchor" href="#Examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples<a class="anchor-link" href="#Examples"> </a>
+</h4>
+<ul>
+<li>Boolean variables (true or false) are the easiest way to visualize binary.<ul>
+<li>0 = False</li>
+<li>1 = True</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">example</span><span class="p">(</span><span class="n">runs</span><span class="p">):</span>
+    <span class="c1"># Repeat code for the amount of runs given</span>
+    <span class="k">while</span> <span class="n">runs</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># Assigns variable boolean to either True or False based on random binary number 0 or 1.</span>
+        <span class="n">boolean</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">True</span> 
+
+        <span class="c1"># If the number was 1 (True), it prints "awesome."</span>
+        <span class="k">if</span> <span class="n">boolean</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"binary is awesome"</span><span class="p">)</span>
+            
+        <span class="c1"># If the number was 2 (False), it prints "cool."</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"binary is cool"</span><span class="p">)</span>
+            
+        <span class="n">runs</span> <span class="o">-=</span> <span class="mi">1</span>
+     
+<span class="c1"># Change the parameter to how many times to run the function.   </span>
+<span class="n">example</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>binary is cool
+binary is awesome
+binary is cool
+binary is awesome
+binary is cool
+binary is awesome
+binary is awesome
+binary is awesome
+binary is awesome
+binary is cool
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="DAT-1.B:-The-Consequences-of-Using-Bits-to-Represent-Data">
+<a class="anchor" href="#DAT-1.B:-The-Consequences-of-Using-Bits-to-Represent-Data" aria-hidden="true"><span class="octicon octicon-link"></span></a>DAT-1.B: The Consequences of Using Bits to Represent Data<a class="anchor-link" href="#DAT-1.B:-The-Consequences-of-Using-Bits-to-Represent-Data"> </a>
+</h3>
+<h4 id="Basic-Information">
+<a class="anchor" href="#Basic-Information" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic Information<a class="anchor-link" href="#Basic-Information"> </a>
+</h4>
+<ul>
+<li>Integers are represented by a fixed number of bits, this limits the range of integer values. This limitation can result in <strong>overflow</strong> or other errors.</li>
+<li>Other programming languages allow for abstraction only limited by the computers memory.</li>
+<li>Fixed number of bits are used to represent real numbers/limits</li>
+</ul>
+<h4 id="Practice-Questions:">
+<a class="anchor" href="#Practice-Questions:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Practice Questions:<a class="anchor-link" href="#Practice-Questions:"> </a>
+</h4>
+<ol>
+<li>What is the largest number can be represented by 5 bits?</li>
+</ol>
+<p>The largest number that can be represented by 5 bits is 31.</p>
+<ol>
+<li>One programing language can only use 16 bits to represent non-negative numbers, while a second language uses 56 bits to represent numbers. How many times as many unique numbers can be represented by the second language?</li>
+</ol>
+<p>The second language can represent 40 times more bits, which is 2^40 times as many bits as the first language.</p>
+<ol>
+<li>5 bits are used to represent both positive and negative numbers, what is the largest number that can be represented by these bits? (<em>hint: different thatn question 1</em>)</li>
+</ol>
+<p>The largest number that can be used is 15 because 4 bits are reserved for representing negatives and positives and then the rest are reserved for representing actual numbers.</p>
+<h4 id="Examples">
+<a class="anchor" href="#Examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples<a class="anchor-link" href="#Examples"> </a>
+</h4>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">def</span> <span class="nf">exponent</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">power</span><span class="p">):</span>
+    <span class="c1"># Print the operation performed, turning the parameters into strings to properly concatenate with the symbols "^" and "=".</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">base</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"^"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">power</span><span class="p">)</span> <span class="o">+</span> <span class="s2">" = "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">power</span><span class="p">)))</span>
+
+<span class="c1"># How can function become a problem? (Hint: what happens if you set both base and power equal to high numbers?)</span>
+<span class="n">exponent</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>5^2 = 25.0
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="DAT-1.C:-Binary-Math">
+<a class="anchor" href="#DAT-1.C:-Binary-Math" aria-hidden="true"><span class="octicon octicon-link"></span></a>DAT-1.C: Binary Math<a class="anchor-link" href="#DAT-1.C:-Binary-Math"> </a>
+</h3>
+<h4 id="Basic-Information">
+<a class="anchor" href="#Basic-Information" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic Information<a class="anchor-link" href="#Basic-Information"> </a>
+</h4>
+<ul>
+<li>Binary is Base 2, meaning each digit can only represent values of 0 and 1.</li>
+<li>Decimal is Base 10, meaning each digit can represent values from 0 to 9.</li>
+<li>Conversion between sequences of binary to decimal depend on how many binary numbers there are, their values and their positions.</li>
+</ul>
+<h4 id="Practice-Questions:">
+<a class="anchor" href="#Practice-Questions:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Practice Questions:<a class="anchor-link" href="#Practice-Questions:"> </a>
+</h4>
+<ol>
+<li>What values can each digit of a Base 5 system represent?</li>
+</ol>
+<p>The values of 0 to 4 are able to be represented by Base 5.</p>
+<ol>
+<li>What base is Hexadecimal? What range of values can each digit of Hexadecimal represent?</li>
+</ol>
+<p>Hexadecimal is Base64, which can represent from 0 to <code>f</code>.</p>
+<ol>
+<li>When using a base above 10, letters can be used to represent numbers past 9. These letters start from A and continue onwards. For example, the decimal number 10 is represented by the letter A in Hexadecimal. What letter would be used to represent the Base 10 number 23 in a Base 30 system? What about in a Base 50 system?</li>
+</ol>
+<p>In the Base30 system, the 23rd number would be <code>n</code>. For Base50 is would be <code>n</code> again.</p>
+<h4 id="Examples">
+<a class="anchor" href="#Examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples<a class="anchor-link" href="#Examples"> </a>
+</h4>
+<ul>
+<li>Using 6 bits, we can represent 64 numbers, from 0 to 63, as 2^6 = 64.</li>
+<li>The numbers in a sequence of binary go from right to left, increasing by powers of two from 0 to the total amount of bits. The whole number represented is the sum of these bits. For example:<ol>
+<li>111111</li>
+<li>2^5 + 2^4 + 2^3 + 2^2 + 2^1 + 2^0</li>
+<li>32 + 16 + 8 + 4 + 2 + 1</li>
+<li>63</li>
+</ol>
+</li>
+<li>
+<p><strong>Fill in the blanks</strong> (convert to decimal)</p>
+<ol>
+<li>001010 = 2^3 + 2^1 = 8 + 2 =  <strong>10</strong>
+</li>
+<li>11100010 = 2^7 + 2^6 + 2^5 + 2^1 = 128 + 64 + 32 + 2 = <strong>226</strong>
+</li>
+<li>10 = <strong>2</strong>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>Fill in the blanks</strong> (convert to binary)</p>
+<ol>
+<li>12 = 2^3 + 2^2 = <strong>1100</strong>
+</li>
+<li>35 = 2^5 + 2^1 + 2^0 = <strong>100011</strong>
+</li>
+<li>256 = <strong>100000000</strong>
+</li>
+</ol>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Hacks-&amp;-Grading-(Due-SUNDAY-NIGHT-4/23)">
+<a class="anchor" href="#Hacks-&amp;-Grading-(Due-SUNDAY-NIGHT-4/23)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks &amp; Grading (Due SUNDAY NIGHT 4/23)<a class="anchor-link" href="#Hacks-&amp;-Grading-(Due-SUNDAY-NIGHT-4/23)"> </a>
+</h2>
+<ul>
+<li>Complete all of the popcorn hacks (Fill in the blanks + run code cells and interact + Answer ALL questions) [0.3 or nothing]</li>
+<li>Create a program to conduct basic mathematical operations with binary sequences (addition, subtraction, multiplication, division) [0.6 or nothing]<ul>
+<li>For bonus, program must be able to conduct mathematical operations on binary sequences of varying bits (for example: 101 + 1001 would return decimal 14.) [0.1 or nothing]</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">input</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Would you like to add, subtract, multiply, or divide? (Input: a, s, m, or d)"</span><span class="p">)</span>
+
+<span class="n">first</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Input your first number:"</span><span class="p">)</span>
+<span class="n">second</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Input your first number:"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="nb">input</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="s2">"a"</span><span class="p">):</span>
+  
+  <span class="nb">input</span><span class="p">(</span><span class="n">second</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="DavidVasilev1/fastpages"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/fastpages/student/2023/04/21/P3M-BinaryLesson.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/fastpages/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="https://davidvasilev1.github.io/fastpages/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/fastpages/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>CSP Blog</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+</html>
