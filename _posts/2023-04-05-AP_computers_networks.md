@@ -14,21 +14,21 @@ description: Add Definitions from Unit 4 Computer Systems and Networks
 > As we have learned, a computer needs aa program to do something smart.  The sequence of a program initiates a series of actions with the computers Central Processing Unit (CPU). This component is essentially a binary machine focussing on program instructions provided.  The CPU retrieives and stores the data it acts upon in Random Access Memory (RAM). Between the CPU, RAM, and Storage Devices a computer can work with many programs and large amounts of data.
 
 List specification of your Computer, or Computers if working as Pair/Trio
-- Processor GHz:
-- Memory in GB:
-- Storage in GB:
-- OS:
+- Processor GHz: Core i3 8th Generator 1GHz
+- Memory in GB: 20 GB
+- Storage in GB: 500GB
+- OS: Windows 11
 
 Define or describe usage of Computer using Computer Programs. Pictures are preferred over a lot of text.  Use your experience.
-- Input devices
-- Output devices
-- Program File
-- Program Code
-- Processes
-- Ports
-- Data File
-- Inspect Running Code
-- Inspect Variables
+- Input devices - devices users use to input into program
+- Output devices - screens or something that gives feedback to the user
+- Program File - storage of data for later use
+- Program Code - algorithm that runs code
+- Processes - running programs
+- Ports - open places in network of device to the world
+- Data File - storage of data in lists
+- Inspect Running Code - debug errors in code step by step with breakpoints
+- Inspect Variables - check if variables are storing data with debugging
 
 
 ![Computer Hardware](https://raw.githubusercontent.com/nighthawkcoders/APCSP/master/images/cpu.jpeg)
@@ -48,12 +48,12 @@ Define or describe usage of Computer using Computer Programs. Pictures are prefe
     - Bandwidth is usually measured in bits per second
 
 - Complete Vocabulary Matching Activity.  Incorporate this into your learnings from year.  To analyze measure path and latency use `traceroute` and `ping` commands from Linux Terminal.  
-    - Path 
-    - Route
-    - Computer System
-    - Computer Device
-    - Bandwidth
-    - Computer Network
+    - Path - place where the file you are looking for is stored
+    - Route - the path data packets take on the internet
+    - Computer System - a network of computers
+    - Computer Device - singular device storing and accessing information
+    - Bandwidth - rate of data transfer
+    - Computer Network - group of computers connect to each other in a network
 
 > Watch/review College Board Daily Video 4.1.2
 
@@ -110,6 +110,8 @@ The "network" layer is responsible for ***routing data packets between networks*
 > Watch both Daily videos for 4.2
 
 - Complete the network activity, summarize your understanding of fault tolerance.
+
+
 
 
 ### Parallel and Distributed Computing
