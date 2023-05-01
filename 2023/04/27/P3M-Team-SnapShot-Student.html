@@ -191,7 +191,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      19 min read
+      36 min read
     
 </span></p>
 
@@ -1367,6 +1367,872 @@ Using the same table, find a new .jpg image and add its image data to the databa
 <ul>
 <li>Extra Credit: Connect your backend database to a visible frontend! Screenshots of displayed data is fine. (+0.05)</li>
 </ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># imports dependencies of program</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span><span class="p">,</span> <span class="n">request</span>
+<span class="kn">from</span> <span class="nn">flask_restful</span> <span class="kn">import</span> <span class="n">Api</span><span class="p">,</span> <span class="n">Resource</span><span class="p">,</span> <span class="n">reqparse</span>
+<span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">db</span>
+<span class="kn">from</span> <span class="nn">..model.schedules</span> <span class="kn">import</span> <span class="n">Schedule</span>
+
+<span class="c1"># setting variables used to store future data</span>
+<span class="n">schedule_bp</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s2">&quot;schedule&quot;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
+<span class="n">schedule_api</span> <span class="o">=</span> <span class="n">Api</span><span class="p">(</span><span class="n">schedule_bp</span><span class="p">)</span>
+
+<span class="c1"># this class is the resource for the flask API, which allows to user to use methods to store data</span>
+<span class="k">class</span> <span class="nc">ScheduleAPI</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
+    <span class="c1"># GET method</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># requested id turned into variable for later use</span>
+        <span class="nb">id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">)</span>
+        <span class="c1"># this looks through the database by id and finds the id that you are requesting</span>
+        <span class="n">schedule</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Schedule</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">schedule</span><span class="p">:</span>
+            <span class="c1"># data is sent to the frontend</span>
+            <span class="k">return</span> <span class="n">schedule</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+        <span class="c1"># error checking</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;schedule not found&quot;</span><span class="p">},</span> <span class="mi">404</span>
+
+    <span class="c1"># POST method</span>
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># using parsers to gather and data that is to be posted and validate it&#39;s true</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">reqparse</span><span class="o">.</span><span class="n">RequestParser</span><span class="p">()</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;period&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;class1&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;classNumber&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;startTime&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;endTime&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+        <span class="c1"># variable made to store data</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+        <span class="c1"># variable created to format all data into one place and send to database for logging</span>
+        <span class="n">schedule</span> <span class="o">=</span> <span class="n">Schedule</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;period&quot;</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;class1&quot;</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;classNumber&quot;</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;startTime&quot;</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;endTime&quot;</span><span class="p">])</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># data is sent to the database for storage</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">schedule</span><span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">schedule</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(),</span> <span class="mi">201</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1"># error checking</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;server error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">},</span> <span class="mi">500</span>
+
+    <span class="c1"># PUT method</span>
+    <span class="k">def</span> <span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># parser made to search through all incoming requests</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">reqparse</span><span class="o">.</span><span class="n">RequestParser</span><span class="p">()</span>
+        <span class="c1"># argument expected is set, in this case the id</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># looks through database, looking for id that needs to be edited</span>
+            <span class="n">schedule</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Schedule</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">schedule</span><span class="p">:</span>
+                <span class="c1"># adds in edited data</span>
+                <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># returns data if id is not found</span>
+                <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;schedule not found&quot;</span><span class="p">},</span> <span class="mi">404</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1"># returns data if there&#39;s an error in the request</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;server error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">},</span> <span class="mi">500</span>
+
+    <span class="c1"># DELETE method</span>
+    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># parser made to search through all incoming requests</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">reqparse</span><span class="o">.</span><span class="n">RequestParser</span><span class="p">()</span>
+        <span class="c1"># argument expected is set, in this case the id</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># looks through database, looking for id that needs to be deleted</span>
+            <span class="n">schedule</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Schedule</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">schedule</span><span class="p">:</span>
+                <span class="c1"># that row with info is deleted</span>
+                <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">schedule</span><span class="p">)</span>
+                <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+                <span class="k">return</span> <span class="n">schedule</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># checks if theres an error with finding the id</span>
+                <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;schedule not found&quot;</span><span class="p">},</span> <span class="mi">404</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1"># checks if there&#39;s an error with request</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;server error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">},</span> <span class="mi">500</span>
+
+<span class="c1"># new class that includes all data, rather than individual, only has 2 methods</span>
+<span class="k">class</span> <span class="nc">ScheduleListAPI</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
+    <span class="c1"># GET method</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># looks through entire database</span>
+        <span class="n">schedules</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Schedule</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="c1"># pulls all data</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">schedule</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span> <span class="k">for</span> <span class="n">schedule</span> <span class="ow">in</span> <span class="n">schedules</span><span class="p">]</span>
+
+    <span class="c1"># DELETE method</span>
+    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># deletes entire database resource </span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Schedule</span><span class="p">)</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <span class="k">return</span> <span class="p">[]</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1"># checks for errors in with request</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;server error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">},</span> <span class="mi">500</span>
+
+<span class="c1"># link extensions of each class</span>
+<span class="n">schedule_api</span><span class="o">.</span><span class="n">add_resource</span><span class="p">(</span><span class="n">ScheduleAPI</span><span class="p">,</span> <span class="s2">&quot;/schedule&quot;</span><span class="p">)</span>
+<span class="n">schedule_api</span><span class="o">.</span><span class="n">add_resource</span><span class="p">(</span><span class="n">ScheduleListAPI</span><span class="p">,</span> <span class="s2">&quot;/scheduleList&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># imports dependencies of program</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">Column</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">String</span>
+<span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">db</span>
+
+<span class="c1"># adds new class that defines the schedule database</span>
+<span class="k">class</span> <span class="nc">Schedule</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="c1"># defining table</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s2">&quot;schedule&quot;</span>
+    <span class="c1"># creates new column for each value that will be stored in the database, as well as how it will be stored</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">_period</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">_class1</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">_classNum</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">_startTime</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">_endTime</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># initialization of the values that will be stored</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">period</span><span class="p">,</span> <span class="n">class1</span><span class="p">,</span> <span class="n">classNum</span><span class="p">,</span> <span class="n">startTime</span><span class="p">,</span> <span class="n">endTime</span><span class="p">):</span>
+        <span class="c1"># sets variables for instance, making them private to each instance run</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_period</span> <span class="o">=</span> <span class="n">period</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_class1</span> <span class="o">=</span> <span class="n">class1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_classNum</span> <span class="o">=</span> <span class="n">classNum</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_startTime</span> <span class="o">=</span> <span class="n">startTime</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_endTime</span> <span class="o">=</span> <span class="n">endTime</span>
+
+    <span class="c1"># returns string of data object</span>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># returns what data, used for logging when debugging</span>
+        <span class="k">return</span> <span class="s2">&quot;&lt;Timer(id=&#39;</span><span class="si">%s</span><span class="s2">&#39;, period=&#39;</span><span class="si">%s</span><span class="s2">&#39;, class1=&#39;</span><span class="si">%s</span><span class="s2">&#39;, classNum=&#39;</span><span class="si">%s</span><span class="s2">&#39;, startTime=&#39;</span><span class="si">%s</span><span class="s2">&#39;, endTime=&#39;</span><span class="si">%s</span><span class="s2">&#39;)&gt;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">period</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">class1</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">classNum</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">startTime</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">endTime</span>
+        <span class="p">)</span>
+
+    <span class="c1"># getter method: gets the instance&#39;s period variable</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">period</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_period</span>
+
+    <span class="c1"># setter method: sets the instance&#39;s period variable</span>
+    <span class="nd">@period</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">period</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">=</span> <span class="n">period</span>
+
+    <span class="c1"># getter method: gets the instance&#39;s class name variable</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">class1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_class1</span>
+
+    <span class="c1"># setter method: sets the instance&#39;s period variable</span>
+    <span class="nd">@class1</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">class1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_class1</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="c1"># getter method: gets the instance&#39;s class number variable</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">classNum</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_classNum</span>
+
+    <span class="c1"># setter method: sets the instance&#39;s period variable</span>
+    <span class="nd">@classNum</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">classNum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_classNum</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="c1"># getter method: gets the instance&#39;s start time variable</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">startTime</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_startTime</span>
+
+    <span class="c1"># setter method: sets the instance&#39;s period variable</span>
+    <span class="nd">@startTime</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">startTime</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">startTime</span> <span class="o">=</span> <span class="n">value</span>
+    
+    <span class="c1"># getter method: gets the instance&#39;s end time variable</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">endTime</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_endTime</span>
+
+    <span class="c1"># setter method: sets the instance&#39;s period variable</span>
+    <span class="nd">@endTime</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">endTime</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_endTime</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="c1"># returns dictionary of data, which is used to be converted to JSON</span>
+    <span class="k">def</span> <span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">period</span><span class="p">,</span> <span class="s2">&quot;class1&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">class1</span><span class="p">,</span> <span class="s2">&quot;classNum&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">classNum</span><span class="p">,</span> <span class="s2">&quot;startTime&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">startTime</span><span class="p">,</span> <span class="s2">&quot;endTime&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">endTime</span><span class="p">}</span>
+
+<span class="c1"># sets some initial values for the database</span>
+<span class="k">def</span> <span class="nf">init_schedules</span><span class="p">():</span>
+    <span class="c1"># sets each initial data row as a variable under Schedule class</span>
+    <span class="n">task1</span> <span class="o">=</span> <span class="n">Schedule</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">class1</span><span class="o">=</span><span class="s2">&quot;math&quot;</span><span class="p">,</span> <span class="n">classNum</span><span class="o">=</span><span class="s2">&quot;R402&quot;</span><span class="p">,</span> <span class="n">startTime</span><span class="o">=</span><span class="s2">&quot;10:00&quot;</span><span class="p">,</span> <span class="n">endTime</span><span class="o">=</span><span class="s2">&quot;11:00&quot;</span><span class="p">)</span>
+    <span class="n">task2</span> <span class="o">=</span> <span class="n">Schedule</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">class1</span><span class="o">=</span><span class="s2">&quot;physics&quot;</span><span class="p">,</span> <span class="n">classNum</span><span class="o">=</span><span class="s2">&quot;K105&quot;</span><span class="p">,</span> <span class="n">startTime</span><span class="o">=</span><span class="s2">&quot;11:00&quot;</span><span class="p">,</span> <span class="n">endTime</span><span class="o">=</span><span class="s2">&quot;12:00&quot;</span><span class="p">)</span>
+    <span class="n">task3</span> <span class="o">=</span> <span class="n">Schedule</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">class1</span><span class="o">=</span><span class="s2">&quot;history&quot;</span><span class="p">,</span> <span class="n">classNum</span><span class="o">=</span><span class="s2">&quot;L117&quot;</span><span class="p">,</span> <span class="n">startTime</span><span class="o">=</span><span class="s2">&quot;12:00&quot;</span><span class="p">,</span> <span class="n">endTime</span><span class="o">=</span><span class="s2">&quot;13:00&quot;</span><span class="p">)</span>
+    <span class="n">task4</span> <span class="o">=</span> <span class="n">Schedule</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">class1</span><span class="o">=</span><span class="s2">&quot;csp&quot;</span><span class="p">,</span> <span class="n">classNum</span><span class="o">=</span><span class="s2">&quot;A101&quot;</span><span class="p">,</span> <span class="n">startTime</span><span class="o">=</span><span class="s2">&quot;13:00&quot;</span><span class="p">,</span> <span class="n">endTime</span><span class="o">=</span><span class="s2">&quot;14:00&quot;</span><span class="p">)</span>
+    <span class="n">task5</span> <span class="o">=</span> <span class="n">Schedule</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">class1</span><span class="o">=</span><span class="s2">&quot;english&quot;</span><span class="p">,</span> <span class="n">classNum</span><span class="o">=</span><span class="s2">&quot;G115&quot;</span><span class="p">,</span> <span class="n">startTime</span><span class="o">=</span><span class="s2">&quot;14:00&quot;</span><span class="p">,</span> <span class="n">endTime</span><span class="o">=</span><span class="s2">&quot;15:00&quot;</span><span class="p">)</span>
+    <span class="c1"># adds each data row to database</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">task1</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">task2</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">task3</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">task4</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">task5</span><span class="p">)</span>
+
+    <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">&lt;!</span>-- FRONTEND FILE --&gt;
+
+<span class="o">&lt;!</span>-- run on a Github Pages website, using a template from teacher, John Mortensen, on website layout and nothing <span class="k">else</span> --&gt;
+<span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">style</span><span class="o">&gt;</span>
+  <span class="o">/*</span> <span class="n">personal</span> <span class="n">styling</span> <span class="n">on</span> <span class="n">interface</span> <span class="n">to</span> <span class="n">make</span> <span class="n">it</span> <span class="n">look</span> <span class="n">appealing</span> <span class="o">*/</span>
+  <span class="nb">input</span> <span class="p">{</span>
+    <span class="n">padding</span><span class="p">:</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span> <span class="c1">#4a4a48;</span>
+    <span class="n">border</span><span class="p">:</span> <span class="mi">0</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">color</span><span class="p">:</span> <span class="c1">#e7dff7;</span>
+    <span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="p">:</span> <span class="mi">15</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">height</span><span class="p">:</span> <span class="mi">37</span><span class="n">px</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nb">input</span><span class="p">:</span><span class="n">focus</span><span class="p">,</span> <span class="n">textarea</span><span class="p">:</span><span class="n">focus</span><span class="p">,</span> <span class="n">select</span><span class="p">:</span><span class="n">focus</span><span class="p">{</span>
+    <span class="n">outline</span><span class="p">:</span> <span class="n">none</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">select</span> <span class="p">{</span>
+    <span class="n">padding</span><span class="p">:</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span> <span class="c1">#4a4a48;</span>
+    <span class="n">border</span><span class="p">:</span> <span class="mi">0</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">color</span><span class="p">:</span> <span class="c1">#e7dff7;</span>
+    <span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="p">:</span> <span class="mi">15</span><span class="n">px</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">button</span> <span class="p">{</span>
+    <span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="p">:</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">background</span><span class="p">:</span> <span class="c1">#4a4a4a;</span>
+    <span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="p">:</span> <span class="mi">15</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">color</span><span class="p">:</span> <span class="c1">#a881f7;</span>
+    <span class="n">border</span><span class="o">-</span><span class="n">color</span><span class="p">:</span> <span class="c1">#775cad;</span>
+    <span class="n">margin</span><span class="p">:</span> <span class="mi">5</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">width</span><span class="p">:</span> <span class="mi">60</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">height</span><span class="p">:</span> <span class="mi">40</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">text</span><span class="o">-</span><span class="n">align</span><span class="p">:</span> <span class="n">center</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="o">.</span><span class="n">button</span> <span class="p">{</span>
+    <span class="n">position</span><span class="p">:</span> <span class="n">inherit</span><span class="p">;</span>
+    <span class="nb">float</span><span class="p">:</span> <span class="n">left</span><span class="p">;</span>
+    <span class="n">align</span><span class="o">-</span><span class="n">content</span><span class="p">:</span> <span class="n">center</span><span class="p">;</span>
+    <span class="n">width</span><span class="p">:</span> <span class="mi">45</span><span class="o">%</span><span class="p">;</span>
+    <span class="n">margin</span><span class="o">-</span><span class="n">top</span><span class="p">:</span> <span class="mi">15</span><span class="n">px</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">h3</span> <span class="p">{</span>
+    <span class="n">color</span><span class="p">:</span> <span class="c1">#a881f7;</span>
+    <span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="p">:</span> <span class="mi">25</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">padding</span><span class="o">-</span><span class="n">top</span><span class="p">:</span> <span class="mi">15</span><span class="n">px</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="o">.</span><span class="n">data</span> <span class="p">{</span>
+    <span class="n">width</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span><span class="p">;</span>
+    <span class="n">position</span><span class="p">:</span> <span class="n">inherit</span><span class="p">;</span>
+    <span class="nb">float</span><span class="p">:</span> <span class="n">right</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="o">.</span><span class="n">title</span> <span class="p">{</span>
+    <span class="n">height</span><span class="p">:</span> <span class="mi">40</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">color</span><span class="p">:</span> <span class="c1">#a881f7;</span>
+    <span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="p">:</span> <span class="mi">30</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">text</span><span class="o">-</span><span class="n">align</span><span class="p">:</span> <span class="n">center</span><span class="p">;</span>
+    <span class="n">padding</span><span class="p">:</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="o">.</span><span class="n">table</span> <span class="p">{</span>
+    <span class="n">border</span><span class="p">:</span> <span class="c1">#a881f7 solid;</span>
+    <span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="p">:</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">border</span><span class="o">-</span><span class="n">collapse</span><span class="p">:</span><span class="n">separate</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="o">.</span><span class="n">cell</span> <span class="p">{</span>
+    <span class="n">border</span><span class="p">:</span> <span class="mi">1</span><span class="n">px</span> <span class="n">solid</span><span class="p">;</span>
+    <span class="n">text</span><span class="o">-</span><span class="n">align</span><span class="p">:</span> <span class="n">center</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nb">input</span><span class="p">::</span><span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">outer</span><span class="o">-</span><span class="n">spin</span><span class="o">-</span><span class="n">button</span><span class="p">,</span> <span class="nb">input</span><span class="p">::</span><span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">inner</span><span class="o">-</span><span class="n">spin</span><span class="o">-</span><span class="n">button</span> <span class="p">{</span>
+    <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">appearance</span><span class="p">:</span> <span class="n">none</span><span class="p">;</span>
+    <span class="n">margin</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="o">.</span><span class="n">texts1</span> <span class="p">{</span>
+    <span class="n">width</span><span class="p">:</span> <span class="mi">50</span><span class="o">%</span><span class="p">;</span>
+    <span class="nb">float</span><span class="p">:</span> <span class="n">left</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="o">.</span><span class="n">texts2</span> <span class="p">{</span>
+    <span class="n">width</span><span class="p">:</span> <span class="mi">50</span><span class="o">%</span><span class="p">;</span>
+    <span class="nb">float</span><span class="p">:</span> <span class="n">left</span><span class="p">;</span>
+    <span class="n">padding</span><span class="o">-</span><span class="n">bottom</span><span class="p">:</span> <span class="mi">20</span><span class="n">px</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="o">.</span><span class="n">drop</span> <span class="p">{</span>
+    <span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="p">:</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">background</span><span class="p">:</span> <span class="c1">#4a4a4a;</span>
+    <span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="p">:</span> <span class="mi">15</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">color</span><span class="p">:</span> <span class="c1">#a881f7;</span>
+    <span class="n">border</span><span class="o">-</span><span class="n">color</span><span class="p">:</span> <span class="c1">#775cad;</span>
+  <span class="p">}</span>
+  <span class="n">canvas</span> <span class="p">{</span>
+    <span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="p">:</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">border</span><span class="p">:</span> <span class="mi">1</span><span class="n">px</span> <span class="n">solid</span> <span class="c1">#000000;</span>
+  <span class="p">}</span>
+  <span class="n">select</span> <span class="p">{</span>
+    <span class="n">text</span><span class="o">-</span><span class="n">align</span><span class="p">:</span> <span class="n">center</span><span class="p">;</span>
+    <span class="n">margin</span><span class="p">:</span> <span class="mi">5</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">width</span><span class="p">:</span> <span class="mi">27</span><span class="o">%</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="p">::</span><span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">scrollbar</span> <span class="p">{</span>
+      <span class="n">width</span><span class="p">:</span> <span class="mi">7</span><span class="n">px</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="p">::</span><span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">scrollbar</span><span class="o">-</span><span class="n">track</span> <span class="p">{</span>
+      <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="p">:</span> <span class="n">inset</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">6</span><span class="n">px</span> <span class="n">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.3</span><span class="p">);</span>
+      <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="p">:</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+      <span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="p">:</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="p">::</span><span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">scrollbar</span><span class="o">-</span><span class="n">thumb</span> <span class="p">{</span>
+      <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="p">:</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+      <span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="p">:</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+      <span class="n">background</span><span class="p">:</span> <span class="c1">#a881f7;</span>
+      <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="p">:</span> <span class="n">inset</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">6</span><span class="n">px</span> <span class="n">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="p">::</span><span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">scrollbar</span><span class="o">-</span><span class="n">thumb</span><span class="p">:</span><span class="n">window</span><span class="o">-</span><span class="n">inactive</span> <span class="p">{</span>
+      <span class="n">background</span><span class="p">:</span> <span class="c1">#a881f7;</span>
+  <span class="p">}</span>
+<span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s1">&#39;container&#39;</span><span class="o">&gt;</span>
+  <span class="o">&lt;!</span>-- visual interface that the user sees --&gt;
+  <span class="o">&lt;</span><span class="n">p</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;text-align: center;&quot;</span><span class="o">&gt;</span><span class="n">Enter</span> <span class="n">your</span> <span class="k">class</span> <span class="nc">information</span> <span class="n">below</span> <span class="ow">and</span> <span class="n">click</span> <span class="n">enter</span> <span class="n">when</span> <span class="n">you</span> <span class="n">are</span> <span class="n">ready</span><span class="o">.&lt;/</span><span class="n">p</span><span class="o">&gt;</span> 
+  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s1">&#39;texts1&#39;</span><span class="o">&gt;</span>
+  <span class="o">&lt;!</span>-- input cells used <span class="k">for</span> gathering user data --&gt;
+    <span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span> <span class="n">Period</span> <span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nb">input</span> <span class="n">autocomplete</span><span class="o">=</span><span class="s2">&quot;off&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;newPeriod&#39;</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;number&#39;</span> <span class="n">required</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span> <span class="n">Class</span> <span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nb">input</span> <span class="n">autocomplete</span><span class="o">=</span><span class="s2">&quot;off&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;newClass&#39;</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;text&#39;</span> <span class="n">required</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span> <span class="n">Class</span> <span class="n">Number</span> <span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">select</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;dropClass1&quot;</span> <span class="n">required</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="n">selected</span> <span class="n">disabled</span> <span class="n">hidden</span><span class="o">&gt;---&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="n">A</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="n">B</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="n">D</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="n">E</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="n">G</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="n">J</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="n">K</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="n">L</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="n">M</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="n">N</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="n">P</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="n">R</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="n">S</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">select</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">select</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;dropClass2&quot;</span> <span class="n">required</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="n">selected</span> <span class="n">disabled</span> <span class="n">hidden</span><span class="o">&gt;---&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">101</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">102</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">103</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">104</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">105</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">106</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">107</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">108</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">110</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">111</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">112</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">113</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">114</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">115</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">116</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">117</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">118</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">121</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">122</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">123</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">124</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">125</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">126</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">128</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">136</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">138</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">144</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">148</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">150</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">151</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">300</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">301</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">302</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">303</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">401</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">402</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">501</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="mi">502</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="n">Performing</span> <span class="n">Arts</span> <span class="n">Center</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="n">Library</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="n">Administration</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="n">Food</span> <span class="n">Court</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span><span class="n">Gym</span><span class="o">&lt;/</span><span class="n">option</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">select</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+  <span class="o">&lt;!</span>-- input cells <span class="k">for</span> start and end <span class="nb">times</span> --&gt;
+  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s1">&#39;texts2&#39;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span> <span class="n">Start</span> <span class="n">Time</span> <span class="p">(</span><span class="n">hh</span><span class="p">:</span><span class="n">mm</span><span class="p">)</span> <span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nb">input</span> <span class="n">autocomplete</span><span class="o">=</span><span class="s2">&quot;off&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;newStart&#39;</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;time&#39;</span> <span class="n">required</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span> <span class="n">End</span> <span class="n">Time</span> <span class="p">(</span><span class="n">hh</span><span class="p">:</span><span class="n">mm</span><span class="p">)</span> <span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nb">input</span> <span class="n">autocomplete</span><span class="o">=</span><span class="s2">&quot;off&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;newEnd&#39;</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;time&#39;</span> <span class="n">required</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+  <span class="o">&lt;!</span>-- submission and clear button used to alter the table state <span class="o">(</span>add or remove data entered by the user<span class="o">)</span> --&gt;
+  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;button&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">button</span> <span class="n">class</span><span class="o">=</span><span class="s1">&#39;button&#39;</span> <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;addClassButton&#39;</span> <span class="n">onclick</span><span class="o">=</span><span class="s2">&quot;addSchedule()&quot;</span><span class="o">&gt;</span><span class="n">Add</span><span class="o">&lt;/</span><span class="n">button</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">button</span> <span class="n">class</span><span class="o">=</span><span class="s1">&#39;button&#39;</span> <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;remove&#39;</span><span class="o">&gt;</span><span class="n">Clear</span><span class="o">&lt;/</span><span class="n">button</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+  <span class="o">&lt;!</span>-- data table used to display class information entered by the user --&gt;
+  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">p</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;title&quot;</span><span class="o">&gt;</span><span class="n">Classes</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">table</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;table&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;schedule&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;width: 100%; margin-left: auto; margin-right: auto;&quot;</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">th</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;cell&quot;</span><span class="o">&gt;</span><span class="n">Period</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">th</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;cell&quot;</span><span class="o">&gt;</span><span class="n">Class</span> <span class="n">Name</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">th</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;cell&quot;</span><span class="o">&gt;</span><span class="n">Class</span> <span class="n">Number</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">th</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;cell&quot;</span><span class="o">&gt;</span><span class="n">Start</span> <span class="n">Time</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">th</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;cell&quot;</span><span class="o">&gt;</span><span class="n">End</span> <span class="n">Time</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+      <span class="o">&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">table</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;!</span>-- hidden image used to create map canvas on which classes are marked --&gt;
+<span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;images/school_map.jpg&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;map&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;map&quot;</span> <span class="n">usemap</span><span class="o">=</span><span class="s2">&quot;#map&quot;</span> <span class="n">hidden</span><span class="o">&gt;</span>
+<span class="o">&lt;!</span>-- canvas on which map and highlighted classes will be displayed --&gt;
+<span class="o">&lt;</span><span class="n">canvas</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;canvas&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;652px&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;652px&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">canvas</span><span class="o">&gt;</span>
+
+<span class="o">&lt;!</span>-- logic of the program --&gt;
+<span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
+
+<span class="o">//</span> <span class="n">variables</span> <span class="n">created</span> <span class="k">for</span> <span class="n">the</span> <span class="nb">map</span> <span class="n">canvas</span> <span class="n">which</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="n">project</span> <span class="n">classes</span> <span class="k">for</span> <span class="n">user</span> <span class="n">to</span> <span class="n">see</span>
+<span class="n">var</span> <span class="nb">map</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s2">&quot;canvas&quot;</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">mapCanvas</span> <span class="o">=</span> <span class="nb">map</span><span class="o">.</span><span class="n">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">imgMap</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s2">&quot;map&quot;</span><span class="p">);</span>
+
+<span class="o">//</span> <span class="n">redundancy</span><span class="p">,</span> <span class="n">making</span> <span class="n">sure</span> <span class="nb">map</span> <span class="n">always</span> <span class="n">loads</span> <span class="n">on</span> <span class="n">website</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">imgMap</span><span class="o">.</span><span class="n">complete</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">mapCanvas</span><span class="o">.</span><span class="n">drawImage</span><span class="p">(</span><span class="n">imgMap</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">652</span><span class="p">,</span> <span class="mi">652</span><span class="p">);</span> <span class="o">//</span> <span class="k">if</span> <span class="nb">map</span> <span class="ow">is</span> <span class="n">complete</span> <span class="n">loading</span><span class="p">,</span> <span class="n">don</span><span class="s1">&#39;t try loading map again</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">imgMap</span><span class="o">.</span><span class="n">onload</span> <span class="o">=</span> <span class="n">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="n">mapCanvas</span><span class="o">.</span><span class="n">drawImage</span><span class="p">(</span><span class="n">imgMap</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">652</span><span class="p">,</span> <span class="mi">652</span><span class="p">);</span> <span class="o">//</span> <span class="k">if</span> <span class="nb">map</span> <span class="n">hasn</span><span class="s1">&#39;t loaded, map will attempt to load again, making sure it always shows</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">help</span> <span class="n">on</span> <span class="n">how</span> <span class="n">to</span> <span class="n">draw</span> <span class="n">a</span> <span class="n">star</span> <span class="n">on</span> <span class="n">HTML</span> <span class="n">canvas</span> <span class="n">was</span> <span class="n">found</span> <span class="n">here</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">stackoverflow</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">questions</span><span class="o">/</span><span class="mi">25837158</span><span class="o">/</span><span class="n">how</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">draw</span><span class="o">-</span><span class="n">a</span><span class="o">-</span><span class="n">star</span><span class="o">-</span><span class="n">by</span><span class="o">-</span><span class="n">using</span><span class="o">-</span><span class="n">canvas</span><span class="o">-</span><span class="n">html5</span>
+<span class="o">//</span> <span class="n">code</span> <span class="ow">is</span> <span class="n">modified</span> <span class="n">to</span> <span class="n">meet</span> <span class="n">my</span> <span class="n">specific</span> <span class="n">needs</span>
+<span class="n">function</span> <span class="n">starMark</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">spikes</span><span class="p">,</span> <span class="n">outerRadius</span><span class="p">,</span> <span class="n">innerRadius</span><span class="p">)</span> <span class="p">{</span>
+  <span class="o">//</span> <span class="n">created</span> <span class="n">variables</span> <span class="k">for</span> <span class="n">star</span> <span class="n">location</span> <span class="ow">and</span> <span class="n">orientation</span>
+  <span class="n">var</span> <span class="n">rot</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">PI</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span><span class="p">;</span>
+  <span class="n">var</span> <span class="n">x</span> <span class="o">=</span> <span class="n">cx</span><span class="p">;</span>
+  <span class="n">var</span> <span class="n">y</span> <span class="o">=</span> <span class="n">cy</span><span class="p">;</span>
+  <span class="n">var</span> <span class="n">step</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">PI</span> <span class="o">/</span> <span class="n">spikes</span><span class="p">;</span>
+
+  <span class="o">//</span> <span class="n">starting</span> <span class="n">path</span> <span class="n">of</span> <span class="n">where</span> <span class="n">the</span> <span class="n">star</span> <span class="ow">is</span> <span class="n">drawn</span> <span class="ow">and</span> <span class="n">how</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">drawn</span>
+  <span class="n">mapCanvas</span><span class="o">.</span><span class="n">strokeStyle</span> <span class="o">=</span> <span class="s2">&quot;#000&quot;</span><span class="p">;</span>
+  <span class="n">mapCanvas</span><span class="o">.</span><span class="n">beginPath</span><span class="p">();</span>
+  <span class="n">mapCanvas</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">cy</span> <span class="o">-</span> <span class="n">outerRadius</span><span class="p">)</span>
+  <span class="o">//</span> <span class="n">moves</span> <span class="n">brush</span> <span class="n">to</span> <span class="n">repeat</span> <span class="n">a</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">order</span> <span class="n">to</span> <span class="n">draw</span> <span class="n">the</span> <span class="n">spikes</span> <span class="n">of</span> <span class="n">the</span> <span class="n">star</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">spikes</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">x</span> <span class="o">=</span> <span class="n">cx</span> <span class="o">+</span> <span class="n">Math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">rot</span><span class="p">)</span> <span class="o">*</span> <span class="n">outerRadius</span><span class="p">;</span>
+      <span class="n">y</span> <span class="o">=</span> <span class="n">cy</span> <span class="o">+</span> <span class="n">Math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">rot</span><span class="p">)</span> <span class="o">*</span> <span class="n">outerRadius</span><span class="p">;</span>
+      <span class="n">mapCanvas</span><span class="o">.</span><span class="n">lineTo</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+      <span class="n">rot</span> <span class="o">+=</span> <span class="n">step</span>
+
+      <span class="n">x</span> <span class="o">=</span> <span class="n">cx</span> <span class="o">+</span> <span class="n">Math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">rot</span><span class="p">)</span> <span class="o">*</span> <span class="n">innerRadius</span><span class="p">;</span>
+      <span class="n">y</span> <span class="o">=</span> <span class="n">cy</span> <span class="o">+</span> <span class="n">Math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">rot</span><span class="p">)</span> <span class="o">*</span> <span class="n">innerRadius</span><span class="p">;</span>
+      <span class="n">mapCanvas</span><span class="o">.</span><span class="n">lineTo</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+      <span class="n">rot</span> <span class="o">+=</span> <span class="n">step</span>
+  <span class="p">}</span>
+  <span class="o">//</span> <span class="n">ending</span> <span class="n">the</span> <span class="n">path</span> <span class="n">of</span> <span class="n">the</span> <span class="n">brush</span> <span class="ow">in</span> <span class="n">order</span> <span class="n">to</span> <span class="n">end</span> <span class="n">the</span> <span class="n">star</span> <span class="ow">and</span> <span class="n">sets</span> <span class="n">final</span> <span class="n">color</span><span class="p">,</span> <span class="n">line</span> <span class="n">width</span><span class="p">,</span> <span class="ow">and</span> <span class="n">infill</span> <span class="n">of</span> <span class="n">star</span>
+  <span class="n">mapCanvas</span><span class="o">.</span><span class="n">lineTo</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">cy</span> <span class="o">-</span> <span class="n">outerRadius</span><span class="p">)</span>
+  <span class="n">mapCanvas</span><span class="o">.</span><span class="n">closePath</span><span class="p">();</span>
+  <span class="n">mapCanvas</span><span class="o">.</span><span class="n">lineWidth</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span>
+  <span class="n">mapCanvas</span><span class="o">.</span><span class="n">strokeStyle</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">;</span>
+  <span class="n">mapCanvas</span><span class="o">.</span><span class="n">stroke</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">setting</span> <span class="n">formatting</span> <span class="n">of</span> <span class="n">keys</span> <span class="n">used</span> <span class="n">to</span> <span class="n">store</span> <span class="n">room</span> <span class="n">information</span> <span class="n">which</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="n">index</span> <span class="n">the</span> <span class="n">rooms</span> <span class="n">on</span> <span class="n">the</span> <span class="nb">map</span> <span class="ow">and</span> <span class="n">their</span> <span class="n">coordinates</span>
+<span class="n">function</span> <span class="n">storeRoomData</span><span class="p">(</span><span class="n">room</span><span class="p">,</span> <span class="n">xVal</span><span class="p">,</span> <span class="n">yVal</span><span class="p">,</span> <span class="n">dataArray</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">dataArray</span><span class="o">.</span><span class="n">push</span><span class="p">({</span><span class="n">room</span><span class="p">:</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">xVal</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">yVal</span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">array</span> <span class="n">of</span> <span class="n">room</span> <span class="n">numbers</span> <span class="ow">and</span> <span class="n">coordinates</span> <span class="ow">is</span> <span class="nb">set</span> <span class="ow">and</span> <span class="n">filled</span> <span class="k">with</span> <span class="s1">&#39;storeRoomData()&#39;</span> <span class="n">function</span>
+<span class="n">var</span> <span class="n">coords</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="o">//</span> <span class="n">data</span> <span class="k">for</span> <span class="n">room</span> <span class="n">numbers</span><span class="p">,</span> <span class="n">can</span> <span class="n">add</span> <span class="ow">or</span> <span class="n">take</span> <span class="n">away</span> <span class="n">data</span> <span class="nb">any</span> <span class="n">time</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;A101&quot;</span><span class="p">,</span><span class="mi">347</span><span class="p">,</span><span class="mi">507</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;A102&quot;</span><span class="p">,</span><span class="mi">325</span><span class="p">,</span><span class="mi">509</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;A107&quot;</span><span class="p">,</span><span class="mi">302</span><span class="p">,</span><span class="mi">501</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;A116&quot;</span><span class="p">,</span><span class="mi">283</span><span class="p">,</span><span class="mi">487</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;A124&quot;</span><span class="p">,</span><span class="mi">261</span><span class="p">,</span><span class="mi">484</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;A125&quot;</span><span class="p">,</span><span class="mi">243</span><span class="p">,</span><span class="mi">469</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;A126&quot;</span><span class="p">,</span><span class="mi">228</span><span class="p">,</span><span class="mi">445</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;A136&quot;</span><span class="p">,</span><span class="mi">253</span><span class="p">,</span><span class="mi">425</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;A138&quot;</span><span class="p">,</span><span class="mi">267</span><span class="p">,</span><span class="mi">436</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;A144&quot;</span><span class="p">,</span><span class="mi">313</span><span class="p">,</span><span class="mi">462</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;A148&quot;</span><span class="p">,</span><span class="mi">325</span><span class="p">,</span><span class="mi">437</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;A150&quot;</span><span class="p">,</span><span class="mi">330</span><span class="p">,</span><span class="mi">469</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;A151&quot;</span><span class="p">,</span><span class="mi">349</span><span class="p">,</span><span class="mi">471</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;B111&quot;</span><span class="p">,</span><span class="mi">573</span><span class="p">,</span><span class="mi">358</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;B113&quot;</span><span class="p">,</span><span class="mi">594</span><span class="p">,</span><span class="mi">356</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;B115&quot;</span><span class="p">,</span><span class="mi">619</span><span class="p">,</span><span class="mi">354</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;B121&quot;</span><span class="p">,</span><span class="mi">592</span><span class="p">,</span><span class="mi">239</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;B123&quot;</span><span class="p">,</span><span class="mi">571</span><span class="p">,</span><span class="mi">247</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;B125&quot;</span><span class="p">,</span><span class="mi">551</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;B128&quot;</span><span class="p">,</span><span class="mi">521</span><span class="p">,</span><span class="mi">263</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;D101&quot;</span><span class="p">,</span><span class="mi">450</span><span class="p">,</span><span class="mi">260</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;D102&quot;</span><span class="p">,</span><span class="mi">431</span><span class="p">,</span><span class="mi">241</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;D103&quot;</span><span class="p">,</span><span class="mi">463</span><span class="p">,</span><span class="mi">247</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;D104&quot;</span><span class="p">,</span><span class="mi">445</span><span class="p">,</span><span class="mi">229</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;D111&quot;</span><span class="p">,</span><span class="mi">471</span><span class="p">,</span><span class="mi">203</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;D112&quot;</span><span class="p">,</span><span class="mi">489</span><span class="p">,</span><span class="mi">221</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;D113&quot;</span><span class="p">,</span><span class="mi">485</span><span class="p">,</span><span class="mi">189</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;D114&quot;</span><span class="p">,</span><span class="mi">503</span><span class="p">,</span><span class="mi">208</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;D115&quot;</span><span class="p">,</span><span class="mi">499</span><span class="p">,</span><span class="mi">176</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;D116&quot;</span><span class="p">,</span><span class="mi">517</span><span class="p">,</span><span class="mi">194</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;D117&quot;</span><span class="p">,</span><span class="mi">513</span><span class="p">,</span><span class="mi">162</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;D118&quot;</span><span class="p">,</span><span class="mi">531</span><span class="p">,</span><span class="mi">183</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;E101&quot;</span><span class="p">,</span><span class="mi">435</span><span class="p">,</span><span class="mi">175</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;E102&quot;</span><span class="p">,</span><span class="mi">419</span><span class="p">,</span><span class="mi">169</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;E103&quot;</span><span class="p">,</span><span class="mi">451</span><span class="p">,</span><span class="mi">153</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;E104&quot;</span><span class="p">,</span><span class="mi">427</span><span class="p">,</span><span class="mi">144</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;E105&quot;</span><span class="p">,</span><span class="mi">461</span><span class="p">,</span><span class="mi">129</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;E106&quot;</span><span class="p">,</span><span class="mi">437</span><span class="p">,</span><span class="mi">119</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;G101&quot;</span><span class="p">,</span><span class="mi">373</span><span class="p">,</span><span class="mi">215</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;G102&quot;</span><span class="p">,</span><span class="mi">345</span><span class="p">,</span><span class="mi">213</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;G103&quot;</span><span class="p">,</span><span class="mi">374</span><span class="p">,</span><span class="mi">199</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;G104&quot;</span><span class="p">,</span><span class="mi">346</span><span class="p">,</span><span class="mi">353</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;G111&quot;</span><span class="p">,</span><span class="mi">349</span><span class="p">,</span><span class="mi">162</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;G112&quot;</span><span class="p">,</span><span class="mi">377</span><span class="p">,</span><span class="mi">163</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;G113&quot;</span><span class="p">,</span><span class="mi">350</span><span class="p">,</span><span class="mi">143</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;G114&quot;</span><span class="p">,</span><span class="mi">377</span><span class="p">,</span><span class="mi">144</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;G115&quot;</span><span class="p">,</span><span class="mi">350</span><span class="p">,</span><span class="mi">123</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;G116&quot;</span><span class="p">,</span><span class="mi">376</span><span class="p">,</span><span class="mi">125</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;G117&quot;</span><span class="p">,</span><span class="mi">352</span><span class="p">,</span><span class="mi">104</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;G118&quot;</span><span class="p">,</span><span class="mi">379</span><span class="p">,</span><span class="mi">105</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;J101&quot;</span><span class="p">,</span><span class="mi">281</span><span class="p">,</span><span class="mi">233</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;J102&quot;</span><span class="p">,</span><span class="mi">305</span><span class="p">,</span><span class="mi">222</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;J103&quot;</span><span class="p">,</span><span class="mi">272</span><span class="p">,</span><span class="mi">215</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;J104&quot;</span><span class="p">,</span><span class="mi">297</span><span class="p">,</span><span class="mi">204</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;J110&quot;</span><span class="p">,</span><span class="mi">260</span><span class="p">,</span><span class="mi">188</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;J111&quot;</span><span class="p">,</span><span class="mi">254</span><span class="p">,</span><span class="mi">177</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;J112&quot;</span><span class="p">,</span><span class="mi">249</span><span class="p">,</span><span class="mi">165</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;J113&quot;</span><span class="p">,</span><span class="mi">283</span><span class="p">,</span><span class="mi">175</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;J114&quot;</span><span class="p">,</span><span class="mi">275</span><span class="p">,</span><span class="mi">157</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;J115&quot;</span><span class="p">,</span><span class="mi">241</span><span class="p">,</span><span class="mi">151</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;J116&quot;</span><span class="p">,</span><span class="mi">266</span><span class="p">,</span><span class="mi">139</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;J117&quot;</span><span class="p">,</span><span class="mi">233</span><span class="p">,</span><span class="mi">133</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;J118&quot;</span><span class="p">,</span><span class="mi">257</span><span class="p">,</span><span class="mi">122</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;K101&quot;</span><span class="p">,</span><span class="mi">222</span><span class="p">,</span><span class="mi">208</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;K102&quot;</span><span class="p">,</span><span class="mi">209</span><span class="p">,</span><span class="mi">223</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;K103&quot;</span><span class="p">,</span><span class="mi">206</span><span class="p">,</span><span class="mi">186</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;K104&quot;</span><span class="p">,</span><span class="mi">185</span><span class="p">,</span><span class="mi">206</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;K105&quot;</span><span class="p">,</span><span class="mi">186</span><span class="p">,</span><span class="mi">167</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;K106&quot;</span><span class="p">,</span><span class="mi">165</span><span class="p">,</span><span class="mi">187</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;L101&quot;</span><span class="p">,</span><span class="mi">234</span><span class="p">,</span><span class="mi">283</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;L102&quot;</span><span class="p">,</span><span class="mi">224</span><span class="p">,</span><span class="mi">307</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;L103&quot;</span><span class="p">,</span><span class="mi">218</span><span class="p">,</span><span class="mi">276</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;L104&quot;</span><span class="p">,</span><span class="mi">208</span><span class="p">,</span><span class="mi">299</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;L110&quot;</span><span class="p">,</span><span class="mi">179</span><span class="p">,</span><span class="mi">287</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;L111&quot;</span><span class="p">,</span><span class="mi">167</span><span class="p">,</span><span class="mi">282</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;L112&quot;</span><span class="p">,</span><span class="mi">155</span><span class="p">,</span><span class="mi">276</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;L113&quot;</span><span class="p">,</span><span class="mi">186</span><span class="p">,</span><span class="mi">261</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;L114&quot;</span><span class="p">,</span><span class="mi">169</span><span class="p">,</span><span class="mi">252</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;L115&quot;</span><span class="p">,</span><span class="mi">140</span><span class="p">,</span><span class="mi">270</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;L116&quot;</span><span class="p">,</span><span class="mi">151</span><span class="p">,</span><span class="mi">245</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;L117&quot;</span><span class="p">,</span><span class="mi">121</span><span class="p">,</span><span class="mi">262</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;L118&quot;</span><span class="p">,</span><span class="mi">133</span><span class="p">,</span><span class="mi">237</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;M101&quot;</span><span class="p">,</span><span class="mi">103</span><span class="p">,</span><span class="mi">312</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;M116&quot;</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">350</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;N113&quot;</span><span class="p">,</span><span class="mi">170</span><span class="p">,</span><span class="mi">422</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;N122&quot;</span><span class="p">,</span><span class="mi">157</span><span class="p">,</span><span class="mi">359</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;P101&quot;</span><span class="p">,</span><span class="mi">176</span><span class="p">,</span><span class="mi">468</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;P104&quot;</span><span class="p">,</span><span class="mi">156</span><span class="p">,</span><span class="mi">462</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;P107&quot;</span><span class="p">,</span><span class="mi">152</span><span class="p">,</span><span class="mi">479</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;P108&quot;</span><span class="p">,</span><span class="mi">133</span><span class="p">,</span><span class="mi">490</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;P111&quot;</span><span class="p">,</span><span class="mi">106</span><span class="p">,</span><span class="mi">482</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;P116&quot;</span><span class="p">,</span><span class="mi">98</span><span class="p">,</span><span class="mi">456</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;R300&quot;</span><span class="p">,</span><span class="mi">452</span><span class="p">,</span><span class="mi">66</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;R301&quot;</span><span class="p">,</span><span class="mi">481</span><span class="p">,</span><span class="mi">76</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;R302&quot;</span><span class="p">,</span><span class="mi">506</span><span class="p">,</span><span class="mi">89</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;R303&quot;</span><span class="p">,</span><span class="mi">530</span><span class="p">,</span><span class="mi">103</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;R401&quot;</span><span class="p">,</span><span class="mi">392</span><span class="p">,</span><span class="mi">49</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;R402&quot;</span><span class="p">,</span><span class="mi">418</span><span class="p">,</span><span class="mi">53</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;R501&quot;</span><span class="p">,</span><span class="mi">334</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;R502&quot;</span><span class="p">,</span><span class="mi">361</span><span class="p">,</span><span class="mi">44</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;S101&quot;</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">147</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;S102&quot;</span><span class="p">,</span><span class="mi">118</span><span class="p">,</span><span class="mi">132</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;S103&quot;</span><span class="p">,</span><span class="mi">137</span><span class="p">,</span><span class="mi">114</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;S104&quot;</span><span class="p">,</span><span class="mi">155</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;S105&quot;</span><span class="p">,</span><span class="mi">170</span><span class="p">,</span><span class="mi">85</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;S106&quot;</span><span class="p">,</span><span class="mi">186</span><span class="p">,</span><span class="mi">72</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;S107&quot;</span><span class="p">,</span><span class="mi">201</span><span class="p">,</span><span class="mi">58</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;Performing Arts Center&quot;</span><span class="p">,</span><span class="mi">137</span><span class="p">,</span><span class="mi">395</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;Library&quot;</span><span class="p">,</span><span class="mi">380</span><span class="p">,</span><span class="mi">477</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;Administration&quot;</span><span class="p">,</span><span class="mi">423</span><span class="p">,</span><span class="mi">454</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;Food Court&quot;</span><span class="p">,</span><span class="mi">477</span><span class="p">,</span><span class="mi">323</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">storeRoomData</span><span class="p">(</span><span class="s2">&quot;Gym&quot;</span><span class="p">,</span><span class="mi">571</span><span class="p">,</span><span class="mi">304</span><span class="p">,</span><span class="n">coords</span><span class="p">)</span>
+
+<span class="o">//</span> <span class="n">initializes</span> <span class="n">the</span> <span class="nb">format</span> <span class="n">of</span> <span class="n">the</span> <span class="n">function</span> <span class="n">which</span> <span class="n">will</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">populate</span> <span class="n">array</span><span class="p">,</span> <span class="n">using</span> <span class="n">parameters</span> <span class="ow">and</span> <span class="n">assigning</span> <span class="n">them</span> <span class="n">to</span> <span class="n">initial</span> <span class="n">values</span> 
+<span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">room</span> <span class="o">==</span> <span class="s2">&quot;A101&quot;</span>
+<span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">x</span> <span class="o">==</span> <span class="mi">347</span>
+<span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">y</span> <span class="o">==</span> <span class="mi">507</span>
+
+<span class="o">//</span> <span class="n">loop</span> <span class="n">continues</span> <span class="n">organization</span> <span class="n">of</span> <span class="n">data</span> <span class="n">into</span> <span class="n">array</span> <span class="n">based</span> <span class="n">on</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="n">pairs</span> <span class="ow">and</span> <span class="n">indexing</span> <span class="k">with</span> <span class="n">the</span> <span class="n">use</span> <span class="n">of</span> <span class="s1">&#39;i&#39;</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">coords</span><span class="o">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">sets</span> <span class="n">up</span> <span class="n">data</span> <span class="n">based</span> <span class="n">on</span> <span class="n">variables</span> <span class="n">into</span> <span class="n">array</span>
+    <span class="n">var</span> <span class="n">room</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">room</span><span class="p">;</span>
+    <span class="n">var</span> <span class="n">x</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="p">;</span>
+    <span class="n">var</span> <span class="n">y</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">y</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">setting</span> <span class="n">variables</span> <span class="n">used</span> <span class="n">to</span> <span class="n">gather</span> <span class="n">data</span> <span class="kn">from</span> <span class="nn">user</span> <span class="n">inputs</span> <span class="ow">in</span> <span class="n">above</span> <span class="n">HTML</span>
+<span class="n">var</span> <span class="n">periodInput</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;newPeriod&#39;</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">classInput</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;newClass&#39;</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">startInput</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;newStart&#39;</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">endInput</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;newEnd&#39;</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">addClassButton</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;addClassButton&#39;</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">clear</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;remove&#39;</span><span class="p">)</span>
+<span class="n">var</span> <span class="n">schedule</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;schedule&#39;</span><span class="p">);</span>
+
+<span class="o">//</span> <span class="n">delay</span> <span class="nb">set</span> <span class="n">to</span> <span class="n">reload</span> <span class="n">page</span> <span class="n">after</span> <span class="n">user</span> <span class="n">adds</span> <span class="n">data</span>
+<span class="n">const</span> <span class="n">delay</span> <span class="o">=</span> <span class="p">(</span><span class="n">delayms</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="n">new</span> <span class="n">Promise</span><span class="p">(</span><span class="n">resolve</span> <span class="o">=&gt;</span> <span class="n">setTimeout</span><span class="p">(</span><span class="n">resolve</span><span class="p">,</span> <span class="n">delayms</span><span class="p">))</span>
+    <span class="p">}</span>
+<span class="o">//</span> <span class="n">rerendering</span> <span class="n">function</span> <span class="n">using</span> <span class="n">above</span> <span class="n">delay</span> <span class="n">to</span> <span class="n">reload</span> <span class="n">page</span> <span class="n">when</span> <span class="n">called</span><span class="p">,</span> <span class="n">allowing</span> <span class="n">stars</span> <span class="n">to</span> <span class="n">be</span> <span class="n">drawn</span> <span class="n">on</span> <span class="nb">map</span> <span class="n">canvas</span>
+<span class="n">const</span> <span class="n">reRender</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="n">let</span> <span class="n">reloadDelay</span> <span class="o">=</span> <span class="k">await</span> <span class="n">delay</span><span class="p">(</span><span class="mi">700</span><span class="p">)</span>
+  <span class="n">window</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">reload</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="o">//</span><span class="n">function</span> <span class="n">used</span> <span class="n">to</span> <span class="n">add</span> <span class="n">data</span> <span class="n">to</span> <span class="n">the</span> <span class="n">backend</span> <span class="n">database</span> <span class="ow">and</span> <span class="n">frontend</span> <span class="n">table</span>
+<span class="n">function</span> <span class="n">addSchedule</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="o">//</span> <span class="n">defines</span> <span class="n">the</span> <span class="n">variables</span> <span class="n">that</span> <span class="n">are</span> <span class="n">to</span> <span class="n">be</span> <span class="n">pushed</span> <span class="n">into</span> <span class="n">the</span> <span class="n">backend</span> <span class="n">api</span> <span class="ow">and</span> <span class="n">placed</span> <span class="ow">in</span> <span class="n">frontend</span> <span class="n">table</span>
+  <span class="n">var</span> <span class="n">period</span> <span class="o">=</span> <span class="n">periodInput</span><span class="o">.</span><span class="n">value</span>
+  <span class="n">var</span> <span class="n">class1</span> <span class="o">=</span> <span class="n">classInput</span><span class="o">.</span><span class="n">value</span>
+  <span class="n">var</span> <span class="n">classNum</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;dropClass1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span> <span class="o">+</span> <span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;dropClass2&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">;</span>
+  <span class="n">var</span> <span class="n">startTime</span> <span class="o">=</span> <span class="n">startInput</span><span class="o">.</span><span class="n">value</span>
+  <span class="n">var</span> <span class="n">endTime</span> <span class="o">=</span> <span class="n">endInput</span><span class="o">.</span><span class="n">value</span>
+
+  <span class="o">//</span> <span class="n">this</span> <span class="n">checks</span> <span class="ow">is</span> <span class="nb">all</span> <span class="n">cells</span> <span class="n">are</span> <span class="n">complete</span> <span class="n">before</span> <span class="n">pushing</span> <span class="n">the</span> <span class="n">data</span> <span class="n">to</span> <span class="n">the</span> <span class="n">backend</span>
+  <span class="o">//</span> <span class="n">this</span> <span class="n">creates</span> <span class="n">an</span> <span class="n">array</span> <span class="k">with</span> <span class="n">the</span> <span class="n">variables</span> <span class="n">that</span> <span class="n">are</span> <span class="n">used</span> <span class="n">to</span> <span class="n">define</span> <span class="n">the</span> <span class="n">values</span> <span class="n">entered</span> <span class="n">by</span> <span class="n">the</span> <span class="n">user</span>
+  <span class="n">var</span> <span class="n">cellIds</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;newPeriod&#39;</span><span class="p">,</span> <span class="s1">&#39;newClass&#39;</span><span class="p">,</span> <span class="s1">&#39;dropClass1&#39;</span><span class="p">,</span> <span class="s1">&#39;dropClass2&#39;</span><span class="p">,</span> <span class="s1">&#39;newStart&#39;</span><span class="p">,</span> <span class="s1">&#39;newEnd&#39;</span><span class="p">]</span>
+
+  <span class="o">//</span> <span class="n">this</span> <span class="n">iterates</span> <span class="n">through</span> <span class="n">the</span> <span class="n">variables</span> <span class="n">used</span> <span class="n">to</span> <span class="n">define</span> <span class="n">the</span> <span class="nb">input</span> <span class="n">cells</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">let</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">cellIds</span><span class="o">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">getData</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="n">cellIds</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">value</span>
+    <span class="o">//</span> <span class="n">checks</span> <span class="k">if</span> <span class="n">the</span> <span class="n">cells</span> <span class="n">are</span> <span class="n">empty</span> <span class="ow">or</span> <span class="ow">not</span> <span class="ow">and</span> <span class="k">if</span> <span class="n">they</span> <span class="n">are</span><span class="p">,</span> <span class="n">it</span> <span class="n">prompts</span> <span class="n">the</span> <span class="n">user</span> <span class="n">to</span> <span class="n">fill</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">empty</span> <span class="n">cells</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">getData</span> <span class="o">===</span> <span class="s1">&#39;&#39;</span><span class="p">){</span>
+      <span class="n">alert</span><span class="p">(</span><span class="s1">&#39;Please fill out the empty cells.&#39;</span><span class="p">)</span>
+      <span class="k">return</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="o">//</span> <span class="n">reloads</span> <span class="n">the</span> <span class="n">page</span><span class="p">,</span> <span class="n">allowing</span> <span class="k">for</span> <span class="n">the</span> <span class="n">stars</span> <span class="n">to</span> <span class="n">be</span> <span class="n">drawn</span> <span class="n">onto</span> <span class="n">the</span> <span class="nb">map</span> <span class="ow">and</span> <span class="k">for</span> <span class="n">the</span> <span class="n">data</span> <span class="n">to</span> <span class="n">be</span> <span class="n">loaded</span> <span class="n">into</span> <span class="n">the</span> <span class="n">table</span>
+  <span class="n">reRender</span><span class="p">()</span>
+  <span class="o">//</span> <span class="n">calls</span> <span class="n">function</span> <span class="n">to</span> <span class="n">add</span> <span class="n">data</span> <span class="n">to</span> <span class="n">table</span> <span class="n">directly</span> <span class="n">after</span> <span class="n">data</span> <span class="ow">is</span> <span class="n">inputted</span>
+  <span class="n">addTask</span><span class="p">(</span><span class="n">period</span><span class="p">,</span> <span class="n">class1</span><span class="p">,</span> <span class="n">classNum</span><span class="p">,</span> <span class="n">startTime</span><span class="p">,</span> <span class="n">endTime</span><span class="p">)</span>
+  <span class="o">//</span> <span class="n">runs</span> <span class="n">the</span> <span class="n">function</span> <span class="n">responsible</span> <span class="k">for</span> <span class="n">adding</span> <span class="n">the</span> <span class="n">data</span> <span class="n">to</span> <span class="n">an</span> <span class="n">api</span> <span class="n">where</span> <span class="n">the</span> <span class="n">data</span> <span class="ow">is</span> <span class="n">stored</span><span class="p">,</span> <span class="n">called</span><span class="p">,</span> <span class="ow">and</span> <span class="n">can</span> <span class="n">be</span> <span class="n">deleted</span> <span class="kn">from</span>
+  <span class="nn">addData</span><span class="p">(</span><span class="n">period</span><span class="p">,</span> <span class="n">class1</span><span class="p">,</span> <span class="n">classNum</span><span class="p">,</span> <span class="n">startTime</span><span class="p">,</span> <span class="n">endTime</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">this</span> <span class="n">function</span> <span class="n">adds</span> <span class="n">data</span> <span class="n">into</span> <span class="n">the</span> <span class="n">table</span> <span class="k">for</span> <span class="n">the</span> <span class="n">user</span> <span class="n">to</span> <span class="n">see</span><span class="p">,</span> <span class="n">based</span> <span class="n">on</span> <span class="n">the</span> <span class="n">data</span> <span class="n">that</span> <span class="ow">is</span> <span class="n">read</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">database</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">api</span>
+<span class="o">//</span> <span class="n">it</span> <span class="n">also</span> <span class="n">calls</span> <span class="n">the</span> <span class="n">parameters</span> <span class="n">which</span> <span class="n">are</span> <span class="n">defined</span> <span class="n">to</span> <span class="n">match</span> <span class="k">with</span> <span class="n">the</span> <span class="n">values</span> <span class="n">of</span> <span class="n">the</span> <span class="nb">input</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">user</span> <span class="n">which</span> <span class="n">are</span> <span class="n">pulled</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">api</span>
+<span class="n">function</span> <span class="n">addTask</span><span class="p">(</span><span class="n">period</span><span class="p">,</span> <span class="n">class1</span><span class="p">,</span> <span class="n">classNum</span><span class="p">,</span> <span class="n">startTime</span><span class="p">,</span> <span class="n">endTime</span><span class="p">)</span> <span class="p">{</span>
+  
+  <span class="o">//</span> <span class="n">this</span> <span class="n">part</span> <span class="n">converts</span> <span class="n">default</span> <span class="mi">24</span><span class="o">-</span><span class="n">hour</span> <span class="n">time</span> <span class="n">to</span> <span class="mi">12</span><span class="o">-</span><span class="n">hour</span> <span class="n">time</span>
+  <span class="o">//</span> <span class="n">splits</span> <span class="n">the</span> <span class="n">start</span> <span class="n">time</span> <span class="n">into</span> <span class="n">variables</span> <span class="n">based</span> <span class="n">on</span> <span class="n">the</span> <span class="n">colons</span>
+  <span class="n">var</span> <span class="n">start</span> <span class="o">=</span> <span class="n">startTime</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+  <span class="o">//</span> <span class="n">makes</span> <span class="n">the</span> <span class="n">hour</span> <span class="n">into</span> <span class="n">an</span> <span class="n">integer</span> <span class="k">for</span> <span class="n">future</span> <span class="n">calculations</span>
+  <span class="n">var</span> <span class="n">hourStart</span> <span class="o">=</span> <span class="n">parseInt</span><span class="p">(</span><span class="n">start</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+  <span class="o">//</span> <span class="k">if</span> <span class="n">the</span> <span class="n">hour</span> <span class="ow">is</span> <span class="n">greater</span> <span class="n">than</span> <span class="mi">12</span> <span class="n">hours</span><span class="p">,</span> <span class="n">this</span> <span class="n">runs</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">hourStart</span> <span class="o">&gt;</span> <span class="mi">12</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">new</span> <span class="n">variable</span> <span class="ow">is</span> <span class="nb">set</span><span class="p">,</span> <span class="n">which</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">original</span> <span class="n">time</span> <span class="k">as</span> <span class="n">an</span> <span class="n">integer</span> <span class="k">with</span> <span class="mi">12</span> <span class="n">hours</span> <span class="n">subtracted</span>
+    <span class="n">newStartHour</span> <span class="o">=</span> <span class="n">hourStart</span> <span class="o">-</span> <span class="mi">12</span>
+    <span class="o">//</span> <span class="n">makes</span> <span class="n">it</span> <span class="n">back</span> <span class="n">into</span> <span class="n">a</span> <span class="n">string</span> <span class="k">with</span> <span class="n">PM</span> <span class="n">notation</span><span class="p">,</span> <span class="n">since</span> <span class="n">this</span> <span class="ow">is</span> <span class="n">PM</span>
+    <span class="n">newStartTime</span> <span class="o">=</span> <span class="n">newStartHour</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">start</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; PM&quot;</span>
+  <span class="o">//</span> <span class="k">if</span> <span class="n">hour</span> <span class="ow">is</span> <span class="n">less</span> <span class="n">than</span> <span class="mi">12</span> <span class="n">hours</span><span class="p">,</span> <span class="n">this</span> <span class="n">runs</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">hourStart</span> <span class="o">&lt;</span> <span class="mi">12</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">sets</span> <span class="n">time</span> <span class="n">string</span> <span class="k">as</span> <span class="n">it</span> <span class="n">would</span> <span class="n">be</span> <span class="n">normally</span><span class="p">,</span> <span class="n">without</span> <span class="nb">any</span> <span class="n">conversion</span><span class="p">,</span> <span class="n">but</span> <span class="k">with</span> <span class="n">AM</span>
+    <span class="n">newStartTime</span> <span class="o">=</span> <span class="n">hourStart</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">start</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; AM&quot;</span>
+  <span class="p">}</span>
+
+  <span class="o">//</span> <span class="n">same</span> <span class="n">thing</span> <span class="k">as</span> <span class="n">the</span> <span class="n">other</span> <span class="n">code</span> <span class="n">above</span> <span class="n">but</span> <span class="k">with</span> <span class="n">the</span> <span class="n">end</span> <span class="n">time</span>
+  <span class="n">var</span> <span class="n">end</span> <span class="o">=</span> <span class="n">endTime</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+  <span class="n">var</span> <span class="n">hourEnd</span> <span class="o">=</span> <span class="n">parseInt</span><span class="p">(</span><span class="n">end</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">hourEnd</span> <span class="o">&gt;</span> <span class="mi">12</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">newEndHour</span> <span class="o">=</span> <span class="n">hourEnd</span> <span class="o">-</span> <span class="mi">12</span>
+    <span class="n">newEndTime</span> <span class="o">=</span> <span class="n">newEndHour</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">end</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; PM&quot;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">hourEnd</span> <span class="o">&lt;</span> <span class="mi">12</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">newEndTime</span> <span class="o">=</span> <span class="n">hourEnd</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">end</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; AM&quot;</span>
+  <span class="p">}</span>
+  <span class="o">//</span> <span class="n">creates</span> <span class="n">an</span> <span class="n">array</span> <span class="k">with</span> <span class="n">the</span> <span class="n">variables</span> <span class="n">defining</span> <span class="n">the</span> <span class="n">user</span> <span class="n">data</span> <span class="n">pulled</span> <span class="n">form</span> <span class="n">the</span> <span class="n">api</span><span class="p">,</span> <span class="n">allowing</span> <span class="k">for</span> <span class="n">quick</span> <span class="n">iteration</span> <span class="n">through</span> <span class="n">the</span> <span class="n">rows</span> <span class="ow">and</span> <span class="n">cells</span> <span class="n">of</span> <span class="n">the</span> <span class="n">table</span><span class="p">,</span> <span class="n">to</span> <span class="n">display</span> <span class="n">data</span> <span class="n">quickly</span>
+  <span class="n">var</span> <span class="n">tableCells</span> <span class="o">=</span> <span class="p">[</span><span class="n">period</span><span class="p">,</span> <span class="n">class1</span><span class="p">,</span> <span class="n">classNum</span><span class="p">,</span> <span class="n">newStartTime</span><span class="p">,</span> <span class="n">newEndTime</span><span class="p">]</span>
+  <span class="o">//</span> <span class="n">creates</span> <span class="n">the</span> <span class="n">rows</span> <span class="n">of</span> <span class="n">information</span>
+  <span class="n">var</span> <span class="n">row</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">createElement</span><span class="p">(</span><span class="s1">&#39;tr&#39;</span><span class="p">)</span>
+  <span class="o">//</span> <span class="k">for</span> <span class="n">each</span> <span class="n">cell</span><span class="p">,</span> <span class="n">the</span> <span class="n">program</span> <span class="n">pulls</span> <span class="n">the</span> <span class="n">data</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">api</span> <span class="n">based</span> <span class="n">on</span> <span class="n">the</span> <span class="n">variables</span> <span class="n">defined</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">above</span> <span class="n">array</span><span class="p">,</span> <span class="ow">and</span> <span class="n">displays</span> <span class="n">them</span> <span class="k">as</span> <span class="n">text</span> <span class="k">for</span> <span class="n">the</span> <span class="n">user</span> <span class="n">to</span> <span class="n">see</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">tableCells</span><span class="o">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">tableCell</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">createElement</span><span class="p">(</span><span class="s1">&#39;th&#39;</span><span class="p">)</span>
+    <span class="o">//</span> <span class="k">for</span> <span class="n">each</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">array</span><span class="p">,</span> <span class="n">the</span> <span class="n">content</span> <span class="n">of</span> <span class="n">the</span> <span class="n">cell</span> <span class="ow">is</span> <span class="nb">set</span> <span class="n">on</span> <span class="n">whatever</span> <span class="n">the</span> <span class="n">variable</span> <span class="ow">is</span> <span class="n">defined</span> <span class="k">as</span>
+    <span class="n">tableCell</span><span class="o">.</span><span class="n">textContent</span> <span class="o">=</span> <span class="n">tableCells</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="o">//</span> <span class="k">class</span> <span class="nc">name</span> <span class="ow">is</span> <span class="nb">set</span> <span class="k">for</span> <span class="n">styling</span>
+    <span class="n">tableCell</span><span class="o">.</span><span class="n">className</span> <span class="o">=</span> <span class="s1">&#39;cell&#39;</span>
+    <span class="o">//</span> <span class="n">creates</span> <span class="n">new</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">table</span>
+    <span class="n">row</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">tableCell</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="o">//</span> <span class="n">creates</span> <span class="n">a</span> <span class="n">new</span> <span class="n">row</span> <span class="k">for</span> <span class="n">further</span> <span class="n">information</span> <span class="n">to</span> <span class="n">be</span> <span class="n">placed</span>
+  <span class="n">schedule</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">connection</span> <span class="n">to</span> <span class="n">the</span> <span class="n">api</span><span class="p">,</span> <span class="n">this</span> <span class="n">was</span> <span class="n">worked</span> <span class="n">on</span> <span class="k">with</span> <span class="mi">5</span> <span class="n">other</span> <span class="n">students</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">teacher</span><span class="p">,</span> <span class="n">however</span> <span class="n">everything</span> <span class="ow">is</span> <span class="n">modified</span> <span class="n">to</span> <span class="n">meet</span> <span class="n">the</span> <span class="n">needs</span> <span class="n">of</span> <span class="n">the</span> <span class="n">specific</span> <span class="n">program</span> <span class="n">I</span> <span class="n">entirely</span> <span class="n">made</span> <span class="n">myself</span>
+
+<span class="o">//</span> <span class="n">creates</span> <span class="n">the</span> <span class="n">ability</span> <span class="n">to</span> <span class="n">call</span> <span class="n">the</span> <span class="n">local</span> <span class="n">api</span><span class="p">,</span> <span class="k">if</span> <span class="n">full</span> <span class="n">stack</span> <span class="ow">is</span> <span class="n">run</span> <span class="n">entirely</span> <span class="n">locally</span>
+<span class="n">const</span> <span class="n">isLocalhost</span> <span class="o">=</span> <span class="n">Boolean</span><span class="p">(</span>
+	<span class="n">window</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">hostname</span> <span class="o">===</span> <span class="s2">&quot;localhost&quot;</span> <span class="o">||</span>
+	<span class="n">window</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">hostname</span> <span class="o">===</span> <span class="s2">&quot;[::1]&quot;</span> <span class="o">||</span>
+	<span class="n">window</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">hostname</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="o">/^</span><span class="mi">127</span><span class="p">(</span><span class="err">?</span><span class="p">:</span>\<span class="o">.</span><span class="p">(</span><span class="err">?</span><span class="p">:</span><span class="mi">25</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span><span class="o">|</span><span class="mi">2</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">4</span><span class="p">][</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">|</span><span class="p">[</span><span class="mi">01</span><span class="p">]</span><span class="err">?</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">][</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="err">?</span><span class="p">)){</span><span class="mi">3</span><span class="p">}</span><span class="err">$</span><span class="o">/</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="o">//</span> <span class="n">checks</span> <span class="n">whether</span> <span class="n">the</span> <span class="n">site</span> <span class="ow">is</span> <span class="n">run</span> <span class="n">locally</span> <span class="ow">and</span> <span class="n">decides</span> <span class="n">whether</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">to</span> <span class="n">use</span> <span class="n">the</span> <span class="n">local</span> <span class="n">api</span> <span class="ow">or</span> <span class="n">hosted</span> <span class="n">api</span>
+<span class="n">const</span> <span class="n">api</span> <span class="o">=</span> <span class="n">isLocalhost</span> <span class="err">?</span> <span class="s2">&quot;http://localhost:8199&quot;</span> <span class="p">:</span> <span class="s2">&quot;https://saakd.nighthawkcodingsociety.com&quot;</span><span class="p">;</span>
+
+<span class="o">//</span> <span class="n">adds</span> <span class="n">data</span> <span class="n">that</span> <span class="n">the</span> <span class="n">user</span> <span class="n">inputs</span> <span class="n">into</span> <span class="n">the</span> <span class="n">api</span><span class="p">,</span> <span class="n">based</span> <span class="n">on</span> <span class="n">the</span> <span class="n">parameters</span> <span class="n">which</span> <span class="n">are</span> <span class="n">defined</span> <span class="n">per</span> <span class="n">the</span> <span class="n">values</span> <span class="n">of</span> <span class="n">the</span> <span class="nb">input</span> <span class="n">boxes</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">above</span> <span class="n">logic</span>
+<span class="n">function</span> <span class="n">addData</span><span class="p">(</span><span class="n">period</span><span class="p">,</span> <span class="n">class1</span><span class="p">,</span> <span class="n">classNum</span><span class="p">,</span> <span class="n">startTime</span><span class="p">,</span> <span class="n">endTime</span><span class="p">){</span>
+
+<span class="o">//</span> <span class="n">a</span> <span class="n">dictionary</span> <span class="ow">is</span> <span class="n">made</span><span class="p">,</span> <span class="n">to</span> <span class="n">organize</span> <span class="n">the</span> <span class="n">data</span> <span class="n">before</span> <span class="n">sending</span> <span class="n">it</span> <span class="n">to</span> <span class="n">the</span> <span class="n">backend</span> <span class="k">for</span> <span class="n">storage</span>
+<span class="n">let</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="n">period</span><span class="p">,</span>
+  <span class="s2">&quot;class1&quot;</span><span class="p">:</span> <span class="n">class1</span><span class="p">,</span>
+  <span class="s2">&quot;classNumber&quot;</span><span class="p">:</span> <span class="n">classNum</span><span class="p">,</span>
+  <span class="s2">&quot;startTime&quot;</span><span class="p">:</span> <span class="n">startTime</span><span class="p">,</span>
+  <span class="s2">&quot;endTime&quot;</span><span class="p">:</span> <span class="n">endTime</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">this</span> <span class="n">fetches</span> <span class="n">the</span> <span class="n">post</span> <span class="n">link</span> <span class="k">for</span> <span class="n">the</span> <span class="n">api</span><span class="p">,</span> <span class="n">allowing</span> <span class="k">for</span> <span class="n">the</span> <span class="n">data</span> <span class="n">to</span> <span class="n">be</span> <span class="n">added</span> <span class="n">into</span> <span class="n">the</span> <span class="n">api</span> <span class="n">database</span>
+<span class="n">fetch</span><span class="p">(</span><span class="n">api</span> <span class="o">+</span> <span class="s1">&#39;/schedule&#39;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="n">method</span><span class="p">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+  <span class="n">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="n">body</span><span class="p">:</span> <span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
+<span class="p">})</span>
+  <span class="o">//</span> <span class="n">error</span> <span class="n">checking</span><span class="p">,</span> <span class="n">to</span> <span class="n">make</span> <span class="n">sure</span> <span class="n">everything</span> <span class="n">works</span> <span class="ow">and</span> <span class="k">if</span> <span class="n">there</span> <span class="n">are</span> <span class="n">errors</span><span class="p">,</span> <span class="n">the</span> <span class="n">program</span> <span class="n">stops</span>
+  <span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+  <span class="o">.</span><span class="n">catch</span><span class="p">((</span><span class="n">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Error:&#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">gathers</span> <span class="nb">all</span> <span class="n">data</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">api</span> <span class="n">backend</span> <span class="ow">and</span> <span class="n">send</span> <span class="n">it</span> <span class="k">for</span> <span class="n">the</span> <span class="n">frontend</span> <span class="n">to</span> <span class="n">process</span> <span class="n">through</span> <span class="n">the</span> <span class="n">get</span> <span class="n">link</span><span class="p">,</span> <span class="n">which</span> <span class="n">contains</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">database</span>
+<span class="n">const</span> <span class="n">getList</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="n">const</span> <span class="nb">list</span> <span class="o">=</span> <span class="k">await</span> <span class="n">fetch</span><span class="p">(</span><span class="n">api</span> <span class="o">+</span> <span class="s2">&quot;/scheduleList&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">r</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">());</span>
+	<span class="n">scheduleLocal</span> <span class="o">=</span> <span class="nb">list</span>
+  <span class="k">return</span> <span class="nb">list</span>
+<span class="p">};</span>
+
+<span class="o">//</span> <span class="n">gathers</span> <span class="n">data</span> <span class="ow">and</span> <span class="n">prepares</span> <span class="n">it</span> <span class="n">to</span> <span class="n">be</span> <span class="n">displayed</span> <span class="k">for</span> <span class="n">the</span> <span class="n">user</span> <span class="n">to</span> <span class="n">see</span>
+<span class="n">getList</span><span class="p">()</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="nb">list</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">//</span> <span class="k">for</span> <span class="n">each</span> <span class="k">class</span> <span class="nc">in</span> <span class="n">the</span> <span class="n">data</span><span class="p">,</span> <span class="n">which</span> <span class="ow">is</span> <span class="n">defined</span> <span class="k">as</span> <span class="nb">list</span><span class="p">,</span> <span class="n">that</span> <span class="ow">is</span> <span class="n">pulled</span> <span class="n">into</span> <span class="n">the</span> <span class="n">frontend</span><span class="p">,</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">run</span> <span class="n">through</span> <span class="n">the</span> <span class="s1">&#39;addTask()&#39;</span> <span class="n">function</span> <span class="ow">in</span> <span class="n">order</span> <span class="n">to</span> <span class="n">display</span> <span class="n">the</span> <span class="n">data</span> <span class="k">for</span> <span class="n">the</span> <span class="n">user</span> <span class="n">to</span> <span class="n">see</span>
+  <span class="nb">list</span><span class="o">.</span><span class="n">forEach</span><span class="p">(</span><span class="bp">cls</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">addTask</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">period</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">class1</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">classNum</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">startTime</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">endTime</span><span class="p">)</span>
+    
+    <span class="o">//</span> <span class="n">adds</span> <span class="n">the</span> <span class="n">markings</span> <span class="n">on</span> <span class="n">the</span> <span class="nb">map</span> <span class="k">for</span> <span class="n">each</span> <span class="k">class</span> <span class="nc">that</span> <span class="ow">is</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">dataset</span>
+    <span class="n">const</span> <span class="n">result</span> <span class="o">=</span> <span class="n">coords</span><span class="o">.</span><span class="n">find</span><span class="p">(({</span> <span class="n">room</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="n">room</span> <span class="o">===</span> <span class="bp">cls</span><span class="o">.</span><span class="n">classNum</span><span class="p">);</span>
+    <span class="n">starMark</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+  <span class="p">})</span>
+<span class="p">})</span>
+
+<span class="o">//</span> <span class="n">allows</span> <span class="n">data</span> <span class="n">to</span> <span class="n">be</span> <span class="n">cleared</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">table</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">api</span> <span class="n">once</span> <span class="n">the</span> <span class="n">clear</span> <span class="n">button</span> <span class="ow">is</span> <span class="n">clicked</span>
+<span class="n">clear</span><span class="o">.</span><span class="n">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(){</span>
+  <span class="o">//</span> <span class="n">runs</span> <span class="n">the</span> <span class="s1">&#39;remove()&#39;</span> <span class="n">function</span>
+  <span class="n">remove</span><span class="p">()</span>
+<span class="p">});</span>
+
+<span class="o">//</span> <span class="n">this</span> <span class="n">fetches</span> <span class="n">the</span> <span class="n">delete</span> <span class="n">link</span> <span class="k">for</span> <span class="n">the</span> <span class="n">api</span><span class="p">,</span> <span class="n">allowing</span> <span class="k">for</span> <span class="n">the</span> <span class="n">data</span> <span class="n">to</span> <span class="n">be</span> <span class="n">removed</span> <span class="n">entirely</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">api</span> <span class="n">database</span><span class="p">,</span> <span class="n">preventing</span> <span class="n">program</span> <span class="kn">from</span> <span class="nn">regenerating</span> <span class="n">stars</span> <span class="ow">and</span> <span class="n">text</span>
+<span class="n">function</span> <span class="n">remove</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">fetch</span><span class="p">(</span><span class="n">api</span> <span class="o">+</span> <span class="s1">&#39;/scheduleList&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="n">method</span><span class="p">:</span> <span class="s1">&#39;DELETE&#39;</span>
+  <span class="p">})</span>
+    <span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+
+  <span class="o">//</span> <span class="n">sets</span> <span class="n">arbitrary</span> <span class="k">for</span> <span class="k">while</span> <span class="n">loop</span> <span class="n">to</span> <span class="n">clear</span> <span class="n">table</span>
+  <span class="n">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="o">//</span> <span class="n">this</span> <span class="n">triggers</span> <span class="n">the</span> <span class="n">page</span> <span class="n">to</span> <span class="n">reload</span> <span class="ow">in</span> <span class="n">order</span> <span class="n">to</span> <span class="n">entirely</span> <span class="n">clear</span> <span class="n">the</span> <span class="n">table</span> <span class="ow">and</span> <span class="nb">map</span> <span class="n">of</span> <span class="n">it</span><span class="s1">&#39;s contents</span>
+  <span class="n">reRender</span><span class="p">();</span>
+  <span class="o">//</span> <span class="n">entirely</span> <span class="n">clears</span> <span class="n">contents</span> <span class="n">of</span> <span class="n">table</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">const</span> <span class="n">element</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s2">&quot;class&quot;</span><span class="p">);</span>
+    <span class="n">element</span><span class="o">.</span><span class="n">remove</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Result">Result<a class="anchor-link" href="#Result"> </a></h2><p><img src="https://user-images.githubusercontent.com/111480448/235407998-5a2103af-b60e-4957-9168-ddd578a18a73.png" alt="" />
+<img src="https://user-images.githubusercontent.com/111480448/235408071-dd397e68-d5ee-453a-ae93-64da3cc93d65.png" alt="" /></p>
 
 </div>
 </div>
