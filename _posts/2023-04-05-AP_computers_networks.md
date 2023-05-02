@@ -58,7 +58,13 @@ Define or describe usage of Computer using Computer Programs. Pictures are prefe
 > Watch/review College Board Daily Video 4.1.2
 
 - Complete True of False Questions
-
+    - i. T
+    - ii. F
+    - iii. F
+    - iv. T
+    - v. F
+    - vi. F
+    - vii. T
 - Essential Knowledge
     - The internet is a computer network consisting of interconnected networks that use standardized, open (nonproprierary) communication protocols.
     - Access to the internet depends on the ability to connect a computing device to an internet connected device.
@@ -77,7 +83,7 @@ Define or describe usage of Computer using Computer Programs. Pictures are prefe
 
 - Go over AP videos, vocabulary, and essential knowledge.  Draw a diagram showing the internet and its many levels. A preferred diagram would using your knowledge of frontend, backend, deployment, etc.  Picture would highligh vocabulary by illustration. The below illustration have some ideas
 
-![Full Stack](https://raw.githubusercontent.com/nighthawkcoders/APCSP/master/images/fullstack.png)
+![Full Stack]({{site.baseurl}}/images/FullStack.png)
 
 
 - Often we draw pictures of machines communicating over the Internet with arrows.  However, the real communication goes through protocol layers and the machine and then is trasported of the network.   For College Board and future Computer Knowledge you should become familiar with the following ...
@@ -110,9 +116,7 @@ The "network" layer is responsible for ***routing data packets between networks*
 > Watch both Daily videos for 4.2
 
 - Complete the network activity, summarize your understanding of fault tolerance.
-
-
-
+    - Fault tolerance is a process that lets an OS respond to failure in the hardware or software. So the system won’t break down completely due to an error or failure.
 
 ### Parallel and Distributed Computing
 > Review previous lecture on Parallel Computing and watch Daily vidoe 4.3.  Think of ways to make something in you team project to utilize Cores more effectively.  Here are some thoughts to add to your story of Computers and Networks...
