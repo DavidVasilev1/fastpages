@@ -550,10 +550,10 @@ For loop with shortcut (*) row expansion
 
 
 
-<div id="bb12b485-038e-4e54-b364-db2e5f96f1e3"></div>
+<div id="332d7caa-3dd5-4aec-8282-24e78674801a"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#bb12b485-038e-4e54-b364-db2e5f96f1e3');
+var element = $('#332d7caa-3dd5-4aec-8282-24e78674801a');
 
 /*
 * Creator: Nighthawk Coding Society
@@ -671,22 +671,27 @@ element.append(arr2D);
         <span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         
         <span class="nb">print</span><span class="p">(</span><span class="s2">"Nursery Rhyme"</span><span class="p">)</span>  <span class="c1"># identification message</span>
+        <span class="nb">print</span><span class="p">()</span>  <span class="c1"># empty line</span>
+        
+        <span class="c1"># Print the current count of monkeys</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> little monkeys jumping on the bed..."</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">()</span>  <span class="c1"># empty line</span>
+        
+        <span class="n">assembled_monkeys</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
 
-        <span class="c1"># this print statement shows current count of Monkeys</span>
-        <span class="c1"># concatenation (+) of the loop variable and string to form a countdown message</span>
-        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s2">" little monkeys jumping on the bed..."</span><span class="p">)</span>
-
-        <span class="c1"># cycle through monkeys that are left in poem countdown</span>
-        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>  <span class="c1"># cycles through remaining monkeys in countdown</span>
-
-            <span class="c1"># cycles through monkey part by part</span>
             <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">monkeys</span><span class="p">[</span><span class="n">row</span><span class="p">])):</span>
-                <span class="c1"># prints specific part of the monkey from the 2D cell</span>
-                <span class="nb">print</span><span class="p">(</span><span class="n">monkeys</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">+</span> <span class="s2">" "</span><span class="p">)</span>
 
-            <span class="c1"># this new line gives separation between stanza of poem</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\u001b</span><span class="s2">[0m"</span><span class="p">)</span>  <span class="c1"># reset color</span>
-            
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">assembled_monkeys</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">col</span><span class="p">:</span>
+                    <span class="n">assembled_monkeys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
+
+                <span class="n">assembled_monkeys</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">+=</span> <span class="n">monkeys</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span>
+        
+        <span class="k">for</span> <span class="n">assembled_monkey</span> <span class="ow">in</span> <span class="n">assembled_monkeys</span><span class="p">:</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="n">assembled_monkey</span><span class="p">)</span>
+        
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
     <span class="c1"># out of all the loops, prints finishing messages</span>
@@ -710,55 +715,10 @@ element.append(arr2D);
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Nursery Rhyme
-4 little monkeys jumping on the bed...
-<span class="ansi-blue-fg"> 
-ʕ ͡° ͜ʖ ° ͡ʔ 
-  \_⍾_/   
-  ==3==   
-  _/ \_   
-</span>
-<span class="ansi-yellow-fg"> 
- ʕ(▀ ⍡ ▀)ʔ 
-  \_⎐_/  
-  &lt;-2-&gt;   
-  〈  〉  
-</span>
-<span class="ansi-green-fg"> 
- ʕ༼ ◕_◕ ༽ʔ  
-  \_⎏_/   
-  ++1++   
-   ⌋ ⌊    
-</span>
-<span class="ansi-red-fg"> 
-ʕง ͠° ͟ل͜ ͡°)ʔ  
-  \_⏄_/   
-  --0--    
-  ⎛   ⎞    
-</span>
+<pre>No more monkeys jumping on the bed
+0000000000000000000000000000000000
+             THE END              
 </pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">KeyboardInterrupt</span>                         Traceback (most recent call last)
-<span class="ansi-green-intense-fg ansi-bold">/home/davidv/vscode/fastpages/_notebooks/2023-05-16-DS-arrays_lab.ipynb Cell 8</span> in <span class="ansi-cyan-fg">&lt;cell line: 87&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">     &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-05-16-DS-arrays_lab.ipynb#X10sdnNjb2RlLXJlbW90ZQ%3D%3D?line=83'&gt;84&lt;/a&gt;</span>     print("             THE END              ")
-<span class="ansi-green-intense-fg ansi-bold">     &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-05-16-DS-arrays_lab.ipynb#X10sdnNjb2RlLXJlbW90ZQ%3D%3D?line=86'&gt;87&lt;/a&gt;</span> if __name__ == "__main__":
-<span class="ansi-green-fg">---&gt; &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-05-16-DS-arrays_lab.ipynb#X10sdnNjb2RlLXJlbW90ZQ%3D%3D?line=87'&gt;88&lt;/a&gt;</span>     main()
-
-<span class="ansi-green-intense-fg ansi-bold">/home/davidv/vscode/fastpages/_notebooks/2023-05-16-DS-arrays_lab.ipynb Cell 8</span> in <span class="ansi-cyan-fg">main</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">     &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-05-16-DS-arrays_lab.ipynb#X10sdnNjb2RlLXJlbW90ZQ%3D%3D?line=74'&gt;75&lt;/a&gt;</span>         # this new line gives separation between stanza of poem
-<span class="ansi-green-intense-fg ansi-bold">     &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-05-16-DS-arrays_lab.ipynb#X10sdnNjb2RlLXJlbW90ZQ%3D%3D?line=75'&gt;76&lt;/a&gt;</span>         print("\u001b[0m")  # reset color
-<span class="ansi-green-fg">---&gt; &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-05-16-DS-arrays_lab.ipynb#X10sdnNjb2RlLXJlbW90ZQ%3D%3D?line=77'&gt;78&lt;/a&gt;</span>     time.sleep(2)
-<span class="ansi-green-intense-fg ansi-bold">     &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-05-16-DS-arrays_lab.ipynb#X10sdnNjb2RlLXJlbW90ZQ%3D%3D?line=79'&gt;80&lt;/a&gt;</span> # out of all the loops, prints finishing messages
-<span class="ansi-green-intense-fg ansi-bold">     &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-05-16-DS-arrays_lab.ipynb#X10sdnNjb2RlLXJlbW90ZQ%3D%3D?line=80'&gt;81&lt;/a&gt;</span> clear_output(wait=True)
-
-<span class="ansi-red-fg">KeyboardInterrupt</span>: </pre>
 </div>
 </div>
 
@@ -1151,7 +1111,6 @@ element.append(arr2D);
     <span class="nb">print</span><span class="p">(</span><span class="n">sp</span> <span class="o">+</span> <span class="s2">"`\------(oo)"</span><span class="p">)</span>     
     <span class="nb">print</span><span class="p">(</span><span class="n">sp</span> <span class="o">+</span> <span class="s2">"  ||    (__)"</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">sp</span> <span class="o">+</span> <span class="s2">"  ||w--||"</span><span class="p">)</span>
-    
 
 <span class="k">def</span> <span class="nf">cow</span><span class="p">():</span>
     <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
@@ -1160,9 +1119,10 @@ element.append(arr2D);
 
     <span class="k">for</span> <span class="n">position</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
         <span class="n">cow_print</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
-        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
 
-<span class="n">cow</span><span class="p">()</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+  <span class="n">cow</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -1175,11 +1135,31 @@ element.append(arr2D);
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre><span class="ansi-green-fg">                                                                                                           (__)
-                                                                                                   `\------(oo)
-                                                                                                     ||    (__)
-                                                                                                     ||w--||
+<pre><span class="ansi-green-fg">                                    (__)
+                            `\------(oo)
+                              ||    (__)
+                              ||w--||
 </span></pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">KeyboardInterrupt</span>                         Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">/home/davidv/vscode/fastpages/_notebooks/2023-05-16-DS-arrays_lab.ipynb Cell 12</span> in <span class="ansi-cyan-fg">&lt;cell line: 26&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">     &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-05-16-DS-arrays_lab.ipynb#X15sdnNjb2RlLXJlbW90ZQ%3D%3D?line=22'&gt;23&lt;/a&gt;</span>         time.sleep(0.05)
+<span class="ansi-green-intense-fg ansi-bold">     &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-05-16-DS-arrays_lab.ipynb#X15sdnNjb2RlLXJlbW90ZQ%3D%3D?line=24'&gt;25&lt;/a&gt;</span> while True:
+<span class="ansi-green-fg">---&gt; &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-05-16-DS-arrays_lab.ipynb#X15sdnNjb2RlLXJlbW90ZQ%3D%3D?line=25'&gt;26&lt;/a&gt;</span>   cow()
+
+<span class="ansi-green-intense-fg ansi-bold">/home/davidv/vscode/fastpages/_notebooks/2023-05-16-DS-arrays_lab.ipynb Cell 12</span> in <span class="ansi-cyan-fg">cow</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">     &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-05-16-DS-arrays_lab.ipynb#X15sdnNjb2RlLXJlbW90ZQ%3D%3D?line=20'&gt;21&lt;/a&gt;</span> for position in range(start, distance, step):
+<span class="ansi-green-intense-fg ansi-bold">     &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-05-16-DS-arrays_lab.ipynb#X15sdnNjb2RlLXJlbW90ZQ%3D%3D?line=21'&gt;22&lt;/a&gt;</span>     cow_print(position)
+<span class="ansi-green-fg">---&gt; &lt;a href='vscode-notebook-cell://wsl%2Bubuntu/home/davidv/vscode/fastpages/_notebooks/2023-05-16-DS-arrays_lab.ipynb#X15sdnNjb2RlLXJlbW90ZQ%3D%3D?line=22'&gt;23&lt;/a&gt;</span>     time.sleep(0.05)
+
+<span class="ansi-red-fg">KeyboardInterrupt</span>: </pre>
 </div>
 </div>
 
